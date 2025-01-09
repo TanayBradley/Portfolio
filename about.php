@@ -21,7 +21,7 @@
         <br/><br/>For me, music and design go hand in hand which makes it easy for me to create! Just as much as a musician composes a piece of music to evoke emotions and convey a message, a designer creates visuals or experiences that communicate ideas and engage with people.  I am excited to share my knowledge and skills to create meaningful designs and music! 
 </span>
         </div>
-    </section>
+</section>
 
     <section id="aboutImage"><img src="images/Tanay.jpeg" alt="About Section Image"></section>
 

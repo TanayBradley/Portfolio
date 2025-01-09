@@ -16,10 +16,10 @@
     <section id="intro">
         <div id="introTitle">
             <div>Hey there, <span id="titleBlock1" onmouseover="block1dark()" onmouseout="block1light()">I'm Tanay</span></div>
-            <div>I <span id="titleBlock2" class="titleBlockEtc">design</span>, <span id="titleBlock3" class="titleBlockEtc">sing</span>, &amp; I'm an <span id="titleBlock4" class="titleBlockEtc">outdoorsy bookworm</span></div>
+            <div>I <span id="titleBlock2" class="titleBlockEtc">Research</span>, <span id="titleBlock3" class="titleBlockEtc">Strategize</span>, &amp; I'm a <span id="titleBlock4" class="titleBlockEtc">Recording Artist</span></div>
         </div>
         <div id="introBody">
-            <span>I'm a UX/UI designer based in Houston, Texas with basic knowledge in coding and a strong foundation in Graphic Design. I’m excited to share my knowledge and skills to create designs that provide a seamless, enjoyable user experience.</span>
+            <span>I’m a UX Researcher and Strategist passionate about uncovering user needs to drive impactful designs. When I’m not shaping experiences, you can find me working as a recording artist, exploring the outdoors, or diving into a good book.</span>
         </div>
     </section>
 

@@ -348,7 +348,7 @@ hr{
 }
 #aboutImage {
     width: 100%; /* Make the section span the full width */
-    height: 300px; /* Set the height of the section */
+    height: 750px; /* Set the height of the section */
     overflow: hidden; /* Prevent the image from spilling out */
     display: flex; /* Enable centering for content */
     justify-content: center; /* Center horizontally */
