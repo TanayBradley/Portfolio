@@ -360,34 +360,50 @@ hr{
     height: 100%; /* Scale the image to fit the height */
     object-fit: cover; /* Ensure the image covers the section nicely */
 }
-/* Dropdown menu styling */
+/* Global Styling */
+body.light-mode {
+    background-color: white;
+    color: black;
+    border: none; /* Remove any borders around the page */
+}
+
+body.dark-mode {
+    background-color: #333; /* Dark background for body */
+    color: white;
+    border: none; /* Remove any borders around the page */
+}
+
+/* Dropdown Menu Styling */
 .dropdown-menu {
-    position: absolute;
-    top: 100%; /* Positioned below the button */
-    left: 0;
-    background: #fff;
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     display: none; /* Hidden by default */
-    z-index: 100;
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 9999;
+    background-color: white; /* White background for dropdown menu */
+    color: black; /* Default text color */
+    border: 1px solid #ccc; /* Add border specifically to the dropdown menu */
+    width: 200px;
 }
 
-/* Dropdown menu items */
+/* Dropdown Menu Items */
 .dropdown-menu li {
-    padding: 5px 15px;
+    padding: 10px 20px;
+    text-align: left;
+    color: black; /* Ensure text is black by default */
 }
 
-.dropdown-menu li a {
-    color: #333;
-    text-decoration: none;
-    display: block;
+/* Hover Effect for Dropdown Items */
+.dropdown-menu li:hover {
+    background-color: #f0f0f0; /* Subtle hover background */
+    color: black; /* Ensure text remains black when hovered */
 }
 
-.dropdown-menu li a:hover {
-    background: #f0f0f0;
-    color: #007BFF;
+/* Button for Switching Light/Dark Mode */
+#contrastMode {
+    cursor: pointer;
+    padding: 10px;
+    background-color: inherit;
+    color: inherit;
 }
