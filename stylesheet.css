@@ -346,3 +346,17 @@ hr{
     height: 16px;
     margin-left: 5px;
 }
+#aboutImage {
+    width: 100%; /* Make the section span the full width */
+    height: 300px; /* Set the height of the section */
+    overflow: hidden; /* Prevent the image from spilling out */
+    display: flex; /* Enable centering for content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#aboutImage img {
+    width: 100%; /* Scale the image to fit the width */
+    height: 100%; /* Scale the image to fit the height */
+    object-fit: cover; /* Ensure the image covers the section nicely */
+}
