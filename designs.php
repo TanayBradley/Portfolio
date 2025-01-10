@@ -52,22 +52,46 @@
     <div class="design-item">
         <img src="images/discover.svg" alt="Description of your design">
         <p>Discover</p>
+        <div class="additional-text">
+            <span>User Research</span>
+            <span>User Interview</span>
+            <span>Competitive Analysis</span>
+        </div>
     </div>
     <div class="design-item">
         <img src="images/define.svg" alt="Description of your design">
         <p>Define</p>
+        <div class="additional-text">
+            <span>User Personas</span>
+            <span>Empathy Map</span>
+            <span>Affinity Map</span>
+        </div>
     </div>
     <div class="design-item">
         <img src="images/Ideate.svg" alt="Description of your design">
         <p>Ideate</p>
+        <div class="additional-text">
+            <span>User Flow</span>
+            <span>Information Architecture</span>
+        </div>
     </div>
     <div class="design-item">
         <img src="images/design.svg" alt="Description of your design">
         <p>Design</p>
+        <div class="additional-text">
+            <span>Wireframe</span>
+            <span>Hi-Fi Designs</span>
+            <span>Prototype</span>
+        </div>
     </div>
     <div class="design-item">
         <img src="images/Evaluate.svg" alt="Description of your design">
         <p>Evaluate</p>
+        <div class="additional-text">
+            <span>Feedback</span>
+            <span>Conclusion</span>
+            <span>Future Concept</span>
+        </div>
     </div>
 </div>
 
