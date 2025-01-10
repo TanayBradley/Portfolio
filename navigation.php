@@ -1,6 +1,6 @@
 <div id="navBar">
     <div id="navBarLeft">
-        <div id="name">Tanay Bradley</div>
+        <div id="name" class="navOption">Tanay Bradley</div>
     </div>
     <div id="navBarRight">
         <nav id="navMenu">
@@ -11,7 +11,7 @@
                 Designs <i class="fa-solid fa-chevron-down"></i>
                 <ul class="dropdown-menu">
                     <li><a href="designs.php">Keep Going Mobile App</a></li>
-                    <li><a href="designs.php">Kee Going Website</a></li>
+                    <li><a href="designs.php">Keep Going Website</a></li>
                     <li><a href="designs.php">Grante Mobile App</a></li>
                 </ul>
             </div>
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             dropdownMenu.style.display = 'block';
         });
 
-        // Hide the dropdown when the mouse leaves
+         // Hide the dropdown when the mouse leaves
         trigger.addEventListener('mouseleave', function() {
             dropdownMenu.style.display = 'none';
         });
