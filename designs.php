@@ -107,7 +107,13 @@
                 Keep > Going First Aid lacks a mobile game to complement their existing website.
                 The gap in their digital presence limits their ability to engage users beyond the website and fully leverage the potential for user interaction and education.
                 To ensure we solve their problem effectively and efficiently, here is what our research will include:
-            </div> 
+            </div> <br/><br/>
+        <div class="additional-text">
+    <span class="number">1.</span> Understanding the user and their needs<br><br/>
+    <span class="number">2.</span> Uncovering pain points<br><br/>
+    <span class="number">3.</span> Determining the success of the tasks measured
+</div>
+
         </div>
     </section>
 
@@ -119,10 +125,11 @@
             <div class="designDescBodySecondary">
                 After defining the issue and gathering the necessary research, I conducted an affinity map to organize and categorize ideas, insights, and data.
                 This helped make sense of the large amount of research gathered by grouping related items together based on their natural relationships or themes. 
-            </div> 
+            </div> <br/><br/>
+
         </div>
     </section>
-    
+
     <section class="designListing">
         <div class="designTitle">
             <span>Paper Wireframes</span>
@@ -133,6 +140,7 @@
                 I mocked up paper wireframes to gather feedback from other designers and development. 
                 The wireframes are used to outline the basic structure and layout of the final digital product.  
             </div> 
+            <br/><br/> <br/><br/> <img src="images/paperprototype 1.png" alt="Paper prototype image">
         </div>
     </section>
 
@@ -147,6 +155,15 @@
                 After each match the user gets, there is an educational popup that describes the importance of that item.
                 Once all matches are complete the user then sees a congratulations screen and they can start over again. This keeps the user engaged and educated.  
             </div> 
+            <br/><br/> <br/><br/> 
+            <div class="image-container">
+    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_08 1.png" alt="Project Wireframes Page 08"> 
+    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_09 1.png" alt="Project Wireframes Page 09">
+</div>
+<div class="image-wrapper">
+    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_22 1.png" alt="Wireframes1">
+</div>
+
         </div>
     </section>
 
