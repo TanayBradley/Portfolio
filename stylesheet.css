@@ -474,14 +474,7 @@ body.dark-mode {
     color: #C317C7; /* Change to pink on hover */
     
 }
-/* Set the custom cursor for the entire page */
+
 body {
-    cursor: url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2220%22%20height=%2220%22%20viewBox=%220%200%2020%2020%22%3E%3Ccircle%20cx=%2210%22%20cy=%2210%22%20r=%2210%22%20fill=%22%23C317C7%22%20/%3E%3C/svg%3E'), auto;
+    cursor: url('images/Actual cursor.png'), auto;
 }
-
-/* Optional: If you want a hovering effect to change the cursor */
-.navOption:hover {
-    cursor: url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2220%22%20height=%2220%22%20viewBox=%220%200%2020%2020%22%3E%3Ccircle%20cx=%2210%22%20cy=%2210%22%20r=%2210%22%20fill=%22%23FF6347%22%20/%3E%3C/svg%3E'), auto;
-}
-
-

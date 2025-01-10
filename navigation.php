@@ -1,3 +1,4 @@
+
 <div id="navBar">
     <div id="navBarLeft">
         <div id="name" class="navOption">Tanay Bradley</div>

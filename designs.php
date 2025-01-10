@@ -49,11 +49,16 @@
         </div>
         <div class="designDesc">
             <div class="designDescBodyThreeCol">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
+                <div><img src="images/discover.svg" alt="Description of your design">
+                </div>
+                <div><img src="images/define.svg" alt="Description of your design">
+                </div>
+                <div><img src="images/Ideate.svg" alt="Description of your design">
+                </div>
+                <div><img src="images/design.svg" alt="Description of your design">
+                </div>
+                <div><img src="images/Evaluate.svg" alt="Description of your design">
+                </div>
             </div>
         </div>
     </section>
