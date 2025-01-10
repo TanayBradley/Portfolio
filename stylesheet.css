@@ -477,4 +477,26 @@ body.dark-mode {
 
 body {
     cursor: url('images/Actual cursor.png'), auto;
+
+}
+
+.designDescBodyThreeCol div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@font-face {
+    font-family: 'Montserrat'; /* Name your font */
+    src: url('fonts/montserrat-variableFont_wght.ttf') format('truetype'); /* Adjust the path to your font file */
+    font-weight: 100 900; /* This is for the variable font weight range */
+}
+
+.designDescBodyThreeCol p {
+    margin-top: 8px;
+    text-align: center;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif; /* Use your custom font here */
+    font-size: 25px;
+    font-weight: 600; /* You can adjust the weight here */
 }

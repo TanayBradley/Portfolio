@@ -48,18 +48,29 @@
             <span>Design Process</span>
         </div>
         <div class="designDesc">
-            <div class="designDescBodyThreeCol">
-                <div><img src="images/discover.svg" alt="Description of your design">
-                </div>
-                <div><img src="images/define.svg" alt="Description of your design">
-                </div>
-                <div><img src="images/Ideate.svg" alt="Description of your design">
-                </div>
-                <div><img src="images/design.svg" alt="Description of your design">
-                </div>
-                <div><img src="images/Evaluate.svg" alt="Description of your design">
-                </div>
-            </div>
+        <div class="designDescBodyThreeCol">
+    <div class="design-item">
+        <img src="images/discover.svg" alt="Description of your design">
+        <p>Discover</p>
+    </div>
+    <div class="design-item">
+        <img src="images/define.svg" alt="Description of your design">
+        <p>Define</p>
+    </div>
+    <div class="design-item">
+        <img src="images/Ideate.svg" alt="Description of your design">
+        <p>Ideate</p>
+    </div>
+    <div class="design-item">
+        <img src="images/design.svg" alt="Description of your design">
+        <p>Design</p>
+    </div>
+    <div class="design-item">
+        <img src="images/Evaluate.svg" alt="Description of your design">
+        <p>Evaluate</p>
+    </div>
+</div>
+
         </div>
     </section>
 
