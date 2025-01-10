@@ -8,13 +8,14 @@
                 <a href="index.php">Home</a>
             </div>
             <div class="navOption dropdown-trigger">
-    <a href="designs.php" class="design-link">Designs&nbsp;<i class="fa-solid fa-chevron-down"></i></a> 
-    <ul class="dropdown-menu">
-        <li><a href="design1.php">Keep Going Mobile App</a></li>
-        <li><a href="design2.php">Geek Going Website</a></li>
-        <li><a href="design3.php">Grante Mobile App</a></li>
-    </ul>
-</div>
+                <a href="designs.php" class="design-link">Designs&nbsp;<i class="fa-solid fa-chevron-down"></i></a> 
+                <ul class="dropdown-menu">
+                    <!-- Link to the designs page -->
+                    <li><a href="designs.php">Keep Going Mobile App</a></li>
+                    <li><a href="design2.php">Geek Going Website</a></li>
+                    <li><a href="design3.php">Grante Mobile App</a></li>
+                </ul>
+            </div>
             <div class="navOption">
                 <a href="about.php">About</a>
             </div>
