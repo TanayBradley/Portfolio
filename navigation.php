@@ -8,12 +8,11 @@
                 <a href="index.php">Home</a>
             </div>
             <div class="navOption dropdown-trigger">
-                <a href="designs.php" class="design-link">Designs&nbsp;<i class="fa-solid fa-chevron-down"></i></a> 
+                Designs <i class="fa-solid fa-chevron-down"></i>
                 <ul class="dropdown-menu">
-                    <!-- Link to the designs page -->
                     <li><a href="designs.php">Keep Going Mobile App</a></li>
-                    <li><a href="design2.php">Geek Going Website</a></li>
-                    <li><a href="design3.php">Grante Mobile App</a></li>
+                    <li><a href="designs.php">Kee Going Website</a></li>
+                    <li><a href="designs.php">Grante Mobile App</a></li>
                 </ul>
             </div>
             <div class="navOption">
@@ -24,8 +23,27 @@
     </div>
 </div>
 
-
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+    
+    // Loop through each dropdown trigger
+    dropdownTriggers.forEach(trigger => {
+        const dropdownMenu = trigger.querySelector('.dropdown-menu');
+        
+        // Show the dropdown on hover
+        trigger.addEventListener('mouseover', function() {
+            dropdownMenu.style.display = 'block';
+        });
+
+        // Hide the dropdown when the mouse leaves
+        trigger.addEventListener('mouseleave', function() {
+            dropdownMenu.style.display = 'none';
+        });
+    });
+});
+</script>
+<!-- <script>
    document.addEventListener('DOMContentLoaded', function () {
     const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
     const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -46,6 +64,6 @@
         }
     });
 });
-</script>
+</script> -->
 </body>
 </html>

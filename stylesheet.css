@@ -404,22 +404,34 @@ body.dark-mode {
     margin: 0;
     z-index: 9999;
     background-color: white; /* White background for dropdown menu */
-    color: black; /* Default text color */
-    border: 1px solid #ccc; /* Add border specifically to the dropdown menu */
+    color: black; /* Default text color for dropdown menu */
+    border: 1px solid #ccc; /* Border for dropdown menu */
     width: 200px;
+    opacity: 0; /* Start with opacity 0 for smooth transition */
+    visibility: hidden; /* Make it invisible when not hovered */
+    transition: opacity 2s ease-in-out 0.3s, visibility 0s linear 0.2s; /* Add delay for smoother reveal */
+}
+
+/* Show the Dropdown Menu when hovering the Design button */
+.dropdown-trigger:hover .dropdown-menu {
+    display: block; /* Show the dropdown */
+    opacity: 1; /* Make it visible */
+    visibility: visible; /* Make it visible */
+    transition: opacity 0.6s ease-in-out 0.3s, visibility 0s linear 0s; /* Smooth transition */
 }
 
 /* Dropdown Menu Items */
 .dropdown-menu li {
     padding: 10px 20px;
     text-align: left;
-    color: black; /* Ensure text is black by default */
+    color: black; /* Default text color for menu items */
+    transition: color 0.3s ease; /* Smooth transition for text color */
 }
 
 /* Hover Effect for Dropdown Items */
 .dropdown-menu li:hover {
-    background-color: #f0f0f0; /* Subtle hover background */
-    color: black; /* Ensure text remains black when hovered */
+    background-color: #f0f0f0; /* Subtle background change on hover */
+    color: #C317C7; /* Change text color to pink on hover */
 }
 
 /* Button for Switching Light/Dark Mode */
@@ -428,4 +440,74 @@ body.dark-mode {
     padding: 10px;
     background-color: inherit;
     color: inherit;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 9999;
+    background-color: white; /* White background for dropdown menu */
+    color: black; /* Default text color for dropdown menu items */
+    border: 1px solid #ccc; /* Border for dropdown menu */
+    width: 200px;
+    opacity: 0; /* Start with opacity 0 for smooth transition */
+    visibility: hidden; /* Make it invisible when not hovered */
+    transition: opacity 3s ease-in-out 0.3s, visibility 0s linear 0.2s; /* Add delay for smoother reveal */
+}
+
+/* Show the Dropdown Menu when hovering the Design button */
+.dropdown-trigger:hover .dropdown-menu {
+    display: block; /* Show the dropdown */
+    opacity: 1; /* Make it visible */
+    visibility: visible; /* Make it visible */
+    transition: opacity 0.3s ease-in-out 0.3s, visibility 0s linear 0s; /* Smooth transition */
+}
+
+/* Dropdown Menu Items */
+.dropdown-menu li {
+    padding: 10px 20px;
+    text-align: left;
+    color: black; /* Default text color for menu items */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+/* Hover Effect for Dropdown Items */
+.dropdown-menu li:hover {
+    background-color: #f0f0f0; /* Subtle background change on hover */
+    color: #C317C7; /* Change text color to pink on hover */
+}
+
+/* Button for Switching Light/Dark Mode */
+#contrastMode {
+    cursor: pointer;
+    padding: 10px;
+    background-color: inherit;
+    color: inherit;
+}
+
+/* Smooth text color transition for nav items */
+.navOption a {
+    color: black; /* Default color for nav items */
+    text-decoration: none; /* Keep the underline separate */
+    transition: color 0.4s ease-in-out; /* Smooth color transition */
+}
+
+/* Hover effect for other nav items */
+.navOption a:hover {
+    color: #C317C7; /* Desired hover text color */
+}
+
+/* Hover effect for the Design nav button (dropdown trigger) */
+.dropdown-trigger {
+    color: black; /* Default text color for Design nav button */
+    transition: color 0.4s ease-in-out; /* Smooth color transition for Design nav */
+}
+
+/* When hovering over the Design nav button (dropdown trigger) */
+.dropdown-trigger:hover {
+    color: #C317C7; /* Change color to pink when hovered */
 }
