@@ -12,8 +12,8 @@
                 Designs <i class="fa-solid fa-chevron-down"></i>
                 <ul class="dropdown-menu">
                     <li><a href="designs.php">Keep Going Mobile App</a></li>
-                    <li><a href="designs.php">Keep Going Website</a></li>
-                    <li><a href="designs.php">Grante Mobile App</a></li>
+                    <li><a href="designs2.php">Keep Going Website</a></li>
+                    <li><a href="designs3.php">Grante Mobile App</a></li>
                 </ul>
             </div>
             <div class="navOption">

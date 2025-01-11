@@ -11,7 +11,7 @@
     <title>Tanay Bradley</title> 
 
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="Stylesheet.css">
+    <link rel="stylesheet" href="Stylesheet designs2.css">
 </head>
 
 <?php include "head.php"; ?>
@@ -30,16 +30,16 @@
 
     <section class="designListing">
         <div class="designTitle">
-                <span>Keep</span>>Going First Aid - <span>App Design</span>
+                <span>Keep</span>>Going First Aid - <span>Web Design</span>
         </div>
 
         <div class="designDescSplit">
             <div>
                 <div class="designDescTitle">Overview</div>
                 <div class="designDescBodyPrimary">
-                    Keep>Going First Aid is a small family-owned business based in Orlando, Florida. They spent years traveling the globe, and during this time, couldn't find a First Aid Kit that they could carry around!
+                After successfully developing a prototype app for Keep>Going First Aid to educated and attract new customers, the company is now confronted with the challenge of efficiently managing a surge in incoming online orders.
                     <br/><br/>
-                    The goal of this project was to provide the company with a mobile game that would work well with the company website.
+                    Through collaboration with stakeholders and company owners, we have identified a solution to address this challenge for Keep>Going First Aid. 
                 </div>
             </div>
             <div>

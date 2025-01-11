@@ -11,7 +11,7 @@
     <title>Tanay Bradley</title> 
 
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="Stylesheet.css">
+    <link rel="stylesheet" href="Stylesheet designs3.css">
 </head>
 
 <?php include "head.php"; ?>
@@ -30,7 +30,7 @@
 
     <section class="designListing">
         <div class="designTitle">
-                <span>Keep</span>>Going First Aid - <span>App Design</span>
+                <span></span>Grante - <span>App Design</span>
         </div>
 
         <div class="designDescSplit">
