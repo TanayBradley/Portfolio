@@ -125,7 +125,12 @@
             <div class="designDescBodySecondary">
                 After defining the issue and gathering the necessary research, I conducted an affinity map to organize and categorize ideas, insights, and data.
                 This helped make sense of the large amount of research gathered by grouping related items together based on their natural relationships or themes. 
-            </div> <br/><br/>
+            </div> 
+            <br/><br/><br/><br/><br/><br/>
+            <img src="images/Affinity Map.png" alt="Affinity Map" class="small-image">
+            <br/><br/><br/>
+            <img src="images/AffinityMapDiagram.png" alt="Affinity Map Diagram">
+
 
         </div>
     </section>
@@ -163,7 +168,9 @@
 <div class="image-wrapper">
     <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_22 1.png" alt="Wireframes1">
 </div>
-
+<div class="link-wrapper">
+    <a href="https://www.behance.net/gallery/180719849/Keep-Going-First-Aid" class="final-prototype-link">Final Prototype</a>
+</div>
         </div>
     </section>
 
