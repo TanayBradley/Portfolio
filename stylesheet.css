@@ -516,7 +516,7 @@ body {
 }
 .additional-text {
     font-family: 'Montserrat', sans-serif; /* Font for all the text */
-    font-weight: 600; /* Make text bold */
+    font-weight: 550; /* Make text bold */
     white-space: nowrap; /* Ensures no wrapping */
     font-size: 23px; /* Adjust size as needed */
     
@@ -594,4 +594,8 @@ body {
     color: white;                          /* Change text color on hover */
     background-color: #00B6B8;             /* Background color on hover */
     text-decoration: none;                 /* Keep underline removed */
+}
+.final-prototype-link {
+    display: block;  /* Makes the link a block-level element */
+    margin-top: 10px;  /* Optional: adds space between the text and link */
 }
