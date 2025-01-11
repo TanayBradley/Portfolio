@@ -45,8 +45,8 @@
             <div>
                 <div class="designDescTitle">Role</div>
                 <div class="designDescBodyPrimary">
-                    <span>UX/UI Designer</span><br/><br/>
-                    Proposal, Research Findings, Wireframes, Interactive Prototype and Evaluation Results.
+                    <span>UX/UI Designer and Project Manager</span><br/><br/>
+                    Proposal, Research Findings, Wireframes, Interactive Prototype and Evaluation Results. 
                 </div>
             </div>
         </div>
@@ -59,43 +59,41 @@
         <div class="designDesc">
         <div class="designDescBodyThreeCol">
     <div class="design-item">
-        <img src="images/discover.svg" alt="Description of your design">
-        <p>Discover</p>
-        <div class="additional-text">
-            <span>User Research</span>
-            <span>User Interview</span>
+        <img src="images/User Research.png" alt="Description of your design">
+        <p>User Research</p>
+        <div class="additional-text">   
+            <span>Identify Client Needs</span>
             <span>Competitive Analysis</span>
         </div>
     </div>
     <div class="design-item">
-        <img src="images/define.svg" alt="Description of your design">
-        <p>Define</p>
+        <img src="images/Critique.png" alt="Description of your design">
+        <p>Critique</p>
         <div class="additional-text">
             <span>User Personas</span>
-            <span>Empathy Map</span>
-            <span>Affinity Map</span>
+            <span>Site Maps</span>
+            <span>Design Critique</span>
         </div>
     </div>
     <div class="design-item">
-        <img src="images/Ideate.svg" alt="Description of your design">
-        <p>Ideate</p>
+        <img src="images/Wireframes.png" alt="Description of your design">
+        <p>Wireframes</p>
         <div class="additional-text">
-            <span>User Flow</span>
-            <span>Information Architecture</span>
+            <span>Sketches</span>
+            <span>Lo-Fidelity Wireframe</span>
+            <span>Hi-Fidelity Wireframe</span>
         </div>
     </div>
     <div class="design-item">
-        <img src="images/design.svg" alt="Description of your design">
-        <p>Design</p>
+        <img src="images/Mockups.png" alt="Description of your design">
+        <p>Mockups</p>
         <div class="additional-text">
-            <span>Wireframe</span>
-            <span>Hi-Fi Designs</span>
             <span>Prototype</span>
         </div>
     </div>
     <div class="design-item">
-        <img src="images/Evaluate.svg" alt="Description of your design">
-        <p>Evaluate</p>
+        <img src="images/Test.png" alt="Description of your design">
+        <p>Test</p>
         <div class="additional-text">
             <span>Feedback</span>
             <span>Conclusion</span>
