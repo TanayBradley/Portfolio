@@ -126,7 +126,7 @@
 
     <section class="designListing">
         <div class="designTitle">
-            <span>Gathering Insights</span>
+            <span>Target Audience</span>
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
@@ -144,7 +144,7 @@
 
     <section class="designListing">
         <div class="designTitle">
-            <span>Paper Wireframes</span>
+            <span>User Research</span>
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
@@ -158,7 +158,7 @@
 
     <section class="designListing">
         <div class="designTitle">
-            <span>Finalizing The Prototype</span>
+            <span>User Personas</span>
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
@@ -178,6 +178,34 @@
 <div class="link-wrapper">
     <a href="https://www.behance.net/gallery/180719849/Keep-Going-First-Aid" class="final-prototype-link">Final Prototype</a>
 </div>
+        </div>
+    </section>
+
+    <section class="designListing">
+        <div class="designTitle">
+            <span>Sitmap/Swimlane</span>
+        </div>
+        <div class="designDesc">
+            <div class="designDescBodySecondary">
+                Based on the information above, I worked towards drafting solutions for the mobile game.
+                I mocked up paper wireframes to gather feedback from other designers and development. 
+                The wireframes are used to outline the basic structure and layout of the final digital product.  
+            </div> 
+            <br/><br/> <br/><br/> <img src="images/paperprototype 1.png" alt="Paper prototype image">
+        </div>
+    </section>
+
+    <section class="designListing">
+        <div class="designTitle">
+            <span>Sketches</span>
+        </div>
+        <div class="designDesc">
+            <div class="designDescBodySecondary">
+                Based on the information above, I worked towards drafting solutions for the mobile game.
+                I mocked up paper wireframes to gather feedback from other designers and development. 
+                The wireframes are used to outline the basic structure and layout of the final digital product.  
+            </div> 
+            <br/><br/> <br/><br/> <img src="images/paperprototype 1.png" alt="Paper prototype image">
         </div>
     </section>
 
