@@ -276,6 +276,15 @@ h3{
     justify-content: center;
     align-items: center;
 }
+#designs2{
+    background: #ACCDFE;
+
+}
+
+#designs3{
+    background: #FADD9A;
+}
+
 hr{
     height: 2px;
     border-color: black;
@@ -288,9 +297,15 @@ hr{
     font-weight: 700;
     position: relative;
     margin-bottom: 100px;
+    
 }
 .designTitle span:nth-child(2){
     color: #00B6B8;
+
+}
+
+#webdesigncolor{
+    color:#ACCDFE;
 
 }
 .designTitle::after{
@@ -303,6 +318,11 @@ hr{
     left: 0;
     border-radius: 1vw;
 }
+
+#underline2 .designTitle::after{
+    background-color: #ACCDFE;
+}
+
 .designDescSplit{
     display: grid;
     grid-template-columns: 1fr 1fr;

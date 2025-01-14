@@ -10,8 +10,7 @@
     <!-- Page title displayed on the browser tab -->
     <title>Tanay Bradley</title> 
 
-    <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="Stylesheet designs2.css">
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <?php include "head.php"; ?>
@@ -22,15 +21,15 @@
     <![endif]-->
     <?php include "navigation.php"; ?>
 
-    <section class="designListing">
+    <section class="designListing" id="designs2"> 
         <div class="designImage">
-            <img src="images/DoublePhones.png" />
+            <img src="images/Laptop.png" />
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
-                <span>Keep</span>>Going First Aid - <span>Web Design</span>
+                <span>Keep</span>>Going First Aid - <span Id="webdesigncolor"> Web Design</span>
         </div>
 
         <div class="designDescSplit">
@@ -130,13 +129,7 @@
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                After defining the issue and gathering the necessary research, I conducted an affinity map to organize and categorize ideas, insights, and data.
-                This helped make sense of the large amount of research gathered by grouping related items together based on their natural relationships or themes. 
-            </div> 
-            <br/><br/><br/><br/><br/><br/>
-            <img src="images/Affinity Map.png" alt="Affinity Map" class="small-image">
-            <br/><br/><br/>
-            <img src="images/AffinityMapDiagram.png" alt="Affinity Map Diagram">
+            The target audience are the stakeholders who are employed at Keep>Going First Aid such as the Warehouse Operations Manager, Sales Manager, and Customer Service Representatives. 
 
 
         </div>
@@ -148,35 +141,17 @@
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                Based on the information above, I worked towards drafting solutions for the mobile game.
-                I mocked up paper wireframes to gather feedback from other designers and development. 
-                The wireframes are used to outline the basic structure and layout of the final digital product.  
+            User Research for the online orders project involved understanding the needs and behaviors of key stakeholders who work at keep>Going First Aid. By understanding the specific requirements, we can tailor the system to meet their needs effectively.   
             </div> 
-            <br/><br/> <br/><br/> <img src="images/paperprototype 1.png" alt="Paper prototype image">
-        </div>
     </section>
 
     <section class="designListing">
         <div class="designTitle">
-            <span>User Personas</span>
-        </div>
-        <div class="designDesc">
-            <div class="designDescBodySecondary">
-                I created my high fidelity mockups and final prototype in Adobe XD.
-                The prototype is a matching game for kids that highlights the importance of safety.
-                After each match the user gets, there is an educational popup that describes the importance of that item.
-                Once all matches are complete the user then sees a congratulations screen and they can start over again. This keeps the user engaged and educated.  
+            <span>User Persona</span>
             </div> 
-            <br/><br/> <br/><br/> 
+            <br/><br/> 
             <div class="image-container">
-    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_08 1.png" alt="Project Wireframes Page 08"> 
-    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_09 1.png" alt="Project Wireframes Page 09">
-</div>
-<div class="image-wrapper">
-    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_22 1.png" alt="Wireframes1">
-</div>
-<div class="link-wrapper">
-    <a href="https://www.behance.net/gallery/180719849/Keep-Going-First-Aid" class="final-prototype-link">Final Prototype</a>
+    <img src="images/personas.png" alt="Personas"> 
 </div>
         </div>
     </section>
@@ -187,11 +162,9 @@
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                Based on the information above, I worked towards drafting solutions for the mobile game.
-                I mocked up paper wireframes to gather feedback from other designers and development. 
-                The wireframes are used to outline the basic structure and layout of the final digital product.  
+            A sitemap/Swimlane was created to plan and organize the structure of the website.   
             </div> 
-            <br/><br/> <br/><br/> <img src="images/paperprototype 1.png" alt="Paper prototype image">
+            <br/><br/> <br/><br/> <img src="images/Swimlane.png" alt="Swimlane">
         </div>
     </section>
 
@@ -200,12 +173,16 @@
             <span>Sketches</span>
         </div>
         <div class="designDesc">
-            <div class="designDescBodySecondary">
-                Based on the information above, I worked towards drafting solutions for the mobile game.
-                I mocked up paper wireframes to gather feedback from other designers and development. 
-                The wireframes are used to outline the basic structure and layout of the final digital product.  
-            </div> 
-            <br/><br/> <br/><br/> <img src="images/paperprototype 1.png" alt="Paper prototype image">
+            <br/><br/> <img src="images/Sketches.png" alt="Sketches">
+        </div>
+    </section>
+
+    <section class="designListing">
+        <div class="designTitle">
+            <span>Hi-Fidelity Wireframes</span>
+        </div>
+        <div class="designDesc">
+            <br/><br/> <img src="images/Final.png" alt="Final">
         </div>
     </section>
 
@@ -215,12 +192,10 @@
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                Creating this project for Keep>Going First Aid was an invaluable learning experience.
-                One of the most significant insights I gained was the importance of revisiting and refining stages as needed.
-                In hindsight, I recognize the opportunity to streamline my process by revising certain aspects during the research and planning phases.<br/><br/>
-                Reflecting on this project, I’ve realized the significance of understanding that a prototype is just a stepping stone.
-                The real development happens in refining the product based on user feedback and testing.
-                Embracing constant revision and consistently seeking ways to improve are essential practices in design!  
+            Through the design process for Keep>Going First Aid, I learned that the true essence of UX design lies in empathizing with users to understand their need. By researching the key stakeholders such as customer service reps, warehouse operations managers, and sales managers, I gained insights that shaped the design of an internal system to manage online orders efficiently. 
+            <br/><br/>
+            This project highlighted the importance of collaboration and iteration in design. As a designer, questions I constantly asked myself were “Why am I putting this here” and “why did I design this that way.” Each stage, from creating user personas to developing hi-fidelity wireframes, was an opportunity to refine the solution iteratively, ensuring that it met the diverse needs
+            of the stakeholders. This experience shaped my belief that impactful design is not just about creating visually appealing interfaces, but about crafting solutions that enhance user experience efficiently and effectively, and driving business objectives.   
             </div> 
         </div>
     </section>

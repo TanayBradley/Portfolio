@@ -11,7 +11,7 @@
     <title>Tanay Bradley</title> 
 
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="Stylesheet designs3.css">
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <?php include "head.php"; ?>
@@ -22,9 +22,9 @@
     <![endif]-->
     <?php include "navigation.php"; ?>
 
-    <section class="designListing">
+    <section class="designListing" id="designs3">
         <div class="designImage">
-            <img src="images/DoublePhones.png" />
+            <img src="images/Singlephone.png" />
         </div>
     </section>
 
