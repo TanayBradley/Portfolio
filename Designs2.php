@@ -34,7 +34,7 @@
 
         <div class="designDescSplit">
             <div>
-                <div class="designDescTitle">Overview</div>
+                <div class="designDescTitle">Overview:</div>
                 <div class="designDescBodyPrimary">
                 After successfully developing a prototype app for Keep>Going First Aid to educated and attract new customers, the company is now confronted with the challenge of efficiently managing a surge in incoming online orders.
                     <br/><br/>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div>
-                <div class="designDescTitle">Role</div>
+                <div class="designDescTitle">Role:</div>
                 <div class="designDescBodyPrimary">
                     <span>UX/UI Designer and Project Manager</span><br/><br/>
                     Proposal, Research Findings, Wireframes, Interactive Prototype and Evaluation Results. 
@@ -51,7 +51,7 @@
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>Design Process</span>
         </div>
@@ -59,7 +59,7 @@
         <div class="designDescBodyThreeCol">
     <div class="design-item">
         <img src="images/User Research.png" alt="Description of your design">
-        <p>User Research</p>
+        <p>User Research:</p>
         <div class="additional-text">   
             <span>Identify Client Needs</span>
             <span>Competitive Analysis</span>
@@ -67,7 +67,7 @@
     </div>
     <div class="design-item">
         <img src="images/Critique.png" alt="Description of your design">
-        <p>Critique</p>
+        <p>Critique:</p>
         <div class="additional-text">
             <span>User Personas</span>
             <span>Site Maps</span>
@@ -76,7 +76,7 @@
     </div>
     <div class="design-item">
         <img src="images/Wireframes.png" alt="Description of your design">
-        <p>Wireframes</p>
+        <p>Wireframes:</p>
         <div class="additional-text">
             <span>Sketches</span>
             <span>Lo-Fidelity Wireframe</span>
@@ -85,14 +85,14 @@
     </div>
     <div class="design-item">
         <img src="images/Mockups.png" alt="Description of your design">
-        <p>Mockups</p>
+        <p>Mockup:</p>
         <div class="additional-text">
             <span>Prototype</span>
         </div>
     </div>
     <div class="design-item">
         <img src="images/Test.png" alt="Description of your design">
-        <p>Test</p>
+        <p>Test:</p>
         <div class="additional-text">
             <span>Feedback</span>
             <span>Conclusion</span>
@@ -104,7 +104,7 @@
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>Defining The Problem</span>
         </div>
@@ -115,15 +115,15 @@
                 To ensure we solve their problem effectively and efficiently, here is what our research will include:
             </div> <br/><br/>
         <div class="additional-text">
-    <span class="number">1.</span> Understanding the user and their needs<br><br/>
-    <span class="number">2.</span> Uncovering pain points<br><br/>
-    <span class="number">3.</span> Determining the success of the tasks measured
+    <span id="numbers" class="number">1.</span> Understanding the user and their needs<br><br/>
+    <span id="numbers" class="number">2.</span> Uncovering pain points<br><br/>
+    <span id="numbers" class="number">3.</span> Determining the success of the tasks measured
 </div>
 
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>Target Audience</span>
         </div>
@@ -135,7 +135,7 @@
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>User Research</span>
         </div>
@@ -145,7 +145,7 @@
             </div> 
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>User Persona</span>
             </div> 
@@ -156,7 +156,7 @@
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>Sitmap/Swimlane</span>
         </div>
@@ -168,7 +168,7 @@
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>Sketches</span>
         </div>
@@ -177,7 +177,7 @@
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>Hi-Fidelity Wireframes</span>
         </div>
@@ -186,7 +186,7 @@
         </div>
     </section>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>Key Takeaways</span>
         </div>
@@ -202,7 +202,7 @@
 
     <hr/>
 
-    <section class="designListing">
+    <section id="underline2" class="designListing">
         <div class="designTitle">
             <span>More Projects</span>
         </div>

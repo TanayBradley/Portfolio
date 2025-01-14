@@ -308,6 +308,10 @@ hr{
     color:#ACCDFE;
 
 }
+#appdesigncolor{
+    color:#EA6F16;
+}
+
 .designTitle::after{
     content: " ";
     height: 6px;
@@ -321,6 +325,11 @@ hr{
 
 #underline2 .designTitle::after{
     background-color: #ACCDFE;
+
+}
+
+#underline3 .designTitle::after{
+    background-color: #EA6F16;
 }
 
 .designDescSplit{
@@ -343,6 +352,7 @@ hr{
     font-size: 24px;
     text-transform: uppercase;
     margin-bottom: 30px;
+    Font-weight:750; 
 }
 .designDescBodyPrimary{
     font-family: "Orienta";
@@ -355,7 +365,8 @@ hr{
 .designDescBodySecondary{
     font-family: "Montserrat";
     font-size: 24px;
-    font-weight: 500;
+    font-weight:500;
+   
 }
 #footer{
     display: flex;
@@ -514,9 +525,9 @@ body {
     margin-top: 8px;
     text-align: center;
     width: 100%;
-    font-family: 'Montserrat', sans-serif; /* Use your custom font here */
+    font-family: 'optima', sans-serif; /* Use your custom font here */
     font-size: 25px;
-    font-weight: 600; /* You can adjust the weight here */
+    font-weight: 650; /* You can adjust the weight here */
 }
 
 .additional-text {
@@ -533,7 +544,7 @@ body {
 }
 .additional-text {
     font-family: 'Montserrat', sans-serif; /* Font for all the text */
-    font-weight: 550; /* Make text bold */
+    font-weight: 500; /* Make text bold */
     white-space: nowrap; /* Ensures no wrapping */
     font-size: 23px; /* Adjust size as needed */
     
@@ -546,6 +557,14 @@ body {
     display: inline; /* Ensures numbers and text are inline */
     font-size: 23px; /* Adjust size as needed */
 
+}
+
+#numbers{
+    color: #ACCDFE;
+}
+
+#numbers2{
+    color: #EA6F16;
 }
 
 .image-container {
