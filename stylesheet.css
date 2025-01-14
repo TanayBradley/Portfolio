@@ -342,13 +342,12 @@ hr{
     font-family: "Optima";
     font-size: 24px;
     text-transform: uppercase;
-    color: #414040;
     margin-bottom: 30px;
 }
 .designDescBodyPrimary{
     font-family: "Orienta";
     font-size: 22px;
-    color: #9B9595;
+    
 }
 .designDescBody span{
     color: black;
@@ -356,7 +355,6 @@ hr{
 .designDescBodySecondary{
     font-family: "Montserrat";
     font-size: 24px;
-    color: #5E6B81;
     font-weight: 500;
 }
 #footer{
@@ -527,7 +525,6 @@ body {
     font-family: 'Montserrat', sans-serif; /* Apply the font */
     font-size: 14px; /* Adjust size as needed */
     font-weight: 600; /* Set bold weight */
-    color: #808080; /* Grey color */
 }
 
 .additional-text span {
