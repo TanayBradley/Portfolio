@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/uqcvofmy/public_html/
+    - rsync -av --delete /home/uqcvofmy/repositories/Portfolio/ $DEPLOYPATH
