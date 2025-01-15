@@ -3,3 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home2/uqcvofmy/public_html/
     - rsync -av --delete /home2/uqcvofmy/repositories/Portfolio/ $DEPLOYPATH
+    - chmod 755 $DEPLOYPATH/.htaccess
