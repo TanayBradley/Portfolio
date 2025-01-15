@@ -59,7 +59,7 @@
         <div class="designDesc">
         <div class="designDescBodyThreeCol">
     <div class="design-item">
-        <img src="images/discover.svg" alt="Description of your design">
+        <img src="images/Discover.svg" alt="Description of your design">
         <p>Discover:</p>
         <div class="additional-text">
             <span>User Research</span>
@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="design-item">
-        <img src="images/define.svg" alt="Description of your design">
+        <img src="images/Define.svg" alt="Description of your design">
         <p>Define:</p>
         <div class="additional-text">
             <span>Empathy Map</span>
@@ -84,7 +84,7 @@
         </div>
     </div>
     <div class="design-item">
-        <img src="images/design.svg" alt="Description of your design">
+        <img src="images/Design.svg" alt="Description of your design">
         <p>Design:</p>
         <div class="additional-text">
             <span>Wireframe</span>
