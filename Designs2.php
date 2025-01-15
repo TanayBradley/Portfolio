@@ -150,7 +150,7 @@
             <span>User Persona</span>
             </div> 
             <br/><br/> 
-            <div class="image-container">
+            <div class="small-image2">
     <img src="images/personas.png" alt="Personas"> 
 </div>
         </div>
@@ -172,7 +172,7 @@
         <div class="designTitle">
             <span>Sketches</span>
         </div>
-        <div class="designDesc">
+        <div class="small-images2">
             <br/><br/> <img src="images/Sketches.png" alt="Sketches">
         </div>
     </section>

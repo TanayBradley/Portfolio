@@ -135,8 +135,6 @@
                 This helped make sense of the large amount of research gathered by grouping related items together based on their natural relationships or themes. 
             </div> 
             <br/><br/><br/><br/><br/><br/>
-            <img src="images/Affinity Map.png" alt="Affinity Map" class="small-image">
-            <br/><br/><br/>
             <img src="images/AffinityMapDiagram.png" alt="Affinity Map Diagram">
 
 
@@ -149,7 +147,7 @@
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                Based on the information above, I worked towards drafting solutions for the mobile game.
+                Based on the affinity map above, I worked towards drafting solutions for the mobile game.
                 I mocked up paper wireframes to gather feedback from other designers and development. 
                 The wireframes are used to outline the basic structure and layout of the final digital product.  
             </div> 

@@ -131,9 +131,7 @@
             After identifying the core problem and conducting extensive research, I synthesized the findings using an affinity mapping process. 
             This method allowed me to organize and categorize insights, observations, and user feedback into meaningful themes, enabling a clearer understanding of user needs and uncovering patterns to inform the design strategy. 
             </div> 
-            <br/><br/><br/><br/><br/><br/>
-            <img src="images/Affinity Map.png" alt="Affinity Map" class="small-image">
-            <br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/>  
             <img src="images/ganteaffinity.png" alt="Affinity Map Diagram">
 
 
@@ -146,11 +144,11 @@
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                Based on the information above, I worked towards drafting solutions for the mobile game.
+                Based on the affinity map above, I worked towards drafting solutions for the mobile game.
                 I mocked up paper wireframes to gather feedback from other designers and development. 
                 The wireframes are used to outline the basic structure and layout of the final digital product.  
             </div> 
-            <br/><br/> <br/><br/> <img src="images/paperprototype 1.png" alt="Paper prototype image">
+            <br/><br/> <br/><br/> <img src="images/gantepaper.jpg" alt="Paper prototype image">
         </div>
     </section>
 
@@ -166,14 +164,15 @@
             </div> 
             <br/><br/> <br/><br/> 
             <div class="image-container">
-    <img src="images/homescreen.png" alt="Project Wireframes Page 08"> 
-    <img src="images/collection.png" alt="Project Wireframes Page 09">
+    <img src="images/homescreen.png" alt="homescreen"> 
+    <img src="images/collection.png" alt="collection">
 </div>
-<br/><br/> <br/><br/>  <br/><br/> <br/><br/> 
+
+<br/><br/> <br/> &nbsp;  
 <div class="image-wrapper">
-    <img src="images/item detail.png" alt="Wireframes1">
+    <img src="images/item detail.png" alt="Item detail" class="small-image">
 </div>
-<br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/>
 <div class="link-wrapper">
     <a href="https://www.behance.net/gallery/180719849/Keep-Going-First-Aid" class="final-prototype-link">Final Prototype</a>
 </div>
