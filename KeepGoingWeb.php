@@ -151,7 +151,7 @@
             </div> 
             <br/><br/> 
             <div class="small-image2">
-    <img src="images/personas.png" alt="Personas"> 
+    <img src="images/Personas.png" alt="Personas"> 
 </div>
         </div>
     </section>
