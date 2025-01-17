@@ -47,27 +47,27 @@
   }
 
 @font-face {
-    font-family: 'Optima';
-    src: url('fonts/OPTIMA.TTF'),
-         url('fonts/Optima_Italic.ttf'),
-         url('fonts/Optima Medium.ttf'),
-         url('fonts/OPTIMA_B.TTF');
+    font-family: "Optima";
+    src: url("fonts/OPTIMA.TTF"),
+         url("fonts/Optima_Italic.ttf"),
+         url("fonts/Optima Medium.ttf"),
+         url("fonts/OPTIMA_B.TTF");
 }
 @font-face {
-    font-family: 'Alata';
-    src: url('fonts/Alata-Regular.ttf');
+    font-family: "Alata";
+    src: url("fonts/Alata-Regular.ttf");
 }
 @font-face {
-    font-family: 'Orienta';
-    src: url('fonts/Orienta-Regular.ttf');
+    font-family: "Orienta";
+    src: url("fonts/Orienta-Regular.ttf");
 }
 @font-face {
-    font-family: 'Baloo';
-    src: url('fonts/BalooBhai2-VariableFont_wght.ttf');
+    font-family: "Baloo";
+    src: url("fonts/BalooBhai2-VariableFont_wght.ttf");
 }
 @font-face {
-    font-family: 'Montserrat';
-    src: url('fonts/Montserrat-VariableFont_wght.ttf');
+    font-family: "Montserrat";
+    src: url("fonts/Montserrat-VariableFont_wght.ttf");
 }
 
 
