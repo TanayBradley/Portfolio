@@ -10,6 +10,8 @@
     <!-- Page title displayed on the browser tab -->
     <title>Tanay Bradley</title> 
 
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="Stylesheet.css">
 </head>
 
 <?php include "head.php"; ?>
