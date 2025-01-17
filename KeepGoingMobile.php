@@ -151,7 +151,7 @@
                 I mocked up paper wireframes to gather feedback from other designers and development. 
                 The wireframes are used to outline the basic structure and layout of the final digital product.  
             </div> 
-            <br/><br/> <br/><br/> <img src="images/paperprototype 1.png" alt="Paper prototype image">
+            <br/><br/> <br/><br/> <img src="images/Paperprototype 1.png" alt="Paper prototype image">
         </div>
     </section>
 
