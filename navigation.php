@@ -44,27 +44,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
-<!-- <script>
-   document.addEventListener('DOMContentLoaded', function () {
-    const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-
-    // Add click event to both the text and the arrow
-    dropdownTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default link behavior
-            event.stopPropagation(); // Prevent click from affecting other elements
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-
-    // Close the dropdown when clicking outside
-    document.addEventListener('click', function (event) {
-        if (!dropdownMenu.contains(event.target)) {
-            dropdownMenu.style.display = 'none';
-        }
-    });
-});
-</script> -->
-</body>
-</html>
