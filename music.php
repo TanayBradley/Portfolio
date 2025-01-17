@@ -11,7 +11,7 @@
     <title>Tanay Bradley</title> 
 
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="Stylesheet.css">
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <?php include "head.php"; ?>
