@@ -24,10 +24,12 @@
 
     <section id="about">
         <div id="aboutTitle">
-            <div>Behind The Screen: My Story</div></div>
+            <div>Behind The Screen 🌸</div></div>
         <div id="aboutBody">
-            <span>Hey there, I’m Tanay!<br/><br/>I am a UX Researcher, Strategist, and Recording Artist with a love for blending music and design. My Design journey began after receiving my associates in Graphic Design, which laid a foundation and sparked a curiosity about how Design impacts user experiences, and inspired me to create more meaningful interactions. I then decided to attend Full Sail University to pursue a bachelor’s degree in User Experience and graduated in 2024. In the process, I also obtained a certificate in Recording Arts for a deeper understanding of creating music. 
-        <br/><br/>For me, music and design go hand in hand which makes it easy for me to create! Just as much as a musician composes a piece of music to evoke emotions and convey a message, a designer creates visuals or experiences that communicate ideas and engage with people.  I am excited to share my knowledge and skills to create meaningful designs and music! 
+            <span>Rooted in soul.<br/>Expressed through art.<br/>Driven by purpose.<br/>That’s soul talk ✨<br/><br/>I'm Tanay, the multi-creative behind NovaSoulie and That's soul talk. I'm a UX designer, recording artist, baker, and streamer—but more than that, I'm a storyteller. I create with intention, softness, and soul, weaving emotion into everything I do—whether it's a digital journey, a melodic loop, a dessert, or a cozy livestream.
+        <br/><br/>I've always struggled with choosing just one thing—but eventually, I realized I wasn't meant to. I'm here to design full experiences—ones that touch the senses, invite reflection, and bring comfort. Because to me, creativity isn't just a skill. It's a language of care.
+        <br/><br/>So whether you've landed here for a UX project, a song, a recipe, or a vibe...Welcome to my world. I hope you feel something here
+        <br/><br/>—
 </span>
         </div>
 </section>

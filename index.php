@@ -24,11 +24,11 @@
 
     <section id="intro">
         <div id="introTitle">
-            <div>Hey there, <span id="titleBlock1" onmouseover="block1dark()" onmouseout="block1light()">I'm Tanay</span></div>
-            <div>I <span id="titleBlock2" class="titleBlockEtc">Research</span>, <span id="titleBlock3" class="titleBlockEtc">Strategize</span>, &amp; I'm a <span id="titleBlock4" class="titleBlockEtc">Recording Artist</span></div>
+            <div>Hey there, <span id="titleBlock1" onmouseover="block1dark()" onmouseout="block1light()">I'm Tanay</span> 👋🏽</div>
+            <div>I'm a <span id="titleBlock2" class="titleBlockEtc">Multi-creative</span> <span id="titleBlock3" class="titleBlockEtc">UX Designer</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Soulful Storyteller</span></div>
         </div>
         <div id="introBody">
-            <span>I’m a UX Researcher and Strategist passionate about uncovering user needs to drive impactful designs. When I’m not shaping experiences, you can find me working as a recording artist, exploring the outdoors, or diving into a good book.</span>
+            <span>I’m a multi-creative UX designer, artist, and intuitive thinker creating experiences that feel as good as they function. From digital spaces to melodies, pastries to pixels—I build worlds that nurture, inspire, and connect. I don't just design interfaces. I design energy—spaces where people feel seen, safe, and softly stirred.</span>
         </div>
     </section>
 

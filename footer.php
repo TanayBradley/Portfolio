@@ -1,6 +1,6 @@
 <section id="footer">
     <div>Let's Connect</div>
-    <div>Get in touch for opportunities or to say hi!<img id="wavingHand" src="icons/waving-hand-sign_1f44b.png" /></div>
+    <div>Get in touch for opportunities or to say hi! 👋🏽</div>
     <div>
         <i class="fa-brands fa-linkedin"></i>
         <i class="fa-solid fa-envelope"></i>
