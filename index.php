@@ -36,8 +36,8 @@
         <h3>Case Studies</h3>
         <div class="projectListing">
             <div class="projectDesc">
-                <span class="projectTitle">Keep Going > First Aid</span>
-                <span class="projectSubtitle">A fun and educational matching game for your kids to learn the importance of safety.</span>
+                <span class="projectTitle">Reducing inefficiencies in Amazon order processing workflow</span>
+                <span class="projectSubtitle">Identified duplicate manual work and misaligned ownershipacross CS and shipping teams</span>
                 
             </div>
         </div>
