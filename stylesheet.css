@@ -220,7 +220,7 @@ h3{
 .projectListing{
     display: grid;
     grid-template-columns: 1fr;
-    height: 120px;
+    height: 112px;
     background: grey;
     margin: 25px 0 30px 0;
     border-radius: 5px;
