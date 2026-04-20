@@ -231,6 +231,11 @@ h3{
 .Arrow img{
     width: 24px; /* adjust size */
     height: auto;
+    
+}
+.projectListing:hover .arrow img{
+    transform: translateX(5px);
+    transition: 0.3s ease;
 }
 .projectListing:first-of-type{
     background-color: #F7EFFF;
