@@ -235,6 +235,7 @@ h3{
 .projectListing:nth-of-type(3) img{
     z-index: 10;
 }
+/*
 .projectListing:nth-of-type(3)::after{
     background-color: #EA6F16;
     height: 45%;
@@ -248,6 +249,7 @@ h3{
     display: flex;
     flex-direction: column;
 }
+    */
 .projectImage{
     align-items: center;
     justify-content: center;
