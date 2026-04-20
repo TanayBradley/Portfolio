@@ -226,11 +226,11 @@ h3{
     margin: 25px 0 20px 0;
     border-radius: 5px;
     align-items: center; /* THIS centers vertically */
-    
-}
-.Arrow img{
+
+    .Arrow img{
     width: 24px; /* adjust size */
     height: auto;
+    
 }
 .projectListing:first-of-type{
     background-color: #F7EFFF;
