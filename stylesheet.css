@@ -226,30 +226,43 @@ h3{
     margin: 25px 0 20px 0;
     border-radius: 5px;
     align-items: center; /* THIS centers vertically */
-
-    .Arrow img{
-    width: 24px; /* adjust size */
-    height: auto;
-    
 }
 .projectListing:first-of-type{
     background-color: #F7EFFF;
+    Arrow img{
+    width: 24px; /* adjust size */
+    height: auto;
 }
 .projectListing:nth-of-type(2){
     background-color: #F7EFFF;
+    Arrow img{
+    width: 24px; /* adjust size */
+    height: auto;
 }
 .projectListing:nth-of-type(3){
     background-color: #F7EFFF;
     position: relative;
+    Arrow img{
+    width: 24px; /* adjust size */
+    height: auto;
 }
 .projectListing:nth-of-type(4){
     background-color: #F7EFFF;
+    Arrow img{
+    width: 24px; /* adjust size */
+    height: auto;
 }
 .projectListing:nth-of-type(5){
     background-color: #F7EFFF;
+    Arrow img{
+    width: 24px; /* adjust size */
+    height: auto;
 }
 .projectListing:nth-of-type(6){
     background-color: #F7EFFF;
+    Arrow img{
+    width: 24px; /* adjust size */
+    height: auto;
 }
 
 .projectListing:nth-of-type(3) img{
