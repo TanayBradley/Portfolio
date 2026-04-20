@@ -272,7 +272,6 @@ h3{
 }
 .projectDesc{
     justify-content: center;
-    padding-left: 10%;
 }
 .projectTitle{
     font-family: "Baloo";
@@ -285,6 +284,7 @@ h3{
     font-family: "Orienta";
     font-size: 1.0vw;
     color: #6C6C6C;
+    padding-right: 15%;
 }
 .designListing{
     margin: 0 0 120px 0;
