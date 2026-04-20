@@ -52,6 +52,12 @@
                 <span class="projectTitle">Resolved a purchase order integration issues between Amazon and ERP</span>
                 <span class="projectSubtitle">Diagnosed and fixed data mapping issues preventing automated PO processing</span>
             </div>
+                    <div class="projectListing">
+            <div class="projectDesc">
+                <span class="projectTitle">Reducing inefficiencies in Amazon order processing workflow</span>
+                <span class="projectSubtitle">Identified duplicate manual work and misaligned ownershipacross CS and shipping teams</span>
+                
+            </div>
         </div>
     </section>
 
