@@ -43,14 +43,14 @@
         </div>
         <div class="projectListing">
             <div class="projectDesc">
-                <span class="projectTitle">Keep Going > First Aid</span>
-                <span class="projectSubtitle">A backend system for processing online orders</span>
+                <span class="projectTitle">Designed an automated workflow for Amazon order processing </span>
+                <span class="projectSubtitle">Reduced manual workload through automation while identifying system limitations</span>
             </div>
         </div>
         <div class="projectListing">
             <div class="projectDesc">
-                <span class="projectTitle">Gante</span>
-                <span class="projectSubtitle">An easy way to shop for furniture online</span>
+                <span class="projectTitle">Resolved a purchase order integration issues between Amazon and ERP</span>
+                <span class="projectSubtitle">Diagnosed and fixed data mapping issues preventing automated PO processing</span>
             </div>
         </div>
     </section>
