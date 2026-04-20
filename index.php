@@ -58,7 +58,7 @@
                 <span class="projectTitle">Resolved a purchase order integration issues between Amazon and ERP</span>
                 <span class="projectSubtitle">Diagnosed and fixed data mapping issues preventing automated PO processing</span>
             </div>
-            div class="arrow">
+            <div class="arrow">
         <img src="images/Arrow.png" alt="arrow">
     </div>
         </div>
@@ -67,7 +67,7 @@
                 <span class="projectTitle">Designed a scalable content request system for retail products listings</span>
                 <span class="projectSubtitle">Replaced manual email/Excel workflow with a scalable self-service solution</span>
         </div>
-        div class="arrow">
+        <div class="arrow">
         <img src="images/Arrow.png" alt="arrow">
     </div>
         </div>
@@ -76,7 +76,7 @@
                  <span class="projectTitle">Developed digital content strategy for retail product listings</span>
                 <span class="projectSubtitle">Improved product content consistency and usability across retail channels</span>
         </div>
-        div class="arrow">
+        <div class="arrow">
         <img src="images/Arrow.png" alt="arrow">
     </div>
         </div>
@@ -85,7 +85,7 @@
                 <span class="projectTitle">Improved website UX through form design optimization</span>
                  <span class="projectSubtitle">Enhanced for usability to reduce friction and improve user flow</span>
          </div>
-         div class="arrow">
+         <div class="arrow">
         <img src="images/Arrow.png" alt="arrow">
     </div>
         </div>
