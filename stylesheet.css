@@ -245,11 +245,12 @@ h3{
     top: 28%;
     z-index: 1;
 }
+    */
 .projectImage, .projectDesc, #aboutValues, .designListing{
     display: flex;
     flex-direction: column;
 }
-    */
+
 .projectImage{
     align-items: center;
     justify-content: center;
