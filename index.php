@@ -25,7 +25,7 @@
     <section id="intro">
         <div id="introTitle">
             <div>Hey there, <span id="titleBlock1" onmouseover="block1dark()" onmouseout="block1light()">I'm Tanay</span> 👋🏽</div>
-            <div>I'm a <span id="titleBlock2" class="titleBlockEtc">Multi-creative</span> <span id="titleBlock3" class="titleBlockEtc">UX Designer</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Soulful Storyteller</span></div>
+            <div>I'm a <span id="titleBlock2" class="titleBlockEtc">Usability</span> <span id="titleBlock3" class="titleBlockEtc">Analyst</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Creative Storyteller</span></div>
         </div>
         <div id="introBody">
             <span>Something doesn't have to be broken for me to question it. If it feels off, I'm already figuring out why. I break things down, find where the disconnect is, and rethink the experience so it actually makes sense for people. I'm both analytical and creative, so I'm not just fixing problems - I'm changing how they're experienced.</span>
