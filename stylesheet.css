@@ -218,7 +218,7 @@ h3{
 
 .projectListing{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     height: 522px;
     background: grey;
     margin: 25px 0 40px 0;
