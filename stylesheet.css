@@ -226,23 +226,23 @@ h3{
     
 }
 .projectListing:first-of-type{
-    background-color: #FFFFFF;
+    background-color: #F4EBFF;
 }
 .projectListing:nth-of-type(2){
-    background-color: #FFFFFF;
+    background-color: #F4EBFF;
 }
 .projectListing:nth-of-type(3){
-    background-color: #FFFFFF;
+    background-color: #F4EBFF;
     position: relative;
 }
 .projectListing:nth-of-type(4){
-    background-color: #FFFFFF;
+    background-color: #F4EBFF;
 }
 .projectListing:nth-of-type(5){
-    background-color: #FFFFFF;
+    background-color: #F4EBFF;
 }
 .projectListing:nth-of-type(6){
-    background-color: #FFFFFF;
+    background-color: #F4EBFF;
 }
 
 .projectListing:nth-of-type(3) img{
@@ -434,14 +434,14 @@ hr{
 }
 /* Global Styling */
 body.light-mode {
-    background-color: #F8EEFF;
+    background-color: white;
     color: black;
     border: none; /* Remove any borders around the page */
 }
 
 body.dark-mode {
     background-color: #333; /* Dark background for body */
-    color: #F8EEFF;
+    color: white;
     border: none; /* Remove any borders around the page */
 }
 
@@ -665,3 +665,4 @@ body {
     display: block;  /* Makes the link a block-level element */
     margin-top: 10px;  /* Optional: adds space between the text and link */
 }
+
