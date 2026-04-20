@@ -19,6 +19,7 @@
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     margin: 40px 15.5%;
+    
   }
   /*
     5. Improve media defaults
@@ -139,13 +140,13 @@
 }
 .light-mode:hover{
     background: black;
-    color: white;
+    color: #F8EEFF;
 }
 .dark-mode{
     border: 1px solid white;
 }
 .dark-mode:hover{
-    background: white;
+    background: #F8EEFF;
     color: black;
 }
 #navMenu .fa-solid{
