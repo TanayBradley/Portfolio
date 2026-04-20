@@ -28,7 +28,7 @@
             <div>I'm a <span id="titleBlock2" class="titleBlockEtc">Multi-creative</span> <span id="titleBlock3" class="titleBlockEtc">UX Designer</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Soulful Storyteller</span></div>
         </div>
         <div id="introBody">
-            <span>I’m a Usability Analyst and Creative Storyteller. Something doesn't have to be broken for me to question it. If it feels off, I'm already figuring out why. I break things dow, find where the disconnect is, and rethink the experience so it actually makes sense for people. I'm both analytical and creative, so I'm not just fixing problems - I'm changing how they're experienced.</span>
+            <span>Something doesn't have to be broken for me to question it. If it feels off, I'm already figuring out why. I break things dow, find where the disconnect is, and rethink the experience so it actually makes sense for people. I'm both analytical and creative, so I'm not just fixing problems - I'm changing how they're experienced.</span>
         </div>
     </section>
 
