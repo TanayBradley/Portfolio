@@ -28,7 +28,7 @@
             <div>I'm a <span id="titleBlock2" class="titleBlockEtc">Multi-creative</span> <span id="titleBlock3" class="titleBlockEtc">UX Designer</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Soulful Storyteller</span></div>
         </div>
         <div id="introBody">
-            <span>I’m a multi-creative UX designer, artist, and intuitive thinker creating experiences that feel as good as they function. From digital spaces to melodies, pastries to pixels—I build worlds that nurture, inspire, and connect. I don't just design interfaces. I design energy—spaces where people feel seen, safe, and softly stirred.</span>
+            <span>I’m a Usability Analyst and Creative Storyteller crafting better experiences through logic, creativity, and storytelling.</span>
         </div>
     </section>
 
