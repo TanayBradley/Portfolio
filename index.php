@@ -36,8 +36,8 @@
         <h3>Case Studies</h3>
         <div class="projectListing">
             <div class="projectDesc">
-                <span class="projectTitle">Reducing inefficiencies in Amazon order processing workflow</span>
-                <span class="projectSubtitle">Identified duplicate manual work and misaligned ownershipacross CS and shipping teams</span>
+                <span class="projectTitle">Reduced inefficiencies in Amazon order processing workflow</span>
+                <span class="projectSubtitle">Identified duplicate manual work and misaligned ownership across CS and shipping teams</span>
                 
             </div>
         </div>
@@ -55,20 +55,20 @@
         </div>
             <div class="projectListing">
         <div class="projectDesc">
-                <span class="projectTitle">Your fourth case study title goes here</span>
-                <span class="projectSubtitle">Your fourth case study subtitle goes here</span>
+                <span class="projectTitle">Designed a scalable content request system for retail products listings</span>
+                <span class="projectSubtitle">Replaced manual email/Excel workflow with a scalable self-service solution</span>
         </div>
         </div>
              <div class="projectListing">
         <div class="projectDesc">
-                 <span class="projectTitle">Your fourth case study title goes here</span>
-                <span class="projectSubtitle">Your fourth case study subtitle goes here</span>
+                 <span class="projectTitle">Developed digital content strategy for retail product listings</span>
+                <span class="projectSubtitle">Improved product content consistency and usability across retail channels</span>
         </div>
         </div>
             <div class="projectListing">
         <div class="projectDesc">
-                <span class="projectTitle">Your fourth case study title goes here</span>
-                 <span class="projectSubtitle">Your fourth case study subtitle goes here</span>
+                <span class="projectTitle">Improved website UX through form design optimization</span>
+                 <span class="projectSubtitle">Enhanced for usability to reduce friction and improve user flow</span>
          </div>
         </div>
     </section>
