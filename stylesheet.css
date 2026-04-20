@@ -272,6 +272,7 @@ h3{
 }
 .projectDesc{
     justify-content: center;
+    padding-left: 5%;
 }
 .projectTitle{
     font-family: "Baloo";
