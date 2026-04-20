@@ -41,6 +41,18 @@ document.addEventListener('DOMContentLoaded', function () {
         trigger.addEventListener('mouseleave', function() {
             dropdownMenu.style.display = 'none';
         });
+        function switchMode() {
+    const body = document.body;
+    const button = document.getElementById("contrastMode");
+
+    // Toggle page theme
+    body.classList.toggle("dark");
+    body.classList.toggle("light");
+
+    // Toggle button style
+    button.classList.toggle("dark-mode");
+    button.classList.toggle("light-mode");
+}
     });
 });
 </script>
