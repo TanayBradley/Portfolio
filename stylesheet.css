@@ -279,12 +279,14 @@ h3{
 .designListing{
     margin: 0 0 120px 0;
 }
+/*
 .designListing:first-of-type{
     height: 620px;
     margin: -60px 0 80px 0;
     background: #99E2E3;
     justify-content: center;
     align-items: center;
+    */
 }
 #KeepGoingWeb{
     background: #ACCDFE;
