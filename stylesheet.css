@@ -139,13 +139,13 @@
 }
 .light-mode:hover{
     background: black;
-    color: white;
+    color: #FDF7F7;
 }
 .dark-mode{
     border: 1px solid white;
 }
 .dark-mode:hover{
-    background: white;
+    background: #FDF7F7;
     color: black;
 }
 #navMenu .fa-solid{
