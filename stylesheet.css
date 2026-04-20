@@ -228,6 +228,10 @@ h3{
     align-items: center; /* THIS centers vertically */
     
 }
+.Arrow img{
+    width: 24px; /* adjust size */
+    height: auto;
+}
 .projectListing:first-of-type{
     background-color: #F7EFFF;
 }
