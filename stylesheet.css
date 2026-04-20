@@ -220,40 +220,26 @@ h3{
 .projectListing{
     display: grid;
     grid-template-columns: 1fr auto;
-    align-items: center; /* THIS centers vertically */
+    align-items: center;
     height: 112px;
     background: grey;
     margin: 25px 0 20px 0;
     border-radius: 5px;
-    align-items: center; /* THIS centers vertically */
-    
-}
-.Arrow img{
-    width: 24px; /* adjust size */
-    height: auto;
-    
+    padding: 0 20px;
 }
 
-.projectListing:first-of-type{
-    background-color: #F7EFFF;
-    
+.arrow img{
+    width: 24px;
+    height: auto;
 }
-.projectListing:nth-of-type(2){
-    background-color: #F7EFFF;
-}
-.projectListing:nth-of-type(3){
-    background-color: #F7EFFF;
-    position: relative;
-}
-.projectListing:nth-of-type(4){
-    background-color: #F7EFFF;
-}
-.projectListing:nth-of-type(5){
-    background-color: #F7EFFF;
-}
+
+.projectListing:first-of-type,
+.projectListing:nth-of-type(2),
+.projectListing:nth-of-type(3),
+.projectListing:nth-of-type(4),
+.projectListing:nth-of-type(5),
 .projectListing:nth-of-type(6){
     background-color: #F7EFFF;
-
 }
 /*
 .projectListing:nth-of-type(3)::after{
