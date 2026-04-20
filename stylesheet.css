@@ -665,10 +665,3 @@ body {
     display: block;  /* Makes the link a block-level element */
     margin-top: 10px;  /* Optional: adds space between the text and link */
 }
-html {
-    background: #F8EEFF !important;
-}
-
-body {
-    background: #F8EEFF !important;
-}
