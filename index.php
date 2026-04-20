@@ -33,11 +33,8 @@
     </section>
 
     <section id="highlightedWork">
-        <h3>My Recent Work</h3>
+        <h3>Case Studies</h3>
         <div class="projectListing">
-            <div class="projectImage">
-                <img src="images/DoublePhones.png" />
-            </div>
             <div class="projectDesc">
                 <span class="projectTitle">Keep Going > First Aid</span>
                 <span class="projectSubtitle">A fun and educational matching game for your kids to learn the importance of safety.</span>
@@ -45,18 +42,12 @@
             </div>
         </div>
         <div class="projectListing">
-            <div class="projectImage">
-                <img src="images/Laptop.png" />
-            </div>
             <div class="projectDesc">
                 <span class="projectTitle">Keep Going > First Aid</span>
                 <span class="projectSubtitle">A backend system for processing online orders</span>
             </div>
         </div>
         <div class="projectListing">
-            <div class="projectImage">
-                <img src="images/SinglePhone.png" />
-            </div>
             <div class="projectDesc">
                 <span class="projectTitle">Gante</span>
                 <span class="projectSubtitle">An easy way to shop for furniture online</span>
