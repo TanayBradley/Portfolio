@@ -227,23 +227,23 @@ h3{
     
 }
 .projectListing:first-of-type{
-    background-color: #7239ab;
+    background-color: #F2EEF8;
 }
 .projectListing:nth-of-type(2){
-    background-color: #F6EDFF;
+    background-color: #F2EEF8;
 }
 .projectListing:nth-of-type(3){
-    background-color: #F6EDFF;
+    background-color: #F2EEF8;
     position: relative;
 }
 .projectListing:nth-of-type(4){
-    background-color: #F6EDFF;
+    background-color: #F2EEF8;
 }
 .projectListing:nth-of-type(5){
-    background-color: #F6EDFF;
+    background-color: #F2EEF8;
 }
 .projectListing:nth-of-type(6){
-    background-color: #F6EDFF;
+    background-color: #F2EEF8;
 }
 
 .projectListing:nth-of-type(3) img{
