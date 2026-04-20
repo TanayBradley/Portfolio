@@ -48,7 +48,7 @@
                 <span class="projectTitle">Designed an automated workflow for Amazon order processing </span>
                 <span class="projectSubtitle">Reduced manual workload through automation while identifying system limitations</span>
             </div>
-            <div class="Arrow">
+            <div class="arrow">
         <img src="images/arrow.png" alt="arrow">
     </div>
         </div>
