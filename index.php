@@ -52,15 +52,18 @@
                 <span class="projectTitle">Resolved a purchase order integration issues between Amazon and ERP</span>
                 <span class="projectSubtitle">Diagnosed and fixed data mapping issues preventing automated PO processing</span>
             </div>
+        </div>
             <div class="projectListing">
         <div class="projectDesc">
                 <span class="projectTitle">Your fourth case study title goes here</span>
                 <span class="projectSubtitle">Your fourth case study subtitle goes here</span>
         </div>
+        </div>
              <div class="projectListing">
         <div class="projectDesc">
                  <span class="projectTitle">Your fourth case study title goes here</span>
                 <span class="projectSubtitle">Your fourth case study subtitle goes here</span>
+        </div>
         </div>
             <div class="projectListing">
         <div class="projectDesc">
