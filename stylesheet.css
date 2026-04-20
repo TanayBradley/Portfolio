@@ -219,7 +219,7 @@ h3{
 
 .projectListing{
     display: grid;
-    grid-template-columns: 1fr, 1fr auto;
+    grid-template-columns: 1fr auto;
     align-items: center; /* THIS centers vertically */
     height: 112px;
     background: grey;
