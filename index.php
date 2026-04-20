@@ -42,7 +42,6 @@
                 <div class="arrow">
         <img src="images/arrow.png" alt="arrow">
     </div>
-            </div>
         </div>
         <div class="projectListing">
             <div class="projectDesc">
