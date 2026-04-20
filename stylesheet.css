@@ -234,6 +234,15 @@ h3{
     background-color: #FADD9A;
     position: relative;
 }
+.projectListing:nth-of-type(4){
+    background-color: #D9C2F0;
+}
+.projectListing:nth-of-type(5){
+    background-color: #D9C2F0;
+}
+.projectListing:nth-of-type(6){
+    background-color: #D9C2F0;
+}
 
 .projectListing:nth-of-type(3) img{
     z-index: 10;
