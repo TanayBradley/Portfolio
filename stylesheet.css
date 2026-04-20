@@ -433,7 +433,7 @@ hr{
 }
 /* Global Styling */
 body.light-mode {
-    background-color: #FDF7F7;
+    background-color: #7e3535;
     color: black;
     border: none; /* Remove any borders around the page */
 }
