@@ -50,7 +50,7 @@
                 <span class="projectSubtitle">Reduced manual workload through automation while identifying system limitations</span>
             </div>
             <div class="Arrow">
-        <img src="images/Arrow.png" alt="arrow">
+        <img src="images/arrow.png" alt="arrow">
     </div>
         </div>
         <div class="projectListing">
@@ -59,7 +59,7 @@
                 <span class="projectSubtitle">Diagnosed and fixed data mapping issues preventing automated PO processing</span>
             </div>
             <div class="arrow">
-        <img src="images/Arrow.png" alt="arrow">
+        <img src="images/arrow.png" alt="arrow">
     </div>
         </div>
             <div class="projectListing">
@@ -68,7 +68,7 @@
                 <span class="projectSubtitle">Replaced manual email/Excel workflow with a scalable self-service solution</span>
         </div>
         <div class="arrow">
-        <img src="images/Arrow.png" alt="arrow">
+        <img src="images/arrow.png" alt="arrow">
     </div>
         </div>
              <div class="projectListing">
@@ -77,7 +77,7 @@
                 <span class="projectSubtitle">Improved product content consistency and usability across retail channels</span>
         </div>
         <div class="arrow">
-        <img src="images/Arrow.png" alt="arrow">
+        <img src="images/arrow.png" alt="arrow">
     </div>
         </div>
             <div class="projectListing">
@@ -86,7 +86,7 @@
                  <span class="projectSubtitle">Enhanced for usability to reduce friction and improve user flow</span>
          </div>
          <div class="arrow">
-        <img src="images/Arrow.png" alt="arrow">
+        <img src="images/arrow.png" alt="arrow">
     </div>
         </div>
     </section>
