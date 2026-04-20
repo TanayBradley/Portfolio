@@ -433,14 +433,14 @@ hr{
 }
 /* Global Styling */
 body.light-mode {
-    background-color: white;
+    background-color: #FDF7F7;
     color: black;
     border: none; /* Remove any borders around the page */
 }
 
 body.dark-mode {
     background-color: #333; /* Dark background for body */
-    color: white;
+    color: #FDF7F7;
     border: none; /* Remove any borders around the page */
 }
 
