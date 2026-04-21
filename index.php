@@ -45,53 +45,61 @@
         </div>
     </div>
 </a>
-      <a href="casestudy1.php" class="projectLink">
+      <a href="casestudy2.php" class="projectLink">
         <div class="projectListing">
             <div class="projectDesc">
                 <span class="projectTitle">Designed an automated workflow for Amazon order processing </span>
                 <span class="projectSubtitle">Reduced manual workload through automation while identifying system limitations</span>
             </div>
-            <div class="arrow">
+          <div class="arrow">
             <img src="images/arrow.png" alt="arrow">
         </div>
      </div>
 </a>
+      <a href="casestudy3.php" class="projectLink">
         <div class="projectListing">
             <div class="projectDesc">
                 <span class="projectTitle">Resolved a purchase order integration issues between Amazon and ERP</span>
                 <span class="projectSubtitle">Diagnosed and fixed data mapping issues preventing automated PO processing</span>
             </div>
-            <div class="arrow">
-        <img src="images/arrow.png" alt="arrow">
-    </div>
+          <div class="arrow">
+            <img src="images/arrow.png" alt="arrow">
         </div>
+     </div>
+</a>
+      <a href="casestudy4.php" class="projectLink">
             <div class="projectListing">
-        <div class="projectDesc">
+              <div class="projectDesc">
                 <span class="projectTitle">Designed a scalable content request system for retail products listings</span>
                 <span class="projectSubtitle">Replaced manual email/Excel workflow with a scalable self-service solution</span>
+            </div>
+          <div class="arrow">
+            <img src="images/arrow.png" alt="arrow">
         </div>
-        <div class="arrow">
-        <img src="images/arrow.png" alt="arrow">
     </div>
-        </div>
+</a>
+        <a href="casestudy5.php" class="projectLink">
              <div class="projectListing">
-        <div class="projectDesc">
+                <div class="projectDesc">
                  <span class="projectTitle">Developed digital content strategy for retail product listings</span>
-                <span class="projectSubtitle">Improved product content consistency and usability across retail channels</span>
-        </div>
-        <div class="arrow">
-        <img src="images/arrow.png" alt="arrow">
-    </div>
-        </div>
+                 <span class="projectSubtitle">Improved product content consistency and usability across retail channels</span>
+             </div>
+          <div class="arrow">
+             <img src="images/arrow.png" alt="arrow">
+         </div>
+     </div>
+</a>
+        <a href="casestudy6.php" class="projectLink">
             <div class="projectListing">
-        <div class="projectDesc">
+                <div class="projectDesc">
                 <span class="projectTitle">Improved website UX through form design optimization</span>
                  <span class="projectSubtitle">Enhanced for usability to reduce friction and improve user flow</span>
-         </div>
+            </div>
          <div class="arrow">
-        <img src="images/arrow.png" alt="arrow">
-    </div>
+            <img src="images/arrow.png" alt="arrow">
         </div>
+    </div>
+</a>
     </section>
 
     <?php include "footer.php"; ?>
