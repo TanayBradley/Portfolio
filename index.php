@@ -45,15 +45,17 @@
         </div>
     </div>
 </a>
+      <a href="casestudy1.php" class="projectLink">
         <div class="projectListing">
             <div class="projectDesc">
                 <span class="projectTitle">Designed an automated workflow for Amazon order processing </span>
                 <span class="projectSubtitle">Reduced manual workload through automation while identifying system limitations</span>
             </div>
             <div class="arrow">
-        <img src="images/arrow.png" alt="arrow">
-    </div>
+            <img src="images/arrow.png" alt="arrow">
         </div>
+     </div>
+</a>
         <div class="projectListing">
             <div class="projectDesc">
                 <span class="projectTitle">Resolved a purchase order integration issues between Amazon and ERP</span>
