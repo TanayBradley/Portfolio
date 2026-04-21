@@ -26,9 +26,9 @@
         <div id="aboutTitle">
             <div>Behind The Screen 🌸</div></div>
         <div id="aboutBody">
-            <span>Rooted in soul.<br/>Expressed through art.<br/>Driven by purpose.<br/>That’s soul talk ✨<br/><br/>I'm Tanay, the multi-creative behind NovaSoulie and That's soul talk. I'm a UX designer, recording artist, baker, and streamer—but more than that, I'm a storyteller. I create with intention, softness, and soul, weaving emotion into everything I do—whether it's a digital journey, a melodic loop, a dessert, or a cozy livestream.
-        <br/><br/>I've always struggled with choosing just one thing—but eventually, I realized I wasn't meant to. I'm here to design full experiences—ones that touch the senses, invite reflection, and bring comfort. Because to me, creativity isn't just a skill. It's a language of care.
-        <br/><br/>So whether you've landed here for a UX project, a song, a recipe, or a vibe...Welcome to my world. I hope you feel something here
+            <span>Rooted in soul.<br/>Expressed through art.<br/>Driven by purpose.<br/>✨<br/><br/>I’ve never been someone who fits into just one thing. I think, question, create, and rebuild constantly - not because I have to, but because that’s how I understand the world. If something feels off, I don’t ignore it. I sit with it, figure it out, and find a better way forward.
+        <br/><br/>Most of what I do starts there. Whether it’s a user experience, a song, or something as simple as an idea that won’t leave me alone, I’m always trying to make things feel more clear, more intentional, and more human.
+        <br/><br/>Behind the screen, I’m just someone who cares deeply about how things work and how they make people feel. I don’t create just to create - I create to understand, to connect, and to make things better than they were before.
         <br/><br/>—
 </span>
         </div>
