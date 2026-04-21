@@ -22,6 +22,11 @@
     <![endif]-->
     <?php include "navigation.php"; ?>
 
+    <section class="designListing">
+        <div class="designImage">
+            <img src="images/DoublePhones.png" />
+        </div>
+    </section>
 
     <section class="designListing">
         <div class="designTitle">
