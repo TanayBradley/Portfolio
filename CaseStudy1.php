@@ -51,63 +51,10 @@
         </div>
     </section>
 
-    <section class="designListing">
-        <div class="designTitle">
-            <span>Design Process</span>
-        </div>
-        <div class="designDesc">
-        <div class="designDescBodyThreeCol">
-    <div class="design-item">
-        <img src="images/Discover.svg" alt="Description of your design">
-        <p>Discover:</p>
-        <div class="additional-text">
-            <span>User Research</span>
-            <span>User Interview</span>
-            <span>Competitive Analysis</span>
-        </div>
-    </div>
-    <div class="design-item">
-        <img src="images/Define.svg" alt="Description of your design">
-        <p>Define:</p>
-        <div class="additional-text">
-            <span>Empathy Map</span>
-            <span>Affinity Map</span>
-        </div>
-    </div>
-    <div class="design-item">
-        <img src="images/Ideate.svg" alt="Description of your design">
-        <p>Ideate:</p>
-        <div class="additional-text">
-            <span>User Flow</span>
-            <span>Information Architecture</span>
-        </div>
-    </div>
-    <div class="design-item">
-        <img src="images/Design.svg" alt="Description of your design">
-        <p>Design:</p>
-        <div class="additional-text">
-            <span>Wireframe</span>
-            <span>Hi-Fi Designs</span>
-            <span>Prototype</span>
-        </div>
-    </div>
-    <div class="design-item">
-        <img src="images/Evaluate.svg" alt="Description of your design">
-        <p>Evaluate:</p>
-        <div class="additional-text">
-            <span>Feedback</span>
-            <span>Conclusion</span>
-            <span>Future Concept</span>
-        </div>
-    </div>
-</div>
-
-        </div>
-    </section>
 
     <section class="designListing">
         <div class="designTitle">
-            <span>Defining The Problem</span>
+            <span>Problem Focus</span>
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
