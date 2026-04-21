@@ -35,18 +35,17 @@
 
         <div class="designDescSplit">
             <div>
-                <div class="designDescTitle">Overview</div>
+                <div class="designDescTitle">Project Summary</div>
                 <div class="designDescBodyPrimary">
-                    Keep>Going First Aid is a small family-owned business based in Orlando, Florida. They spent years traveling the globe, and during this time, couldn't find a First Aid Kit that they could carry around!
+                    Analyzed the existing manual process for fulfilling retail content requests and proposed a scalable web-based solution to streamline customer access and reduce internal workload.
                     <br/><br/>
-                    The goal of this project was to provide the company with a mobile game that would work well with the company website.
                 </div>
             </div>
             <div>
-                <div class="designDescTitle">Role</div>
+                <div class="designDescTitle">Skills Demonstrated</div>
                 <div class="designDescBodyPrimary">
-                    <span>UX/UI Designer</span><br/><br/>
-                    Proposal, Research Findings, Wireframes, Interactive Prototype and Evaluation Results.
+                    <span>UX Analyst</span><br/><br/>
+                    UX thinking, Process Design, Automation Strategy, Customer Experience Optimization
                 </div>
             </div>
         </div>
@@ -54,72 +53,13 @@
 
     <section class="designListing">
         <div class="designTitle">
-            <span>Design Process</span>
-        </div>
-        <div class="designDesc">
-        <div class="designDescBodyThreeCol">
-    <div class="design-item">
-        <img src="images/Discover.svg" alt="Description of your design">
-        <p>Discover:</p>
-        <div class="additional-text">
-            <span>User Research</span>
-            <span>User Interview</span>
-            <span>Competitive Analysis</span>
-        </div>
-    </div>
-    <div class="design-item">
-        <img src="images/Define.svg" alt="Description of your design">
-        <p>Define:</p>
-        <div class="additional-text">
-            <span>Empathy Map</span>
-            <span>Affinity Map</span>
-        </div>
-    </div>
-    <div class="design-item">
-        <img src="images/Ideate.svg" alt="Description of your design">
-        <p>Ideate:</p>
-        <div class="additional-text">
-            <span>User Flow</span>
-            <span>Information Architecture</span>
-        </div>
-    </div>
-    <div class="design-item">
-        <img src="images/Design.svg" alt="Description of your design">
-        <p>Design:</p>
-        <div class="additional-text">
-            <span>Wireframe</span>
-            <span>Hi-Fi Designs</span>
-            <span>Prototype</span>
-        </div>
-    </div>
-    <div class="design-item">
-        <img src="images/Evaluate.svg" alt="Description of your design">
-        <p>Evaluate:</p>
-        <div class="additional-text">
-            <span>Feedback</span>
-            <span>Conclusion</span>
-            <span>Future Concept</span>
-        </div>
-    </div>
-</div>
-
-        </div>
-    </section>
-
-    <section class="designListing">
-        <div class="designTitle">
-            <span>Defining The Problem</span>
+            <span>Problem Focus</span>
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                Keep > Going First Aid lacks a mobile game to complement their existing website.
-                The gap in their digital presence limits their ability to engage users beyond the website and fully leverage the potential for user interaction and education.
-                To ensure we solve their problem effectively and efficiently, here is what our research will include:
+                Content requests were handled manually through email and excel sheets, creating inefficiencies, delays, and inconsistent customer experiences.
             </div> <br/><br/>
         <div class="additional-text">
-    <span class="number">1.</span> Understanding the user and their needs<br><br/>
-    <span class="number">2.</span> Uncovering pain points<br><br/>
-    <span class="number">3.</span> Determining the success of the tasks measured
 </div>
 
         </div>
@@ -127,17 +67,12 @@
 
     <section class="designListing">
         <div class="designTitle">
-            <span>Gathering Insights</span>
+            <span>Key Contributions</span>
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                After defining the issue and gathering the necessary research, I conducted an affinity map to organize and categorize ideas, insights, and data.
-                This helped make sense of the large amount of research gathered by grouping related items together based on their natural relationships or themes. 
-            </div> 
-            <br/><br/><br/><br/><br/><br/>
-            <img src="images/AffinityMapDiagram.png" alt="Affinity Map Diagram">
-
-
+                Mapped current content request workflow, identified inefficiencies in manual request handling, proposed a web-based request form for customers, suggested back-end automation to deliver content dynamically, shifted process from internal manual handling > self-service model
+            <br/><br/><br/><br/>
         </div>
     </section>
 
@@ -155,43 +90,14 @@
         </div>
     </section>
 
+    
     <section class="designListing">
         <div class="designTitle">
-            <span>Finalizing The Prototype</span>
+            <span>Why This Matters</span>
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                I created my high fidelity mockups and final prototype in Adobe XD.
-                The prototype is a matching game for kids that highlights the importance of safety.
-                After each match the user gets, there is an educational popup that describes the importance of that item.
-                Once all matches are complete the user then sees a congratulations screen and they can start over again. This keeps the user engaged and educated.  
-            </div> 
-            <br/><br/> <br/><br/> 
-            <div class="image-container">
-    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_08 1.png" alt="Project Wireframes Page 08"> 
-    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_09 1.png" alt="Project Wireframes Page 09">
-</div>
-<div class="image-wrapper">
-    <img src="images/Bradley_Tanay_FinalProjectWireframes_Page_22 1.png" alt="Wireframes1">
-</div>
-<div class="link-wrapper">
-    <a href="https://www.behance.net/gallery/180719849/Keep-Going-First-Aid" class="final-prototype-link">Final Prototype</a>
-</div>
-        </div>
-    </section>
-
-    <section class="designListing">
-        <div class="designTitle">
-            <span>Key Takeaways</span>
-        </div>
-        <div class="designDesc">
-            <div class="designDescBodySecondary">
-                Creating this project for Keep>Going First Aid was an invaluable learning experience.
-                One of the most significant insights I gained was the importance of revisiting and refining stages as needed.
-                In hindsight, I recognize the opportunity to streamline my process by revising certain aspects during the research and planning phases.<br/><br/>
-                Reflecting on this project, I’ve realized the significance of understanding that a prototype is just a stepping stone.
-                The real development happens in refining the product based on user feedback and testing.
-                Embracing constant revision and consistently seeking ways to improve are essential practices in design!  
+                This project highlights how improving internal workflows can directly impact the customer experience. By designing a scalable request system, it reduces operational friction while creating a more efficient and consistent way for customers to access content.
             </div> 
         </div>
     </section>
