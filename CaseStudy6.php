@@ -35,17 +35,16 @@
 
         <div class="designDescSplit">
             <div>
-                <div class="designDescTitle">Overview</div>
+                <div class="designDescTitle">Project Summary</div>
                 <div class="designDescBodyPrimary">
-                    Keep>Going First Aid is a small family-owned business based in Orlando, Florida. They spent years traveling the globe, and during this time, couldn't find a First Aid Kit that they could carry around!
+                    Analyzed the end-to-end Amazon order processing workflow to identify inefficiencies, manual workarounds, and misaligned ownership across CSR and shipping teams. 
                     <br/><br/>
-                    The goal of this project was to provide the company with a mobile game that would work well with the company website.
                 </div>
             </div>
             <div>
-                <div class="designDescTitle">Role</div>
+                <div class="designDescTitle">Skills</div>
                 <div class="designDescBodyPrimary">
-                    <span>UX/UI Designer</span><br/><br/>
+                    <span>UX Analyst</span><br/><br/>
                     Proposal, Research Findings, Wireframes, Interactive Prototype and Evaluation Results.
                 </div>
             </div>
