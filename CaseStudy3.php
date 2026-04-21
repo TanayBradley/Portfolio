@@ -73,12 +73,11 @@
             <div class="designDescBodySecondary">
                 Identified root causes of failed purchase order integrations, collaborated with JDE analysts and EDI team to align vendor code structures, diagnosed and resolved mapping issues (SKU mismatches), partnered with EDI coordinators to troubleshoot and correct item-level errors, Ensured successful automation of future purchase order processing.
             </div> 
-            <br/><br/><br/><br/>
+            <br/><br/>
 
 
         </div>
     </section>
-
 
     <section class="designListing">
         <div class="designTitle">
