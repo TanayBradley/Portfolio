@@ -34,17 +34,17 @@
 
     <section id="highlightedWork">
         <h3>Case Studies</h3>
-        <a href="casestudy1.php" class="projectLink">
-            <div class="projectListing">
-                <div class="projectDesc">
-                    <span class="projectTitle">Reduced inefficiencies in Amazon order processing workflow</span>
-                <   span class="projectSubtitle">Identified duplicate manual work and misaligned ownership across CS and shipping teams</span>
-                </div>
-                <div class="arrow">
-                     <img src="images/arrow.png" alt="arrow">
-             </div>
+      <a href="casestudy1.php" class="projectLink">
+    <div class="projectListing">
+        <div class="projectDesc">
+            <span class="projectTitle">Reduced inefficiencies in Amazon order processing workflow</span>
+            <span class="projectSubtitle">Identified duplicate manual work and misaligned ownership across CS and shipping teams</span>
         </div>
-    </a>
+        <div class="arrow">
+            <img src="images/arrow.png" alt="arrow">
+        </div>
+    </div>
+</a>
         <div class="projectListing">
             <div class="projectDesc">
                 <span class="projectTitle">Designed an automated workflow for Amazon order processing </span>
