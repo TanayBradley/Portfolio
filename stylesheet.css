@@ -241,6 +241,11 @@ h3{
 .projectListing:nth-of-type(6){
     background-color: #F7EFFF;
 }
+.projectLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 /*
 .projectListing:nth-of-type(3)::after{
     background-color: #EA6F16;
