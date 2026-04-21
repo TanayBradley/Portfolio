@@ -45,7 +45,7 @@
                 <div class="designDescTitle">Skills Demonstrated</div>
                 <div class="designDescBodyPrimary">
                     <span>UX Analyst</span><br/><br/>
-                    UX thinking, Process Design, Automation Strategy, Customer Experience Optimization
+                    UX Thinking, Process Design, Automation Strategy, Customer Experience Optimization
                 </div>
             </div>
         </div>
@@ -73,20 +73,6 @@
             <div class="designDescBodySecondary">
                 Mapped current content request workflow, identified inefficiencies in manual request handling, proposed a web-based request form for customers, suggested back-end automation to deliver content dynamically, shifted process from internal manual handling > self-service model
             <br/><br/><br/><br/>
-        </div>
-    </section>
-
-    <section class="designListing">
-        <div class="designTitle">
-            <span>Paper Wireframes</span>
-        </div>
-        <div class="designDesc">
-            <div class="designDescBodySecondary">
-                Based on the affinity map above, I worked towards drafting solutions for the mobile game.
-                I mocked up paper wireframes to gather feedback from other designers and development. 
-                The wireframes are used to outline the basic structure and layout of the final digital product.  
-            </div> 
-            <br/><br/> <br/><br/> <img src="images/Paperprototype 1.png" alt="Paper prototype image">
         </div>
     </section>
 

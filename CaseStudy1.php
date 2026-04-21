@@ -37,7 +37,7 @@
             <div>
                 <div class="designDescTitle">Project Summary</div>
                 <div class="designDescBodyPrimary">
-                    Analyzed the end-to-end Amazon order processing workflow to identify inefficiencies, manual workarounds, and misaligned ownership across CSR and shipping teams. 
+                    Analyzed the end-to-end Amazon order processing workflow to identify inefficiencies, manual workarounds, and misaligned ownership across Customer Service and Shipping teams. 
                     <br/><br/>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="designDescTitle">Skills Demonstrated</div>
                 <div class="designDescBodyPrimary">
                     <span>UX Analyst</span><br/><br/>
-                    Processing mapping, workflow analysis, problem identification, cross-functional thinking, operational efficiency
+                    Process Mapping, Workflow Analysis, Problem Identification, Cross-Functional Thinking, Operational Efficiency
                 </div>
             </div>
         </div>

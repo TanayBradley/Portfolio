@@ -37,7 +37,7 @@
             <div>
                 <div class="designDescTitle">Project Summary</div>
                 <div class="designDescBodyPrimary">
-                    Collaborated on the implementation of an API-driven automation solution to streamline Amazon order processing reducing manual workload for customer service by automating order confirmation, and shipment creation tasks.
+                    Collaborated on the implementation of an API-driven automation solution to streamline Amazon order processing, reducing manual workload for customer service, by automating order confirmation and shipment creation tasks.
                     <br/><br/>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="designDescTitle">Skills Demonstrated</div>
                 <div class="designDescBodyPrimary">
                     <span>UX Analyst</span><br/><br/>
-                    Process analysis, Automation thinking, Cross-functional collaboration, Testing and Debugging, Problem solving 
+                    Process Analysis, Automation Thinking, Cross-Functional Collaboration, Testing and Debugging, Problem Solving 
                 </div>
             </div>
         </div>

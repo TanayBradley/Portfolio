@@ -37,7 +37,7 @@
             <div>
                 <div class="designDescTitle">Project Overview</div>
                 <div class="designDescBodyPrimary">
-                    Investigated and resolved issues preventing Amazon purchase orders from automatically integrating into the ERP system (JDE), ensuring accurate and reliable data flow between external and interal systems.
+                    Investigated and resolved issues preventing Amazon purchase orders from automatically integrating into the ERP system (JDE), ensuring accurate and reliable data flow between external and internal systems.
                     <br/><br/>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="designDescTitle">Skills Demonstrated</div>
                 <div class="designDescBodyPrimary">
                     <span>UX Analyst</span><br/><br/>
-                    Root cause analysis, Data mapping issues (SKU mismatches), Partnered with EDI coordinators to troubeshoot and correct item-level errors, Ensured successful automation of. future PO processing
+                    Root Cause Analysis, Data Mapping Issues (SKU mismatches), Partnered with EDI coordinators to troubeshoot and correct item-level errors, Ensured successful automation of future PO processing
                 </div>
             </div>
         </div>
