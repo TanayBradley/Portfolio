@@ -30,7 +30,7 @@
 
     <section class="designListing">
         <div class="designTitle">
-                <span>Keep</span>>Going First Aid - <span>App Design</span>
+                <span>Digital </span>Content <span>Content</span>
         </div>
 
         <div class="designDescSplit">
