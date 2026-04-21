@@ -30,7 +30,7 @@
 
     <section class="designListing">
         <div class="designTitle">
-                <span>Keep</span>>Going First Aid - <span>App Design</span>
+                <span>Order</span> Integration <span> EDI + JDE</span>
         </div>
 
         <div class="designDescSplit">

@@ -30,7 +30,7 @@
 
     <section class="designListing">
         <div class="designTitle">
-                <span>Amazon</span> Order Processing - <span>API Automation</span>
+                <span>Amazon</span> Order Processing <span>API Automation</span>
         </div>
 
         <div class="designDescSplit">
