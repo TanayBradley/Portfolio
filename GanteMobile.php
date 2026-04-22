@@ -195,6 +195,29 @@
 
     <hr/>
 
+    <section id="underline3" class="designListing">
+        <div class="designTitle">
+            <span>More Projects</span>
+        </div>
+        <div class="projectListing">
+            <div class="projectImage">
+                <img src="images/Laptop.png" />
+            </div>
+            <div class="projectDesc">
+                <span class="projectTitle">Keep Going > First Aid</span>
+                <span class="projectSubtitle">A backend system for processing online orders</span>
+            </div>
+        </div>
+        <div class="projectListing">
+            <div class="projectImage">
+                <img src="images/SinglePhone.png" />
+            </div>
+            <div class="projectDesc">
+                <span class="projectTitle">Gante</span>
+                <span class="projectSubtitle">An easy way to shop for furniture online</span>
+            </div>
+        </div>
+    </section>
 
     <?php include "footer.php"; ?>
 </body>

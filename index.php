@@ -25,81 +25,43 @@
     <section id="intro">
         <div id="introTitle">
             <div>Hey there, <span id="titleBlock1" onmouseover="block1dark()" onmouseout="block1light()">I'm Tanay</span> 👋🏽</div>
-            <div>I'm a <span id="titleBlock2" class="titleBlockEtc">Usability</span> <span id="titleBlock3" class="titleBlockEtc">Analyst</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Creative Storyteller</span></div>
+            <div>I'm a <span id="titleBlock2" class="titleBlockEtc">Multi-creative</span> <span id="titleBlock3" class="titleBlockEtc">UX Designer</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Soulful Storyteller</span></div>
         </div>
         <div id="introBody">
-            <span>Something doesn't have to be broken for me to question it. If it feels off, I'm already figuring out why. I break things down, find where the disconnect is, and rethink the experience so it actually makes sense for people. I'm both analytical and creative, so I'm not just fixing problems - I'm changing how they're experienced.</span>
+            <span>I’m a multi-creative UX designer, artist, and intuitive thinker creating experiences that feel as good as they function. From digital spaces to melodies, pastries to pixels—I build worlds that nurture, inspire, and connect. I don't just design interfaces. I design energy—spaces where people feel seen, safe, and softly stirred.</span>
         </div>
     </section>
 
     <section id="highlightedWork">
-        <h3>Case Studies</h3>
-      <a href="casestudy1.php" class="projectLink">
-    <div class="projectListing">
-        <div class="projectDesc">
-            <span class="projectTitle">Reduced inefficiencies in Amazon order processing workflow</span>
-            <span class="projectSubtitle">Identified duplicate manual work and misaligned ownership across CS and shipping teams</span>
-        </div>
-        <div class="arrow">
-            <img src="images/arrow.png" alt="arrow">
-        </div>
-    </div>
-</a>
-      <a href="casestudy2.php" class="projectLink">
+        <h3>My Recent Work</h3>
         <div class="projectListing">
-            <div class="projectDesc">
-                <span class="projectTitle">Designed an automated workflow for Amazon order processing </span>
-                <span class="projectSubtitle">Reduced manual workload through automation while identifying system limitations</span>
+            <div class="projectImage">
+                <img src="images/DoublePhones.png" />
             </div>
-          <div class="arrow">
-            <img src="images/arrow.png" alt="arrow">
+            <div class="projectDesc">
+                <span class="projectTitle">Keep Going > First Aid</span>
+                <span class="projectSubtitle">A fun and educational matching game for your kids to learn the importance of safety.</span>
+                
+            </div>
         </div>
-     </div>
-</a>
-      <a href="casestudy3.php" class="projectLink">
         <div class="projectListing">
+            <div class="projectImage">
+                <img src="images/Laptop.png" />
+            </div>
             <div class="projectDesc">
-                <span class="projectTitle">Resolved a purchase order integration issues between Amazon and ERP</span>
-                <span class="projectSubtitle">Diagnosed and fixed data mapping issues preventing automated PO processing</span>
+                <span class="projectTitle">Keep Going > First Aid</span>
+                <span class="projectSubtitle">A backend system for processing online orders</span>
             </div>
-          <div class="arrow">
-            <img src="images/arrow.png" alt="arrow">
         </div>
-     </div>
-</a>
-      <a href="casestudy4.php" class="projectLink">
-            <div class="projectListing">
-              <div class="projectDesc">
-                <span class="projectTitle">Designed a scalable content request system for retail products listings</span>
-                <span class="projectSubtitle">Replaced manual email/Excel workflow with a scalable self-service solution</span>
+        <div class="projectListing">
+            <div class="projectImage">
+                <img src="images/SinglePhone.png" />
             </div>
-          <div class="arrow">
-            <img src="images/arrow.png" alt="arrow">
-        </div>
-    </div>
-</a>
-        <a href="casestudy5.php" class="projectLink">
-             <div class="projectListing">
-                <div class="projectDesc">
-                 <span class="projectTitle">Developed digital content strategy for retail product listings</span>
-                 <span class="projectSubtitle">Improved product content consistency and usability across retail channels</span>
-             </div>
-          <div class="arrow">
-             <img src="images/arrow.png" alt="arrow">
-         </div>
-     </div>
-</a>
-        <a href="casestudy6.php" class="projectLink">
-            <div class="projectListing">
-                <div class="projectDesc">
-                <span class="projectTitle">Improved website UX through form design optimization</span>
-                 <span class="projectSubtitle">Enhanced for usability to reduce friction and improve user flow</span>
+            <div class="projectDesc">
+                <span class="projectTitle">Gante</span>
+                <span class="projectSubtitle">An easy way to shop for furniture online</span>
             </div>
-         <div class="arrow">
-            <img src="images/arrow.png" alt="arrow">
         </div>
-    </div>
-</a>
     </section>
 
     <?php include "footer.php"; ?>

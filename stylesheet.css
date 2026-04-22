@@ -19,7 +19,6 @@
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     margin: 40px 15.5%;
-    background-color: #F8EEFF;
   }
   /*
     5. Improve media defaults
@@ -210,43 +209,32 @@
 }
 h3{
     font-family: "Optima";
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-weight: normal;
 }
-
 .projectListing{
     display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    height: 112px;
+    grid-template-columns: 1fr 1fr;
+    height: 522px;
     background: grey;
-    margin: 25px 0 20px 0;
-    border-radius: 5px;
-    padding: 0 20px;
+    margin: 25px 0 40px 0;
 }
-
-.arrow img{
-    width: 24px;
-    height: auto;
+.projectListing:first-of-type{
+    background-color: #99E2E3;
 }
-
-.projectListing:first-of-type,
-.projectListing:nth-of-type(2),
-.projectListing:nth-of-type(3),
-.projectListing:nth-of-type(4),
-.projectListing:nth-of-type(5),
-.projectListing:nth-of-type(6){
-    background-color: #F7EFFF;
+.projectListing:nth-of-type(2){
+    background-color: #ACCDFE;
 }
-.projectLink {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+.projectListing:nth-of-type(3){
+    background-color: #FADD9A;
+    position: relative;
 }
-/*
+.projectListing:nth-of-type(3) img{
+    z-index: 10;
+}
 .projectListing:nth-of-type(3)::after{
     background-color: #EA6F16;
     height: 45%;
@@ -256,44 +244,40 @@ h3{
     top: 28%;
     z-index: 1;
 }
-    */
 .projectImage, .projectDesc, #aboutValues, .designListing{
     display: flex;
     flex-direction: column;
 }
-
 .projectImage{
     align-items: center;
     justify-content: center;
 }
 .projectDesc{
     justify-content: center;
-    padding-left: 3%;
+    padding-left: 10%;
 }
 .projectTitle{
     font-family: "Baloo";
-    font-size: 1.2vw;
-    color: #836FB0; 
+    font-size: 2.5vw;
+    color: white;
     font-weight: 800;
     text-transform: uppercase;
 }
 .projectSubtitle{
     font-family: "Orienta";
-    font-size: 1.0vw;
-    color: #6C6C6C;
+    font-size: 1.3vw;
+    color: #6B5C5C;
     padding-right: 15%;
 }
 .designListing{
     margin: 0 0 120px 0;
 }
-
 .designListing:first-of-type{
     height: 620px;
     margin: -60px 0 80px 0;
     background: #99E2E3;
     justify-content: center;
     align-items: center;
-
 }
 #KeepGoingWeb{
     background: #ACCDFE;
