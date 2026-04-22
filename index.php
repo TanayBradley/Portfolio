@@ -34,7 +34,7 @@
 
     <section id="highlightedWork">
         <h3>Case Studies</h3>
-      <a href="casestudy1.php" class="projectLink">
+      <a href="CaseStudy1.php" class="projectLink">
     <div class="projectListing">
         <div class="projectDesc">
             <span class="projectTitle">Reduced inefficiencies in Amazon order processing workflow</span>
