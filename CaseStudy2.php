@@ -72,7 +72,7 @@
             <div class="designDescBodySecondary">
                 Identified automation opportunities within the order process, partnered with a developer to design and refine bot behavior, tested automation flows and identified edge case failures, troubleshoot errors and improved reliability over time.
             </div> 
-            <br/><br/><br/><br/>
+            <br/><br/><br/>
 
 
         </div>
