@@ -22,7 +22,7 @@
     <![endif]-->
     <?php include "navigation.php"; ?>
 
-    <section class="designListing" id="GanteMobile">
+    <section class="designListing" id="gantemobile">
         <div class="designImage">
             <img src="images/SinglePhone.png" />
         </div>

@@ -21,7 +21,7 @@
     <![endif]-->
     <?php include "navigation.php"; ?>
 
-    <section class="designListing" id="KeepGoingWeb"> 
+    <section class="designListing" id="keepgoingweb"> 
         <div class="designImage">
             <img src="images/Laptop.png" />
         </div>
