@@ -24,7 +24,6 @@
     <?php include "navigation.php"; ?>
 
     <section class="designListing">
-        <div class="designImage">
         </div>
     </section>
 
