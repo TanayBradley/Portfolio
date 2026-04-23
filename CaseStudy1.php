@@ -61,7 +61,6 @@
             </div> <br/><br/>
         <div class="additional-text">
 </div>
-
         </div>
     </section>
 
@@ -73,7 +72,7 @@
             <div class="designDescBodySecondary">
                 Mapped the current workflow, identified bottlenecks, and proposed process improvements to reduce manual effort and improve accuracy
             </div> 
-            <br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/>
 
 
         </div>
