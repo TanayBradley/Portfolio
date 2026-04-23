@@ -23,7 +23,6 @@
     <?php include "navigation.php"; ?>
 
     <section class="designListing">
-        <div class="designImage">
         </div>
     </section>
 
@@ -71,7 +70,7 @@
         <div class="designDesc">
             <div class="designDescBodySecondary">
                 Mapped current content request workflow, identified inefficiencies in manual request handling, proposed a web-based request form for customers, suggested back-end automation to deliver content dynamically, shifted process from internal manual handling > self-service model
-            <br/><br/><br/><br/>
+            <br/><br/><br/>
         </div>
     </section>
 
