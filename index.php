@@ -31,6 +31,7 @@
             <span>Something doesn't have to be broken for me to question it. If it feels off, I'm already figuring out why. I break things down, find where the disconnect is, and rethink the experience so it actually makes sense for people. I'm both analytical and creative, so I'm not just fixing problems - I'm changing how they're experienced.</span>
         </div>
     </section>
+    
 
 
     <section id="highlightedWork">
