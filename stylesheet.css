@@ -313,6 +313,14 @@ hr{
     width: 300px; /* adjust this */
     height: auto;
 }
+.laptop {
+    width: 300px; /* adjust this */
+    height: auto;
+}
+.singlephone {
+    width: 300px; /* adjust this */
+    height: auto;
+}
 .designTitle{
     font-family: "Montserrat";
     font-size: 56px;
