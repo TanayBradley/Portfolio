@@ -186,7 +186,7 @@
     margin-top: 30px;
 }
 #aboutImage{
-    height: 900px;
+    height: 840px;
     background: grey;
     margin: 125px 0 140px 0;
 }
@@ -429,7 +429,7 @@ hr{
 }
 #aboutImage {
     width: 100%; /* Make the section span the full width */
-    height: 750px; /* Set the height of the section */
+    height: 800px; /* Set the height of the section */
     overflow: hidden; /* Prevent the image from spilling out */
     display: flex; /* Enable centering for content */
     justify-content: center; /* Center horizontally */
