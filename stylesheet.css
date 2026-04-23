@@ -315,9 +315,9 @@ hr{
 }
 .laptop {
     width: 300px; /* adjust this */
-    height: auto;
+    height: auto; 
 }
-.SinglePhone {
+.singlephone {
     width: 300px; /* adjust this */
     height: auto;
 }
