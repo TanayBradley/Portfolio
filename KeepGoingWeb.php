@@ -23,7 +23,7 @@
 
     <section class="designListing" id="keepgoingweb"> 
         <div class="designImage">
-            <img src="images/Laptop.png" />
+            <img src="images/Laptop.png" class="laptop"/>
         </div>
     </section>
 

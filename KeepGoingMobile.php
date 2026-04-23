@@ -24,7 +24,7 @@
 
     <section class="designListing">
         <div class="designImage">
-            <img src="images/DoublePhones.png" />
+            <img src="images/DoublePhones.png" class="doublePhones" />
         </div>
     </section>
 
