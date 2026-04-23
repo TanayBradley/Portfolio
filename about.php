@@ -34,7 +34,7 @@
         </div>
 </section>
 
-    <section id="aboutImage"><img src="images/Me.jpg" alt="About Section Image"></section>
+    <section id="aboutImage"><img src="images/me.jpg" alt="About Section Image"></section>
 
     <section id="aboutValues">
         <div id="valuesTitle" class="valuesList">My Values:</div>
