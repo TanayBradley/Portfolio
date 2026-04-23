@@ -24,7 +24,7 @@
 
     <section class="designListing" id="gantemobile">
         <div class="designImage">
-            <img src="images/SinglePhone.png" class="singlephone" />
+            <img src="images/SinglePhone.png" class="SinglePhone" />
         </div>
     </section>
 
