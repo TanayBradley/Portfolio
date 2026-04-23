@@ -73,7 +73,7 @@
             <div class="designDescBodySecondary">
                 Created digital marketing tool-kits, Managed product content across retail platforms, Collaborated with designers for consistent brand presentation, Ensured compliance with reatil platform requirements, Suggessted improvements to product content and presentation
             </div> 
-            <br/><br/><br/><br/>
+            <br/><br/><br/>
 
 
         </div>

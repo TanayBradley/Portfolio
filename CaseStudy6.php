@@ -72,7 +72,7 @@
             <div class="designDescBodySecondary">
                 Identified usability and design gaps, Proposed improved form structure and layout, Collaborated with marketing teams to refine solution, Contributed to implemented design changes
             </div> 
-            <br/><br/><br/><br/>
+            <br/><br/><br/>
 
 
         </div>
