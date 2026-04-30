@@ -1,3 +1,7 @@
+<div class="custom-cursor"></div>
+<div class="cursor-dot"></div>
+
+<div class="floating-balls"></div>
 
 <div id="navBar">
     <div id="navBarLeft">

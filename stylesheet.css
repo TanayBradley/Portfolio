@@ -190,20 +190,167 @@
     background: grey;
     margin: 125px 0 140px 0;
 }
-#aboutValues{
+/* ================================
+   ABOUT PAGE VALUES SECTION
+   Pastel + Floating Bubbles
+================================ */
+
+#aboutValues {
+    position: relative;
+    overflow: hidden;
+
     display: flex;
-    height: 550px;
-    justify-content: space-between;
-    margin-bottom: 200px;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+
+    margin: -40px auto 200px auto;
+    padding: 80px 8%;
+    max-width: 950px;
+
+    background: linear-gradient(135deg, #F8EEFF, #FFF6D8, #E9FAFF);
+    border-radius: 36px;
 }
-#valuesTitle{
+
+/* Floating bubble layer */
+#aboutValues::before,
+#aboutValues::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.55;
+    z-index: 0;
+    animation: floatBubble 7s ease-in-out infinite;
+}
+
+#aboutValues::before {
+    width: 180px;
+    height: 180px;
+    background: #EFC5F0;
+    top: 40px;
+    left: 40px;
+}
+
+#aboutValues::after {
+    width: 230px;
+    height: 230px;
+    background: #ACCDFE;
+    bottom: 30px;
+    right: 45px;
+    animation-delay: 1.8s;
+}
+
+/* Keep content above bubbles */
+#aboutValues > * {
+    position: relative;
+    z-index: 2;
+}
+
+#valuesTitle {
     font-family: "Alata";
-    font-size: 58px;
-}
-.valuesList{
-    font-family: "Optima";
-    font-size: 40px;
+    font-size: 54px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: #1f1f1f;
     text-align: center;
+}
+
+.valuesList {
+    font-family: "Optima";
+    font-size: 32px;
+    line-height: 1.3;
+    text-align: center;
+
+    width: 100%;
+    padding: 24px 30px;
+
+    border-radius: 28px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Pastel card colors */
+#aboutValues .valuesList:nth-child(2) {
+    background: #EFC5F0;
+}
+
+#aboutValues .valuesList:nth-child(3) {
+    background: #ACCDFE;
+}
+
+#aboutValues .valuesList:nth-child(4) {
+    background: #FFF6A8;
+}
+
+#aboutValues .valuesList:nth-child(5) {
+    background: #99E2E3;
+}
+
+.valuesList:not(#valuesTitle):hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.10);
+}
+
+/* Floating motion */
+@keyframes floatBubble {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+    50% {
+        transform: translateY(-28px) translateX(18px) scale(1.08);
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+}
+
+/* Soft pop-in for values */
+@keyframes softPop {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#aboutValues .valuesList {
+    animation: softPop 0.6s ease both;
+}
+
+#aboutValues .valuesList:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+#aboutValues .valuesList:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+#aboutValues .valuesList:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+#aboutValues .valuesList:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+@media (max-width: 768px) {
+    #aboutValues {
+        padding: 60px 6%;
+        margin-bottom: 120px;
+    }
+
+    #valuesTitle {
+        font-size: 40px;
+    }
+
+    .valuesList {
+        font-size: 24px;
+        padding: 20px;
+    }
 }
 #highlightedWork{
     margin-top: 140px;
@@ -570,10 +717,6 @@ body.dark-mode {
 #name:hover {
     color: #C317C7; /* Change to pink on hover */
     
-}
-
-body {
-    cursor: url('images/Actual cursor.png'), auto;
 
 }
 
@@ -799,4 +942,409 @@ body {
   .service-case-header h2 {
     font-size: 2rem;
   }
+}
+/* ================================
+   HOMEPAGE CASE STUDY SECTIONS
+   Pastel + Floating Bubbles
+================================ */
+
+.service-case-studies,
+#highlightedWork {
+    position: relative;
+    overflow: hidden;
+
+    padding: 90px 8%;
+    margin-top: 120px;
+
+    background: linear-gradient(135deg, #F8EEFF, #FFF6D8, #E9FAFF);
+    border-radius: 36px;
+}
+
+/* floating bubbles */
+.service-case-studies::before,
+.service-case-studies::after,
+#highlightedWork::before,
+#highlightedWork::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.45;
+    z-index: 0;
+    animation: floatBubble 7s ease-in-out infinite;
+}
+
+.service-case-studies::before,
+#highlightedWork::before {
+    width: 170px;
+    height: 170px;
+    background: #EFC5F0;
+    top: 35px;
+    left: 35px;
+}
+
+.service-case-studies::after,
+#highlightedWork::after {
+    width: 220px;
+    height: 220px;
+    background: #ACCDFE;
+    bottom: 35px;
+    right: 40px;
+    animation-delay: 1.8s;
+}
+
+/* keep content above bubbles */
+.service-case-studies > *,
+#highlightedWork > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* headings */
+.service-case-header h2,
+#highlightedWork h3 {
+    font-family: "Alata";
+    font-size: 42px;
+    line-height: 1.15;
+    color: #1f1f1f;
+    margin-bottom: 18px;
+}
+
+.section-label {
+    font-family: "Optima";
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8b5e3c;
+    margin-bottom: 10px;
+}
+
+.service-case-header p {
+    font-family: "Orienta";
+    font-size: 16px;
+    line-height: 1.7;
+    color: #4f4a45;
+}
+
+/* grids */
+.service-case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+#highlightedWork {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* cards */
+.service-case-card,
+.projectListing {
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-case-card:hover,
+.projectListing:hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.10);
+}
+
+/* pastel card accents */
+.service-case-card:nth-child(1),
+.projectLink:nth-of-type(1) .projectListing {
+    background: #EFC5F0;
+}
+
+.service-case-card:nth-child(2),
+.projectLink:nth-of-type(2) .projectListing {
+    background: #ACCDFE;
+}
+
+.service-case-card:nth-child(3),
+.projectLink:nth-of-type(3) .projectListing {
+    background: #FFF6A8;
+}
+
+.projectLink:nth-of-type(4) .projectListing {
+    background: #99E2E3;
+}
+
+.projectLink:nth-of-type(5) .projectListing {
+    background: #F8D7E8;
+}
+
+.projectLink:nth-of-type(6) .projectListing {
+    background: #DFF7E8;
+}
+
+/* text */
+.case-tag,
+.projectTitle {
+    font-family: "Baloo";
+    color: #1f1f1f;
+    font-weight: 700;
+}
+
+.service-case-card h3,
+.projectTitle {
+    font-size: 18px;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.service-case-card p,
+.projectSubtitle {
+    font-family: "Orienta";
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4f4a45;
+}
+
+.case-link {
+    font-family: "Optima";
+    font-weight: 700;
+    color: #1f1f1f;
+}
+
+/* bubble motion */
+@keyframes floatBubble {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+    50% {
+        transform: translateY(-28px) translateX(18px) scale(1.08);
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+}
+
+/* mobile */
+@media (max-width: 900px) {
+    .service-case-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-case-studies,
+    #highlightedWork {
+        padding: 65px 6%;
+        margin-top: 80px;
+    }
+
+    .service-case-header h2,
+    #highlightedWork h3 {
+        font-size: 34px;
+    }
+}
+/* ================================
+   FLOATING PASTEL BALLS
+================================ */
+
+.floating-balls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none; /* important - so it doesn’t block clicks */
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* individual balls */
+.floating-balls span {
+    position: absolute;
+    bottom: -150px;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+    opacity: 0.4;
+
+    animation: rise 18s linear infinite;
+}
+
+/* pastel colors */
+.floating-balls span:nth-child(1) { background: #EFC5F0; left: 10%; width: 30px; height: 30px; animation-duration: 20s; }
+.floating-balls span:nth-child(2) { background: #ACCDFE; left: 25%; width: 50px; height: 50px; animation-duration: 18s; }
+.floating-balls span:nth-child(3) { background: #FFF6A8; left: 40%; width: 35px; height: 35px; animation-duration: 22s; }
+.floating-balls span:nth-child(4) { background: #99E2E3; left: 60%; width: 45px; height: 45px; animation-duration: 19s; }
+.floating-balls span:nth-child(5) { background: #F8D7E8; left: 75%; width: 30px; height: 30px; animation-duration: 24s; }
+.floating-balls span:nth-child(6) { background: #DFF7E8; left: 85%; width: 40px; height: 40px; animation-duration: 21s; }
+
+/* animation */
+@keyframes rise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+    }
+}
+/* ================================
+   ABOUT INTRO SECTION
+   Pastel + Cohesive With Values
+================================ */
+
+#about {
+    position: relative;
+    overflow: hidden;
+
+    padding: 90px 8%;
+    margin-top: 40px;
+
+    background: linear-gradient(135deg, #F8EEFF, #FFF6D8, #E9FAFF);
+    border-radius: 36px;
+    color: #1f1f1f;
+}
+
+/* floating pastel bubbles */
+#about::before,
+#about::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: 0;
+    animation: floatBubble 7s ease-in-out infinite;
+}
+
+#about::before {
+    width: 180px;
+    height: 180px;
+    background: #EFC5F0;
+    top: 35px;
+    right: 60px;
+}
+
+#about::after {
+    width: 230px;
+    height: 230px;
+    background: #ACCDFE;
+    bottom: 40px;
+    left: 40px;
+    animation-delay: 1.8s;
+}
+
+/* keep content above bubbles */
+#about > * {
+    position: relative;
+    z-index: 2;
+}
+
+#aboutTitle {
+    font-family: "Alata";
+    font-size: 58px;
+    line-height: 1.1;
+    color: #1f1f1f;
+    margin-bottom: 35px;
+}
+
+#aboutTitle div {
+    display: inline-block;
+    background: #EFC5F0;
+    padding: 10px 18px;
+    border-radius: 18px;
+}
+
+#aboutBody {
+    font-family: "Orienta";
+    font-size: 17px;
+    line-height: 1.85;
+    max-width: 1100px;
+    color: #3f3a3a;
+    margin-top: 0;
+}
+
+/* reuse if you don't already have it */
+@keyframes floatBubble {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+    50% {
+        transform: translateY(-28px) translateX(18px) scale(1.08);
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    #about {
+        padding: 65px 6%;
+        border-radius: 28px;
+    }
+
+    #aboutTitle {
+        font-size: 40px;
+    }
+
+    #aboutBody {
+        font-size: 15px;
+    }
+}
+/* ================================
+   SOFT PASTEL CUSTOM CURSOR
+================================ */
+
+body {
+    cursor: none;
+}
+
+.custom-cursor,
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-cursor {
+    width: 34px;
+    height: 34px;
+    background: radial-gradient(circle, rgba(239, 197, 240, 0.75), rgba(172, 205, 254, 0.35));
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 18px rgba(239, 197, 240, 0.75);
+    transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: #C317C7;
+    box-shadow: 0 0 10px rgba(195, 23, 199, 0.55);
+}
+
+/* grows softly on clickable items */
+.custom-cursor.cursor-hover {
+    width: 52px;
+    height: 52px;
+    background: radial-gradient(circle, rgba(255, 246, 168, 0.8), rgba(153, 226, 227, 0.45));
+    box-shadow: 0 0 24px rgba(153, 226, 227, 0.8);
+}
+
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+
+    .custom-cursor,
+    .cursor-dot {
+        display: none;
+    }
 }

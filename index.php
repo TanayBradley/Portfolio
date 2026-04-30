@@ -17,6 +17,7 @@
 <?php include "head.php"; ?>
 
 <body>
+      <div class="floating-balls"></div>
     <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -150,6 +151,28 @@
 
 
     <?php include "footer.php"; ?>
+
+    <script>
+      const container = document.querySelector(".floating-balls");
+
+      if (container) {
+        const colors = ["#EFC5F0", "#ACCDFE", "#FFF6A8", "#99E2E3", "#F8D7E8", "#DFF7E8"];
+
+        for (let i = 0; i < 14; i++) {
+          const ball = document.createElement("span");
+
+          ball.style.left = Math.random() * 100 + "%";
+          ball.style.animationDuration = (12 + Math.random() * 10) + "s";
+          ball.style.animationDelay = Math.random() * 5 + "s";
+          ball.style.width = (18 + Math.random() * 45) + "px";
+          ball.style.height = ball.style.width;
+          ball.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+          container.appendChild(ball);
+        }
+      }
+    </script>
+
 
 </body>
 

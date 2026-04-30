@@ -42,7 +42,6 @@
         <div class="valuesList">Embrace YOUR Creativity</div>
         <div class="valuesList">Remain Adaptable</div>
         <div class="valuesList">NEVER Stop Learning</div>
-        </div>
     </section>
 
     <?php include "footer.php"; ?>
