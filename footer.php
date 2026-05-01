@@ -1,4 +1,4 @@
-<h1 style="color:red;">FOOTER TEST</h1>
+
 <section id="footer">
     <div>Let's Connect</div>
     <div>Get in touch for opportunities or to say hi! 👋🏽</div>
