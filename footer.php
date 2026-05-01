@@ -1,23 +1,19 @@
+<h1 style="color:red;">FOOTER TEST</h1>
 <section id="footer">
-    <div class="footerBubble"></div>
+    <div>Let's Connect</div>
+    <div>Get in touch for opportunities or to say hi! 👋🏽</div>
 
-    <div class="footerTitle">Let’s Connect</div>
-    <div class="footerSubtitle">Get in touch for opportunities or to say hi! 👋🏽</div>
-
-    <div class="socialLinks">
+    <div class="socials">
         <a href="https://www.linkedin.com/in/tanaybradley" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-linkedin"></i>
-            <span>LinkedIn</span>
         </a>
 
         <a href="mailto:bradleytanay@email.com">
             <i class="fa-solid fa-envelope"></i>
-            <span>Email</span>
         </a>
 
         <a href="https://www.instagram.com/heyimtanay" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-instagram"></i>
-            <span>Instagram</span>
         </a>
     </div>
 </section>
