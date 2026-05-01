@@ -1,16 +1,17 @@
 <section id="footer">
     <div>Let's Connect</div>
     <div>Get in touch for opportunities or to say hi! 👋🏽</div>
-<div class="socials">
-        <a href="https://www.linkedin.com/in/tanaybradley" target="_blank">
+
+    <div class="socials">
+        <a href="https://www.linkedin.com/in/tanaybradley" target="_blank" aria-label="LinkedIn">
             <i class="fa-brands fa-linkedin"></i>
         </a>
 
-        <a href="bradleytanay@email.com">
+        <a href="mailto:bradleytanay@email.com" aria-label="Email">
             <i class="fa-solid fa-envelope"></i>
         </a>
 
-        <a href="https://www.instagram.com/heyimtanay" target="_blank">
+        <a href="https://www.instagram.com/heyimtanay" target="_blank" aria-label="Instagram">
             <i class="fa-brands fa-instagram"></i>
         </a>
     </div>
