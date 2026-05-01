@@ -1,7 +1,6 @@
 <section id="footer">
     <div>Let's Connect</div>
     <div>Get in touch for opportunities or to say hi! 👋🏽</div>
-    <div>
 <div class="socials">
         <a href="https://www.linkedin.com/in/tanaybradley" target="_blank">
             <i class="fa-brands fa-linkedin"></i>
