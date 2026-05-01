@@ -3,15 +3,15 @@
     <div>Get in touch for opportunities or to say hi! 👋🏽</div>
 
     <div class="socials">
-        <a href="https://www.linkedin.com/in/tanaybradley" target="_blank" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/tanaybradley" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-linkedin"></i>
         </a>
 
-        <a href="mailto:bradleytanay@email.com" aria-label="Email">
+        <a href="mailto:bradleytanay@email.com">
             <i class="fa-solid fa-envelope"></i>
         </a>
 
-        <a href="https://www.instagram.com/heyimtanay" target="_blank" aria-label="Instagram">
+        <a href="https://www.instagram.com/heyimtanay" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-instagram"></i>
         </a>
     </div>
