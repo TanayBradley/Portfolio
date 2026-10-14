@@ -129,6 +129,20 @@
         style="width:100%; height:auto; display:block; border-radius:12px;"
     >
 </div>
+<div class="rc-artifact">
+    <img
+        src="images/8542.jpg"
+        alt="SharePoint retail content management system"
+        style="width:100%; height:auto; display:block; border-radius:12px;"
+    >
+</div>
+<div class="rc-artifact">
+    <img
+        src="images/8543.jpg"
+        alt="SharePoint retail content management system"
+        style="width:100%; height:auto; display:block; border-radius:12px;"
+    >
+</div>
         <div class="rc-highlight"><strong>A deliberate design decision: customer-ready names</strong><p>Files follow a consistent pattern such as <code>ItemNumber_UPC_MAIN</code> or <code>ItemNumber_UPC_BOX LABEL</code>, reducing the need for employees to rename assets before sharing them.</p></div>
       </div>
     </section>
