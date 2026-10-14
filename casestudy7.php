@@ -160,13 +160,6 @@
         style="width:100%; height:auto; display:block; border-radius:12px;"
     >
 </div>
-<div class="rc-artifact">
-    <img
-        src="images/869.jpg"
-        alt="SharePoint retail content management system"
-        style="width:100%; height:auto; display:block; border-radius:12px;"
-    >
-</div>
         <div class="rc-copy" style="margin-top:32px"><h3>Testing and iteration</h3><p>I tested the relationships between Excel data, SharePoint metadata, and automated actions. Troubleshooting included missing item information, mismatched asset categories, blank file paths, and conditional behavior. These investigations informed refinements to the intake structure and processing logic.</p></div>
       </div>
     </section>
