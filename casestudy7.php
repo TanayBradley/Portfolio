@@ -35,13 +35,13 @@
             <div>
                 <div class="designDescTitle">Project Overview</div>
                 <div class="designDescBodyPrimary">
-                    Following a company merger, the retail organization needed a more efficient way to access, organize, manage, and distribute product content across multiple brands and retail customers.
+                    Following a company merger, the retail organization needed a more efficient way to access, organize, manage, and distribute product content across multiple brands and retail customers. <br/><br/>
 
-Previously, retail employees depended on a centralized contact to retrieve files from Marketing. Requests were communicated through emails, Teams messages, spreadsheets, and shared folders. Meanwhile, graphic designers maintained product assets in Dropbox, with individual folders organized by item number.
+Previously, retail employees depended on a centralized contact to retrieve files from Marketing. Requests were communicated through emails, Teams messages, spreadsheets, and shared folders. Meanwhile, graphic designers maintained product assets in Dropbox, with individual folders organized by item number. <br/><br/>
 
-As the combined product catalog expanded, these processes became increasingly difficult to manage.
+As the combined product catalog expanded, these processes became increasingly difficult to manage. <br/><br/>
 
-I designed and implemented a centralized SharePoint-based retail content system that enables employees to independently access product assets, search using standardized metadata, download content in bulk, and submit new files through automated intake workflows.
+I designed and implemented a centralized SharePoint-based retail content system that enables employees to independently access product assets, search using standardized metadata, download content in bulk, and submit new files through automated intake workflows. <br/><br/>
 
 The project combined stakeholder discovery, information architecture, workflow design, process automation, and business-driven prioritization.
                     <br/><br/>
