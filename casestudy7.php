@@ -64,25 +64,25 @@ The project combined stakeholder discovery, information architecture, workflow d
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                Fragmented content access
+                Fragmented content access <br/><br/>
 
-Retail employees relied on another team to locate and send product files. This created unnecessary communication and repeated requests for assets that had already been shared.
+Retail employees relied on another team to locate and send product files. This created unnecessary communication and repeated requests for assets that had already been shared. <br/><br/>
 
-Limited organization and discoverability
+Limited organization and discoverability<br/><br/>
 
-The existing Dropbox system stored assets inside folders named by item number. Although files were grouped by product, users had to navigate folders individually to locate specific assets.
+The existing Dropbox system stored assets inside folders named by item number. Although files were grouped by product, users had to navigate folders individually to locate specific assets.<br/><br/>
 
-There was no metadata-based filtering to easily retrieve groups of files, such as product data sheets, safety data sheets, or main product images.
+There was no metadata-based filtering to easily retrieve groups of files, such as product data sheets, safety data sheets, or main product images.<br/><br/>
 
-Inconsistent file preparation
+Inconsistent file preparation<br/><br/>
 
-Retail employees needed to retrieve files quickly and send them to customers without repeatedly renaming or reorganizing assets.
+Retail employees needed to retrieve files quickly and send them to customers without repeatedly renaming or reorganizing assets.<br/><br/>
 
-Growing operational complexity
+Growing operational complexity<br/><br/>
 
-The company merger increased the number of products and brands requiring content management. The existing workflow was not designed for the expanding retail catalog.
+The company merger increased the number of products and brands requiring content management. The existing workflow was not designed for the expanding retail catalog.<br/><br/>
 
-Design challenge: How might we create a centralized, scalable content system that reduces repetitive requests, improves asset discoverability, and supports the different workflows of Retail and Graphic Design?
+Design challenge: How might we create a centralized, scalable content system that reduces repetitive requests, improves asset discoverability, and supports the different workflows of Retail and Graphic Design?<br/><br/>
             </div> <br/><br/>
         <div class="additional-text">
 </div>
