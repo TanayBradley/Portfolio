@@ -92,17 +92,6 @@
         </div>
     </div>
 </a>
-      <a href="casestudy2.php" class="projectLink">
-        <div class="projectListing">
-            <div class="projectDesc">
-                <span class="projectTitle">Designed an automated workflow for Amazon order processing </span>
-                <span class="projectSubtitle">Reduced manual workload through automation while identifying system limitations</span>
-            </div>
-          <div class="arrow">
-            <img src="images/arrow.png" alt="arrow">
-        </div>
-     </div>
-</a>
       <a href="casestudy3.php" class="projectLink">
         <div class="projectListing">
             <div class="projectDesc">
