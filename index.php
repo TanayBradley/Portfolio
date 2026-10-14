@@ -46,7 +46,7 @@
 
   <div class="service-case-grid">
 
-    <a class="service-case-card" href="case-studies/sidewalk-walkability.pdf" target="_blank">
+    <a class="service-case-card" href="casestudy7.php">
       <span class="case-tag">Systems & Workflow Design</span>
       <h3>DESIGNING A SCALABLE RETAIL CONTENT REQUEST SYSTEM</h3>
       <p>
