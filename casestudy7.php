@@ -155,7 +155,14 @@
         </div>
         <div class="rc-artifact">
     <img
-        src="images/88.jpg"
+        src="images/8358.jpg"
+        alt="SharePoint retail content management system"
+        style="width:100%; height:auto; display:block; border-radius:12px;"
+    >
+</div>
+<div class="rc-artifact">
+    <img
+        src="images/869.jpg"
         alt="SharePoint retail content management system"
         style="width:100%; height:auto; display:block; border-radius:12px;"
     >
