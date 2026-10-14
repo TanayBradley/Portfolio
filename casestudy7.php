@@ -28,22 +28,30 @@
 
     <section class="designListing">
         <div class="designTitle">
-                <span>Website </span>UX Form <span>Design</span>
+                <span>Designing a Scalable </span>Retail <span>Content Request System</span>
         </div>
 
         <div class="designDescSplit">
             <div>
-                <div class="designDescTitle">Project Summary</div>
+                <div class="designDescTitle">Project Overview</div>
                 <div class="designDescBodyPrimary">
-                    Identified usability issues in an existing website form and proposed design improvements that were successfully implemented to enhance UX. 
+                    Following a company merger, the retail organization needed a more efficient way to access, organize, manage, and distribute product content across multiple brands and retail customers.
+
+Previously, retail employees depended on a centralized contact to retrieve files from Marketing. Requests were communicated through emails, Teams messages, spreadsheets, and shared folders. Meanwhile, graphic designers maintained product assets in Dropbox, with individual folders organized by item number.
+
+As the combined product catalog expanded, these processes became increasingly difficult to manage.
+
+I designed and implemented a centralized SharePoint-based retail content system that enables employees to independently access product assets, search using standardized metadata, download content in bulk, and submit new files through automated intake workflows.
+
+The project combined stakeholder discovery, information architecture, workflow design, process automation, and business-driven prioritization.
                     <br/><br/>
                 </div>
             </div>
             <div>
                 <div class="designDescTitle">Skills</div>
                 <div class="designDescBodyPrimary">
-                    <span>UX Analyst</span><br/><br/>
-                    UX Design, Usability Thinking, Interface Improvement, Collaboration
+                    <span>UX Research | Service Design | Information Architecture | Workflow Automation | Process Improvement</span><br/><br/>
+                    Tools: SharePoint, Power Automate, Excel, Power BI My Role: Workflow Research, System Design, Stakeholder Collaboration, Automation Development, Implementation & Testing
                 </div>
             </div>
         </div>
