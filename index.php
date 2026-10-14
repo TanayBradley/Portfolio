@@ -26,7 +26,7 @@
     <section id="intro">
         <div id="introTitle">
             <div>Hey there, <span id="titleBlock1" onmouseover="block1dark()" onmouseout="block1light()">I'm Tanay</span> 👋🏽</div>
-            <div>I'm an <span id="titleBlock2" class="titleBlockEtc">Experience</span> <span id="titleBlock3" class="titleBlockEtc">Designer</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Creative Storyteller</span></div>
+            <div>I'm a <span id="titleBlock2" class="titleBlockEtc">UX</span> <span id="titleBlock3" class="titleBlockEtc">Designer</span> &amp;  <span id="titleBlock4" class="titleBlockEtc">Experience Strategist</span></div>
         </div>
         <div id="introBody">
             <span>Something doesn’t have to be broken for me to question it. If it feels off, I’m already figuring out why. I break things down, find where the disconnect is, and rethink the experience so it actually works for people. I’m both analytical and creative, so I’m not just fixing problems - I’m improving how people experience real-world systems, services, and products</span>
@@ -36,42 +36,42 @@
 
 <section class="service-case-studies">
   <div class="service-case-header">
-    <p class="section-label">Service Design</p>
-    <h2>Service Design Case Studies</h2>
+    <p class="section-label">Featured Work</p>
+    <h2>Featured Case Studies</h2>
     <p>
-      Real-world experience improvements focused on how people move through systems,
-      spaces, and services.
+      Selected UX, systems, and workflow projects focused on uncovering friction and 
+      designing better ways for people to move through products and processes.
     </p>
   </div>
 
   <div class="service-case-grid">
 
     <a class="service-case-card" href="case-studies/sidewalk-walkability.pdf" target="_blank">
-      <span class="case-tag">Neighborhood Experience</span>
-      <h3>Improving Neighborhood Walkability</h3>
+      <span class="case-tag">Systems & Workflow Design</span>
+      <h3>DESIGNING A SCALABLE RETAIL CONTENT REQUEST SYSTEM</h3>
       <p>
-        A service design case study exploring a sidewalk gap that disrupts pedestrian flow,
-        safety, and accessibility.
+        Transforming a fragmented email and Excel process into a structured 
+        SharePoint workflow for managing retail product content.
       </p>
       <span class="case-link">View Case Study →</span>
     </a>
 
     <a class="service-case-card" href="case-studies/whataburger-drive-thru.pdf" target="_blank">
-      <span class="case-tag">Drive-Thru Experience</span>
-      <h3>Improving the Whataburger Customer Drive-Thru Experience</h3>
+      <span class="case-tag">UX/Product Design</span>
+      <h3>DESIGNING THE KEEP>GOING FIRST AID APP EXPERIENCE</h3>
       <p>
-        An analysis of customer flow, wait times, weather exposure, and order accuracy within
-        the drive-thru service experience.
+        Using research, wireframes, prototyping, and evaluation to shape an interactive 
+        mobile experience around real user and stakeholder needs.
       </p>
       <span class="case-link">View Case Study →</span>
     </a>
 
     <a class="service-case-card" href="case-studies/chickfila-drive-thru.pdf" target="_blank">
-      <span class="case-tag">Service Optimization</span>
-      <h3>Optimizing Chick-fil-A’s Drive-Thru Delivery Flow</h3>
+      <span class="case-tag">Workflow Analysis</span>
+      <h3>IMPROVING THE AMAZON ORDER PROCESSING WORKFLOW</h3>
       <p>
-        A case study identifying how early food handoff can create service friction when
-        vehicle flow does not match order readiness.
+        Identifying duplicate work, system limitations, and ownership gaps across teams 
+        to improve efficiency and reduce friction.
       </p>
       <span class="case-link">View Case Study →</span>
     </a>
