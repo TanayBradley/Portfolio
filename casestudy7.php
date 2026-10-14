@@ -60,11 +60,29 @@ The project combined stakeholder discovery, information architecture, workflow d
 
     <section class="designListing">
         <div class="designTitle">
-            <span>Problem Focus</span>
+            <span>The Problem</span>
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                The existing form lacked clear structure and usability, making it less intuitive for users to complete and creating frictionin the overall experience.
+                Fragmented content access
+
+Retail employees relied on another team to locate and send product files. This created unnecessary communication and repeated requests for assets that had already been shared.
+
+Limited organization and discoverability
+
+The existing Dropbox system stored assets inside folders named by item number. Although files were grouped by product, users had to navigate folders individually to locate specific assets.
+
+There was no metadata-based filtering to easily retrieve groups of files, such as product data sheets, safety data sheets, or main product images.
+
+Inconsistent file preparation
+
+Retail employees needed to retrieve files quickly and send them to customers without repeatedly renaming or reorganizing assets.
+
+Growing operational complexity
+
+The company merger increased the number of products and brands requiring content management. The existing workflow was not designed for the expanding retail catalog.
+
+Design challenge: How might we create a centralized, scalable content system that reduces repetitive requests, improves asset discoverability, and supports the different workflows of Retail and Graphic Design?
             </div> <br/><br/>
         <div class="additional-text">
 </div>
