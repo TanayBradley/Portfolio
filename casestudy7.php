@@ -51,7 +51,7 @@ The project combined stakeholder discovery, information architecture, workflow d
                 <div class="designDescTitle">Skills</div>
                 <div class="designDescBodyPrimary">
                     <span>UX Research | Service Design | Information Architecture | Workflow Automation | Process Improvement</span><br/><br/>
-                    Tools: SharePoint, Power Automate, Excel, Power BI My Role: Workflow Research, System Design, Stakeholder Collaboration, Automation Development, Implementation & Testing
+                    Tools: SharePoint, Power Automate, Excel, Power BI <br/><br/> My Role: Workflow Research, System Design, Stakeholder Collaboration, Automation Development, Implementation & Testing
                 </div>
             </div>
         </div>
