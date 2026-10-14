@@ -122,7 +122,13 @@
           <article class="rc-card"><div class="rc-card-number">OUTPUT / PRODUCT CONTENT</div><h3>A searchable destination for product assets</h3><p>Each product has a Document Set associated with item number, UPC, ASIN, brand, and category. Employees can use metadata and views to locate and download relevant content.</p></article>
         </div>
         <div class="rc-diagram"><p class="rc-diagram-title">How the two parts connect</p><div class="rc-flow"><div class="rc-flow-node">Upload to asset-type folder</div><div class="rc-flow-arrow" aria-hidden="true">→</div><div class="rc-flow-node">Identify product &amp; asset type</div><div class="rc-flow-arrow" aria-hidden="true">→</div><div class="rc-flow-node">Rename &amp; route automatically</div><div class="rc-flow-arrow" aria-hidden="true">→</div><div class="rc-flow-node">Find in Product Content</div></div></div>
-        <div class="rc-artifact"><strong>Project visual: SharePoint information architecture</strong><span>Replace this placeholder with your annotated screenshots of Asset Intake and Product Content. Remove internal identifiers before publishing.</span></div>
+        <div class="rc-artifact">
+    <img
+        src="images/8539.jpg"
+        alt="SharePoint retail content management system"
+        style="width:100%; height:auto; display:block; border-radius:12px;"
+    >
+</div>
         <div class="rc-highlight"><strong>A deliberate design decision: customer-ready names</strong><p>Files follow a consistent pattern such as <code>ItemNumber_UPC_MAIN</code> or <code>ItemNumber_UPC_BOX LABEL</code>, reducing the need for employees to rename assets before sharing them.</p></div>
       </div>
     </section>
@@ -135,7 +141,7 @@
         </div>
         <div class="rc-artifact">
     <img
-        src="images/8538.jpg"
+        src="images/88.jpg"
         alt="SharePoint retail content management system"
         style="width:100%; height:auto; display:block; border-radius:12px;"
     >
