@@ -64,21 +64,21 @@ The project combined stakeholder discovery, information architecture, workflow d
         </div>
         <div class="designDesc">
             <div class="designDescBodySecondary">
-                Fragmented content access <br/><br/>
+                Fragmented content access: <br/><br/>
 
 Retail employees relied on another team to locate and send product files. This created unnecessary communication and repeated requests for assets that had already been shared. <br/><br/>
 
-Limited organization and discoverability<br/><br/>
+Limited organization and discoverability:<br/><br/>
 
 The existing Dropbox system stored assets inside folders named by item number. Although files were grouped by product, users had to navigate folders individually to locate specific assets.<br/><br/>
 
 There was no metadata-based filtering to easily retrieve groups of files, such as product data sheets, safety data sheets, or main product images.<br/><br/>
 
-Inconsistent file preparation<br/><br/>
+Inconsistent file preparation:<br/><br/>
 
 Retail employees needed to retrieve files quickly and send them to customers without repeatedly renaming or reorganizing assets.<br/><br/>
 
-Growing operational complexity<br/><br/>
+Growing operational complexity:<br/><br/>
 
 The company merger increased the number of products and brands requiring content management. The existing workflow was not designed for the expanding retail catalog.<br/><br/>
 
