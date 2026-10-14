@@ -133,11 +133,11 @@
           <article class="rc-card"><div class="rc-card-number">FLOW 01</div><h3>Create product Document Sets</h3><div class="rc-steps"><div class="rc-step"><p><strong>Read product records</strong> from the centralized Excel table.</p></div><div class="rc-step"><p><strong>Check SharePoint</strong> for an existing Document Set.</p></div><div class="rc-step"><p><strong>Create or update</strong> the product structure and metadata as appropriate.</p></div></div></article>
           <article class="rc-card"><div class="rc-card-number">FLOW 02</div><h3>Process incoming assets</h3><div class="rc-steps"><div class="rc-step"><p><strong>Detect the intake category</strong> and identify the product.</p></div><div class="rc-step"><p><strong>Look up item information</strong> and apply a consistent file name.</p></div><div class="rc-step"><p><strong>Route the file</strong> to its product location, with review for processing issues.</p></div></div></article>
         </div>
-        <div class="case-study-image">
+        <div class="rc-artifact">
     <img
         src="images/8538.jpg"
-        alt="SharePoint Asset Intake library showing product content categories"
-        loading="lazy"
+        alt="SharePoint retail content management system"
+        style="width:100%; height:auto; display:block; border-radius:12px;"
     >
 </div>
         <div class="rc-copy" style="margin-top:32px"><h3>Testing and iteration</h3><p>I tested the relationships between Excel data, SharePoint metadata, and automated actions. Troubleshooting included missing item information, mismatched asset categories, blank file paths, and conditional behavior. These investigations informed refinements to the intake structure and processing logic.</p></div>
