@@ -103,17 +103,7 @@
         </div>
      </div>
 </a>
-      <a href="casestudy4.php" class="projectLink">
-            <div class="projectListing">
-              <div class="projectDesc">
-                <span class="projectTitle">Designed a scalable content request system for retail products listings</span>
-                <span class="projectSubtitle">Replaced manual email/Excel workflow with a scalable self-service solution</span>
-            </div>
-          <div class="arrow">
-            <img src="images/arrow.png" alt="arrow">
-        </div>
-    </div>
-</a>
+      
         <a href="casestudy5.php" class="projectLink">
              <div class="projectListing">
                 <div class="projectDesc">
