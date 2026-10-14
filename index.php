@@ -56,7 +56,7 @@
       <span class="case-link">View Case Study →</span>
     </a>
 
-    <a class="service-case-card" href="case-studies/whataburger-drive-thru.pdf" target="_blank">
+    <a class="service-case-card" href="keepgoingmobile.php">
       <span class="case-tag">UX/Product Design</span>
       <h3>DESIGNING THE KEEP>GOING FIRST AID APP EXPERIENCE</h3>
       <p>
@@ -66,7 +66,7 @@
       <span class="case-link">View Case Study →</span>
     </a>
 
-    <a class="service-case-card" href="case-studies/chickfila-drive-thru.pdf" target="_blank">
+    <a class="service-case-card" href="casestudy1.php">
       <span class="case-tag">Workflow Analysis</span>
       <h3>IMPROVING THE AMAZON ORDER PROCESSING WORKFLOW</h3>
       <p>
