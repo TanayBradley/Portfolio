@@ -102,18 +102,7 @@
             <img src="images/arrow.png" alt="arrow">
         </div>
      </div>
-</a>
-      
-        <a href="casestudy5.php" class="projectLink">
-             <div class="projectListing">
-                <div class="projectDesc">
-                 <span class="projectTitle">Developed digital content strategy for retail product listings</span>
-                 <span class="projectSubtitle">Improved product content consistency and usability across retail channels</span>
-             </div>
-          <div class="arrow">
-             <img src="images/arrow.png" alt="arrow">
-         </div>
-     </div>
+
 </a>
         <a href="casestudy6.php" class="projectLink">
             <div class="projectListing">
