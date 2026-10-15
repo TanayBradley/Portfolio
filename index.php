@@ -107,7 +107,7 @@
         <a href="casestudy6.php" class="projectLink">
             <div class="projectListing">
                 <div class="projectDesc">
-                <span class="projectTitle">Improved website UX through form design optimization</span>
+                <span class="projectTitle">Website Login Experience Redesign</span>
                  <span class="projectSubtitle">Enhanced for usability to reduce friction and improve user flow</span>
             </div>
          <div class="arrow">
