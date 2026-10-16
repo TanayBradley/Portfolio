@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<!--
+  BRAIN BLOOM ACADEMY — private/unlisted learning portal for tanaybradley.com
+
+  INSTALLATION
+  1. Upload this file to the root folder of your existing website.
+  2. Visit: https://tanaybradley.com/brain-bloom-academy.php
+  3. Do not add the page to your public navigation.
+
+  PRIVACY NOTE
+  The noindex tags below ask search engines not to list this page, but an unlisted
+  URL is not the same as password protection. Notes and grades are stored only in
+  this browser using localStorage. Use the built-in Export Backup button regularly.
+
+  This file contains its own HTML, CSS, and JavaScript. It does not require a
+  database or external library. It may also be renamed with an .html extension.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="referrer" content="no-referrer">
+  <title>Brain Bloom Academy | Tanay's Study Portal</title>
+  <style>
+    :root {
+      --ink: #332a4a;
+      --ink-soft: #675f7c;
+      --paper: #fffdf9;
+      --paper-2: #fff9f2;
+      --lavender: #b8a5ff;
+      --lavender-deep: #7b61d1;
+      --pink: #ffabc7;
+      --peach: #ffc6a8;
+      --mint: #aee8d2;
+      --sky: #a9d9ff;
+      --lemon: #ffe69a;
+      --lilac: #e7ddff;
+      --rose: #ffe0ea;
+      --green: #4b9d7e;
+      --red: #c94c6e;
+      --shadow: 0 16px 40px rgba(72, 50, 112, 0.13);
+      --shadow-soft: 0 8px 22px rgba(72, 50, 112, 0.09);
+      --border: 2px solid rgba(83, 64, 118, 0.13);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --sidebar: 258px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 171, 199, .32), transparent 25%),
+        radial-gradient(circle at 90% 12%, rgba(169, 217, 255, .36), transparent 24%),
+        radial-gradient(circle at 68% 88%, rgba(174, 232, 210, .34), transparent 28%),
+        linear-gradient(135deg, #fffaf5 0%, #f8f3ff 50%, #f3fbff 100%);
+      font-family: "Trebuchet MS", "Avenir Next", Avenir, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .36;
+      background-image: radial-gradient(rgba(91, 73, 129, .16) 1px, transparent 1px);
+      background-size: 22px 22px;
+      z-index: -2;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button { color: inherit; }
+    a { color: var(--lavender-deep); }
+    :focus-visible { outline: 3px solid #6750c9; outline-offset: 3px; }
+    [hidden] { display: none !important; }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar);
+      padding: 24px 18px;
+      overflow-y: auto;
+      color: #fff;
+      background:
+        linear-gradient(160deg, rgba(77, 57, 124, .97), rgba(104, 73, 154, .97)),
+        #594281;
+      box-shadow: 12px 0 35px rgba(67, 46, 103, .18);
+      z-index: 30;
+    }
+
+    .sidebar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .12;
+      background-image:
+        radial-gradient(circle at 20% 12%, #fff 0 2px, transparent 3px),
+        radial-gradient(circle at 75% 35%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 45% 73%, #fff 0 1.5px, transparent 2.5px);
+      background-size: 80px 80px, 64px 64px, 95px 95px;
+    }
+
+    .brand {
+      position: relative;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: 0 4px 28px;
+      z-index: 1;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border: 2px solid rgba(255,255,255,.45);
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--pink), var(--lemon));
+      box-shadow: 0 8px 18px rgba(32, 20, 62, .25);
+      font-size: 27px;
+      transform: rotate(-4deg);
+    }
+
+    .brand strong { display: block; font-size: 1.04rem; letter-spacing: .01em; }
+    .brand small { display: block; color: #e8def8; font-size: .73rem; }
+
+    .nav-label {
+      position: relative;
+      margin: 18px 12px 8px;
+      color: #cabfe3;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    .nav-list { position: relative; display: grid; gap: 8px; z-index: 1; }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 13px;
+      border: 0;
+      border-radius: 14px;
+      color: #eee8fa;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .nav-button:hover { background: rgba(255,255,255,.1); transform: translateX(3px); }
+    .nav-button.active { color: var(--ink); background: #fff; box-shadow: 0 9px 22px rgba(30, 20, 56, .22); }
+    .nav-icon { width: 26px; text-align: center; font-size: 1.2rem; }
+
+    .sidebar-card {
+      position: relative;
+      margin-top: 24px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 18px;
+      color: #fff;
+      background: rgba(255,255,255,.09);
+      backdrop-filter: blur(8px);
+      z-index: 1;
+    }
+
+    .sidebar-card strong { display: block; margin-bottom: 5px; }
+    .sidebar-card p { margin: 0; color: #ded4ef; font-size: .8rem; }
+
+    .main {
+      grid-column: 2;
+      min-width: 0;
+      padding: 26px clamp(18px, 3vw, 44px) 54px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .topbar h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.35rem); }
+    .topbar p { margin: 4px 0 0; color: var(--ink-soft); }
+
+    .topbar-actions { display: flex; gap: 10px; align-items: center; }
+    .level-pill, .privacy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 8px 13px;
+      border: var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow-soft);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .view { display: none; animation: viewIn .28s ease; }
+    .view.active { display: block; }
+    @keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .card {
+      border: var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(230px, .55fr);
+      gap: 24px;
+      min-height: 260px;
+      padding: clamp(24px, 4vw, 42px);
+      overflow: hidden;
+      border: 2px solid rgba(91, 69, 131, .14);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,.75), transparent 20%),
+        linear-gradient(135deg, #f1e9ff 0%, #ffe7ef 50%, #fff1cf 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before, .hero::after {
+      position: absolute;
+      pointer-events: none;
+      font-size: 64px;
+      opacity: .18;
+      transform: rotate(-12deg);
+    }
+    .hero::before { content: "♫"; right: 34%; top: 14px; }
+    .hero::after { content: "✦"; right: 6%; bottom: 4px; transform: rotate(12deg); }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #7256b0;
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .hero h2 { max-width: 720px; margin: 0 0 12px; font-family: Georgia, serif; font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.03; }
+    .hero-copy { max-width: 690px; margin: 0 0 22px; color: #5f5670; font-size: 1rem; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      min-height: 43px;
+      padding: 9px 15px;
+      border: 2px solid transparent;
+      border-radius: 13px;
+      font-weight: 850;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+    }
+    .btn:hover { transform: translateY(-2px); filter: saturate(1.06); }
+    .btn-primary { color: #fff; background: linear-gradient(135deg, #7458c5, #9271da); box-shadow: 0 9px 20px rgba(100, 73, 167, .25); }
+    .btn-secondary { border-color: rgba(103, 80, 152, .18); background: rgba(255,255,255,.78); }
+    .btn-pink { color: #653047; background: var(--pink); }
+    .btn-mint { color: #235b49; background: var(--mint); }
+    .btn-danger { color: #9a2447; border-color: rgba(201,76,110,.25); background: #fff0f4; }
+    .btn-small { min-height: 36px; padding: 7px 11px; border-radius: 10px; font-size: .82rem; }
+    .btn-icon { width: 41px; padding: 0; }
+
+    .hero-level {
+      position: relative;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .progress-ring {
+      --progress: 0deg;
+      display: grid;
+      place-items: center;
+      width: 152px;
+      height: 152px;
+      border-radius: 50%;
+      background: conic-gradient(#795fd0 var(--progress), rgba(255,255,255,.58) 0);
+      box-shadow: inset 0 0 0 1px rgba(76, 54, 118, .08), 0 13px 28px rgba(70,48,108,.15);
+    }
+
+    .progress-ring-inner {
+      display: grid;
+      place-items: center;
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      background: #fffaf8;
+      text-align: center;
+    }
+    .progress-ring strong { display: block; font-size: 1.7rem; line-height: 1; }
+    .progress-ring span { color: var(--ink-soft); font-size: .72rem; }
+    .xp-copy { color: #695e79; font-size: .82rem; font-weight: 800; text-align: center; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .stat-card { position: relative; min-height: 122px; padding: 18px; overflow: hidden; }
+    .stat-card::after { content: attr(data-sticker); position: absolute; right: 9px; bottom: -8px; font-size: 49px; opacity: .17; transform: rotate(-8deg); }
+    .stat-label { color: var(--ink-soft); font-size: .77rem; font-weight: 850; letter-spacing: .04em; text-transform: uppercase; }
+    .stat-value { margin-top: 6px; font-size: 1.8rem; font-weight: 950; }
+    .stat-detail { color: var(--ink-soft); font-size: .76rem; }
+
+    .dashboard-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(280px, .75fr); gap: 18px; }
+    .panel { padding: 20px; }
+    .panel + .panel { margin-top: 18px; }
+    .panel-header { display: flex; justify-content: space-between; gap: 14px; align-items: center; margin-bottom: 15px; }
+    .panel-header h3, .section-title h2 { margin: 0; font-family: Georgia, serif; }
+    .panel-header p, .section-title p { margin: 4px 0 0; color: var(--ink-soft); font-size: .86rem; }
+
+    .course-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .course-mini {
+      position: relative;
+      min-height: 150px;
+      padding: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(77,59,109,.1);
+      border-radius: 17px;
+      background: var(--course-color, #f3edff);
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .course-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+    .course-mini-icon { font-size: 1.5rem; }
+    .course-code { display: inline-block; margin-top: 8px; color: #6a5e78; font-size: .67rem; font-weight: 900; letter-spacing: .08em; }
+    .course-mini h4 { margin: 5px 0; font-size: .97rem; line-height: 1.22; }
+    .tiny-progress { height: 7px; margin-top: 12px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.72); }
+    .tiny-progress > span { display: block; height: 100%; border-radius: inherit; background: #765ac8; }
+    .tiny-progress-copy { margin-top: 5px; color: var(--ink-soft); font-size: .68rem; }
+
+    .list-stack { display: grid; gap: 10px; }
+    .list-item {
+      display: grid;
+      grid-template-columns: auto minmax(0,1fr) auto;
+      gap: 11px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(78,61,108,.11);
+      border-radius: 14px;
+      background: #fff;
+    }
+    .list-item-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--lilac); }
+    .list-item strong { display: block; font-size: .85rem; }
+    .list-item small { color: var(--ink-soft); }
+    .empty-state { padding: 28px 18px; color: var(--ink-soft); text-align: center; border: 2px dashed rgba(84,64,119,.18); border-radius: 16px; background: rgba(255,255,255,.52); }
+    .empty-state .big-emoji { display: block; margin-bottom: 6px; font-size: 2rem; }
+
+    .badge-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; }
+    .badge {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 11px;
+      border-radius: 14px;
+      background: #f8f4ff;
+      opacity: .43;
+      filter: grayscale(.55);
+    }
+    .badge.earned { opacity: 1; filter: none; background: linear-gradient(135deg, #fff2ca, #ffe2ed); box-shadow: inset 0 0 0 1px rgba(108,79,145,.1); }
+    .badge-icon { font-size: 1.45rem; }
+    .badge strong { display: block; font-size: .75rem; }
+    .badge small { display: block; color: var(--ink-soft); font-size: .65rem; }
+
+    .section-title { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 20px; }
+    .section-title h2 { font-size: clamp(1.45rem, 2.7vw, 2rem); }
+
+    .semester-tabs { display: flex; gap: 9px; margin-bottom: 18px; padding-bottom: 5px; overflow-x: auto; scrollbar-width: thin; }
+    .semester-tab { flex: 0 0 auto; min-height: 39px; padding: 7px 13px; border: 2px solid rgba(92,71,129,.12); border-radius: 999px; background: rgba(255,255,255,.73); font-weight: 850; cursor: pointer; }
+    .semester-tab.active { color: #fff; border-color: transparent; background: #755bc5; box-shadow: 0 8px 18px rgba(85,61,145,.21); }
+
+    .semester-banner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 23px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--semester-a, #e7ddff), var(--semester-b, #ffe4ed));
+      box-shadow: var(--shadow-soft);
+    }
+    .semester-banner h3 { margin: 0 0 5px; font-family: Georgia, serif; font-size: 1.55rem; }
+    .semester-banner p { max-width: 800px; margin: 0; color: #62586e; }
+    .semester-number { font-family: Georgia, serif; font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; opacity: .22; line-height: .8; }
+
+    .curriculum-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .curriculum-card { position: relative; padding: 20px; overflow: hidden; }
+    .curriculum-card::after { content: attr(data-icon); position: absolute; right: 12px; top: 5px; font-size: 64px; opacity: .09; transform: rotate(9deg); }
+    .course-topline { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    .course-status { padding: 5px 9px; border-radius: 999px; color: #635971; background: #f1ecf8; font-size: .68rem; font-weight: 850; }
+    .course-status.in-progress { color: #5b3e9a; background: #ebe2ff; }
+    .course-status.completed { color: #256249; background: #dff6eb; }
+    .curriculum-card h4 { margin: 12px 0 7px; font-size: 1.08rem; }
+    .curriculum-card p { margin: 0 0 12px; color: var(--ink-soft); font-size: .84rem; }
+    .outcome-list { margin: 0 0 16px; padding-left: 20px; color: #5e556d; font-size: .79rem; }
+    .outcome-list li + li { margin-top: 4px; }
+    .course-configured { display: flex; gap: 8px; align-items: center; min-height: 34px; margin: 12px 0; padding: 7px 10px; border-radius: 10px; background: #faf8fd; color: #625970; font-size: .76rem; }
+
+    .notes-layout { display: grid; grid-template-columns: 285px minmax(0,1fr); min-height: 680px; overflow: hidden; }
+    .notes-sidebar { padding: 16px; border-right: 2px solid rgba(79,61,110,.09); background: #faf7ff; }
+    .notes-sidebar-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .notes-sidebar h3 { margin: 0; font-family: Georgia, serif; }
+    .filter-stack { display: grid; gap: 8px; margin-bottom: 12px; }
+    .search-input, .field input, .field select, .field textarea, .note-title-input, .toolbar select {
+      width: 100%;
+      border: 2px solid rgba(78,61,108,.14);
+      border-radius: 11px;
+      color: var(--ink);
+      background: #fff;
+    }
+    .search-input { min-height: 40px; padding: 8px 11px; }
+    .note-list { display: grid; gap: 8px; max-height: 550px; overflow-y: auto; padding-right: 3px; }
+    .note-list-item { width: 100%; padding: 12px; border: 2px solid transparent; border-radius: 13px; background: #fff; cursor: pointer; text-align: left; }
+    .note-list-item:hover { border-color: rgba(117,91,197,.2); }
+    .note-list-item.active { border-color: #9c82e2; background: #f2edff; }
+    .note-list-item strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .note-list-item small { display: block; margin-top: 3px; color: var(--ink-soft); font-size: .68rem; }
+    .note-course-dot { display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: var(--dot, var(--lavender)); }
+
+    .notes-editor-shell { min-width: 0; background: #fff; }
+    .note-meta { display: grid; grid-template-columns: minmax(0,1fr) 220px auto; gap: 10px; align-items: center; padding: 15px 18px; border-bottom: 1px solid rgba(79,61,110,.1); }
+    .note-title-input { min-height: 43px; padding: 8px 11px; font-size: 1.05rem; font-weight: 900; }
+    .note-meta select { min-height: 43px; padding: 8px; border: 2px solid rgba(78,61,108,.14); border-radius: 11px; background: #fff; }
+    .note-actions { display: flex; gap: 7px; }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(79,61,110,.1);
+      background: linear-gradient(90deg, #fff8fb, #f8f5ff, #f4fbff);
+    }
+    .toolbar button, .toolbar select, .toolbar-label {
+      min-width: 36px;
+      min-height: 36px;
+      border: 1px solid rgba(79,61,110,.14);
+      border-radius: 9px;
+      background: #fff;
+      cursor: pointer;
+    }
+    .toolbar button:hover { background: #eee8ff; }
+    .toolbar select { width: auto; padding: 4px 8px; }
+    .toolbar-divider { width: 1px; height: 28px; margin: 0 2px; background: rgba(79,61,110,.15); }
+    .toolbar-label { position: relative; display: inline-grid; place-items: center; overflow: hidden; }
+    .toolbar-label input[type="color"] { position: absolute; inset: 0; width: 120%; height: 120%; opacity: 0; cursor: pointer; }
+    .color-dot { width: 17px; height: 5px; margin-top: 2px; border-radius: 99px; background: var(--swatch); }
+    .swatch-row { display: flex; gap: 4px; }
+    .swatch { width: 25px !important; min-width: 25px !important; height: 25px !important; min-height: 25px !important; padding: 0 !important; border-radius: 50% !important; background: var(--swatch) !important; }
+
+    .note-editor {
+      min-height: 510px;
+      padding: 34px clamp(22px, 5vw, 66px) 70px;
+      color: #302a3d;
+      background:
+        linear-gradient(rgba(255,255,255,.94), rgba(255,255,255,.94)),
+        repeating-linear-gradient(0deg, transparent 0 31px, #e8e0f4 32px);
+      outline: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.03rem;
+      line-height: 1.85;
+    }
+    .note-editor:empty::before { content: attr(data-placeholder); color: #9a91a8; pointer-events: none; }
+    .note-editor h2, .note-editor h3 { color: #4c3e68; line-height: 1.25; }
+    .note-editor blockquote { margin: 18px 0; padding: 12px 17px; border-left: 5px solid var(--pink); border-radius: 0 12px 12px 0; background: #fff3f7; }
+    .note-editor ul.bullet-boba, .note-editor ul.bullet-music, .note-editor ul.bullet-spark, .note-editor ul.bullet-game { list-style: none; padding-left: 28px; }
+    .note-editor ul.bullet-boba li::before { content: "●"; color: #8d5b3f; margin-right: 10px; }
+    .note-editor ul.bullet-music li::before { content: "♫"; color: #7b61d1; margin-right: 10px; }
+    .note-editor ul.bullet-spark li::before { content: "✦"; color: #db8a24; margin-right: 10px; }
+    .note-editor ul.bullet-game li::before { content: "➜"; color: #408bc3; margin-right: 10px; }
+    .note-editor ol.alpha { list-style-type: lower-alpha; }
+    .note-editor ol.roman { list-style-type: lower-roman; }
+    .note-save-line { padding: 7px 17px; border-top: 1px solid rgba(79,61,110,.08); color: var(--ink-soft); background: #fbf9fd; font-size: .72rem; text-align: right; }
+
+    .grade-summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 18px; }
+    .grade-card { padding: 16px; }
+    .grade-card strong { display: block; margin-top: 4px; font-size: 1.45rem; }
+    .grade-card small { color: var(--ink-soft); }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; margin-bottom: 13px; }
+    .filter-bar select, .filter-bar input { min-height: 40px; padding: 7px 10px; border: 2px solid rgba(78,61,108,.13); border-radius: 11px; background: #fff; }
+    .table-wrap { overflow-x: auto; border: var(--border); border-radius: 17px; background: #fff; box-shadow: var(--shadow-soft); }
+    table { width: 100%; border-collapse: collapse; min-width: 850px; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid rgba(78,61,108,.09); text-align: left; vertical-align: middle; }
+    th { color: #655b73; background: #faf7fd; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+    td { font-size: .84rem; }
+    tbody tr:hover { background: #fffbfd; }
+    .status-chip { display: inline-block; padding: 5px 8px; border-radius: 999px; background: #f0edf5; font-size: .68rem; font-weight: 850; }
+    .status-chip.completed { color: #28664e; background: #dff5eb; }
+    .status-chip.in-progress { color: #60449b; background: #ece4ff; }
+    .status-chip.overdue { color: #a63353; background: #ffe3ea; }
+    .grade-letter { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: #fff; background: #765ac8; font-weight: 950; }
+
+    .study-grid { display: grid; grid-template-columns: minmax(320px,.85fr) minmax(0,1.15fr); gap: 18px; }
+    .timer-card { padding: 24px; text-align: center; background: linear-gradient(145deg, #eee7ff, #fff0f5); }
+    .timer-mode-row { display: flex; justify-content: center; gap: 7px; margin-bottom: 15px; }
+    .mode-chip { padding: 6px 10px; border: 1px solid rgba(82,62,117,.15); border-radius: 999px; background: rgba(255,255,255,.72); cursor: pointer; font-size: .73rem; font-weight: 850; }
+    .mode-chip.active { color: #fff; background: #755bc5; }
+    .timer-display { margin: 6px 0 15px; font-family: Georgia, serif; font-size: clamp(3.6rem, 10vw, 6rem); font-weight: 900; letter-spacing: -.05em; }
+    .timer-card select { width: min(100%, 360px); min-height: 43px; margin-bottom: 13px; padding: 8px; border: 2px solid rgba(83,65,118,.14); border-radius: 11px; background: #fff; }
+    .weekly-meter { height: 12px; overflow: hidden; border-radius: 99px; background: #eee9f5; }
+    .weekly-meter span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--mint), #65bc9d); }
+    .recall-card { margin-top: 18px; padding: 21px; background: linear-gradient(145deg, #fff3c9, #ffe8f0); }
+    .recall-prompt { min-height: 90px; margin: 13px 0; padding: 15px; border: 2px dashed rgba(100,73,130,.2); border-radius: 14px; background: rgba(255,255,255,.65); font-family: Georgia, serif; font-size: 1rem; }
+    .study-log-card { padding: 20px; }
+
+    .settings-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 17px; }
+    .settings-card { padding: 21px; }
+    .settings-card h3 { margin: 0 0 5px; font-family: Georgia, serif; }
+    .settings-card > p { margin: 0 0 17px; color: var(--ink-soft); font-size: .84rem; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    .field { display: grid; gap: 5px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #5f566d; font-size: .73rem; font-weight: 850; }
+    .field input, .field select, .field textarea { min-height: 43px; padding: 9px 10px; }
+    .field textarea { min-height: 92px; resize: vertical; }
+    .helper { color: var(--ink-soft); font-size: .7rem; }
+    .privacy-box { padding: 14px; border: 2px solid rgba(91,68,129,.12); border-radius: 14px; background: #fff9e7; font-size: .82rem; }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(44,33,63,.58);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+    }
+    .modal {
+      width: min(760px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 2px solid rgba(255,255,255,.48);
+      border-radius: 24px;
+      background: var(--paper);
+      box-shadow: 0 30px 80px rgba(38,25,59,.3);
+    }
+    .modal-header { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 19px 21px; border-bottom: 1px solid rgba(75,58,104,.1); background: rgba(255,253,249,.95); backdrop-filter: blur(8px); z-index: 1; }
+    .modal-header h2 { margin: 0; font-family: Georgia, serif; font-size: 1.4rem; }
+    .modal-close { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #f1edf6; cursor: pointer; font-size: 1.2rem; }
+    .modal-body { padding: 21px; }
+    .modal-footer { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 9px; padding: 16px 21px 21px; }
+    .modal-course-overview { margin-bottom: 17px; padding: 15px; border-radius: 16px; background: linear-gradient(135deg, #f0eaff, #fff0f5); }
+    .modal-course-overview p { margin: 5px 0 10px; color: var(--ink-soft); }
+
+    .toast-region { position: fixed; right: 20px; bottom: 20px; display: grid; gap: 9px; z-index: 200; }
+    .toast { min-width: 250px; max-width: 360px; padding: 13px 15px; border: 2px solid rgba(84,63,120,.13); border-radius: 14px; background: #fff; box-shadow: var(--shadow); animation: toastIn .25s ease; }
+    .toast.success { border-left: 6px solid var(--green); }
+    .toast.error { border-left: 6px solid var(--red); }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    .mobile-menu { display: none; }
+
+    @media (max-width: 1050px) {
+      :root { --sidebar: 222px; }
+      .stats-grid, .grade-summary-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .dashboard-grid, .study-grid { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-level { grid-template-columns: auto 1fr; justify-content: start; }
+      .progress-ring { width: 125px; height: 125px; }
+      .progress-ring-inner { width: 95px; height: 95px; }
+    }
+
+    @media (max-width: 820px) {
+      .app-shell { display: block; }
+      .sidebar { transform: translateX(-105%); transition: transform .25s ease; }
+      body.menu-open .sidebar { transform: translateX(0); }
+      body.menu-open::after { content: ""; position: fixed; inset: 0; background: rgba(35,26,51,.42); z-index: 20; }
+      .main { padding: 18px 15px 35px; }
+      .mobile-menu { display: inline-grid; place-items: center; width: 43px; height: 43px; border: var(--border); border-radius: 12px; background: #fff; box-shadow: var(--shadow-soft); cursor: pointer; }
+      .topbar { align-items: flex-start; }
+      .privacy-pill { display: none; }
+      .curriculum-grid, .settings-grid { grid-template-columns: 1fr; }
+      .notes-layout { grid-template-columns: 1fr; }
+      .notes-sidebar { border-right: 0; border-bottom: 2px solid rgba(79,61,110,.09); }
+      .note-list { max-height: 230px; }
+      .note-meta { grid-template-columns: 1fr; }
+      .note-actions { justify-content: flex-end; }
+      .course-mini-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-actions .level-pill { display: none; }
+      .hero { padding: 24px 20px; }
+      .hero h2 { font-size: 2.2rem; }
+      .hero-level { grid-template-columns: 1fr; justify-items: center; }
+      .stats-grid, .grade-summary-grid { grid-template-columns: 1fr 1fr; }
+      .stat-card { min-height: 105px; padding: 14px; }
+      .stat-value { font-size: 1.45rem; }
+      .semester-banner { grid-template-columns: 1fr; }
+      .semester-number { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .toolbar-divider, .swatch-row { display: none; }
+      .note-editor { min-height: 430px; padding: 24px 20px 60px; }
+      .section-title { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      body.print-note .notes-editor-shell, body.print-note .notes-editor-shell * { visibility: visible; }
+      body.print-note .notes-editor-shell { position: absolute; inset: 0; width: 100%; }
+      body.print-note .toolbar, body.print-note .note-actions, body.print-note .note-save-line, body.print-note .note-meta select { display: none !important; }
+      body.print-note .note-title-input { border: 0; font-size: 1.5rem; }
+      body.print-note .note-editor { background: #fff; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Study portal navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🌸</div>
+        <div><strong>Brain Bloom</strong><small>Boba, beats & big-brain energy</small></div>
+      </div>
+
+      <div class="nav-label">My academy</div>
+      <nav class="nav-list">
+        <button class="nav-button active" data-view="dashboard"><span class="nav-icon">🏡</span>Dashboard</button>
+        <button class="nav-button" data-view="curriculum"><span class="nav-icon">🗺️</span>Curriculum Map</button>
+        <button class="nav-button" data-view="notes"><span class="nav-icon">📝</span>Study Notes</button>
+        <button class="nav-button" data-view="grades"><span class="nav-icon">🏆</span>Assignments & Grades</button>
+        <button class="nav-button" data-view="study"><span class="nav-icon">🎧</span>Study Lounge</button>
+      </nav>
+
+      <div class="nav-label">Control room</div>
+      <nav class="nav-list">
+        <button class="nav-button" data-view="settings"><span class="nav-icon">⚙️</span>Settings & Backup</button>
+      </nav>
+
+      <div class="sidebar-card">
+        <strong>🧋 Private study portal</strong>
+        <p>This page is marked noindex. Your school data stays inside this browser unless you export it.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+          <div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <p id="pageSubtitle">Your learning world, organized and ready.</p>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <div class="privacy-pill">🔒 Unlisted page</div>
+          <div class="level-pill"><span>🎮</span><span id="topLevel">Level 1</span></div>
+        </div>
+      </header>
+
+      <section class="view active" id="view-dashboard" aria-labelledby="pageTitle">
+        <div class="hero">
+          <div>
+            <p class="eyebrow" id="heroSemester">Semester 1 · Build the Foundation</p>
+            <h2 id="heroGreeting">Hey, Tanay—let’s grow that brilliant brain.</h2>
+            <p class="hero-copy" id="heroQuote">Your goal is not to know everything. It is to understand, communicate, and trust your ability to learn.</p>
+            <div class="button-row">
+              <button class="btn btn-primary" data-quick="note">✍🏾 Start a note</button>
+              <button class="btn btn-secondary" data-quick="assignment">✨ Add assignment</button>
+              <button class="btn btn-secondary" data-view-jump="study">🎧 Enter study lounge</button>
+            </div>
+          </div>
+          <div class="hero-level">
+            <div class="progress-ring" id="overallRing">
+              <div class="progress-ring-inner"><div><strong id="overallProgress">0%</strong><span>semester progress</span></div></div>
+            </div>
+            <div class="xp-copy"><span id="xpValue">0 XP</span><br><span id="xpNext">100 XP to Level 2</span></div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="card stat-card" data-sticker="🏆"><div class="stat-label">Current grade</div><div class="stat-value" id="dashGrade">—</div><div class="stat-detail">Across graded work</div></div>
+          <div class="card stat-card" data-sticker="📝"><div class="stat-label">Study notes</div><div class="stat-value" id="dashNotes">0</div><div class="stat-detail">Ideas captured</div></div>
+          <div class="card stat-card" data-sticker="⏱️"><div class="stat-label">Study time</div><div class="stat-value" id="dashMinutes">0m</div><div class="stat-detail">Logged this week</div></div>
+          <div class="card stat-card" data-sticker="🔥"><div class="stat-label">Learning streak</div><div class="stat-value" id="dashStreak">0 days</div><div class="stat-detail">Keep the combo going</div></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div>
+            <div class="card panel">
+              <div class="panel-header"><div><h3 id="currentCoursesTitle">Semester 1 Courses</h3><p>Tap any class to configure your real online course.</p></div><button class="btn btn-small btn-secondary" data-view-jump="curriculum">Full map</button></div>
+              <div class="course-mini-grid" id="dashboardCourses"></div>
+            </div>
+            <div class="card panel">
+              <div class="panel-header"><div><h3>Coming up</h3><p>Your nearest assignment deadlines.</p></div><button class="btn btn-small btn-secondary" data-quick="assignment">Add one</button></div>
+              <div class="list-stack" id="upcomingAssignments"></div>
+            </div>
+          </div>
+          <div>
+            <div class="card panel">
+              <div class="panel-header"><div><h3>Achievement shelf</h3><p>Small wins still count as XP.</p></div></div>
+              <div class="badge-grid" id="badgeGrid"></div>
+            </div>
+            <div class="card panel">
+              <div class="panel-header"><div><h3>Recent notes</h3><p>Jump back into your thinking.</p></div></div>
+              <div class="list-stack" id="recentNotes"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-curriculum">
+        <div class="section-title">
+          <div><p class="eyebrow">Eight-semester learning journey</p><h2>Curriculum Map</h2><p>Every semester builds on the one before it. The UX Career Lab travels with you the entire way.</p></div>
+          <button class="btn btn-primary" id="setCurrentSemester">Make this my current semester</button>
+        </div>
+        <div class="semester-tabs" id="semesterTabs" role="tablist" aria-label="Choose a semester"></div>
+        <div id="semesterContent"></div>
+      </section>
+
+      <section class="view" id="view-notes">
+        <div class="section-title">
+          <div><p class="eyebrow">Colorful thoughts live here</p><h2>Study Notes</h2><p>Write, highlight, organize, search, and return to what you learned.</p></div>
+          <button class="btn btn-primary" id="newNoteTop">✍🏾 New note</button>
+        </div>
+        <div class="card notes-layout">
+          <aside class="notes-sidebar">
+            <div class="notes-sidebar-header"><h3>Notebook</h3><button class="btn btn-small btn-icon btn-pink" id="newNoteSide" aria-label="Create a note">＋</button></div>
+            <div class="filter-stack">
+              <input class="search-input" id="noteSearch" type="search" placeholder="Search your notes…" aria-label="Search notes">
+              <select class="search-input" id="noteCourseFilter" aria-label="Filter notes by course"></select>
+            </div>
+            <div class="note-list" id="noteList"></div>
+          </aside>
+          <div class="notes-editor-shell" id="notesEditorShell">
+            <div class="note-meta">
+              <input class="note-title-input" id="noteTitle" placeholder="Give this note a title…" aria-label="Note title">
+              <select id="noteCourse" aria-label="Note course"></select>
+              <div class="note-actions">
+                <button class="btn btn-small btn-secondary" id="printNote" title="Print this note">🖨️</button>
+                <button class="btn btn-small btn-danger" id="deleteNote" title="Delete this note">🗑️</button>
+              </div>
+            </div>
+            <div class="toolbar" id="noteToolbar" aria-label="Note formatting toolbar">
+              <select id="formatBlock" title="Text style" aria-label="Text style">
+                <option value="p">Normal</option><option value="h2">Heading</option><option value="h3">Subheading</option><option value="blockquote">Quote</option>
+              </select>
+              <button type="button" data-cmd="bold" title="Bold"><strong>B</strong></button>
+              <button type="button" data-cmd="italic" title="Italic"><em>I</em></button>
+              <button type="button" data-cmd="underline" title="Underline"><u>U</u></button>
+              <button type="button" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+              <span class="toolbar-divider"></span>
+              <select id="bulletStyle" title="Bullet style" aria-label="Bullet style">
+                <option value="disc">• Dots</option><option value="boba">● Boba</option><option value="music">♫ Music</option><option value="spark">✦ Sparkles</option><option value="game">➜ Game arrows</option>
+              </select>
+              <select id="numberStyle" title="Numbered list style" aria-label="Numbered list style">
+                <option value="decimal">1. Numbers</option><option value="alpha">a. Letters</option><option value="roman">i. Roman</option>
+              </select>
+              <span class="toolbar-divider"></span>
+              <button type="button" data-cmd="justifyLeft" title="Align left">≡</button>
+              <button type="button" data-cmd="justifyCenter" title="Center">☰</button>
+              <button type="button" data-cmd="undo" title="Undo">↶</button>
+              <button type="button" data-cmd="redo" title="Redo">↷</button>
+              <span class="toolbar-divider"></span>
+              <label class="toolbar-label" title="Choose text color">A<div class="color-dot" style="--swatch:#7b61d1"></div><input type="color" id="textColor" value="#332a4a" aria-label="Text color"></label>
+              <label class="toolbar-label" title="Choose highlighter color">🖍️<div class="color-dot" style="--swatch:#ffe69a"></div><input type="color" id="highlightColor" value="#ffe69a" aria-label="Highlight color"></label>
+              <div class="swatch-row" aria-label="Quick highlighter colors">
+                <button class="swatch" type="button" data-highlight="#ffe69a" style="--swatch:#ffe69a" title="Yellow highlighter"></button>
+                <button class="swatch" type="button" data-highlight="#ffcddd" style="--swatch:#ffcddd" title="Pink highlighter"></button>
+                <button class="swatch" type="button" data-highlight="#ccefe2" style="--swatch:#ccefe2" title="Mint highlighter"></button>
+                <button class="swatch" type="button" data-highlight="#dfd3ff" style="--swatch:#dfd3ff" title="Lavender highlighter"></button>
+                <button class="swatch" type="button" data-highlight="#cfeaff" style="--swatch:#cfeaff" title="Blue highlighter"></button>
+              </div>
+              <span class="toolbar-divider"></span>
+              <button type="button" id="insertTemplate" title="Insert study-note template">📋 Template</button>
+              <select id="stickerInsert" title="Insert a study sticker" aria-label="Insert a study sticker">
+                <option value="">✨ Sticker</option><option>🧋</option><option>🎧</option><option>🎮</option><option>🎤</option><option>🌸</option><option>💡</option><option>🧠</option><option>✅</option><option>❓</option>
+              </select>
+              <button type="button" data-cmd="removeFormat" title="Clear formatting">Tx</button>
+            </div>
+            <div id="noteEditor" class="note-editor" contenteditable="true" role="textbox" aria-multiline="true" data-placeholder="Start typing what you learned…"></div>
+            <div class="note-save-line" id="noteSaveStatus">Your work saves automatically in this browser.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-grades">
+        <div class="section-title">
+          <div><p class="eyebrow">Receipts for your growth</p><h2>Assignments & Grades</h2><p>Track the work—not just the intention.</p></div>
+          <button class="btn btn-primary" id="addAssignmentTop">✨ Add assignment</button>
+        </div>
+        <div class="grade-summary-grid" id="gradeSummary"></div>
+        <div class="filter-bar">
+          <select id="assignmentSemesterFilter" aria-label="Filter assignments by semester"></select>
+          <select id="assignmentCourseFilter" aria-label="Filter assignments by course"></select>
+          <select id="assignmentStatusFilter" aria-label="Filter assignments by status"><option value="all">All statuses</option><option>Not started</option><option>In progress</option><option>Completed</option></select>
+          <input id="assignmentSearch" type="search" placeholder="Search assignments…" aria-label="Search assignments">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Assignment</th><th>Class</th><th>Type</th><th>Due</th><th>Status</th><th>Score</th><th>Grade</th><th></th></tr></thead>
+            <tbody id="assignmentTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="view" id="view-study">
+        <div class="section-title">
+          <div><p class="eyebrow">Focus mode: activated</p><h2>Study Lounge</h2><p>Use focused sessions, active recall, and short reflections so the information actually stays.</p></div>
+          <button class="btn btn-primary" id="logSessionTop">＋ Log study session</button>
+        </div>
+        <div class="study-grid">
+          <div>
+            <div class="card timer-card">
+              <div class="timer-mode-row"><button class="mode-chip active" data-minutes="25">25 Focus</button><button class="mode-chip" data-minutes="50">50 Deep Work</button><button class="mode-chip" data-minutes="5">5 Break</button></div>
+              <div class="timer-display" id="timerDisplay">25:00</div>
+              <select id="timerCourse" aria-label="Course for this study session"></select>
+              <div class="button-row" style="justify-content:center;"><button class="btn btn-primary" id="timerStart">▶ Start</button><button class="btn btn-secondary" id="timerReset">↺ Reset</button></div>
+              <p class="helper" id="timerMessage" style="margin-top:13px;">Pick a class, silence the chaos, and do one focused round.</p>
+            </div>
+            <div class="card recall-card">
+              <div class="panel-header"><div><h3>Recall Roulette 🎲</h3><p>Answer without looking at your notes first.</p></div></div>
+              <select class="search-input" id="recallCourse" aria-label="Course for recall prompt"></select>
+              <div class="recall-prompt" id="recallPrompt">Choose a class and spin for a recall challenge.</div>
+              <button class="btn btn-pink" id="spinRecall">Spin a prompt</button>
+            </div>
+          </div>
+          <div>
+            <div class="card study-log-card">
+              <div class="panel-header"><div><h3>This week's rhythm</h3><p id="weeklyStudyCopy">0 of 8 planned hours</p></div><strong id="weeklyStudyPercent">0%</strong></div>
+              <div class="weekly-meter"><span id="weeklyStudyBar" style="width:0%"></span></div>
+            </div>
+            <div class="card study-log-card" style="margin-top:18px;">
+              <div class="panel-header"><div><h3>Study log</h3><p>Minutes, topics, and what actually clicked.</p></div></div>
+              <div class="list-stack" id="studyLog"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-settings">
+        <div class="section-title"><div><p class="eyebrow">Make the academy yours</p><h2>Settings & Backup</h2><p>Choose your current term, learning goal, weekly rhythm, and keep a safe copy of your work.</p></div></div>
+        <div class="settings-grid">
+          <div class="card settings-card">
+            <h3>Student profile</h3><p>This information personalizes your dashboard.</p>
+            <form id="profileForm" class="form-grid">
+              <div class="field"><label for="studentName">Your name</label><input id="studentName" required></div>
+              <div class="field"><label for="currentSemesterSetting">Current semester</label><select id="currentSemesterSetting"></select></div>
+              <div class="field"><label for="termStart">Term start</label><input id="termStart" type="date"></div>
+              <div class="field"><label for="weeklyHours">Weekly study-hour goal</label><input id="weeklyHours" type="number" min="1" max="60" step="1"></div>
+              <div class="field full"><label for="learningGoal">Why I am doing this</label><textarea id="learningGoal"></textarea></div>
+              <div class="field full"><button class="btn btn-primary" type="submit">Save profile</button></div>
+            </form>
+          </div>
+          <div class="card settings-card">
+            <h3>Backup your school</h3><p>Because browser storage can be cleared, export a backup after important study sessions.</p>
+            <div class="button-row" style="margin-bottom:14px;"><button class="btn btn-mint" id="exportData">⬇ Export backup</button><label class="btn btn-secondary" for="importData" style="cursor:pointer;">⬆ Import backup</label><input id="importData" type="file" accept="application/json" hidden></div>
+            <div class="privacy-box"><strong>Where is my data?</strong><br>Your notes, assignments, grades, course links, and study logs are stored in this browser on this device. They are not sent anywhere by this page.</div>
+          </div>
+          <div class="card settings-card">
+            <h3>Hidden-page setup</h3><p>This file is designed to live outside your main portfolio navigation.</p>
+            <div class="privacy-box">
+              Suggested address: <strong>tanaybradley.com/brain-bloom-academy.php</strong><br><br>
+              The page includes search-engine noindex instructions. Do not link it in your header, footer, sitemap, or portfolio project grid. For true access protection, use password protection provided by your web host.
+            </div>
+          </div>
+          <div class="card settings-card">
+            <h3>Fresh start</h3><p>This removes every note, grade, link, assignment, and study session saved by this page.</p>
+            <button class="btn btn-danger" id="resetData">Reset all academy data</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="courseModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
+      <div class="modal-header"><h2 id="courseModalTitle">Configure class</h2><button class="modal-close" data-close="courseModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <div class="modal-course-overview" id="courseModalOverview"></div>
+        <form id="courseForm" class="form-grid">
+          <input id="courseIdField" type="hidden">
+          <div class="field full"><label for="selectedCourseName">Online course or resource name</label><input id="selectedCourseName" placeholder="Example: Grammar and Punctuation"></div>
+          <div class="field"><label for="courseProvider">Platform/provider</label><input id="courseProvider" placeholder="Coursera, Khan Academy, book…"></div>
+          <div class="field"><label for="courseInstructor">Instructor</label><input id="courseInstructor" placeholder="Optional"></div>
+          <div class="field full"><label for="courseUrl">Course link</label><input id="courseUrl" type="url" placeholder="https://…"></div>
+          <div class="field"><label for="courseStart">Start date</label><input id="courseStart" type="date"></div>
+          <div class="field"><label for="courseEnd">Target completion</label><input id="courseEnd" type="date"></div>
+          <div class="field"><label for="courseStatus">Status</label><select id="courseStatus"><option>Not started</option><option>In progress</option><option>Completed</option><option>Paused</option></select></div>
+          <div class="field"><label for="courseTarget">Target grade (%)</label><input id="courseTarget" type="number" min="0" max="100" value="85"></div>
+          <div class="field full"><label for="courseGoal">What I want to be able to do after this class</label><textarea id="courseGoal" placeholder="Write the outcome in your own words…"></textarea></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary" id="courseOpenLink">Open course link</button><button class="btn btn-secondary" id="courseAddNote">＋ Note</button><button class="btn btn-secondary" id="courseAddAssignment">＋ Assignment</button><button class="btn btn-primary" id="saveCourse">Save class</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="assignmentModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="assignmentModalTitle">
+      <div class="modal-header"><h2 id="assignmentModalTitle">Add assignment</h2><button class="modal-close" data-close="assignmentModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <form id="assignmentForm" class="form-grid">
+          <input id="assignmentId" type="hidden">
+          <div class="field full"><label for="assignmentTitle">Assignment name</label><input id="assignmentTitle" required placeholder="Example: Week 1 retrieval practice"></div>
+          <div class="field full"><label for="assignmentCourse">Class</label><select id="assignmentCourse" required></select></div>
+          <div class="field"><label for="assignmentType">Type</label><select id="assignmentType"><option>Practice</option><option>Reading</option><option>Quiz</option><option>Assignment</option><option>Essay</option><option>Presentation</option><option>Project</option><option>Exam</option></select></div>
+          <div class="field"><label for="assignmentDue">Due date</label><input id="assignmentDue" type="date"></div>
+          <div class="field"><label for="assignmentStatus">Status</label><select id="assignmentStatus"><option>Not started</option><option>In progress</option><option>Completed</option></select></div>
+          <div class="field"><label for="pointsPossible">Points possible</label><input id="pointsPossible" type="number" min="0" step="0.1" placeholder="100"></div>
+          <div class="field"><label for="pointsEarned">Points earned</label><input id="pointsEarned" type="number" min="0" step="0.1" placeholder="Leave blank until graded"></div>
+          <div class="field full"><label for="assignmentDetails">Directions or reflection</label><textarea id="assignmentDetails" placeholder="What does finished look like? What did you learn?"></textarea></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-danger" id="deleteAssignment" hidden>Delete</button><button class="btn btn-secondary" data-close="assignmentModal">Cancel</button><button class="btn btn-primary" id="saveAssignment">Save assignment</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="sessionModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sessionModalTitle">
+      <div class="modal-header"><h2 id="sessionModalTitle">Log study session</h2><button class="modal-close" data-close="sessionModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <form id="sessionForm" class="form-grid">
+          <div class="field"><label for="sessionDate">Date</label><input id="sessionDate" type="date" required></div>
+          <div class="field"><label for="sessionMinutes">Minutes</label><input id="sessionMinutes" type="number" min="1" max="600" required value="25"></div>
+          <div class="field full"><label for="sessionCourse">Class</label><select id="sessionCourse" required></select></div>
+          <div class="field full"><label for="sessionTopic">What did you study?</label><input id="sessionTopic" placeholder="Lesson, chapter, skill, or assignment"></div>
+          <div class="field full"><label for="sessionReflection">What clicked—or what is still confusing?</label><textarea id="sessionReflection"></textarea></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary" data-close="sessionModal">Cancel</button><button class="btn btn-primary" id="saveSession">Log session</button></div>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    "use strict";
+
+    const STORAGE_KEY = "brainBloomAcademy_v1";
+
+    const semesters = [
+      {
+        id: 1,
+        title: "Build the Foundation",
+        description: "Create the learning system, strengthen basic communication, rebuild math without shame, and begin the job transition immediately.",
+        colors: ["#e7ddff", "#ffe4ed"],
+        courses: ["LR101", "COM101", "MATH101", "UX101"]
+      },
+      {
+        id: 2,
+        title: "Understand & Explain",
+        description: "Move from recognizing information to identifying the main idea, explaining it clearly, and using numbers in everyday reasoning.",
+        colors: ["#dff6ee", "#ddecff"],
+        courses: ["READ201", "COM201", "MATH201", "UX201"]
+      },
+      {
+        id: 3,
+        title: "Think Critically & Write",
+        description: "Learn to test claims, separate evidence from assumption, build arguments, and write organized academic and professional work.",
+        colors: ["#fff0c8", "#ffe2e9"],
+        courses: ["THINK301", "LOGIC301", "WRITE301", "UX301"]
+      },
+      {
+        id: 4,
+        title: "Speak & Respond",
+        description: "Strengthen verbal organization, composure, psychology knowledge, interview responses, and the ability to think while being observed.",
+        colors: ["#f0e4ff", "#dff4ff"],
+        courses: ["SPEAK401", "PRESS401", "PSY401", "UX401"]
+      },
+      {
+        id: 5,
+        title: "Research & Data",
+        description: "Ask answerable questions, judge evidence, understand statistics, and turn research findings into useful recommendations.",
+        colors: ["#dcf7ed", "#fff0cb"],
+        courses: ["RES501", "STAT501", "DATA501", "UX501"]
+      },
+      {
+        id: 6,
+        title: "Understand the World",
+        description: "Build practical knowledge of history, civic life, economics, finance, science, and the business systems surrounding design work.",
+        colors: ["#dcecff", "#e9e0ff"],
+        courses: ["HIST601", "ECON601", "SCI601", "UX601"]
+      },
+      {
+        id: 7,
+        title: "Create & Interpret",
+        description: "Study how people create meaning through stories, music, art, writing, content, culture, and accessible experiences.",
+        colors: ["#ffe2ee", "#fff1c9"],
+        courses: ["LIT701", "ART701", "WRITE701", "UX701"]
+      },
+      {
+        id: 8,
+        title: "Lead & Launch",
+        description: "Combine communication, project leadership, business analysis, and UX into a confident capstone and career-launch system.",
+        colors: ["#e5dcff", "#d8f3e8"],
+        courses: ["PM801", "BA801", "COM801", "UX801"]
+      }
+    ];
+
+    const curriculum = [
+      { id:"LR101", semester:1, icon:"🧠", color:"#eee7ff", title:"Learning & Memory Foundations", focus:"Memory, retrieval, note-taking, study habits, and review systems.", outcomes:["Use active recall and spaced review", "Build notes that support understanding", "Recognize the difference between familiarity and mastery", "Create a repeatable weekly study system"], prereq:"Starting point" },
+      { id:"COM101", semester:1, icon:"✍🏾", color:"#ffe6ef", title:"Communication Foundations I", focus:"Grammar, punctuation, spelling, vocabulary, and clear sentence construction.", outcomes:["Identify the parts of a complete sentence", "Use essential punctuation accurately", "Improve spelling and vocabulary through context", "Write clear simple and compound sentences"], prereq:"Take alongside LR101" },
+      { id:"MATH101", semester:1, icon:"➗", color:"#e1f3ff", title:"Mathematics Foundations I", focus:"Four operations, order of operations, fractions, decimals, and percentages.", outcomes:["Calculate accurately without rushing", "Translate between fractions, decimals, and percentages", "Use estimation to check answers", "Explain each step in plain language"], prereq:"Starting point" },
+      { id:"UX101", semester:1, icon:"💼", color:"#e1f6ed", title:"UX Career Lab I", focus:"Career direction, résumé, portfolio audit, applications, and a sustainable job-search system.", outcomes:["Choose a focused UX-related target", "Audit existing case studies", "Create a weekly application rhythm", "Explain transferable work experience"], prereq:"Runs every semester" },
+
+      { id:"READ201", semester:2, icon:"📖", color:"#fff0cc", title:"Reading Comprehension & Active Notes", focus:"Main ideas, context clues, annotation, summarizing, paraphrasing, and delayed recall.", outcomes:["Identify main and supporting ideas", "Annotate without highlighting everything", "Summarize without copying", "Recall a text after time has passed"], prereq:"LR101 + COM101" },
+      { id:"COM201", semester:2, icon:"🧩", color:"#eee5ff", title:"Communication Foundations II", focus:"Paragraphs, sentence variety, transitions, vocabulary in context, and clear expression.", outcomes:["Write focused paragraphs", "Connect ideas with transitions", "Vary sentence length and structure", "Choose precise words without overcomplicating"], prereq:"COM101" },
+      { id:"MATH201", semester:2, icon:"📊", color:"#dff3ff", title:"Quantitative Reasoning", focus:"Ratios, proportions, percent change, introductory algebra, graphs, and tables.", outcomes:["Solve ratio and proportion problems", "Calculate percent increase and decrease", "Read graphs and tables accurately", "Use variables to solve basic problems"], prereq:"MATH101" },
+      { id:"UX201", semester:2, icon:"🔎", color:"#def5ea", title:"UX Career Lab II", focus:"UX research, analysis, problem statements, evidence, and rebuilding one case study.", outcomes:["Turn observations into findings", "Separate evidence from assumptions", "Write a clear problem statement", "Improve one portfolio case study"], prereq:"UX101 + READ201" },
+
+      { id:"THINK301", semester:3, icon:"💡", color:"#fff1ca", title:"Critical Thinking & Information Literacy", focus:"Facts, opinions, inferences, bias, source reliability, and misinformation.", outcomes:["Separate fact from interpretation", "Identify assumptions and bias", "Evaluate source credibility", "Pause before accepting or repeating a claim"], prereq:"READ201" },
+      { id:"LOGIC301", semester:3, icon:"⚖️", color:"#e9e1ff", title:"Logic, Argument & Evidence", focus:"Claims, reasons, evidence, assumptions, fallacies, counterarguments, and sound conclusions.", outcomes:["Map the structure of an argument", "Recognize common reasoning errors", "Use evidence that actually supports a claim", "Respond to counterarguments fairly"], prereq:"THINK301" },
+      { id:"WRITE301", semester:3, icon:"📝", color:"#ffe4ec", title:"Academic & Essay Writing", focus:"Thesis statements, outlines, cohesion, essays, evidence, revision, and citation basics.", outcomes:["Plan before drafting", "Write a defensible thesis", "Build cohesive body paragraphs", "Revise a complete essay using feedback"], prereq:"COM201 + READ201" },
+      { id:"UX301", semester:3, icon:"🎨", color:"#dff4eb", title:"UX Career Lab III", focus:"Evidence-based case studies, metrics, portfolio storytelling, and iteration.", outcomes:["Connect decisions to evidence", "Use an honest project narrative", "Explain impact with appropriate metrics", "Publish a stronger case study"], prereq:"UX201 + WRITE301" },
+
+      { id:"SPEAK401", semester:4, icon:"🎤", color:"#ffe6ef", title:"Public Speaking & Verbal Communication", focus:"Speech structure, delivery, vocal presence, audience awareness, and explaining without a full script.", outcomes:["Organize a beginning, middle, and end", "Speak from key points instead of memorizing", "Use examples to clarify ideas", "Review recordings and improve delivery"], prereq:"WRITE301" },
+      { id:"PRESS401", semester:4, icon:"⚡", color:"#fff0cc", title:"Thinking & Answering Under Pressure", focus:"Active listening, pausing, organizing answers, clarifying questions, Q&A, and interviews.", outcomes:["Use a pause–structure–respond method", "Ask clarifying questions without panic", "Answer unexpected follow-ups", "Separate confidence from knowing everything"], prereq:"SPEAK401 + LOGIC301" },
+      { id:"PSY401", semester:4, icon:"🪞", color:"#e9e1ff", title:"Psychology & Human Behavior", focus:"Cognition, motivation, perception, decision-making, social psychology, and learning.", outcomes:["Explain major influences on behavior", "Connect cognition to learning and memory", "Recognize common decision biases", "Apply psychology without diagnosing people"], prereq:"THINK301" },
+      { id:"UX401", semester:4, icon:"🗣️", color:"#def5ea", title:"UX Career Lab IV", focus:"Mock interviews, case-study presentations, design challenges, follow-up questions, and feedback.", outcomes:["Present a case study clearly", "Answer behavioral questions with evidence", "Think aloud during a challenge", "Receive feedback without losing your point of view"], prereq:"UX301 + SPEAK401" },
+
+      { id:"RES501", semester:5, icon:"🔬", color:"#dff4ff", title:"Research Methods & Evidence", focus:"Research questions, qualitative and quantitative methods, sampling, ethics, synthesis, and limitations.", outcomes:["Write an answerable research question", "Choose an appropriate research method", "Recognize sampling and study limitations", "Synthesize multiple sources responsibly"], prereq:"THINK301 + WRITE301" },
+      { id:"STAT501", semester:5, icon:"📈", color:"#fff0cc", title:"Statistics & Probability", focus:"Averages, distributions, probability, variation, correlation, causation, and interpreting results.", outcomes:["Calculate and interpret common averages", "Understand variability and basic probability", "Distinguish correlation from causation", "Question misleading statistics"], prereq:"MATH201" },
+      { id:"DATA501", semester:5, icon:"💻", color:"#e8e0ff", title:"Excel, Data Literacy & Visualization", focus:"Formulas, tables, charts, pivot tables, Power BI basics, and data storytelling.", outcomes:["Clean and organize a small dataset", "Use essential formulas and pivot tables", "Choose an honest chart", "Explain what data does and does not show"], prereq:"MATH201 + STAT501" },
+      { id:"UX501", semester:5, icon:"🧪", color:"#dcf5e9", title:"UX Career Lab V", focus:"A complete research plan, findings analysis, UX metrics, data storytelling, and recommendations.", outcomes:["Plan a small research study", "Code or group qualitative findings", "Connect findings to recommendations", "Present a research-backed decision"], prereq:"RES501 + DATA501" },
+
+      { id:"HIST601", semester:6, icon:"🏛️", color:"#fff0cf", title:"History & Civic Understanding", focus:"Chronological reasoning, primary sources, major U.S. and world developments, government, and civic systems.", outcomes:["Place events in context", "Compare primary and secondary sources", "Explain basic branches and levels of government", "Connect past events to present systems"], prereq:"READ201 + THINK301" },
+      { id:"ECON601", semester:6, icon:"💵", color:"#def4e9", title:"Economics, Personal Finance & Business Math", focus:"Supply and demand, inflation, budgeting, interest, taxes, profit, margin, and financial decisions.", outcomes:["Explain foundational economic ideas", "Calculate interest, profit, and margin", "Compare financial options", "Build decisions around goals instead of pressure"], prereq:"MATH201" },
+      { id:"SCI601", semester:6, icon:"🌎", color:"#dfeeff", title:"Life & Physical Science Literacy", focus:"Scientific method, biology, health, chemistry, physics, earth science, and evaluating scientific claims.", outcomes:["Explain how scientific evidence develops", "Understand foundational concepts across sciences", "Interpret a basic scientific study", "Recognize exaggerated health or science claims"], prereq:"RES501 + STAT501" },
+      { id:"UX601", semester:6, icon:"🧭", color:"#e9e1ff", title:"UX Career Lab VI", focus:"Business and process analysis, stakeholder mapping, workflows, requirements, and service blueprints.", outcomes:["Map a current-state process", "Identify root causes instead of symptoms", "Write clear requirements", "Connect user needs with business operations"], prereq:"UX501 + ECON601" },
+
+      { id:"LIT701", semester:7, icon:"📚", color:"#ffe4ed", title:"Literature, Storytelling & Analysis", focus:"Close reading, themes, character, symbolism, narrative structure, interpretation, and written analysis.", outcomes:["Read for meaning beyond plot", "Support an interpretation with textual evidence", "Analyze character and theme", "Explain how structure changes impact"], prereq:"WRITE301 + THINK301" },
+      { id:"ART701", semester:7, icon:"🎶", color:"#fff0c9", title:"Music, Arts & Cultural Literacy", focus:"Music history, visual arts, performance, interpretation, and cultural context.", outcomes:["Describe artistic choices with specific language", "Place selected works in cultural context", "Compare different interpretations", "Connect artistic form to emotional effect"], prereq:"HIST601" },
+      { id:"WRITE701", semester:7, icon:"💌", color:"#e7ddff", title:"Professional & Creative Communication", focus:"Emails, reports, proposals, instructions, SOPs, creative writing, voice, editing, and proofreading.", outcomes:["Match tone to purpose and audience", "Write clear workplace documents", "Develop a distinct creative voice", "Edit for clarity, concision, and correctness"], prereq:"WRITE301 + COM201" },
+      { id:"UX701", semester:7, icon:"🌈", color:"#def4ea", title:"UX Career Lab VII", focus:"Content design, storytelling, portfolio voice, accessibility, and cross-functional communication.", outcomes:["Improve interface and case-study content", "Explain accessibility decisions", "Adapt communication for different partners", "Create a cohesive professional voice"], prereq:"UX601 + WRITE701" },
+
+      { id:"PM801", semester:8, icon:"🗓️", color:"#dfeeff", title:"Project Management & Agile Foundations", focus:"Scope, timelines, risk, stakeholders, Agile, Scrum, Kanban, and continuous improvement.", outcomes:["Break work into realistic tasks", "Track scope, risk, and dependencies", "Explain core Agile practices", "Choose a workflow that fits the work"], prereq:"UX601" },
+      { id:"BA801", semester:8, icon:"🧠", color:"#fff0ce", title:"Business & Process Analysis", focus:"Process mapping, root-cause analysis, requirements, KPIs, change, and solution evaluation.", outcomes:["Investigate a business problem systematically", "Define useful requirements and measures", "Compare possible solutions", "Present a defensible recommendation"], prereq:"ECON601 + UX601" },
+      { id:"COM801", semester:8, icon:"🤝", color:"#ffe2ec", title:"Advanced Communication & Leadership", focus:"Facilitation, persuasion, negotiation, conflict, presentations, feedback, and executive summaries.", outcomes:["Facilitate a structured discussion", "Disagree without losing clarity", "Write an executive-level summary", "Communicate a decision and its reasoning"], prereq:"PRESS401 + WRITE701" },
+      { id:"UX801", semester:8, icon:"🚀", color:"#dcf5e8", title:"UX Career Lab Capstone", focus:"A polished portfolio, complete capstone, job-search campaign, mock interview, and 30/60/90-day plan.", outcomes:["Publish a coherent portfolio", "Complete one evidence-rich capstone", "Run a focused application campaign", "Enter the next role with a learning plan"], prereq:"All previous UX Career Labs" }
+    ];
+
+    const defaultState = () => ({
+      version: 1,
+      profile: {
+        name: "Tanay",
+        currentSemester: 1,
+        termStart: "",
+        weeklyHours: 8,
+        learningGoal: "Build a mind I trust: understand information, communicate clearly, think under pressure, strengthen my career, and keep learning for life."
+      },
+      coursePrefs: {},
+      assignments: [],
+      notes: [],
+      studySessions: [],
+      activeNoteId: null
+    });
+
+    let state = loadState();
+    let displayedSemester = state.profile.currentSemester;
+    let noteSaveTimer = null;
+    let savedRange = null;
+    let timer = { totalSeconds: 25 * 60, remaining: 25 * 60, minutes: 25, running: false, interval: null };
+
+    const viewMeta = {
+      dashboard: ["Dashboard", "Your learning world, organized and ready."],
+      curriculum: ["Curriculum Map", "See what comes next and why it comes next."],
+      notes: ["Study Notes", "Capture ideas in a notebook that actually feels like you."],
+      grades: ["Assignments & Grades", "Track evidence of progress without turning learning into punishment."],
+      study: ["Study Lounge", "Focus, retrieve, explain, repeat."],
+      settings: ["Settings & Backup", "Keep your academy personal, private, and backed up."]
+    };
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return defaultState();
+        const parsed = JSON.parse(raw);
+        const fresh = defaultState();
+        return {
+          ...fresh,
+          ...parsed,
+          profile: { ...fresh.profile, ...(parsed.profile || {}) },
+          coursePrefs: parsed.coursePrefs || {},
+          assignments: Array.isArray(parsed.assignments) ? parsed.assignments : [],
+          notes: Array.isArray(parsed.notes) ? parsed.notes : [],
+          studySessions: Array.isArray(parsed.studySessions) ? parsed.studySessions : []
+        };
+      } catch (error) {
+        console.warn("Could not load Brain Bloom data", error);
+        return defaultState();
+      }
+    }
+
+    function saveState(message = "Saved") {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      const status = document.getElementById("noteSaveStatus");
+      if (status) status.textContent = `${message} · ${new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})}`;
+    }
+
+    function uid(prefix) {
+      return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    }
+
+    function esc(value) {
+      return String(value ?? "").replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
+    }
+
+    function safeUrl(value) {
+      if (!value) return "";
+      try {
+        const url = new URL(value, window.location.href);
+        return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+      } catch { return ""; }
+    }
+
+    function courseById(id) { return curriculum.find(course => course.id === id); }
+    function semesterById(id) { return semesters.find(semester => semester.id === Number(id)); }
+    function prefFor(id) { return { status:"Not started", targetGrade:85, ...state.coursePrefs[id] }; }
+
+    function courseOptions(selected = "", includeAll = false) {
+      const groups = semesters.map(semester => {
+        const options = semester.courses.map(id => {
+          const course = courseById(id);
+          return `<option value="${course.id}" ${course.id === selected ? "selected" : ""}>${esc(course.id)} · ${esc(course.title)}</option>`;
+        }).join("");
+        return `<optgroup label="Semester ${semester.id}: ${esc(semester.title)}">${options}</optgroup>`;
+      }).join("");
+      return `${includeAll ? '<option value="all">All classes</option>' : ""}${groups}`;
+    }
+
+    function formatDate(value, fallback = "No date") {
+      if (!value) return fallback;
+      const date = new Date(`${value}T12:00:00`);
+      return Number.isNaN(date.getTime()) ? fallback : date.toLocaleDateString(undefined, { month:"short", day:"numeric", year:"numeric" });
+    }
+
+    function localDateString(date = new Date()) {
+      const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+      return local.toISOString().slice(0,10);
+    }
+
+    function getCourseAssignments(courseId) { return state.assignments.filter(item => item.courseId === courseId); }
+
+    function courseProgress(courseId) {
+      const assignments = getCourseAssignments(courseId);
+      if (assignments.length) return Math.round(assignments.filter(item => item.status === "Completed").length / assignments.length * 100);
+      const status = prefFor(courseId).status;
+      return status === "Completed" ? 100 : status === "In progress" ? 35 : status === "Paused" ? 15 : 0;
+    }
+
+    function courseGrade(courseId) {
+      const graded = getCourseAssignments(courseId).filter(item => Number(item.possible) > 0 && item.earned !== "" && item.earned !== null && item.earned !== undefined);
+      if (!graded.length) return null;
+      const earned = graded.reduce((sum, item) => sum + Number(item.earned), 0);
+      const possible = graded.reduce((sum, item) => sum + Number(item.possible), 0);
+      return possible ? earned / possible * 100 : null;
+    }
+
+    function aggregateGrade(courseIds = curriculum.map(c => c.id)) {
+      const graded = state.assignments.filter(item => courseIds.includes(item.courseId) && Number(item.possible) > 0 && item.earned !== "" && item.earned !== null && item.earned !== undefined);
+      if (!graded.length) return null;
+      const earned = graded.reduce((sum, item) => sum + Number(item.earned), 0);
+      const possible = graded.reduce((sum, item) => sum + Number(item.possible), 0);
+      return possible ? earned / possible * 100 : null;
+    }
+
+    function letterGrade(percentage) {
+      if (percentage === null || Number.isNaN(percentage)) return "—";
+      if (percentage >= 90) return "A";
+      if (percentage >= 80) return "B";
+      if (percentage >= 70) return "C";
+      if (percentage >= 60) return "D";
+      return "F";
+    }
+
+    function semesterProgress(id) {
+      const semester = semesterById(id);
+      if (!semester) return 0;
+      return Math.round(semester.courses.reduce((sum, courseId) => sum + courseProgress(courseId), 0) / semester.courses.length);
+    }
+
+    function weeklyMinutes() {
+      const now = new Date();
+      const day = (now.getDay() + 6) % 7;
+      const monday = new Date(now);
+      monday.setHours(0,0,0,0);
+      monday.setDate(now.getDate() - day);
+      return state.studySessions.filter(session => new Date(`${session.date}T12:00:00`) >= monday).reduce((sum, session) => sum + Number(session.minutes || 0), 0);
+    }
+
+    function learningStreak() {
+      const dates = new Set([
+        ...state.studySessions.map(session => session.date),
+        ...state.notes.map(note => note.updatedAt ? localDateString(new Date(note.updatedAt)) : "")
+      ].filter(Boolean));
+      let streak = 0;
+      const cursor = new Date();
+      cursor.setHours(12,0,0,0);
+      if (!dates.has(localDateString(cursor))) cursor.setDate(cursor.getDate() - 1);
+      while (dates.has(localDateString(cursor))) { streak++; cursor.setDate(cursor.getDate() - 1); }
+      return streak;
+    }
+
+    function xpTotal() {
+      const completed = state.assignments.filter(item => item.status === "Completed").length;
+      const minutes = state.studySessions.reduce((sum, session) => sum + Number(session.minutes || 0), 0);
+      const configured = Object.values(state.coursePrefs).filter(pref => pref.selectedName || pref.url).length;
+      return completed * 30 + state.notes.length * 12 + Math.floor(minutes / 10) * 5 + configured * 8;
+    }
+
+    function levelInfo() {
+      const xp = xpTotal();
+      const level = Math.floor(xp / 100) + 1;
+      const inLevel = xp % 100;
+      return { xp, level, inLevel, next: 100 - inLevel };
+    }
+
+    function toast(message, type = "success") {
+      const node = document.createElement("div");
+      node.className = `toast ${type}`;
+      node.textContent = message;
+      document.getElementById("toastRegion").appendChild(node);
+      setTimeout(() => node.remove(), 3300);
+    }
+
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.hidden = false;
+      document.body.style.overflow = "hidden";
+      setTimeout(() => modal.querySelector("input:not([type=hidden]), select, button")?.focus(), 20);
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).hidden = true;
+      if (![...document.querySelectorAll(".modal-backdrop")].some(modal => !modal.hidden)) document.body.style.overflow = "";
+    }
+
+    function showView(name) {
+      if (!viewMeta[name]) name = "dashboard";
+      document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === `view-${name}`));
+      document.querySelectorAll(".nav-button[data-view]").forEach(button => button.classList.toggle("active", button.dataset.view === name));
+      document.getElementById("pageTitle").textContent = viewMeta[name][0];
+      document.getElementById("pageSubtitle").textContent = viewMeta[name][1];
+      location.hash = name === "dashboard" ? "" : name;
+      document.body.classList.remove("menu-open");
+      window.scrollTo({ top:0, behavior:"smooth" });
+      if (name === "dashboard") renderDashboard();
+      if (name === "curriculum") renderCurriculum();
+      if (name === "notes") renderNotes();
+      if (name === "grades") renderGrades();
+      if (name === "study") renderStudy();
+      if (name === "settings") renderSettings();
+    }
+
+    function renderAll() {
+      renderDashboard();
+      renderCurriculum();
+      populateSharedCourseSelects();
+      renderNotes();
+      renderGrades();
+      renderStudy();
+      renderSettings();
+      const info = levelInfo();
+      document.getElementById("topLevel").textContent = `Level ${info.level}`;
+    }
+
+    function renderDashboard() {
+      const semester = semesterById(state.profile.currentSemester);
+      const progress = semesterProgress(semester.id);
+      const grade = aggregateGrade(semester.courses);
+      const info = levelInfo();
+      document.getElementById("heroSemester").textContent = `Semester ${semester.id} · ${semester.title}`;
+      document.getElementById("heroGreeting").textContent = `Hey, ${state.profile.name || "student"}—let’s grow that brilliant brain.`;
+      document.getElementById("heroQuote").textContent = state.profile.learningGoal || "Understand deeply. Communicate clearly. Keep growing.";
+      document.getElementById("overallProgress").textContent = `${progress}%`;
+      document.getElementById("overallRing").style.setProperty("--progress", `${progress * 3.6}deg`);
+      document.getElementById("xpValue").textContent = `${info.xp} XP · Level ${info.level}`;
+      document.getElementById("xpNext").textContent = `${info.next} XP to Level ${info.level + 1}`;
+      document.getElementById("dashGrade").textContent = grade === null ? "—" : `${grade.toFixed(1)}%`;
+      document.getElementById("dashNotes").textContent = state.notes.length;
+      const minutes = weeklyMinutes();
+      document.getElementById("dashMinutes").textContent = minutes >= 60 ? `${Math.floor(minutes/60)}h ${minutes%60}m` : `${minutes}m`;
+      document.getElementById("dashStreak").textContent = `${learningStreak()} days`;
+      document.getElementById("currentCoursesTitle").textContent = `Semester ${semester.id} Courses`;
+
+      document.getElementById("dashboardCourses").innerHTML = semester.courses.map(id => {
+        const course = courseById(id); const pref = prefFor(id); const pct = courseProgress(id);
+        return `<article class="course-mini" style="--course-color:${course.color}" data-course-open="${course.id}" tabindex="0" role="button" aria-label="Open ${esc(course.title)}">
+          <div class="course-mini-icon">${course.icon}</div><span class="course-code">${course.id}</span><h4>${esc(course.title)}</h4>
+          <small>${pref.selectedName ? esc(pref.selectedName) : "Choose your online course"}</small>
+          <div class="tiny-progress"><span style="width:${pct}%"></span></div><div class="tiny-progress-copy">${pct}% complete · ${esc(pref.status)}</div>
+        </article>`;
+      }).join("");
+
+      const upcoming = state.assignments.filter(item => item.status !== "Completed" && item.due).sort((a,b) => a.due.localeCompare(b.due)).slice(0,5);
+      document.getElementById("upcomingAssignments").innerHTML = upcoming.length ? upcoming.map(item => {
+        const course = courseById(item.courseId);
+        return `<div class="list-item"><div class="list-item-icon">${course?.icon || "📌"}</div><div><strong>${esc(item.title)}</strong><small>${esc(course?.title || "Unknown class")} · ${formatDate(item.due)}</small></div><button class="btn btn-small btn-secondary" data-assignment-edit="${item.id}">Edit</button></div>`;
+      }).join("") : emptyState("📅", "No deadlines yet", "Add your first assignment when you choose a course.");
+
+      const recent = [...state.notes].sort((a,b) => (b.updatedAt || "").localeCompare(a.updatedAt || "")).slice(0,4);
+      document.getElementById("recentNotes").innerHTML = recent.length ? recent.map(note => {
+        const course = courseById(note.courseId);
+        return `<button class="list-item" style="width:100%; text-align:left; cursor:pointer;" data-note-open="${note.id}"><div class="list-item-icon">${course?.icon || "📝"}</div><div><strong>${esc(note.title || "Untitled note")}</strong><small>${esc(course?.title || "Unfiled")} · ${new Date(note.updatedAt).toLocaleDateString()}</small></div><span>›</span></button>`;
+      }).join("") : emptyState("📝", "Your notebook is waiting", "Create a note and start collecting evidence of your growth.");
+
+      const badges = [
+        { icon:"🧋", title:"First Sip", text:"Create your first note", earned:state.notes.length >= 1 },
+        { icon:"🎧", title:"Beat Drop", text:"Log 60 study minutes", earned:state.studySessions.reduce((s,x)=>s+Number(x.minutes||0),0) >= 60 },
+        { icon:"⚔️", title:"Boss Battle", text:"Complete one project or exam", earned:state.assignments.some(x=>x.status === "Completed" && ["Project","Exam","Presentation"].includes(x.type)) },
+        { icon:"🎮", title:"Five-Hit Combo", text:"Complete five assignments", earned:state.assignments.filter(x=>x.status === "Completed").length >= 5 },
+        { icon:"🗺️", title:"Map Maker", text:"Configure every class this term", earned:semester.courses.every(id => prefFor(id).selectedName || prefFor(id).url) },
+        { icon:"🌸", title:"Full Bloom", text:"Complete a semester", earned:semester.courses.every(id => prefFor(id).status === "Completed") }
+      ];
+      document.getElementById("badgeGrid").innerHTML = badges.map(badge => `<div class="badge ${badge.earned ? "earned" : ""}"><span class="badge-icon">${badge.icon}</span><div><strong>${esc(badge.title)}</strong><small>${esc(badge.text)}</small></div></div>`).join("");
+      document.getElementById("topLevel").textContent = `Level ${info.level}`;
+    }
+
+    function emptyState(icon, title, copy) { return `<div class="empty-state"><span class="big-emoji">${icon}</span><strong>${esc(title)}</strong><br><small>${esc(copy)}</small></div>`; }
+
+    function renderCurriculum() {
+      document.getElementById("semesterTabs").innerHTML = semesters.map(semester => `<button class="semester-tab ${semester.id === displayedSemester ? "active" : ""}" data-semester="${semester.id}" role="tab" aria-selected="${semester.id === displayedSemester}">Semester ${semester.id}</button>`).join("");
+      const semester = semesterById(displayedSemester);
+      const progress = semesterProgress(semester.id);
+      document.getElementById("setCurrentSemester").textContent = semester.id === state.profile.currentSemester ? "✓ Current semester" : "Make this my current semester";
+      document.getElementById("setCurrentSemester").disabled = semester.id === state.profile.currentSemester;
+      document.getElementById("semesterContent").innerHTML = `
+        <div class="semester-banner" style="--semester-a:${semester.colors[0]}; --semester-b:${semester.colors[1]}">
+          <div><p class="eyebrow">Semester ${semester.id} · ${progress}% complete</p><h3>${esc(semester.title)}</h3><p>${esc(semester.description)}</p></div><div class="semester-number">0${semester.id}</div>
+        </div>
+        <div class="curriculum-grid">${semester.courses.map(id => curriculumCourseCard(courseById(id))).join("")}</div>`;
+    }
+
+    function curriculumCourseCard(course) {
+      const pref = prefFor(course.id); const grade = courseGrade(course.id); const progress = courseProgress(course.id);
+      const statusClass = pref.status.toLowerCase().replaceAll(" ", "-");
+      return `<article class="card curriculum-card" data-icon="${course.icon}">
+        <div class="course-topline"><span class="course-code">${course.id} · TAKE AFTER: ${esc(course.prereq)}</span><span class="course-status ${statusClass}">${esc(pref.status)}</span></div>
+        <h4>${course.icon} ${esc(course.title)}</h4><p>${esc(course.focus)}</p>
+        <ul class="outcome-list">${course.outcomes.map(outcome => `<li>${esc(outcome)}</li>`).join("")}</ul>
+        <div class="course-configured">🔗 ${pref.selectedName ? `${esc(pref.selectedName)}${pref.provider ? ` · ${esc(pref.provider)}` : ""}` : "Course/resource not chosen yet"}</div>
+        <div class="tiny-progress"><span style="width:${progress}%"></span></div><div class="tiny-progress-copy">${progress}% complete${grade === null ? "" : ` · ${grade.toFixed(1)}% (${letterGrade(grade)})`}</div>
+        <div class="button-row" style="margin-top:13px;"><button class="btn btn-small btn-primary" data-course-open="${course.id}">Configure class</button><button class="btn btn-small btn-secondary" data-course-note="${course.id}">Open notes</button></div>
+      </article>`;
+    }
+
+    function openCourse(courseId) {
+      const course = courseById(courseId); if (!course) return;
+      const pref = prefFor(courseId);
+      document.getElementById("courseModalTitle").textContent = `${course.id} · ${course.title}`;
+      document.getElementById("courseModalOverview").innerHTML = `<strong>${course.icon} Curriculum class</strong><p>${esc(course.focus)}</p><small><strong>Sequence:</strong> ${esc(course.prereq)}</small>`;
+      document.getElementById("courseIdField").value = courseId;
+      document.getElementById("selectedCourseName").value = pref.selectedName || "";
+      document.getElementById("courseProvider").value = pref.provider || "";
+      document.getElementById("courseInstructor").value = pref.instructor || "";
+      document.getElementById("courseUrl").value = pref.url || "";
+      document.getElementById("courseStart").value = pref.start || "";
+      document.getElementById("courseEnd").value = pref.end || "";
+      document.getElementById("courseStatus").value = pref.status || "Not started";
+      document.getElementById("courseTarget").value = pref.targetGrade ?? 85;
+      document.getElementById("courseGoal").value = pref.goal || "";
+      document.getElementById("courseOpenLink").disabled = !safeUrl(pref.url);
+      openModal("courseModal");
+    }
+
+    function saveCourse() {
+      const id = document.getElementById("courseIdField").value;
+      if (!courseById(id)) return;
+      state.coursePrefs[id] = {
+        selectedName: document.getElementById("selectedCourseName").value.trim(),
+        provider: document.getElementById("courseProvider").value.trim(),
+        instructor: document.getElementById("courseInstructor").value.trim(),
+        url: safeUrl(document.getElementById("courseUrl").value.trim()),
+        start: document.getElementById("courseStart").value,
+        end: document.getElementById("courseEnd").value,
+        status: document.getElementById("courseStatus").value,
+        targetGrade: Number(document.getElementById("courseTarget").value || 85),
+        goal: document.getElementById("courseGoal").value.trim()
+      };
+      saveState("Class saved"); closeModal("courseModal"); renderAll(); toast("Class details saved ✨");
+    }
+
+    function populateSharedCourseSelects() {
+      ["noteCourse", "timerCourse", "recallCourse", "assignmentCourse", "sessionCourse"].forEach(id => {
+        const element = document.getElementById(id); if (!element) return;
+        const selected = element.value;
+        element.innerHTML = courseOptions(selected);
+      });
+      const filter = document.getElementById("noteCourseFilter");
+      if (filter) { const selected = filter.value || "all"; filter.innerHTML = courseOptions(selected, true); filter.value = selected; }
+    }
+
+    function createNote(courseId = semesterById(state.profile.currentSemester).courses[0]) {
+      const note = { id:uid("note"), title:"New study note", courseId, content:"", tags:[], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() };
+      state.notes.unshift(note); state.activeNoteId = note.id; saveState("New note created");
+      showView("notes"); setTimeout(() => { document.getElementById("noteTitle").select(); }, 30);
+    }
+
+    function currentNote() { return state.notes.find(note => note.id === state.activeNoteId); }
+
+    function renderNotes() {
+      populateSharedCourseSelects();
+      if (!state.activeNoteId && state.notes.length) state.activeNoteId = state.notes[0].id;
+      if (state.activeNoteId && !state.notes.some(note => note.id === state.activeNoteId)) state.activeNoteId = state.notes[0]?.id || null;
+      renderNoteList();
+      const note = currentNote();
+      const inputs = ["noteTitle", "noteCourse", "noteEditor", "deleteNote", "printNote", "noteToolbar"];
+      inputs.forEach(id => { const element = document.getElementById(id); if (element) element.style.pointerEvents = note ? "" : "none"; });
+      if (!note) {
+        document.getElementById("noteTitle").value = "";
+        document.getElementById("noteEditor").innerHTML = "";
+        document.getElementById("noteSaveStatus").textContent = "Create a note to begin.";
+        return;
+      }
+      document.getElementById("noteTitle").value = note.title || "";
+      document.getElementById("noteCourse").value = note.courseId;
+      document.getElementById("noteEditor").innerHTML = sanitizeNoteHTML(note.content || "");
+      document.getElementById("noteSaveStatus").textContent = `Last updated ${new Date(note.updatedAt).toLocaleString()}`;
+    }
+
+    function renderNoteList() {
+      const query = document.getElementById("noteSearch").value.trim().toLowerCase();
+      const courseFilter = document.getElementById("noteCourseFilter").value || "all";
+      const notes = [...state.notes].filter(note => {
+        const plain = stripHTML(note.content || "").toLowerCase();
+        return (courseFilter === "all" || note.courseId === courseFilter) && (!query || `${note.title} ${plain}`.toLowerCase().includes(query));
+      }).sort((a,b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""));
+      document.getElementById("noteList").innerHTML = notes.length ? notes.map(note => {
+        const course = courseById(note.courseId);
+        return `<button class="note-list-item ${note.id === state.activeNoteId ? "active" : ""}" data-note-select="${note.id}"><strong><span class="note-course-dot" style="--dot:${course?.color || "#b8a5ff"}"></span>${esc(note.title || "Untitled")}</strong><small>${esc(course?.id || "Unfiled")} · ${new Date(note.updatedAt).toLocaleDateString()}</small></button>`;
+      }).join("") : emptyState("🔍", "No notes found", "Try another search or create a new note.");
+    }
+
+    function stripHTML(html) { const div = document.createElement("div"); div.innerHTML = html; return div.textContent || ""; }
+
+    function sanitizeNoteHTML(html) {
+      const template = document.createElement("template");
+      template.innerHTML = String(html || "");
+      const allowed = new Set(["P","DIV","BR","STRONG","B","EM","I","U","S","UL","OL","LI","H2","H3","BLOCKQUOTE","SPAN","MARK","FONT"]);
+      const walk = node => {
+        [...node.children].forEach(child => {
+          if (!allowed.has(child.tagName)) {
+            walk(child);
+            child.replaceWith(...child.childNodes);
+            return;
+          }
+          [...child.attributes].forEach(attr => {
+            if (attr.name === "class") {
+              const okay = /^(bullet-(boba|music|spark|game)|alpha|roman)$/.test(attr.value);
+              if (!okay) child.removeAttribute(attr.name);
+            } else if (child.tagName === "FONT" && attr.name === "color") {
+              if (!/^(#[0-9a-f]{3,8}|rgb\([\d\s,.]+\))$/i.test(attr.value)) child.removeAttribute(attr.name);
+            } else if (attr.name === "style") {
+              const safe = attr.value.split(";").map(x=>x.trim()).filter(rule => /^(color|background-color|text-align):\s*(#[0-9a-f]{3,8}|rgb\([\d\s,.]+\)|left|center|right)$/i.test(rule)).join(";");
+              safe ? child.setAttribute("style", safe) : child.removeAttribute("style");
+            } else child.removeAttribute(attr.name);
+          });
+          walk(child);
+        });
+      };
+      walk(template.content);
+      return template.innerHTML;
+    }
+
+    function queueNoteSave() {
+      clearTimeout(noteSaveTimer);
+      document.getElementById("noteSaveStatus").textContent = "Saving…";
+      noteSaveTimer = setTimeout(saveActiveNote, 500);
+    }
+
+    function saveActiveNote() {
+      const note = currentNote(); if (!note) return;
+      note.title = document.getElementById("noteTitle").value.trim() || "Untitled note";
+      note.courseId = document.getElementById("noteCourse").value;
+      note.content = sanitizeNoteHTML(document.getElementById("noteEditor").innerHTML);
+      note.updatedAt = new Date().toISOString();
+      saveState("Note saved"); renderNoteList();
+    }
+
+    function selectNote(id) { saveActiveNote(); state.activeNoteId = id; saveState(); renderNotes(); }
+
+    function deleteActiveNote() {
+      const note = currentNote(); if (!note) return;
+      if (!confirm(`Delete “${note.title || "Untitled note"}”? This cannot be undone unless it exists in an exported backup.`)) return;
+      state.notes = state.notes.filter(item => item.id !== note.id);
+      state.activeNoteId = state.notes[0]?.id || null;
+      saveState("Note deleted"); renderNotes(); renderDashboard(); toast("Note deleted");
+    }
+
+    function rememberSelection() {
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+      const range = selection.getRangeAt(0);
+      if (document.getElementById("noteEditor").contains(range.commonAncestorContainer)) savedRange = range.cloneRange();
+    }
+
+    function restoreSelection() {
+      if (!savedRange) { document.getElementById("noteEditor").focus(); return; }
+      const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(savedRange); document.getElementById("noteEditor").focus();
+    }
+
+    function runCommand(command, value = null) {
+      restoreSelection(); document.execCommand(command, false, value); rememberSelection(); queueNoteSave();
+    }
+
+    function applyBullet(style, ordered = false) {
+      restoreSelection();
+      document.execCommand(ordered ? "insertOrderedList" : "insertUnorderedList", false, null);
+      const selection = window.getSelection();
+      let node = selection.anchorNode?.nodeType === 3 ? selection.anchorNode.parentElement : selection.anchorNode;
+      const list = node?.closest(ordered ? "ol" : "ul");
+      if (list) {
+        list.classList.remove("bullet-boba","bullet-music","bullet-spark","bullet-game","alpha","roman");
+        if (!ordered && style !== "disc") list.classList.add(`bullet-${style}`);
+        if (ordered && style !== "decimal") list.classList.add(style);
+      }
+      queueNoteSave();
+    }
+
+    function insertStudyTemplate() {
+      const html = `<h2>Lesson / Topic</h2><p><strong>Big idea:</strong> </p><h3>In my own words</h3><p><br></p><h3>Important details</h3><ul class="bullet-spark"><li><br></li><li><br></li><li><br></li></ul><h3>Example or real-life connection</h3><p><br></p><h3>What I still need to understand</h3><ul class="bullet-boba"><li><br></li></ul><blockquote><strong>Recall check:</strong> Close the notes and explain the idea without looking.</blockquote>`;
+      restoreSelection(); document.execCommand("insertHTML", false, html); queueNoteSave();
+    }
+
+    function openAssignmentModal(id = null, courseId = null) {
+      const item = id ? state.assignments.find(assignment => assignment.id === id) : null;
+      document.getElementById("assignmentModalTitle").textContent = item ? "Edit assignment" : "Add assignment";
+      document.getElementById("assignmentId").value = item?.id || "";
+      document.getElementById("assignmentTitle").value = item?.title || "";
+      document.getElementById("assignmentCourse").innerHTML = courseOptions(item?.courseId || courseId || semesterById(state.profile.currentSemester).courses[0]);
+      document.getElementById("assignmentType").value = item?.type || "Practice";
+      document.getElementById("assignmentDue").value = item?.due || "";
+      document.getElementById("assignmentStatus").value = item?.status || "Not started";
+      document.getElementById("pointsPossible").value = item?.possible ?? "";
+      document.getElementById("pointsEarned").value = item?.earned ?? "";
+      document.getElementById("assignmentDetails").value = item?.details || "";
+      document.getElementById("deleteAssignment").hidden = !item;
+      openModal("assignmentModal");
+    }
+
+    function saveAssignment() {
+      const title = document.getElementById("assignmentTitle").value.trim();
+      if (!title) { toast("Please name the assignment.", "error"); return; }
+      const id = document.getElementById("assignmentId").value;
+      const data = {
+        id: id || uid("assignment"), title,
+        courseId: document.getElementById("assignmentCourse").value,
+        type: document.getElementById("assignmentType").value,
+        due: document.getElementById("assignmentDue").value,
+        status: document.getElementById("assignmentStatus").value,
+        possible: document.getElementById("pointsPossible").value === "" ? "" : Number(document.getElementById("pointsPossible").value),
+        earned: document.getElementById("pointsEarned").value === "" ? "" : Number(document.getElementById("pointsEarned").value),
+        details: document.getElementById("assignmentDetails").value.trim(),
+        updatedAt: new Date().toISOString()
+      };
+      const index = state.assignments.findIndex(item => item.id === id);
+      if (index >= 0) state.assignments[index] = { ...state.assignments[index], ...data }; else state.assignments.push({ ...data, createdAt:new Date().toISOString() });
+      saveState("Assignment saved"); closeModal("assignmentModal"); renderAll(); toast("Assignment saved 🏆");
+    }
+
+    function deleteAssignment() {
+      const id = document.getElementById("assignmentId").value;
+      const item = state.assignments.find(x => x.id === id); if (!item) return;
+      if (!confirm(`Delete “${item.title}”?`)) return;
+      state.assignments = state.assignments.filter(x => x.id !== id); saveState("Assignment deleted"); closeModal("assignmentModal"); renderAll(); toast("Assignment deleted");
+    }
+
+    function renderGrades() {
+      const semesterId = Number(document.getElementById("assignmentSemesterFilter").value || state.profile.currentSemester);
+      const semester = semesterById(semesterId) || semesterById(state.profile.currentSemester);
+      const semesterSelect = document.getElementById("assignmentSemesterFilter");
+      semesterSelect.innerHTML = semesters.map(s => `<option value="${s.id}" ${s.id === semester.id ? "selected" : ""}>Semester ${s.id}: ${esc(s.title)}</option>`).join("");
+      const courseSelect = document.getElementById("assignmentCourseFilter");
+      const previousCourse = courseSelect.value || "all";
+      courseSelect.innerHTML = `<option value="all">All semester classes</option>${semester.courses.map(id => `<option value="${id}">${id} · ${esc(courseById(id).title)}</option>`).join("")}`;
+      if (["all", ...semester.courses].includes(previousCourse)) courseSelect.value = previousCourse;
+
+      const grade = aggregateGrade(semester.courses);
+      const completed = state.assignments.filter(item => semester.courses.includes(item.courseId) && item.status === "Completed").length;
+      const total = state.assignments.filter(item => semester.courses.includes(item.courseId)).length;
+      const due = state.assignments.filter(item => semester.courses.includes(item.courseId) && item.status !== "Completed" && item.due).length;
+      document.getElementById("gradeSummary").innerHTML = [
+        ["Semester grade", grade === null ? "—" : `${grade.toFixed(1)}%`, grade === null ? "Add scores to calculate" : `${letterGrade(grade)} average`],
+        ["Completed", `${completed}/${total}`, "Assignments finished"],
+        ["Open deadlines", due, "Dated and unfinished"],
+        ["Semester progress", `${semesterProgress(semester.id)}%`, `Semester ${semester.id}`]
+      ].map(([label,value,detail]) => `<div class="card grade-card"><small>${esc(label)}</small><strong>${esc(value)}</strong><small>${esc(detail)}</small></div>`).join("");
+
+      const courseFilter = courseSelect.value || "all";
+      const statusFilter = document.getElementById("assignmentStatusFilter").value || "all";
+      const query = document.getElementById("assignmentSearch").value.trim().toLowerCase();
+      const items = state.assignments.filter(item => semester.courses.includes(item.courseId))
+        .filter(item => courseFilter === "all" || item.courseId === courseFilter)
+        .filter(item => statusFilter === "all" || item.status === statusFilter)
+        .filter(item => !query || `${item.title} ${item.details || ""}`.toLowerCase().includes(query))
+        .sort((a,b) => (a.due || "9999").localeCompare(b.due || "9999"));
+
+      document.getElementById("assignmentTable").innerHTML = items.length ? items.map(item => {
+        const course = courseById(item.courseId);
+        const score = item.earned !== "" && item.possible !== "" && Number(item.possible) > 0 ? Number(item.earned) / Number(item.possible) * 100 : null;
+        const overdue = item.status !== "Completed" && item.due && item.due < localDateString();
+        return `<tr><td><strong>${esc(item.title)}</strong>${item.details ? `<br><small>${esc(item.details.slice(0,80))}${item.details.length > 80 ? "…" : ""}</small>` : ""}</td><td>${esc(course?.id || "—")}</td><td>${esc(item.type)}</td><td>${formatDate(item.due, "—")}</td><td><span class="status-chip ${overdue ? "overdue" : item.status.toLowerCase().replaceAll(" ","-")}">${overdue ? "Overdue" : esc(item.status)}</span></td><td>${score === null ? "—" : `${esc(item.earned)}/${esc(item.possible)}`}</td><td>${score === null ? "—" : `<span class="grade-letter">${letterGrade(score)}</span> ${score.toFixed(1)}%`}</td><td><button class="btn btn-small btn-secondary" data-assignment-edit="${item.id}">Edit</button></td></tr>`;
+      }).join("") : `<tr><td colspan="8">${emptyState("📚", "No assignments here yet", "Add your first assignment and make the learning real.")}</td></tr>`;
+    }
+
+    function renderStudy() {
+      populateSharedCourseSelects();
+      const minutes = weeklyMinutes();
+      const goal = Math.max(1, Number(state.profile.weeklyHours || 8) * 60);
+      const pct = Math.min(100, Math.round(minutes / goal * 100));
+      document.getElementById("weeklyStudyCopy").textContent = `${(minutes/60).toFixed(minutes % 60 ? 1 : 0)} of ${state.profile.weeklyHours || 8} planned hours`;
+      document.getElementById("weeklyStudyPercent").textContent = `${pct}%`;
+      document.getElementById("weeklyStudyBar").style.width = `${pct}%`;
+      const sessions = [...state.studySessions].sort((a,b) => `${b.date}${b.createdAt||""}`.localeCompare(`${a.date}${a.createdAt||""}`)).slice(0,12);
+      document.getElementById("studyLog").innerHTML = sessions.length ? sessions.map(session => {
+        const course = courseById(session.courseId);
+        return `<div class="list-item"><div class="list-item-icon">${course?.icon || "🎧"}</div><div><strong>${esc(session.topic || course?.title || "Study session")}</strong><small>${formatDate(session.date)} · ${esc(session.minutes)} minutes${session.reflection ? ` · ${esc(session.reflection.slice(0,70))}${session.reflection.length > 70 ? "…" : ""}` : ""}</small></div><button class="btn btn-small btn-danger" data-session-delete="${session.id}" title="Delete session">×</button></div>`;
+      }).join("") : emptyState("🎧", "No sessions logged", "Start the timer or log the studying you already completed.");
+    }
+
+    function updateTimerDisplay() {
+      const min = Math.floor(timer.remaining / 60).toString().padStart(2,"0");
+      const sec = (timer.remaining % 60).toString().padStart(2,"0");
+      document.getElementById("timerDisplay").textContent = `${min}:${sec}`;
+      document.title = timer.running ? `${min}:${sec} · Brain Bloom` : "Brain Bloom Academy | Tanay's Study Portal";
+    }
+
+    function toggleTimer() {
+      if (timer.running) {
+        clearInterval(timer.interval); timer.running = false; document.getElementById("timerStart").textContent = "▶ Resume"; document.getElementById("timerMessage").textContent = "Paused. Breathe, then return when you are ready."; return;
+      }
+      timer.running = true; document.getElementById("timerStart").textContent = "Ⅱ Pause"; document.getElementById("timerMessage").textContent = "Focus round in progress. One thing at a time.";
+      timer.interval = setInterval(() => {
+        timer.remaining--; updateTimerDisplay();
+        if (timer.remaining <= 0) {
+          clearInterval(timer.interval); timer.running = false;
+          document.getElementById("timerStart").textContent = "▶ Start again";
+          document.getElementById("timerMessage").textContent = "Round complete! Log what you worked on and take your win.";
+          if (timer.minutes > 5) {
+            state.studySessions.push({ id:uid("session"), date:localDateString(), minutes:timer.minutes, courseId:document.getElementById("timerCourse").value, topic:"Completed focus timer", reflection:"", createdAt:new Date().toISOString() });
+            saveState("Focus session logged"); renderAll(); toast(`${timer.minutes}-minute focus round complete! 🎉`);
+          } else toast("Break complete—welcome back 🌸");
+        }
+      }, 1000);
+    }
+
+    function resetTimer(minutes = timer.minutes) {
+      clearInterval(timer.interval); timer = { totalSeconds:minutes*60, remaining:minutes*60, minutes, running:false, interval:null };
+      document.getElementById("timerStart").textContent = "▶ Start"; document.getElementById("timerMessage").textContent = minutes <= 5 ? "A short reset for your brain." : "Pick a class, silence the chaos, and do one focused round."; updateTimerDisplay();
+    }
+
+    function openSessionModal() {
+      document.getElementById("sessionDate").value = localDateString();
+      document.getElementById("sessionMinutes").value = 25;
+      document.getElementById("sessionCourse").innerHTML = courseOptions(semesterById(state.profile.currentSemester).courses[0]);
+      document.getElementById("sessionTopic").value = ""; document.getElementById("sessionReflection").value = "";
+      openModal("sessionModal");
+    }
+
+    function saveSession() {
+      const minutes = Number(document.getElementById("sessionMinutes").value);
+      if (!minutes || minutes < 1) { toast("Enter at least one study minute.", "error"); return; }
+      state.studySessions.push({ id:uid("session"), date:document.getElementById("sessionDate").value || localDateString(), minutes, courseId:document.getElementById("sessionCourse").value, topic:document.getElementById("sessionTopic").value.trim(), reflection:document.getElementById("sessionReflection").value.trim(), createdAt:new Date().toISOString() });
+      saveState("Study session logged"); closeModal("sessionModal"); renderAll(); toast("Study session logged 🎧");
+    }
+
+    function spinRecall() {
+      const course = courseById(document.getElementById("recallCourse").value); if (!course) return;
+      const skill = course.outcomes[Math.floor(Math.random() * course.outcomes.length)];
+      const prompts = [
+        `Without looking at your notes, explain “${skill}” as if you were teaching a friend.`,
+        `Give one correct example and one incorrect example related to: ${skill}`,
+        `What is the main idea behind “${skill}”? Why does it matter?`,
+        `Imagine someone disagrees with your understanding of “${skill}.” What evidence or reasoning would you use?`,
+        `Connect “${skill}” to something from your job, UX work, music, gaming, or everyday life.`,
+        `Write or say three questions someone could ask to test whether you truly understand: ${skill}`
+      ];
+      document.getElementById("recallPrompt").textContent = prompts[Math.floor(Math.random() * prompts.length)];
+    }
+
+    function renderSettings() {
+      document.getElementById("studentName").value = state.profile.name || "";
+      document.getElementById("currentSemesterSetting").innerHTML = semesters.map(s => `<option value="${s.id}" ${s.id === Number(state.profile.currentSemester) ? "selected" : ""}>Semester ${s.id}: ${esc(s.title)}</option>`).join("");
+      document.getElementById("termStart").value = state.profile.termStart || "";
+      document.getElementById("weeklyHours").value = state.profile.weeklyHours || 8;
+      document.getElementById("learningGoal").value = state.profile.learningGoal || "";
+    }
+
+    function saveProfile(event) {
+      event.preventDefault();
+      state.profile = { ...state.profile, name:document.getElementById("studentName").value.trim() || "Student", currentSemester:Number(document.getElementById("currentSemesterSetting").value), termStart:document.getElementById("termStart").value, weeklyHours:Number(document.getElementById("weeklyHours").value || 8), learningGoal:document.getElementById("learningGoal").value.trim() };
+      displayedSemester = state.profile.currentSemester; saveState("Profile saved"); renderAll(); toast("Profile updated 🌸");
+    }
+
+    function exportData() {
+      saveActiveNote();
+      const blob = new Blob([JSON.stringify({ exportedAt:new Date().toISOString(), app:"Brain Bloom Academy", ...state }, null, 2)], { type:"application/json" });
+      const url = URL.createObjectURL(blob); const link = document.createElement("a");
+      link.href = url; link.download = `brain-bloom-backup-${localDateString()}.json`; document.body.appendChild(link); link.click(); link.remove(); URL.revokeObjectURL(url); toast("Backup exported ⬇");
+    }
+
+    function importData(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          if (!data.profile || !Array.isArray(data.notes) || !Array.isArray(data.assignments)) throw new Error("Invalid backup");
+          if (!confirm("Replace the current academy data with this backup? Export your current data first if you need it.")) return;
+          const fresh = defaultState();
+          state = { ...fresh, ...data, profile:{...fresh.profile,...data.profile}, coursePrefs:data.coursePrefs||{}, notes:data.notes||[], assignments:data.assignments||[], studySessions:data.studySessions||[] };
+          state.notes = state.notes.map(note => ({...note, content:sanitizeNoteHTML(note.content||"")}));
+          displayedSemester = Number(state.profile.currentSemester || 1); saveState("Backup imported"); renderAll(); showView("dashboard"); toast("Backup imported successfully ✨");
+        } catch { toast("That file is not a valid Brain Bloom backup.", "error"); }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetData() {
+      const answer = prompt("This permanently clears the academy data in this browser. Type RESET to continue.");
+      if (answer !== "RESET") { toast("Reset cancelled"); return; }
+      state = defaultState(); displayedSemester = 1; saveState("Academy reset"); renderAll(); showView("dashboard"); toast("Academy reset. Fresh notebook, fresh start.");
+    }
+
+    function bindEvents() {
+      document.addEventListener("click", event => {
+        const nav = event.target.closest("[data-view]"); if (nav) { showView(nav.dataset.view); return; }
+        const jump = event.target.closest("[data-view-jump]"); if (jump) { showView(jump.dataset.viewJump); return; }
+        const close = event.target.closest("[data-close]"); if (close) { closeModal(close.dataset.close); return; }
+        const courseOpen = event.target.closest("[data-course-open]"); if (courseOpen) { openCourse(courseOpen.dataset.courseOpen); return; }
+        const courseNote = event.target.closest("[data-course-note]"); if (courseNote) { const existing = state.notes.find(n=>n.courseId===courseNote.dataset.courseNote); existing ? (state.activeNoteId=existing.id, showView("notes")) : createNote(courseNote.dataset.courseNote); return; }
+        const noteSelect = event.target.closest("[data-note-select]"); if (noteSelect) { selectNote(noteSelect.dataset.noteSelect); return; }
+        const noteOpen = event.target.closest("[data-note-open]"); if (noteOpen) { state.activeNoteId = noteOpen.dataset.noteOpen; showView("notes"); return; }
+        const editAssignment = event.target.closest("[data-assignment-edit]"); if (editAssignment) { openAssignmentModal(editAssignment.dataset.assignmentEdit); return; }
+        const deleteSessionButton = event.target.closest("[data-session-delete]"); if (deleteSessionButton) { if(confirm("Delete this study session?")) { state.studySessions = state.studySessions.filter(s=>s.id!==deleteSessionButton.dataset.sessionDelete); saveState("Session deleted"); renderAll(); } return; }
+        const semesterTab = event.target.closest("[data-semester]"); if (semesterTab) { displayedSemester = Number(semesterTab.dataset.semester); renderCurriculum(); return; }
+        const quick = event.target.closest("[data-quick]"); if (quick?.dataset.quick === "note") createNote();
+        if (quick?.dataset.quick === "assignment") openAssignmentModal();
+      });
+
+      document.querySelectorAll(".modal-backdrop").forEach(backdrop => backdrop.addEventListener("mousedown", event => { if (event.target === backdrop) closeModal(backdrop.id); }));
+      document.addEventListener("keydown", event => { if (event.key === "Escape") document.querySelectorAll(".modal-backdrop:not([hidden])").forEach(modal => closeModal(modal.id)); });
+      document.getElementById("mobileMenu").addEventListener("click", () => document.body.classList.toggle("menu-open"));
+
+      document.getElementById("setCurrentSemester").addEventListener("click", () => { state.profile.currentSemester = displayedSemester; saveState("Current semester changed"); renderAll(); toast(`Semester ${displayedSemester} is now current.`); });
+      document.getElementById("saveCourse").addEventListener("click", saveCourse);
+      document.getElementById("courseOpenLink").addEventListener("click", () => { const url=safeUrl(document.getElementById("courseUrl").value); if(url) window.open(url,"_blank","noopener"); });
+      document.getElementById("courseAddNote").addEventListener("click", () => { const id=document.getElementById("courseIdField").value; closeModal("courseModal"); createNote(id); });
+      document.getElementById("courseAddAssignment").addEventListener("click", () => { const id=document.getElementById("courseIdField").value; closeModal("courseModal"); openAssignmentModal(null,id); });
+
+      document.getElementById("newNoteTop").addEventListener("click", () => createNote());
+      document.getElementById("newNoteSide").addEventListener("click", () => createNote());
+      document.getElementById("noteSearch").addEventListener("input", renderNoteList);
+      document.getElementById("noteCourseFilter").addEventListener("change", renderNoteList);
+      document.getElementById("noteTitle").addEventListener("input", queueNoteSave);
+      document.getElementById("noteCourse").addEventListener("change", queueNoteSave);
+      document.getElementById("noteEditor").addEventListener("input", queueNoteSave);
+      document.getElementById("noteEditor").addEventListener("keyup", rememberSelection);
+      document.getElementById("noteEditor").addEventListener("mouseup", rememberSelection);
+      document.addEventListener("selectionchange", rememberSelection);
+      document.getElementById("deleteNote").addEventListener("click", deleteActiveNote);
+      document.getElementById("printNote").addEventListener("click", () => { document.body.classList.add("print-note"); window.print(); setTimeout(()=>document.body.classList.remove("print-note"),200); });
+      document.querySelectorAll("#noteToolbar [data-cmd]").forEach(button => button.addEventListener("mousedown", event => { event.preventDefault(); runCommand(button.dataset.cmd); }));
+      document.getElementById("formatBlock").addEventListener("change", event => runCommand("formatBlock", event.target.value));
+      document.getElementById("bulletStyle").addEventListener("change", event => applyBullet(event.target.value,false));
+      document.getElementById("numberStyle").addEventListener("change", event => applyBullet(event.target.value,true));
+      document.getElementById("textColor").addEventListener("input", event => runCommand("foreColor",event.target.value));
+      document.getElementById("highlightColor").addEventListener("input", event => runCommand("hiliteColor",event.target.value));
+      document.querySelectorAll("[data-highlight]").forEach(button => button.addEventListener("mousedown", event => { event.preventDefault(); runCommand("hiliteColor",button.dataset.highlight); }));
+      document.getElementById("insertTemplate").addEventListener("mousedown", event => { event.preventDefault(); insertStudyTemplate(); });
+      document.getElementById("stickerInsert").addEventListener("change", event => { if(event.target.value) runCommand("insertText", `${event.target.value} `); event.target.value=""; });
+
+      document.getElementById("addAssignmentTop").addEventListener("click", () => openAssignmentModal());
+      document.getElementById("saveAssignment").addEventListener("click", saveAssignment);
+      document.getElementById("deleteAssignment").addEventListener("click", deleteAssignment);
+      ["assignmentSemesterFilter","assignmentCourseFilter","assignmentStatusFilter"].forEach(id => document.getElementById(id).addEventListener("change", renderGrades));
+      document.getElementById("assignmentSearch").addEventListener("input", renderGrades);
+
+      document.querySelectorAll(".mode-chip").forEach(button => button.addEventListener("click", () => { document.querySelectorAll(".mode-chip").forEach(x=>x.classList.remove("active")); button.classList.add("active"); resetTimer(Number(button.dataset.minutes)); }));
+      document.getElementById("timerStart").addEventListener("click", toggleTimer);
+      document.getElementById("timerReset").addEventListener("click", () => resetTimer(timer.minutes));
+      document.getElementById("spinRecall").addEventListener("click", spinRecall);
+      document.getElementById("logSessionTop").addEventListener("click", openSessionModal);
+      document.getElementById("saveSession").addEventListener("click", saveSession);
+
+      document.getElementById("profileForm").addEventListener("submit", saveProfile);
+      document.getElementById("exportData").addEventListener("click", exportData);
+      document.getElementById("importData").addEventListener("change", event => { importData(event.target.files[0]); event.target.value=""; });
+      document.getElementById("resetData").addEventListener("click", resetData);
+      window.addEventListener("beforeunload", saveActiveNote);
+    }
+
+    bindEvents();
+    renderAll();
+    updateTimerDisplay();
+    const initialView = location.hash.replace("#", "");
+    if (viewMeta[initialView]) showView(initialView);
+  })();
+  </script>
+</body>
+</html>
