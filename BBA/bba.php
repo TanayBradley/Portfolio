@@ -10,10 +10,12 @@
   PRIVACY NOTE
   The noindex tags below ask search engines not to list this page, but an unlisted
   URL is not the same as password protection. Notes and grades are stored only in
-  this browser using localStorage. Use the built-in Export Backup button regularly.
+  this browser using localStorage. If Google Calendar is enabled, only calendar
+  event data you explicitly sync is sent to Google's Calendar API. Use the built-in
+  Export Backup button regularly.
 
-  This file contains its own HTML, CSS, and JavaScript. It does not require a
-  database or external library. It may also be renamed with an .html extension.
+  This file contains its own HTML, CSS, and JavaScript and needs no database.
+  The optional Google connection loads Google Identity Services after you click Connect.
 -->
 <html lang="en">
 <head>
@@ -559,6 +561,7 @@
     .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
     .tool-card { padding: 21px; }
     .tool-card.wide { grid-column: 1 / -1; }
+    .planner-tool-grid { grid-template-columns: 1fr; }
     .tool-card h3 { margin: 0; font-family: Georgia, serif; }
     .tool-card > p, .tool-copy { margin: 5px 0 16px; color: var(--ink-soft); font-size: .84rem; }
     .metric-strip { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-bottom: 18px; }
@@ -584,27 +587,55 @@
     .check-row input { width: 18px; height: 18px; accent-color: #755bc5; }
 
     .week-list { display: grid; gap: 10px; }
+    .planner-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+    .planner-controls .button-row { margin: 0; }
+    .planner-scope { width: auto; min-width: 145px; padding: 8px 31px 8px 10px; font-size: .74rem; }
+    .planner-week-label { margin: 0 0 11px; color: var(--ink-soft); font-size: .78rem; font-weight: 850; }
     .plan-item { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 13px; border: var(--border); border-radius: 15px; background: #fff; }
+    .plan-item[data-plan-open] { cursor: pointer; transition: transform .16s ease, box-shadow .16s ease; }
+    .plan-item[data-plan-open]:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
     .plan-item.done { opacity: .64; background: #f5fbf8; }
     .plan-item.done h4 { text-decoration: line-through; }
     .plan-date { display: grid; place-items: center; width: 48px; min-height: 50px; border-radius: 13px; background: linear-gradient(145deg, #eee6ff, #ffe8f0); font-weight: 950; text-align: center; line-height: 1.05; }
     .plan-date small { font-size: .6rem; text-transform: uppercase; }
     .plan-item h4 { margin: 0 0 3px; }
 
+    .calendar-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; }
+    .calendar-view-switch { display: inline-flex; padding: 3px; border: var(--border); border-radius: 12px; background: #f6f2fb; }
+    .calendar-view-switch button { padding: 6px 10px; border: 0; border-radius: 9px; color: var(--ink-soft); background: transparent; cursor: pointer; font: inherit; font-size: .69rem; font-weight: 900; }
+    .calendar-view-switch button.active { color: #fff; background: #765bc6; box-shadow: 0 3px 9px rgba(81,58,130,.2); }
+    .calendar-sync { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; margin: 0 0 14px; padding: 12px; border: 2px dashed rgba(91,68,129,.16); border-radius: 16px; background: linear-gradient(135deg,#faf7ff,#f3fff9); }
+    .calendar-sync strong, .calendar-sync small { display: block; }
+    .calendar-sync small { margin-top: 3px; color: var(--ink-soft); font-size: .7rem; }
+    .calendar-sync.connected { border-style: solid; border-color: rgba(67,151,111,.25); background: #f1fff8; }
+    .calendar-sync-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .google-setup { grid-column: 1 / -1; padding-top: 2px; }
+    .google-setup summary { color: #6c54b5; cursor: pointer; font-size: .72rem; font-weight: 900; }
+    .google-setup-grid { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px; align-items: end; margin-top: 10px; }
+    .google-setup-grid label { display: block; margin-bottom: 4px; color: var(--ink-soft); font-size: .67rem; font-weight: 850; }
+    .google-setup-help { grid-column: 1 / -1; margin: 0; color: var(--ink-soft); font-size: .67rem; line-height: 1.45; }
     .calendar-shell { overflow: hidden; border: var(--border); border-radius: 18px; background: #fff; }
     .calendar-head { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); background: #f4effb; }
     .calendar-head span { padding: 9px 5px; color: var(--ink-soft); font-size: .68rem; font-weight: 900; text-align: center; text-transform: uppercase; }
     .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); }
-    .calendar-day { min-height: 118px; padding: 8px; border-top: 1px solid rgba(78,61,108,.09); border-right: 1px solid rgba(78,61,108,.09); background: #fff; }
+    .calendar-day { min-width: 0; min-height: 132px; max-height: 230px; overflow-y: auto; padding: 8px; border-top: 1px solid rgba(78,61,108,.09); border-right: 1px solid rgba(78,61,108,.09); background: #fff; }
     .calendar-day:nth-child(7n) { border-right: 0; }
     .calendar-day.muted { background: #fbf9fd; color: #aaa1b5; }
     .calendar-day.today { background: #fff8e1; box-shadow: inset 0 0 0 2px #f1ca64; }
-    .calendar-number { display: block; margin-bottom: 5px; font-size: .74rem; font-weight: 950; }
-    .calendar-event { display: block; width: 100%; margin: 3px 0; padding: 4px 5px; overflow: hidden; border: 0; border-radius: 6px; color: #4e4260; background: #eee7ff; font-size: .58rem; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+    .calendar-number { display: grid; place-items: center; width: 27px; height: 27px; margin: 0 0 5px auto; border: 0; border-radius: 50%; color: inherit; background: transparent; cursor: pointer; font: inherit; font-size: .74rem; font-weight: 950; }
+    .calendar-number:hover { background: #eee7ff; }
+    .calendar-event { display: block; width: 100%; margin: 4px 0; padding: 5px 6px; overflow: hidden; border: 0; border-left: 4px solid #8269ce; border-radius: 7px; color: #4e4260; background: #eee7ff; cursor: pointer; font: inherit; font-size: .61rem; font-weight: 750; line-height: 1.25; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+    .calendar-event:hover, .calendar-event:focus-visible { filter: saturate(1.15); box-shadow: 0 3px 8px rgba(67,48,102,.14); outline: none; }
+    .calendar-event.done { opacity: .55; text-decoration: line-through; }
     .calendar-event.assignment { background: #ffe2ec; }
     .calendar-event.plan { background: #dff5eb; }
     .calendar-event.capstone { background: #fff0be; }
     .calendar-event.career { background: #dfeeff; }
+    .calendar-event.google { border-left-color: #4285f4; background: #e8f0fe; }
+    .calendar-grid.week-view .calendar-day { min-height: 330px; max-height: 500px; }
+    .calendar-grid.week-view .calendar-event { padding: 7px; font-size: .66rem; white-space: normal; }
+    .calendar-empty-day { display: block; padding: 12px 3px; color: #aaa1b5; font-size: .62rem; text-align: center; }
+    .sync-badge { margin-left: 4px; font-size: .62rem; }
 
     .mastery-course-select { max-width: 620px; margin-bottom: 15px; }
     .outcome-stack { display: grid; gap: 11px; }
@@ -711,6 +742,9 @@
       .record-grid, .milestone-grid { grid-template-columns: 1fr; }
       .calendar-day { min-height: 82px; padding: 5px; }
       .calendar-event { font-size: .52rem; }
+      .calendar-sync { grid-template-columns: 1fr; }
+      .calendar-sync-actions { justify-content: flex-start; }
+      .google-setup { grid-column: auto; }
     }
 
     @media (max-width: 560px) {
@@ -732,6 +766,12 @@
       .mastery-checks { grid-template-columns: 1fr; }
       .calendar-day { min-height: 68px; }
       .calendar-event { padding: 3px; }
+      .calendar-shell { overflow-x: auto; }
+      .calendar-head, .calendar-grid { min-width: 720px; }
+      .plan-item { grid-template-columns: auto minmax(0,1fr); }
+      .plan-item .record-actions { grid-column: 1 / -1; justify-content: flex-end; }
+      .google-setup-grid { grid-template-columns: 1fr; }
+      .google-setup-help { grid-column: auto; }
     }
 
     @media print {
@@ -986,32 +1026,52 @@
       <section class="view" id="view-planner">
         <div class="section-title">
           <div><p class="eyebrow">A real schedule for a real life</p><h2>Planner & Calendar</h2><p>Balance learning, job searching, UX, music, rest, and everything else without pretending every day has 47 hours.</p></div>
-          <button class="btn btn-primary" id="plannerToday">Jump to today</button>
+          <button class="btn btn-primary" id="addPlanTop">＋ Add task</button>
         </div>
         <div class="metric-strip" id="plannerSummary"></div>
-        <div class="tool-grid">
+        <div class="tool-grid planner-tool-grid">
           <div class="card tool-card">
-            <h3>Weekly plan</h3><p>Plan the work, then compare it with what actually happened.</p>
-            <details class="accordion-form" id="planDetails">
-              <summary>＋ Add or edit a plan block</summary>
-              <form id="planForm" class="form-grid">
-                <input id="planId" type="hidden">
-                <div class="field"><label for="planDate">Date</label><input id="planDate" type="date" required></div>
-                <div class="field"><label for="planTime">Start time</label><input id="planTime" type="time"></div>
-                <div class="field full"><label for="planTitle">What are you doing?</label><input id="planTitle" required placeholder="Grammar lesson, portfolio edits, vocal practice…"></div>
-                <div class="field"><label for="planCategory">Life area</label><select id="planCategory"><option>School</option><option>UX / Career</option><option>Job search</option><option>Music / Creative</option><option>Work</option><option>Rest / Personal</option></select></div>
-                <div class="field"><label for="planCourse">Class (optional)</label><select id="planCourse"></select></div>
-                <div class="field"><label for="planMinutes">Planned minutes</label><input id="planMinutes" type="number" min="5" max="720" step="5" value="45"></div>
-                <div class="field"><label for="planStatus">Status</label><select id="planStatus"><option>Planned</option><option>Completed</option><option>Moved</option><option>Skipped</option></select></div>
-                <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save plan block</button><button class="btn btn-secondary" type="button" id="clearPlanForm">Clear</button></div></div>
-              </form>
-            </details>
+            <div class="panel-header"><div><h3>Weekly plan</h3><p>Every task in the selected week—nothing hidden after the fourth item.</p></div></div>
+            <div class="planner-controls">
+              <div class="button-row">
+                <button class="btn btn-small btn-secondary" id="plannerWeekPrev" aria-label="Previous week">‹</button>
+                <button class="btn btn-small btn-secondary" id="plannerToday">This week</button>
+                <button class="btn btn-small btn-secondary" id="plannerWeekNext" aria-label="Next week">›</button>
+              </div>
+              <select class="planner-scope" id="plannerScope" aria-label="Tasks to show"><option value="week">Selected week</option><option value="upcoming">All upcoming</option><option value="all">All tasks</option></select>
+            </div>
+            <p class="planner-week-label" id="plannerWeekLabel"></p>
             <div class="week-list" id="plannerList"></div>
           </div>
           <div class="card tool-card">
-            <div class="panel-header"><div><h3 id="calendarTitle">Calendar</h3><p>Plans, deadlines, capstones, and follow-ups together.</p></div><div class="button-row"><button class="btn btn-small btn-secondary" id="calendarPrev" aria-label="Previous month">‹</button><button class="btn btn-small btn-secondary" id="calendarNext" aria-label="Next month">›</button></div></div>
+            <div class="panel-header"><div><h3 id="calendarTitle">Calendar</h3><p>Click a task to edit it, move it, or mark it done.</p></div>
+              <div class="calendar-toolbar">
+                <div class="calendar-view-switch" aria-label="Calendar view"><button class="active" data-calendar-view="week">Week</button><button data-calendar-view="month">Month</button></div>
+                <button class="btn btn-small btn-secondary" id="calendarPrev" aria-label="Previous calendar period">‹</button>
+                <button class="btn btn-small btn-secondary" id="calendarToday">Today</button>
+                <button class="btn btn-small btn-secondary" id="calendarNext" aria-label="Next calendar period">›</button>
+              </div>
+            </div>
+            <div class="calendar-sync" id="googleCalendarPanel">
+              <div><strong>📅 Google Calendar</strong><small id="googleCalendarStatus">Not connected · export works without setup</small></div>
+              <div class="calendar-sync-actions">
+                <button class="btn btn-small btn-secondary" id="googleConnect">Connect</button>
+                <button class="btn btn-small btn-secondary" id="googleRefresh" hidden>Refresh</button>
+                <button class="btn btn-small btn-mint" id="googleSyncWeek" disabled>Sync week</button>
+                <button class="btn btn-small btn-secondary" id="googleExportWeek">Export .ics</button>
+                <button class="btn btn-small btn-secondary" id="googleDisconnect" hidden>Disconnect</button>
+              </div>
+              <details class="google-setup" id="googleSetupDetails">
+                <summary>Google connection setup</summary>
+                <div class="google-setup-grid">
+                  <div><label for="googleClientId">Google OAuth web Client ID</label><input id="googleClientId" autocomplete="off" placeholder="123…apps.googleusercontent.com"></div>
+                  <button class="btn btn-small btn-primary" id="googleSaveClientId" type="button">Save Client ID</button>
+                  <p class="google-setup-help">In <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener">Google Cloud credentials ↗</a>, enable the Calendar API, create a Web application OAuth Client ID, and add this page's exact website origin under Authorized JavaScript origins. A client secret does not belong in this file.</p>
+                </div>
+              </details>
+            </div>
             <div class="calendar-shell">
-              <div class="calendar-head"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+              <div class="calendar-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
               <div class="calendar-grid" id="calendarGrid"></div>
             </div>
           </div>
@@ -1230,7 +1290,7 @@
           <div class="card settings-card">
             <h3>Backup your school</h3><p>Because browser storage can be cleared, export a backup after important study sessions.</p>
             <div class="button-row" style="margin-bottom:14px;"><button class="btn btn-mint" id="exportData">⬇ Export backup</button><label class="btn btn-secondary" for="importData" style="cursor:pointer;">⬆ Import backup</label><input id="importData" type="file" accept="application/json" hidden></div>
-            <div class="privacy-box"><strong>Where is my data?</strong><br>Your notes, grades, planner, assessments, questions, learning portfolio, career tracker, and every other academy record are stored in this browser on this device. They are not sent anywhere by this page.</div>
+            <div class="privacy-box"><strong>Where is my data?</strong><br>Your academy records stay in this browser on this device. If you choose Google Calendar sync, the planner tasks you sync are sent to Google's Calendar API; your notes, grades, reflections, and other academy records stay local.</div>
           </div>
           <div class="card settings-card">
             <h3>Hidden-page setup</h3><p>This file is designed to live outside your main portfolio navigation.</p>
@@ -1303,6 +1363,26 @@
         </form>
       </div>
       <div class="modal-footer"><button class="btn btn-secondary" data-close="sessionModal">Cancel</button><button class="btn btn-primary" id="saveSession">Log session</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="planModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="planModalTitle">
+      <div class="modal-header"><h2 id="planModalTitle">Add task</h2><button class="modal-close" data-close="planModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <form id="planForm" class="form-grid">
+          <input id="planId" type="hidden">
+          <div class="field"><label for="planDate">Date</label><input id="planDate" type="date" required></div>
+          <div class="field"><label for="planTime">Start time</label><input id="planTime" type="time"></div>
+          <div class="field full"><label for="planTitle">What are you doing?</label><input id="planTitle" required placeholder="Grammar lesson, portfolio edits, vocal practice…"></div>
+          <div class="field"><label for="planCategory">Life area</label><select id="planCategory"><option>School</option><option>UX / Career</option><option>Job search</option><option>Music / Creative</option><option>Work</option><option>Rest / Personal</option></select></div>
+          <div class="field"><label for="planCourse">Class (optional)</label><select id="planCourse"></select></div>
+          <div class="field"><label for="planMinutes">Planned minutes</label><input id="planMinutes" type="number" min="5" max="720" step="5" value="45"></div>
+          <div class="field"><label for="planStatus">Status</label><select id="planStatus"><option>Planned</option><option>Completed</option><option>Moved</option><option>Skipped</option></select></div>
+          <div class="field full"><label class="check-row"><input id="planSyncGoogle" type="checkbox"> Keep this task synced with Google Calendar <span class="sync-badge" id="planSyncBadge"></span></label></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-danger" id="deletePlan" hidden>Delete</button><button class="btn btn-mint" id="completePlan" hidden>✓ Task done</button><button class="btn btn-secondary" data-close="planModal">Cancel</button><button class="btn btn-primary" id="savePlan" type="submit" form="planForm">Save task</button></div>
     </div>
   </div>
 
@@ -1424,6 +1504,9 @@
         weeklyHours: 8,
         learningGoal: "Build a mind I trust: understand information, communicate clearly, think under pressure, strengthen my career, and keep learning for life."
       },
+      calendarSettings: {
+        googleClientId: ""
+      },
       coursePrefs: {},
       assignments: [],
       notes: [],
@@ -1447,8 +1530,13 @@
     let displayedSemester = state.profile.currentSemester;
     let noteSaveTimer = null;
     let savedRange = null;
-    let calendarCursor = new Date();
-    calendarCursor.setDate(1);
+    let plannerWeekCursor = startOfWeek(new Date());
+    let calendarCursor = new Date(plannerWeekCursor);
+    let calendarViewMode = "week";
+    let plannerScope = "week";
+    let googleAccessToken = null;
+    let googleTokenClient = null;
+    let googleCalendarEvents = [];
     let activeQuizQuestionId = null;
     let quizAnswerVisible = false;
     let timer = { totalSeconds: 25 * 60, remaining: 25 * 60, minutes: 25, running: false, interval: null };
@@ -1476,6 +1564,7 @@
           ...fresh,
           ...parsed,
           profile: { ...fresh.profile, ...(parsed.profile || {}) },
+          calendarSettings: { ...fresh.calendarSettings, ...(parsed.calendarSettings || {}) },
           coursePrefs: parsed.coursePrefs || {},
           assignments: Array.isArray(parsed.assignments) ? parsed.assignments : [],
           notes: Array.isArray(parsed.notes) ? parsed.notes : [],
@@ -2135,70 +2224,278 @@
     }
     function clamp(value, min, max) { return Math.min(max, Math.max(min, Number(value) || 0)); }
     function confidenceDots(value) { const amount=clamp(value,1,5); return `${"●".repeat(amount)}${"○".repeat(5-amount)}`; }
-    function startOfCurrentWeek() {
-      const date = new Date();
+    function startOfWeek(value = new Date()) {
+      const date = new Date(value);
       const day = (date.getDay() + 6) % 7;
       date.setHours(12,0,0,0);
       date.setDate(date.getDate() - day);
       return date;
     }
 
+    function startOfCurrentWeek() { return startOfWeek(new Date()); }
+
+    function selectedWeekBounds() {
+      const monday = startOfWeek(plannerWeekCursor);
+      const sunday = new Date(monday); sunday.setDate(monday.getDate() + 6);
+      return { monday, sunday, start:localDateString(monday), end:localDateString(sunday) };
+    }
+
+    function weekRangeLabel(start, end) {
+      const left = new Date(`${start}T12:00:00`);
+      const right = new Date(`${end}T12:00:00`);
+      const sameYear = left.getFullYear() === right.getFullYear();
+      const leftText = left.toLocaleDateString(undefined,{month:"short",day:"numeric",...(sameYear?{}:{year:"numeric"})});
+      const rightText = right.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});
+      return `${leftText} – ${rightText}`;
+    }
+
     function renderPlanner() {
       populateSharedCourseSelects();
-      if (!inputValue("planId") && !inputValue("planDate")) setInput("planDate", localDateString());
-      const monday = startOfCurrentWeek();
-      const sunday = new Date(monday); sunday.setDate(monday.getDate() + 6);
-      const start = localDateString(monday), end = localDateString(sunday);
-      const weekItems = state.planner.filter(item => item.date >= start && item.date <= end).sort((a,b)=>`${a.date}${a.time||""}`.localeCompare(`${b.date}${b.time||""}`));
+      const { start, end } = selectedWeekBounds();
+      const sortPlans = items => [...items].sort((a,b)=>`${a.date||""}${a.time||""}${a.title||""}`.localeCompare(`${b.date||""}${b.time||""}${b.title||""}`));
+      const weekItems = sortPlans(state.planner.filter(item => item.date >= start && item.date <= end));
+      const today = localDateString();
+      const displayItems = plannerScope === "all" ? sortPlans(state.planner) : plannerScope === "upcoming" ? sortPlans(state.planner.filter(item=>item.date >= today)) : weekItems;
       const planned = weekItems.reduce((sum,item)=>sum+Number(item.minutes||0),0);
       const completed = weekItems.filter(item=>item.status === "Completed").reduce((sum,item)=>sum+Number(item.minutes||0),0);
       const school = weekItems.filter(item=>item.category === "School").reduce((sum,item)=>sum+Number(item.minutes||0),0);
       document.getElementById("plannerSummary").innerHTML = [
-        ["Week", `${formatDate(start).replace(/, \d{4}/,"")}–${formatDate(end)}`, "Monday through Sunday"],
-        ["Planned", `${Math.round(planned/6)/10}h`, `${weekItems.length} blocks`],
-        ["Completed", `${Math.round(completed/6)/10}h`, planned ? `${Math.round(completed/planned*100)}% of plan` : "Nothing planned yet"],
+        ["Selected week", weekRangeLabel(start,end), "Monday through Sunday"],
+        ["Planned", `${Math.round(planned/6)/10}h`, `${weekItems.length} task${weekItems.length===1?"":"s"}`],
+        ["Completed", `${Math.round(completed/6)/10}h`, planned ? `${Math.round(completed/planned*100)}% of planned time` : "Nothing planned yet"],
         ["School time", `${Math.round(school/6)/10}h`, "Dedicated learning blocks"]
       ].map(([label,value,copy])=>`<div class="metric"><span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(copy)}</small></div>`).join("");
-      document.getElementById("plannerList").innerHTML = weekItems.length ? weekItems.map(item => {
+      const label = plannerScope === "all" ? `All tasks · ${displayItems.length}` : plannerScope === "upcoming" ? `All upcoming tasks · ${displayItems.length}` : `${weekRangeLabel(start,end)} · ${displayItems.length} task${displayItems.length===1?"":"s"}`;
+      document.getElementById("plannerWeekLabel").textContent = label;
+      document.getElementById("plannerScope").value = plannerScope;
+      document.getElementById("plannerList").innerHTML = displayItems.length ? displayItems.map(item => {
         const date = new Date(`${item.date}T12:00:00`);
         const course = courseById(item.courseId);
-        return `<article class="plan-item ${item.status === "Completed" ? "done" : ""}"><div class="plan-date"><small>${date.toLocaleDateString(undefined,{weekday:"short"})}</small>${date.getDate()}</div><div><span class="tag">${esc(item.category)}</span>${course ? `<span class="tag mint">${esc(course.id)}</span>` : ""}<h4>${esc(item.title)}</h4><small>${item.time ? esc(item.time) + " · " : ""}${esc(item.minutes)} min · ${esc(item.status)}</small></div><div class="record-actions"><button class="btn btn-small ${item.status === "Completed" ? "btn-mint" : "btn-secondary"}" data-plan-toggle="${item.id}">${item.status === "Completed" ? "↩" : "✓"}</button><button class="btn btn-small btn-secondary" data-record-edit="planner:${item.id}">Edit</button><button class="btn btn-small btn-danger" data-record-delete="planner:${item.id}">×</button></div></article>`;
-      }).join("") : emptyState("🗓️", "This week is open", "Add a few realistic blocks—leave room to be a human.");
+        const synced = item.googleEventId ? '<span class="tag">📅 Synced</span>' : "";
+        return `<article class="plan-item ${item.status === "Completed" ? "done" : ""}" data-plan-open="${esc(item.id)}" tabindex="0" role="button" aria-label="Edit ${esc(item.title)}"><div class="plan-date"><small>${date.toLocaleDateString(undefined,{weekday:"short"})}</small>${date.getDate()}</div><div><span class="tag">${esc(item.category)}</span>${course ? `<span class="tag mint">${esc(course.id)}</span>` : ""}${synced}<h4>${esc(item.title)}</h4><small>${item.time ? esc(item.time) + " · " : ""}${esc(item.minutes)} min · ${esc(item.status)}</small></div><div class="record-actions"><button class="btn btn-small ${item.status === "Completed" ? "btn-mint" : "btn-secondary"}" data-plan-toggle="${esc(item.id)}" aria-label="${item.status === "Completed" ? "Mark planned" : "Mark done"}">${item.status === "Completed" ? "↩ Undo" : "✓ Done"}</button><button class="btn btn-small btn-secondary" data-plan-edit="${esc(item.id)}">Edit</button></div></article>`;
+      }).join("") : emptyState("🗓️", plannerScope === "week" ? "This week is open" : "No tasks here yet", "Add a few realistic blocks—leave room to be a human.");
       renderCalendar();
+      renderGoogleCalendarStatus();
     }
 
-    function savePlan(event) {
+    function openPlanModal(id = null, date = null) {
+      populateSharedCourseSelects();
+      document.getElementById("planForm").reset();
+      setInput("planId", ""); setInput("planDate", date || localDateString(plannerWeekCursor)); setInput("planMinutes", 45); setInput("planStatus", "Planned");
+      const item = id ? state.planner.find(task=>task.id===id) : null;
+      if (item) {
+        setInput("planId",item.id); setInput("planDate",item.date); setInput("planTime",item.time); setInput("planTitle",item.title); setInput("planCategory",item.category); setInput("planCourse",item.courseId); setInput("planMinutes",item.minutes); setInput("planStatus",item.status);
+      }
+      document.getElementById("planModalTitle").textContent = item ? "Edit task" : "Add task";
+      document.getElementById("deletePlan").hidden = !item;
+      document.getElementById("completePlan").hidden = !item;
+      document.getElementById("completePlan").textContent = item?.status === "Completed" ? "↩ Mark planned" : "✓ Task done";
+      document.getElementById("planSyncGoogle").checked = Boolean(item?.syncGoogle || item?.googleEventId);
+      document.getElementById("planSyncBadge").textContent = item?.googleEventId ? "✓ linked" : googleAccessToken ? "ready" : "connect first";
+      openModal("planModal");
+    }
+
+    async function savePlan(event) {
       event.preventDefault();
-      const title = inputValue("planTitle").trim(); if (!title) return toast("Name the plan block first.", "error");
+      const title = inputValue("planTitle").trim(); if (!title) return toast("Name the task first.", "error");
       const id = inputValue("planId") || uid("plan");
-      upsertRecord("planner", { id, date:inputValue("planDate"), time:inputValue("planTime"), title, category:inputValue("planCategory"), courseId:inputValue("planCourse"), minutes:Number(inputValue("planMinutes")||45), status:inputValue("planStatus") });
-      saveState("Plan saved"); resetRecordForm("planForm","planId","planDetails"); setInput("planDate",localDateString()); renderAll(); toast("Plan block saved 🗓️");
+      const syncGoogle = document.getElementById("planSyncGoogle").checked;
+      upsertRecord("planner", { id, date:inputValue("planDate"), time:inputValue("planTime"), title, category:inputValue("planCategory"), courseId:inputValue("planCourse"), minutes:Number(inputValue("planMinutes")||45), status:inputValue("planStatus"), syncGoogle });
+      const item = state.planner.find(task=>task.id===id);
+      saveState("Task saved");
+      if (syncGoogle && googleAccessToken) {
+        try { await syncPlannerTask(item); }
+        catch (error) { toast(error.message || "Task saved here, but Google sync failed.", "error"); }
+      } else if (syncGoogle) toast("Task saved here. Connect Google Calendar to sync it.");
+      closeModal("planModal"); renderAll(); toast("Task saved 🗓️");
+    }
+
+    async function togglePlanCompleted(id, closeAfter = false) {
+      const item = state.planner.find(task=>task.id===id); if (!item) return;
+      item.status = item.status === "Completed" ? "Planned" : "Completed";
+      saveState("Task updated");
+      if (item.syncGoogle && item.googleEventId && googleAccessToken) {
+        try { await syncPlannerTask(item); } catch (error) { toast("Done here; Google update needs another try.", "error"); }
+      }
+      if (closeAfter) closeModal("planModal");
+      renderAll();
+      toast(item.status === "Completed" ? "Task complete—nice work ✅" : "Task moved back to planned");
+    }
+
+    async function deletePlannerTask(id) {
+      const item = state.planner.find(task=>task.id===id); if (!item) return;
+      const note = item.googleEventId && !googleAccessToken ? " The Google copy cannot be removed until you reconnect." : item.googleEventId ? " Its synced Google event will also be removed." : "";
+      if (!confirm(`Delete “${item.title}”?${note}`)) return;
+      if (item.googleEventId && googleAccessToken) {
+        try { await googleCalendarRequest(`/calendars/primary/events/${encodeURIComponent(item.googleEventId)}`, {method:"DELETE"}); }
+        catch (error) { if (error.status !== 404) return toast("I could not delete the Google copy, so the local task was kept.", "error"); }
+      }
+      state.planner = state.planner.filter(task=>task.id!==id); saveState("Task deleted"); closeModal("planModal"); renderAll(); toast("Task deleted");
+    }
+
+    function googleEventDate(event) {
+      if (event.start?.date) return event.start.date;
+      if (event.start?.dateTime) return localDateString(new Date(event.start.dateTime));
+      return "";
     }
 
     function calendarEvents() {
       const events = [];
-      state.planner.forEach(x=>x.date && events.push({date:x.date,title:x.title,type:"plan"}));
-      state.assignments.forEach(x=>x.due && events.push({date:x.due,title:`Due: ${x.title}`,type:"assignment"}));
-      state.assessments.forEach(x=>x.date && events.push({date:x.date,title:`${x.type}: ${x.courseId}`,type:"assignment"}));
-      state.capstones.forEach(x=>x.due && events.push({date:x.due,title:`Capstone: ${x.title}`,type:"capstone"}));
-      state.applications.forEach(x=>x.followUp && events.push({date:x.followUp,title:`Follow up: ${x.company}`,type:"career"}));
-      Object.entries(state.coursePrefs).forEach(([id,pref])=>{ if(pref.start) events.push({date:pref.start,title:`Start ${id}`,type:"plan"}); if(pref.end) events.push({date:pref.end,title:`Target ${id}`,type:"assignment"}); });
-      return events;
+      state.planner.forEach(x=>x.date && events.push({date:x.date,time:x.time,title:x.title,type:"plan",kind:"planner",id:x.id,status:x.status,synced:Boolean(x.googleEventId)}));
+      state.assignments.forEach(x=>x.due && events.push({date:x.due,title:`Due: ${x.title}`,type:"assignment",kind:"assignments",id:x.id}));
+      state.assessments.forEach(x=>x.date && events.push({date:x.date,title:`${x.type}: ${x.courseId}`,type:"assignment",kind:"assessments",id:x.id}));
+      state.capstones.forEach(x=>x.due && events.push({date:x.due,title:`Capstone: ${x.title}`,type:"capstone",kind:"capstones",id:x.id}));
+      state.applications.forEach(x=>x.followUp && events.push({date:x.followUp,title:`Follow up: ${x.company}`,type:"career",kind:"applications",id:x.id}));
+      Object.entries(state.coursePrefs).forEach(([id,pref])=>{ if(pref.start) events.push({date:pref.start,title:`Start ${id}`,type:"plan",kind:"course",id}); if(pref.end) events.push({date:pref.end,title:`Target ${id}`,type:"assignment",kind:"course",id}); });
+      googleCalendarEvents.filter(event=>!event.extendedProperties?.private?.brainBloomTaskId && event.status!=="cancelled").forEach(event=>{
+        const date=googleEventDate(event); if(date) events.push({date,title:event.summary||"Google Calendar event",type:"google",kind:"google",id:event.id,htmlLink:event.htmlLink,time:event.start?.dateTime?new Date(event.start.dateTime).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"}):""});
+      });
+      return events.sort((a,b)=>`${a.date}${a.time||""}${a.title}`.localeCompare(`${b.date}${b.time||""}${b.title}`));
     }
 
     function renderCalendar() {
       const year = calendarCursor.getFullYear(), month = calendarCursor.getMonth();
-      document.getElementById("calendarTitle").textContent = calendarCursor.toLocaleDateString(undefined,{month:"long",year:"numeric"});
-      const first = new Date(year,month,1), start = new Date(year,month,1-first.getDay());
+      let start, count;
+      if (calendarViewMode === "week") {
+        start = startOfWeek(calendarCursor); count = 7;
+        const end = new Date(start); end.setDate(start.getDate()+6);
+        document.getElementById("calendarTitle").textContent = weekRangeLabel(localDateString(start),localDateString(end));
+      } else {
+        const first = new Date(year,month,1);
+        start = startOfWeek(first); count = 42;
+        document.getElementById("calendarTitle").textContent = calendarCursor.toLocaleDateString(undefined,{month:"long",year:"numeric"});
+      }
+      document.querySelectorAll("[data-calendar-view]").forEach(button=>button.classList.toggle("active",button.dataset.calendarView===calendarViewMode));
       const events = calendarEvents();
       const cells = [];
-      for (let i=0;i<42;i++) {
+      for (let i=0;i<count;i++) {
         const date = new Date(start); date.setDate(start.getDate()+i);
         const key = localDateString(date);
-        const dayEvents = events.filter(event=>event.date===key).slice(0,4);
-        cells.push(`<div class="calendar-day ${date.getMonth()!==month ? "muted" : ""} ${key===localDateString() ? "today" : ""}"><span class="calendar-number">${date.getDate()}</span>${dayEvents.map(event=>`<span class="calendar-event ${event.type}" title="${esc(event.title)}">${esc(event.title)}</span>`).join("")}${events.filter(event=>event.date===key).length>4 ? `<small>+${events.filter(event=>event.date===key).length-4} more</small>` : ""}</div>`);
+        const dayEvents = events.filter(event=>event.date===key);
+        const eventMarkup = dayEvents.map(event=>`<button class="calendar-event ${esc(event.type)} ${event.status === "Completed" ? "done" : ""}" data-calendar-event="${esc(event.kind)}:${esc(event.id)}" title="${esc(event.title)}">${event.time?`<strong>${esc(event.time)}</strong> · `:""}${esc(event.title)}${event.synced?' <span aria-label="Synced to Google">📅</span>':""}</button>`).join("");
+        const muted = calendarViewMode === "month" && date.getMonth()!==month ? "muted" : "";
+        cells.push(`<div class="calendar-day ${muted} ${key===localDateString() ? "today" : ""}"><button class="calendar-number" data-calendar-day="${key}" aria-label="Add task on ${esc(formatDate(key))}">${date.getDate()}</button>${eventMarkup || (calendarViewMode === "week" ? '<span class="calendar-empty-day">No tasks yet</span>' : "")}</div>`);
       }
-      document.getElementById("calendarGrid").innerHTML = cells.join("");
+      const grid = document.getElementById("calendarGrid");
+      grid.classList.toggle("week-view",calendarViewMode==="week");
+      grid.innerHTML = cells.join("");
+    }
+
+    function openCalendarEvent(kind, id) {
+      if (kind === "planner") return openPlanModal(id);
+      if (kind === "assignments") return openAssignmentModal(id);
+      if (kind === "google") { const item=googleCalendarEvents.find(event=>event.id===id); if(item?.htmlLink) window.open(item.htmlLink,"_blank","noopener"); return; }
+      if (kind === "course") return openCourse(id);
+      const views = {assessments:"mastery",capstones:"portfolio",applications:"career"};
+      if (views[kind]) showView(views[kind]);
+      setTimeout(()=>editRecord(kind,id),30);
+    }
+
+    function renderGoogleCalendarStatus() {
+      const panel=document.getElementById("googleCalendarPanel"); if(!panel)return;
+      const connected=Boolean(googleAccessToken);
+      panel.classList.toggle("connected",connected);
+      const configured=Boolean(state.calendarSettings.googleClientId);
+      document.getElementById("googleCalendarStatus").textContent=connected?`Connected · ${googleCalendarEvents.length} Google event${googleCalendarEvents.length===1?"":"s"} loaded`:configured?"Ready to connect · Google access lasts for this browser session":"Not connected · export works without setup";
+      document.getElementById("googleConnect").textContent=connected?"Reconnect":"Connect";
+      document.getElementById("googleRefresh").hidden=!connected;
+      document.getElementById("googleDisconnect").hidden=!connected;
+      document.getElementById("googleSyncWeek").disabled=!connected;
+      if(document.activeElement!==document.getElementById("googleClientId")) document.getElementById("googleClientId").value=state.calendarSettings.googleClientId||"";
+    }
+
+    function saveGoogleClientId() {
+      const value=inputValue("googleClientId").trim();
+      if(value && !value.endsWith(".apps.googleusercontent.com")) return toast("That does not look like a Google OAuth web Client ID.","error");
+      state.calendarSettings.googleClientId=value; saveState("Calendar setup saved"); googleTokenClient=null; renderGoogleCalendarStatus(); toast(value?"Google Client ID saved. You can connect now.":"Google Client ID removed.");
+    }
+
+    function ensureGoogleIdentity() {
+      if(window.google?.accounts?.oauth2) return Promise.resolve();
+      return new Promise((resolve,reject)=>{
+        const existing=document.querySelector('script[data-google-identity]');
+        if(existing){existing.addEventListener("load",resolve,{once:true});existing.addEventListener("error",()=>reject(new Error("Google sign-in could not load.")),{once:true});return;}
+        const script=document.createElement("script"); script.src="https://accounts.google.com/gsi/client"; script.async=true; script.defer=true; script.dataset.googleIdentity="true"; script.onload=resolve; script.onerror=()=>reject(new Error("Google sign-in could not load.")); document.head.appendChild(script);
+      });
+    }
+
+    async function connectGoogleCalendar() {
+      const clientId=state.calendarSettings.googleClientId;
+      if(!clientId){document.getElementById("googleSetupDetails").open=true;document.getElementById("googleClientId").focus();return toast("Add your Google OAuth Client ID first.","error");}
+      try {
+        await ensureGoogleIdentity();
+        if(!googleTokenClient) googleTokenClient=google.accounts.oauth2.initTokenClient({client_id:clientId,scope:"https://www.googleapis.com/auth/calendar.events",callback:async response=>{
+          if(response.error) return toast(`Google connection failed: ${response.error}`,"error");
+          googleAccessToken=response.access_token; renderGoogleCalendarStatus(); toast("Google Calendar connected 📅");
+          try{await refreshGoogleCalendarEvents();}catch(error){toast(error.message,"error");}
+        }});
+        googleTokenClient.requestAccessToken({prompt:googleAccessToken?"":"consent"});
+      } catch(error) { toast(error.message||"Google sign-in could not start.","error"); }
+    }
+
+    function disconnectGoogleCalendar() {
+      if(googleAccessToken && window.google?.accounts?.oauth2) google.accounts.oauth2.revoke(googleAccessToken,()=>{});
+      googleAccessToken=null; googleCalendarEvents=[]; renderPlanner(); toast("Google Calendar disconnected from this browser session.");
+    }
+
+    async function googleCalendarRequest(path, options={}) {
+      if(!googleAccessToken) throw new Error("Connect Google Calendar first.");
+      const response=await fetch(`https://www.googleapis.com/calendar/v3${path}`,{method:options.method||"GET",headers:{Authorization:`Bearer ${googleAccessToken}`,...(options.body?{"Content-Type":"application/json"}:{})},body:options.body?JSON.stringify(options.body):undefined});
+      if(response.status===204) return null;
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok){const error=new Error(data.error?.message||`Google Calendar returned ${response.status}.`);error.status=response.status;if(response.status===401){googleAccessToken=null;renderGoogleCalendarStatus();}throw error;}
+      return data;
+    }
+
+    function googleEventBody(task) {
+      const course=courseById(task.courseId);
+      const body={summary:task.status==="Completed"?`✓ ${task.title}`:task.title,description:["Brain Bloom Academy task",`Life area: ${task.category}`,course?`Class: ${course.id} · ${course.title}`:"",`Status: ${task.status}`].filter(Boolean).join("\n"),extendedProperties:{private:{brainBloomTaskId:task.id}}};
+      if(task.time){const start=new Date(`${task.date}T${task.time}:00`);const end=new Date(start.getTime()+Number(task.minutes||45)*60000);body.start={dateTime:start.toISOString()};body.end={dateTime:end.toISOString()};}
+      else{body.start={date:task.date};body.end={date:addDaysString(task.date,1)};}
+      return body;
+    }
+
+    async function syncPlannerTask(task) {
+      if(!task) return;
+      let result;
+      if(task.googleEventId){
+        try{result=await googleCalendarRequest(`/calendars/primary/events/${encodeURIComponent(task.googleEventId)}`,{method:"PATCH",body:googleEventBody(task)});}
+        catch(error){if(error.status!==404)throw error;task.googleEventId="";}
+      }
+      if(!task.googleEventId) result=await googleCalendarRequest("/calendars/primary/events",{method:"POST",body:googleEventBody(task)});
+      if(result){task.googleEventId=result.id;task.googleEventLink=result.htmlLink||"";task.googleSyncedAt=new Date().toISOString();task.syncGoogle=true;saveState("Synced with Google");}
+      return result;
+    }
+
+    async function syncSelectedWeek() {
+      if(!googleAccessToken)return connectGoogleCalendar();
+      const {start,end}=selectedWeekBounds();const tasks=state.planner.filter(task=>task.date>=start&&task.date<=end);
+      if(!tasks.length)return toast("There are no planner tasks in this week to sync.");
+      const button=document.getElementById("googleSyncWeek");button.disabled=true;button.textContent="Syncing…";
+      let synced=0;
+      try{for(const task of tasks){await syncPlannerTask(task);synced++;}await refreshGoogleCalendarEvents();toast(`${synced} task${synced===1?"":"s"} synced with Google Calendar 📅`);}
+      catch(error){toast(error.message||"Google sync stopped before it finished.","error");}
+      finally{button.textContent="Sync week";renderPlanner();}
+    }
+
+    async function refreshGoogleCalendarEvents() {
+      if(!googleAccessToken)return;
+      const rangeStart=calendarViewMode==="month"?new Date(calendarCursor.getFullYear(),calendarCursor.getMonth(),1):startOfWeek(calendarCursor);
+      rangeStart.setDate(rangeStart.getDate()-7);
+      const rangeEnd=new Date(rangeStart);rangeEnd.setDate(rangeEnd.getDate()+(calendarViewMode==="month"?56:21));
+      const query=new URLSearchParams({timeMin:rangeStart.toISOString(),timeMax:rangeEnd.toISOString(),singleEvents:"true",orderBy:"startTime",maxResults:"250"});
+      const data=await googleCalendarRequest(`/calendars/primary/events?${query}`);
+      googleCalendarEvents=Array.isArray(data.items)?data.items:[];renderPlanner();
+    }
+
+    function icsEscape(value){return String(value||"").replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;");}
+    function icsUtc(date){return date.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z");}
+    function exportSelectedWeek() {
+      const {start,end}=selectedWeekBounds();const tasks=state.planner.filter(task=>task.date>=start&&task.date<=end);
+      if(!tasks.length)return toast("There are no planner tasks in this week to export.");
+      const events=tasks.map(task=>{const lines=["BEGIN:VEVENT",`UID:${icsEscape(task.id)}@brainbloom`,`DTSTAMP:${icsUtc(new Date())}`,`SUMMARY:${icsEscape(task.title)}`,`DESCRIPTION:${icsEscape(`${task.category} · ${task.status}`)}`];if(task.time){const begins=new Date(`${task.date}T${task.time}:00`);const ends=new Date(begins.getTime()+Number(task.minutes||45)*60000);lines.push(`DTSTART:${icsUtc(begins)}`,`DTEND:${icsUtc(ends)}`);}else{lines.push(`DTSTART;VALUE=DATE:${task.date.replace(/-/g,"")}`,`DTEND;VALUE=DATE:${addDaysString(task.date,1).replace(/-/g,"")}`);}lines.push("END:VEVENT");return lines.join("\r\n");}).join("\r\n");
+      const content=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Brain Bloom Academy//Planner//EN\r\nCALSCALE:GREGORIAN\r\n${events}\r\nEND:VCALENDAR\r\n`;
+      const url=URL.createObjectURL(new Blob([content],{type:"text/calendar;charset=utf-8"}));const link=document.createElement("a");link.href=url;link.download=`brain-bloom-${start}-to-${end}.ics`;link.click();setTimeout(()=>URL.revokeObjectURL(url),500);toast("Calendar file exported 📅");
     }
 
     function renderMastery() {
@@ -2360,15 +2657,16 @@
     function saveReward(event){event.preventDefault();const id=inputValue("rewardId")||uid("reward");upsertRecord("rewards",{id,milestone:inputValue("rewardMilestone").trim(),treat:inputValue("rewardTreat").trim(),claimed:false});saveState("Reward saved");resetRecordForm("rewardForm","rewardId",null);renderCareer();toast("Reward added to the jar 🎁");}
 
     function deleteRecord(kind,id){
+      if(kind==="planner"){deletePlannerTask(id);return;}
       const labels={planner:"plan block",assessments:"assessment",questions:"question",feedback:"feedback record",capstones:"capstone",reading:"reading item",speaking:"speaking log",reflections:"reflection",applications:"application",rewards:"reward"};
       if(!state[kind]||!confirm(`Delete this ${labels[kind]||"record"}?`))return;
       state[kind]=state[kind].filter(item=>item.id!==id);saveState("Record deleted");renderAll();toast("Record deleted");
     }
 
     function editRecord(kind,id){
+      if(kind==="planner"){openPlanModal(id);return;}
       const item=state[kind]?.find(x=>x.id===id);if(!item)return;
       const maps={
-        planner:{details:"planDetails",fields:{planId:"id",planDate:"date",planTime:"time",planTitle:"title",planCategory:"category",planCourse:"courseId",planMinutes:"minutes",planStatus:"status"}},
         assessments:{details:"assessmentDetails",fields:{assessmentId:"id",assessmentCourse:"courseId",assessmentType:"type",assessmentDate:"date",assessmentScore:"score",assessmentNotes:"notes"}},
         questions:{details:"questionDetails",fields:{questionId:"id",questionCourse:"courseId",questionPrompt:"prompt",questionAnswer:"answer",questionConfidence:"confidence",questionNextReview:"nextReview"}},
         capstones:{details:"capstoneDetails",fields:{capstoneId:"id",capstoneSemester:"semester",capstoneStatus:"status",capstoneTitle:"title",capstoneDue:"due",capstoneProgress:"progress",capstoneGoal:"goal",capstoneEvidence:"evidence"}},
@@ -2412,7 +2710,7 @@
           if (!confirm("Replace the current academy data with this backup? Export your current data first if you need it.")) return;
           const fresh = defaultState();
           state = {
-            ...fresh, ...data, profile:{...fresh.profile,...data.profile}, coursePrefs:data.coursePrefs||{},
+            ...fresh, ...data, profile:{...fresh.profile,...data.profile}, calendarSettings:{...fresh.calendarSettings,...data.calendarSettings}, coursePrefs:data.coursePrefs||{},
             notes:data.notes||[], assignments:data.assignments||[], studySessions:data.studySessions||[], planner:data.planner||[], assessments:data.assessments||[],
             mastery:data.mastery||{}, questions:data.questions||[], feedback:data.feedback||[], capstones:data.capstones||[], reading:data.reading||[],
             speaking:data.speaking||[], reflections:data.reflections||[], applications:data.applications||[], rewards:data.rewards||[], celebrated:data.celebrated||[]
@@ -2427,7 +2725,7 @@
     function resetData() {
       const answer = prompt("This permanently clears the academy data in this browser. Type RESET to continue.");
       if (answer !== "RESET") { toast("Reset cancelled"); return; }
-      state = defaultState(); displayedSemester = 1; saveState("Academy reset"); renderAll(); showView("dashboard"); toast("Academy reset. Fresh notebook, fresh start.");
+      state = defaultState(); displayedSemester = 1; plannerWeekCursor=startOfCurrentWeek();calendarCursor=new Date(plannerWeekCursor);calendarViewMode="week";plannerScope="week";googleAccessToken=null;googleTokenClient=null;googleCalendarEvents=[];saveState("Academy reset"); renderAll(); showView("dashboard"); toast("Academy reset. Fresh notebook, fresh start.");
     }
 
     function bindEvents() {
@@ -2441,9 +2739,14 @@
         const noteOpen = event.target.closest("[data-note-open]"); if (noteOpen) { state.activeNoteId = noteOpen.dataset.noteOpen; showView("notes"); return; }
         const editAssignment = event.target.closest("[data-assignment-edit]"); if (editAssignment) { openAssignmentModal(editAssignment.dataset.assignmentEdit); return; }
         const deleteSessionButton = event.target.closest("[data-session-delete]"); if (deleteSessionButton) { if(confirm("Delete this study session?")) { state.studySessions = state.studySessions.filter(s=>s.id!==deleteSessionButton.dataset.sessionDelete); saveState("Session deleted"); renderAll(); } return; }
+        const planEdit = event.target.closest("[data-plan-edit]"); if (planEdit) { openPlanModal(planEdit.dataset.planEdit); return; }
+        const planToggle = event.target.closest("[data-plan-toggle]"); if (planToggle) { togglePlanCompleted(planToggle.dataset.planToggle); return; }
+        const calendarEvent = event.target.closest("[data-calendar-event]"); if (calendarEvent) { const separator=calendarEvent.dataset.calendarEvent.indexOf(":");openCalendarEvent(calendarEvent.dataset.calendarEvent.slice(0,separator),calendarEvent.dataset.calendarEvent.slice(separator+1));return; }
+        const calendarDay = event.target.closest("[data-calendar-day]"); if (calendarDay) { plannerWeekCursor=startOfWeek(new Date(`${calendarDay.dataset.calendarDay}T12:00:00`));openPlanModal(null,calendarDay.dataset.calendarDay);return; }
+        const calendarView = event.target.closest("[data-calendar-view]"); if (calendarView) { calendarViewMode=calendarView.dataset.calendarView; if(calendarViewMode==="week")calendarCursor=new Date(plannerWeekCursor);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));return; }
+        const planCard = event.target.closest("[data-plan-open]"); if (planCard) { openPlanModal(planCard.dataset.planOpen); return; }
         const recordEdit = event.target.closest("[data-record-edit]"); if (recordEdit) { const [kind,id]=recordEdit.dataset.recordEdit.split(":"); editRecord(kind,id); return; }
         const recordDelete = event.target.closest("[data-record-delete]"); if (recordDelete) { const [kind,id]=recordDelete.dataset.recordDelete.split(":"); deleteRecord(kind,id); return; }
-        const planToggle = event.target.closest("[data-plan-toggle]"); if (planToggle) { const item=state.planner.find(x=>x.id===planToggle.dataset.planToggle); if(item){item.status=item.status==="Completed"?"Planned":"Completed";saveState("Plan updated");renderAll();if(item.status==="Completed")toast("Plan block completed ✅");} return; }
         const quizReveal = event.target.closest("[data-quiz-reveal]"); if (quizReveal) { quizAnswerVisible=true; renderQuiz(); return; }
         const quizGrade = event.target.closest("[data-quiz-grade]"); if (quizGrade) { gradeQuiz(quizGrade.dataset.quizGrade); return; }
         const rewardClaim = event.target.closest("[data-reward-claim]"); if (rewardClaim) { const item=state.rewards.find(x=>x.id===rewardClaim.dataset.rewardClaim);if(item){item.claimed=true;saveState("Reward claimed");renderCareer();celebrate(`You earned it: ${item.treat} 🎉`);} return; }
@@ -2453,7 +2756,10 @@
       });
 
       document.querySelectorAll(".modal-backdrop").forEach(backdrop => backdrop.addEventListener("mousedown", event => { if (event.target === backdrop) closeModal(backdrop.id); }));
-      document.addEventListener("keydown", event => { if (event.key === "Escape") document.querySelectorAll(".modal-backdrop:not([hidden])").forEach(modal => closeModal(modal.id)); });
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") document.querySelectorAll(".modal-backdrop:not([hidden])").forEach(modal => closeModal(modal.id));
+        const planCard=event.target.closest?.("[data-plan-open]");if(planCard&&(event.key==="Enter"||event.key===" ")){event.preventDefault();openPlanModal(planCard.dataset.planOpen);}
+      });
       document.getElementById("mobileMenu").addEventListener("click", () => document.body.classList.toggle("menu-open"));
 
       document.getElementById("setCurrentSemester").addEventListener("click", () => { state.profile.currentSemester = displayedSemester; saveState("Current semester changed"); renderAll(); toast(`Semester ${displayedSemester} is now current.`); });
@@ -2498,10 +2804,22 @@
       document.getElementById("saveSession").addEventListener("click", saveSession);
 
       document.getElementById("planForm").addEventListener("submit", savePlan);
-      document.getElementById("clearPlanForm").addEventListener("click",()=>{resetRecordForm("planForm","planId","planDetails");setInput("planDate",localDateString());});
-      document.getElementById("calendarPrev").addEventListener("click",()=>{calendarCursor.setMonth(calendarCursor.getMonth()-1);renderCalendar();});
-      document.getElementById("calendarNext").addEventListener("click",()=>{calendarCursor.setMonth(calendarCursor.getMonth()+1);renderCalendar();});
-      document.getElementById("plannerToday").addEventListener("click",()=>{calendarCursor=new Date();calendarCursor.setDate(1);renderPlanner();});
+      document.getElementById("addPlanTop").addEventListener("click",()=>openPlanModal(null,localDateString()));
+      document.getElementById("completePlan").addEventListener("click",()=>{const id=inputValue("planId");if(id)togglePlanCompleted(id,true);});
+      document.getElementById("deletePlan").addEventListener("click",()=>{const id=inputValue("planId");if(id)deletePlannerTask(id);});
+      document.getElementById("plannerWeekPrev").addEventListener("click",()=>{plannerWeekCursor.setDate(plannerWeekCursor.getDate()-7);if(calendarViewMode==="week")calendarCursor=new Date(plannerWeekCursor);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("plannerWeekNext").addEventListener("click",()=>{plannerWeekCursor.setDate(plannerWeekCursor.getDate()+7);if(calendarViewMode==="week")calendarCursor=new Date(plannerWeekCursor);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("plannerToday").addEventListener("click",()=>{plannerWeekCursor=startOfCurrentWeek();if(calendarViewMode==="week")calendarCursor=new Date(plannerWeekCursor);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("plannerScope").addEventListener("change",event=>{plannerScope=event.target.value;renderPlanner();});
+      document.getElementById("calendarPrev").addEventListener("click",()=>{if(calendarViewMode==="week"){calendarCursor.setDate(calendarCursor.getDate()-7);plannerWeekCursor=startOfWeek(calendarCursor);}else calendarCursor.setMonth(calendarCursor.getMonth()-1);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("calendarNext").addEventListener("click",()=>{if(calendarViewMode==="week"){calendarCursor.setDate(calendarCursor.getDate()+7);plannerWeekCursor=startOfWeek(calendarCursor);}else calendarCursor.setMonth(calendarCursor.getMonth()+1);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("calendarToday").addEventListener("click",()=>{plannerWeekCursor=startOfCurrentWeek();calendarCursor=new Date();if(calendarViewMode==="month")calendarCursor.setDate(1);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("googleSaveClientId").addEventListener("click",saveGoogleClientId);
+      document.getElementById("googleConnect").addEventListener("click",connectGoogleCalendar);
+      document.getElementById("googleDisconnect").addEventListener("click",disconnectGoogleCalendar);
+      document.getElementById("googleRefresh").addEventListener("click",()=>refreshGoogleCalendarEvents().then(()=>toast("Google Calendar refreshed.")).catch(error=>toast(error.message,"error")));
+      document.getElementById("googleSyncWeek").addEventListener("click",syncSelectedWeek);
+      document.getElementById("googleExportWeek").addEventListener("click",exportSelectedWeek);
 
       document.getElementById("assessmentForm").addEventListener("submit",saveAssessment);
       document.getElementById("clearAssessmentForm").addEventListener("click",()=>{resetRecordForm("assessmentForm","assessmentId","assessmentDetails");setInput("assessmentDate",localDateString());});
