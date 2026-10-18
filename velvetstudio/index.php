@@ -1,7 +1,9 @@
 <?php
 /*
  * VELVET INK STUDIO — private/unlisted music + storytelling workspace
- * Suggested URL: https://tanaybradley.com/velvet-ink-studio.php
+ * Recommended upload: public_html/velvetstudio/index.php
+ * Clean URL: https://tanaybradley.com/velvetstudio/
+ * Alternative: upload as public_html/velvetstudio.php and include .php in URL.
  *
  * Upload this single file to the root of your website. Do not add it to public
  * navigation. The noindex rules below discourage search indexing, but an
@@ -157,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
     .revision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.revision{padding:11px;border:var(--line);border-radius:14px;background:#fff}.revision.done{background:#eefaf5;text-decoration:line-through;color:#547368}
     .week-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.week-title{font-weight:900;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));gap:8px;overflow:auto;padding-bottom:6px}.day{min-height:170px;padding:10px;border:var(--line);border-radius:16px;background:rgba(255,255,255,.8)}.day.today{border-color:#9970c7;background:#faf5ff}.day-head{display:flex;justify-content:space-between;margin-bottom:8px;font-size:.76rem;font-weight:900}.session{display:block;width:100%;margin:6px 0;padding:8px;border:0;border-left:4px solid var(--coral);border-radius:9px;background:#fff0f2;text-align:left;cursor:pointer;font-size:.72rem}.session.done{opacity:.62;text-decoration:line-through;border-color:var(--green);background:#edf9f5}
     .board{display:grid;grid-template-columns:repeat(3,minmax(250px,1fr));gap:12px;overflow:auto}.column{min-height:300px;padding:12px;border:var(--line);border-radius:19px;background:rgba(255,255,255,.57)}.column h3{margin:2px 0 11px}.project-card{margin-bottom:10px;padding:13px;border:var(--line);border-radius:14px;background:#fff;box-shadow:0 5px 13px rgba(52,34,63,.06)}.project-card h4{margin:0 0 4px}.project-card p{margin:0 0 9px;font-size:.77rem;color:var(--muted)}
-    .template-card{display:flex;flex-direction:column;min-height:250px}.template-card .template-icon{font-size:2rem}.template-card .actions{margin-top:auto}.preview-box{white-space:pre-wrap;padding:14px;border-radius:15px;background:#f8f3fb;color:#54435c;font-size:.83rem}
+    .template-card{display:flex;flex-direction:column;min-height:250px}.template-card .template-icon{font-size:2rem}.template-card .actions{margin-top:auto}.preview-box{max-height:340px;overflow:auto;white-space:pre-wrap;padding:14px;border-radius:15px;background:#f8f3fb;color:#54435c;font-size:.83rem}#f-body{min-height:430px}
     dialog{width:min(720px,calc(100% - 28px));max-height:88vh;padding:0;border:0;border-radius:26px;background:var(--paper);box-shadow:0 30px 90px rgba(33,15,41,.35)}dialog::backdrop{background:rgba(39,22,45,.55);backdrop-filter:blur(5px)}.dialog-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:18px 21px;border-bottom:var(--line);background:rgba(255,250,245,.96)}.dialog-head h2{margin:0;font-family:Georgia,serif}.dialog-body{padding:21px;overflow:auto}.dialog-foot{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:9px;padding:14px 21px;border-top:var(--line);background:rgba(255,250,245,.97)}
     .coach-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:14px}.coach-scope{padding:14px;border-radius:18px;background:#f5edfb}.coach-chat{min-height:280px;max-height:420px;overflow:auto;padding:14px;border:var(--line);border-radius:18px;background:#fff}.bubble{max-width:88%;margin:8px 0;padding:11px 13px;border-radius:15px;white-space:pre-wrap;font-size:.84rem}.bubble.user{margin-left:auto;background:var(--lilac)}.bubble.assistant{background:#edf9f5}.coach-reply-actions{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 16px}
     .toast{position:fixed;right:20px;bottom:20px;z-index:300;max-width:340px;padding:13px 16px;border-radius:15px;color:#fff;background:#3b2944;box-shadow:var(--shadow);transform:translateY(120px);opacity:0;transition:.25s}.toast.show{transform:none;opacity:1}.confetti{position:fixed;inset:0;z-index:290;pointer-events:none;overflow:hidden}.confetti i{position:absolute;top:-20px;width:9px;height:16px;border-radius:3px;animation:fall 1.8s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(620deg)}}
@@ -178,14 +180,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       <div class="nav-label">Create</div>
       <nav class="nav">
         <button class="active" data-view="home"><span class="icon">🏠</span>Studio Home</button>
-        <button data-view="journal"><span class="icon">📓</span>Journal + Sparks</button>
+        <button data-view="journal"><span class="icon">📓</span>Journal Room</button>
         <button data-view="songs"><span class="icon">🎧</span>Song Lab</button>
-        <button data-view="stories"><span class="icon">🎬</span>Story Lab</button>
+        <button data-view="stories"><span class="icon">🎬</span>Simple Story Builder</button>
       </nav>
       <div class="nav-label">Organize</div>
       <nav class="nav">
-        <button data-view="library"><span class="icon">🧃</span>Templates + Inspo</button>
-        <button data-view="projects"><span class="icon">🗂️</span>Project Board</button>
+        <button data-view="library"><span class="icon">🧃</span>Writing Guides</button>
+        <button data-view="projects"><span class="icon">🗂️</span>My Projects</button>
         <button data-view="settings"><span class="icon">⚙️</span>Settings + Backup</button>
       </nav>
       <div class="side-card">
@@ -207,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         <div class="top-actions">
           <button class="btn ghost hide-mobile" id="guided-toggle" title="Show or hide small explanations">💡 Guided: On</button>
           <button class="btn ghost" id="privacy-toggle" title="Blur private writing on screen">👁️ Privacy</button>
-          <button class="btn primary" data-action="quick-capture">＋ Catch a spark</button>
+          <button class="btn primary" data-action="new-journal">＋ Write a journal entry</button>
         </div>
       </header>
 
@@ -219,13 +221,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       <section class="view active" id="view-home">
         <div class="hero">
           <p class="eyebrow">Your creative headquarters <span class="sparkle">✦</span></p>
-          <h2>Find the line. Follow the feeling. Finish the story.</h2>
-          <p>This studio helps you protect the original truth of an idea—even while the song or story changes shape.</p>
+          <h2>Write what happened. Find what matters. Turn it into music.</h2>
+          <p>You do not have to know whether something is a song yet. Begin with a guided journal topic, highlight the lines carrying emotion, and let the studio walk you into an original R&amp;B song.</p>
           <div class="hero-actions">
-            <button class="btn pink" data-action="quick-capture">✨ Save a phrase</button>
-            <button class="btn primary" data-action="new-song">🎵 Start a song</button>
-            <button class="btn mint" data-action="new-story">🎞️ Start a story</button>
+            <button class="btn primary" data-action="start-guided">✨ Start: Journal → Song</button>
+            <button class="btn pink" data-view="journal">📓 Just journal</button>
+            <button class="btn mint" data-view="songs">🎵 Open my songs</button>
           </div>
+        </div>
+
+        <div class="card section-space tint-gold">
+          <div class="card-top"><div><p class="eyebrow">Your main creative path</p><h2>How Journal → Song works</h2><p>One step at a time. You never have to use every feature.</p></div><div class="sticker">🛤️</div></div>
+          <div class="grid four section-space">
+            <div class="stat"><b>1</b><strong>Choose a topic</strong><small>Daily feelings, faith, a situation, self-worth, or life.</small></div>
+            <div class="stat"><b>2</b><strong>Write freely</strong><small>Answer the prompts in your own words. It does not need to sound musical.</small></div>
+            <div class="stat"><b>3</b><strong>Highlight lines</strong><small>Save 1–3 sentences that hold the strongest emotion or image.</small></div>
+            <div class="stat"><b>4</b><strong>Build the song</strong><small>Choose a soulful R&amp;B structure and shape each section.</small></div>
+          </div>
+          <button class="btn primary section-space" data-action="start-guided">Begin with Step 1</button>
         </div>
 
         <div class="grid four section-space" id="home-stats"></div>
@@ -266,54 +279,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
 
       <section class="view" id="view-journal">
         <div class="section-head">
-          <div><p class="eyebrow">Journal mining</p><h2>Turn lived moments into creative material</h2><p>Keep the context, protect the important line, then decide what it wants to become.</p></div>
-          <div class="actions"><button class="btn" data-action="new-journal">＋ Journal entry</button><button class="btn primary" data-action="quick-capture">✨ Quick spark</button></div>
-        </div>
-        <div class="tabs" id="journal-tabs">
-          <button class="tab active" data-journal-tab="entries">Journal entries</button>
-          <button class="tab" data-journal-tab="mine">Mining desk</button>
-          <button class="tab" data-journal-tab="sparks">Spark vault</button>
+          <div><p class="eyebrow">Step 1 of your main creative path</p><h2>Journal Room</h2><p>Choose what you need to write about today. The prompts give you somewhere to begin without telling you what to feel.</p></div>
+          <button class="btn primary" data-action="new-journal">＋ Blank journal</button>
         </div>
 
-        <div id="journal-panel-entries">
-          <div class="filterbar">
-            <div class="search"><input id="journal-search" placeholder="Search title, mood, or words…" aria-label="Search journal"></div>
+        <div class="card tint-lilac">
+          <div class="card-top"><div><h2>Choose a journal topic</h2><p>These are actual guided journal pages. Clicking one opens its questions in your writing space.</p></div><div class="sticker">📝</div></div>
+          <div id="journal-topic-list" class="grid three section-space"></div>
+        </div>
+
+        <div class="card section-space">
+          <div class="card-top"><div><p class="eyebrow">Step 2</p><h2>My journal entries</h2><p>Open an entry to edit it, or choose “Highlight for a song” when you are ready.</p></div></div>
+          <div class="filterbar section-space">
+            <div class="search"><input id="journal-search" placeholder="Search journal entries…" aria-label="Search journal"></div>
             <select id="journal-sort" aria-label="Sort journal"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select>
           </div>
           <div id="journal-list" class="grid two"></div>
         </div>
 
-        <div id="journal-panel-mine" hidden>
-          <div class="grid two">
-            <div class="card tint-gold">
-              <div class="card-top"><div><h2>1. Bring in a journal page</h2><p>Choose a saved entry or paste something here.</p></div><button class="help" data-help="mining" aria-label="Explain journal mining">?</button></div>
-              <div class="field section-space"><label for="mine-source">Saved entry</label><select id="mine-source"><option value="">Paste something new</option></select></div>
-              <div class="field section-space"><label for="mine-text">Journal text</label><textarea id="mine-text" class="sensitive" rows="14" placeholder="Paste the honest, messy version here…"></textarea></div>
+        <div class="card section-space tint-gold" id="highlight-studio">
+          <div class="card-top"><div><p class="eyebrow">Step 3</p><h2>Highlight lines for a song</h2><p>Select a saved entry below. Then select the exact words inside the journal text and press “Save highlighted line.”</p></div><button class="help" data-help="mining">?</button></div>
+          <div class="grid two section-space">
+            <div>
+              <div class="field"><label for="mine-source">Journal entry</label><select id="mine-source"><option value="">Choose an entry…</option></select></div>
+              <div class="field section-space"><label for="mine-text">Journal text — select words directly in this box</label><textarea id="mine-text" class="sensitive" rows="15" placeholder="Choose one of your entries above."></textarea></div>
             </div>
-            <div class="card tint-pink">
-              <h2>2. Highlight the line that glows</h2>
-              <p>Select words inside the journal box, then save the selection. If selecting is awkward on your device, type the phrase below.</p>
-              <div class="field section-space"><label for="mine-manual">Important phrase</label><textarea id="mine-manual" class="sensitive" rows="4" placeholder="The line I cannot stop thinking about…"></textarea></div>
-              <div class="field"><label for="mine-why">Why it matters</label><textarea id="mine-why" rows="3" placeholder="What truth, memory, image, or tension lives in it?"></textarea></div>
-              <div class="actions section-space"><button class="btn primary" id="save-mined-spark">✦ Save selected phrase</button><button class="btn" data-coach="journal">Ask Studio Coach</button></div>
-              <div class="guided section-space"><strong>Try this:</strong> Choose a line with an image, contradiction, secret, unanswered question, or emotional shift. It does not need to sound like a lyric yet.</div>
+            <div>
+              <div class="field"><label for="mine-manual">Selected line appears here</label><textarea id="mine-manual" class="sensitive" rows="5" placeholder="Select text on the left, or type the line here."></textarea></div>
+              <div class="field section-space"><label for="mine-why">What feeling or truth does this line hold?</label><textarea id="mine-why" rows="4" placeholder="Example: I was asking for love, but I was also learning to choose myself."></textarea></div>
+              <button class="btn primary section-space" id="save-mined-spark">Save highlighted line</button>
+              <div class="guided section-space"><strong>Keep it simple:</strong> save only the lines that still feel alive when you reread them. They do not need to rhyme.</div>
             </div>
           </div>
         </div>
 
-        <div id="journal-panel-sparks" hidden>
-          <div class="filterbar">
-            <div class="search"><input id="spark-search" placeholder="Search sparks…" aria-label="Search sparks"></div>
-            <select id="spark-use-filter" aria-label="Filter sparks by use"><option value="all">All uses</option><option>Undecided</option><option>Song</option><option>Story</option><option>Both</option></select>
-            <select id="spark-priority-filter" aria-label="Filter sparks by priority"><option value="all">All priorities</option><option>Now</option><option>Soon</option><option>Someday</option></select>
-          </div>
+        <div class="card section-space tint-pink">
+          <div class="card-top"><div><p class="eyebrow">Step 4</p><h2>My highlighted lines</h2><p>Select one or several lines, then start your song.</p></div><div class="actions"><button class="btn primary" id="start-selected-song">Start song from selected</button><button class="btn" data-action="quick-capture">＋ Add a line manually</button></div></div>
+          <div class="filterbar section-space"><div class="search"><input id="spark-search" placeholder="Search highlighted lines…" aria-label="Search highlighted lines"></div><select id="spark-use-filter" hidden><option value="all">All uses</option></select><select id="spark-priority-filter" hidden><option value="all">All priorities</option></select></div>
           <div id="spark-list" class="grid three"></div>
         </div>
       </section>
 
       <section class="view" id="view-songs">
         <div class="section-head">
-          <div><p class="eyebrow">Song lab</p><h2>Build the song without losing its heartbeat</h2><p>Move freely between sections, save alternate lines, and use your Creative Compass whenever the draft drifts.</p></div>
+          <div><p class="eyebrow">Song lab</p><h2>Build the song without losing its heartbeat</h2><p>Follow one section at a time, keep the original feeling visible, and save unused lines for later.</p></div>
           <button class="btn primary" data-action="new-song">＋ New song</button>
         </div>
         <div id="song-workspace"></div>
@@ -321,7 +330,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
 
       <section class="view" id="view-stories">
         <div class="section-head">
-          <div><p class="eyebrow">Story lab</p><h2>Shape a true feeling into a clear journey</h2><p>Follow the character’s want, need, and changing belief from scene to scene.</p></div>
+          <div><p class="eyebrow">Optional tool</p><h2>Simple Story Builder</h2><p>Answer six plain questions, then write the story. You do not need to understand scenes, beats, or story theory first.</p></div>
           <button class="btn primary" data-action="new-story">＋ New story</button>
         </div>
         <div id="story-workspace"></div>
@@ -329,33 +338,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
 
       <section class="view" id="view-library">
         <div class="section-head">
-          <div><p class="eyebrow">Creative support shelf</p><h2>Templates + Inspiration</h2><p>Use structure when you need it. Leave it behind when the piece knows where it is going.</p></div>
-          <button class="btn" data-action="new-inspiration">＋ Save inspiration</button>
+          <div><p class="eyebrow">Clear starting points</p><h2>Writing Guides</h2><p>A journal guide gives you questions to answer. A song plan gives every R&amp;B section a job.</p></div>
         </div>
-        <div class="tabs" id="library-tabs">
-          <button class="tab active" data-library-tab="templates">Templates</button>
-          <button class="tab" data-library-tab="inspiration">Inspiration shelf</button>
+        <div class="card tint-lilac">
+          <h2>Journal topic guides</h2><p>Choose one and its complete prompts will open in a new journal entry.</p>
+          <div id="journal-template-list" class="grid three section-space"></div>
         </div>
-        <div id="library-panel-templates">
-          <div class="filterbar"><select id="template-filter"><option value="all">All templates</option><option value="journal">Journal</option><option value="song">Song</option><option value="story">Story</option></select></div>
-          <div id="template-list" class="grid three"></div>
+        <div class="card tint-pink section-space">
+          <h2>Soulful R&amp;B song plans</h2>
+          <p>These use broad qualities you enjoy—emotional honesty, warmth, restraint, strong vocal moments, and reflective writing—while keeping your lyrics and melodies completely original.</p>
+          <div id="song-template-list" class="grid three section-space"></div>
         </div>
-        <div id="library-panel-inspiration" hidden>
-          <div class="filterbar"><div class="search"><input id="inspiration-search" placeholder="Search inspiration…" aria-label="Search inspiration"></div><select id="inspiration-type-filter"><option value="all">All kinds</option><option>Song</option><option>Film</option><option>Book</option><option>Visual</option><option>Conversation</option><option>Other</option></select></div>
-          <div id="inspiration-list" class="grid three"></div>
-        </div>
+        <details class="card fold section-space"><summary>My inspiration references (optional)</summary><p>Save songs, books, films, or images and write down what you are learning from them.</p><button class="btn" data-action="new-inspiration">＋ Save reference</button><div id="inspiration-list" class="grid three section-space"></div></details>
       </section>
 
       <section class="view" id="view-projects">
         <div class="section-head">
-          <div><p class="eyebrow">Projects + archive</p><h2>See every idea, not just the loudest one</h2><p>Filter by type or status, move projects forward, and reopen anything at any time.</p></div>
+          <div><p class="eyebrow">Everything in one simple list</p><h2>My Projects</h2><p>“Continue” opens the exact workspace. Change the status only when it helps you remember where you stopped.</p></div>
         </div>
         <div class="filterbar">
           <div class="search"><input id="project-search" placeholder="Search all projects…" aria-label="Search projects"></div>
           <select id="project-type-filter"><option value="all">Songs + stories</option><option value="song">Songs</option><option value="story">Stories</option></select>
           <select id="project-status-filter"><option value="all">All statuses</option><option>Spark</option><option>Developing</option><option>Drafting</option><option>Revising</option><option>Finalizing</option><option>Finished</option><option>Shared</option><option>Archived</option></select>
         </div>
-        <div class="board" id="project-board"></div>
+        <div id="project-board" class="grid two"></div>
       </section>
 
       <section class="view" id="view-settings">
@@ -416,7 +422,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           <b>Context to include</b>
           <p class="small-text">Nothing is sent until you press an ask button.</p>
           <label class="check"><input type="radio" name="coach-scope" value="current" checked><span>Current section</span></label>
-          <label class="check"><input type="radio" name="coach-scope" value="compass"><span>Creative Compass</span></label>
+          <label class="check"><input type="radio" name="coach-scope" value="compass"><span>Song direction</span></label>
           <label class="check"><input type="radio" name="coach-scope" value="project"><span>Entire project</span></label>
           <label class="check"><input type="radio" name="coach-scope" value="journal"><span>Journal/mining text</span></label>
           <label class="check"><input type="radio" name="coach-scope" value="custom"><span>Custom selection only</span></label>
@@ -425,7 +431,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           <b>Quick requests</b>
           <div class="list small-text section-space">
             <button class="btn small coach-preset" data-prompt="Ask me three questions that will help me uncover the central truth without writing it for me.">Find the truth</button>
-            <button class="btn small coach-preset" data-prompt="Check whether this section supports my Creative Compass. Point out drift and give one next move.">Check direction</button>
+            <button class="btn small coach-preset" data-prompt="Check whether this section supports the song direction I wrote. Point out drift and give one next move.">Check direction</button>
             <button class="btn small coach-preset" data-prompt="Give me four fresh image or sensory-detail directions that fit my voice. Do not write a full verse or scene.">Find imagery</button>
             <button class="btn small coach-preset" data-prompt="Help me find a memorable hook or story question. Offer four concise directions.">Find a hook</button>
           </div>
@@ -481,23 +487,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         privacy: ['Private by design','The page includes noindex instructions and your writing is stored in this browser. That keeps it out of normal site navigation and search results, but it is not a password. Use your web host’s password protection for stronger privacy.'],
         breadcrumbs: ['Session breadcrumbs','Before stopping, write what you accomplished, what is still unclear, and the smallest next step. The next time you open the project, you will not have to reconstruct your thinking.'],
         mining: ['Journal mining','The goal is not to make the journal entry “good.” Look for one phrase with energy—an image, contradiction, secret, question, or emotional turn—then save it with enough context to remember why it mattered.'],
-        compass: ['Creative Compass','This is the promise the project makes to itself. It protects the original spark, central truth, and emotional destination. Use it to evaluate ideas, not to trap yourself. You can evolve it and keep the old version in history.'],
-        sidequest: ['Side Quest Parking Lot','A strong line can still be wrong for this project. Parking it protects the idea without forcing it into the draft. You can move it back later.'],
+        compass: ['Song direction','Four plain answers keep the song tied to the feeling that started it: the first line, the real meaning, the listener feeling, and the line you most want to keep.'],
+        sidequest: ['Saved lines not used yet','A good line may not belong in the section you are writing. Save it here so it stays safe without confusing the current section.'],
         versions: ['Versions','A snapshot freezes the project as it is right now. Make one before major restructuring. Restoring creates a safety snapshot first, so experimentation stays reversible.'],
         coach: ['Studio Coach','Choose exactly how much context to include. “Copy + Open ChatGPT” keeps you in control and works without API setup. The in-page option requires a server API key and never places that secret in the browser.']
       };
       const TEMPLATES = [
-        {id:'j-truth',type:'journal',icon:'🕯️',name:'Find the real story',desc:'Move beneath what happened and locate the emotional truth.',preview:'What happened?\\nWhat did I say versus what did I mean?\\nWhat detail keeps replaying?\\nWhat changed in me?\\nThe sentence I am afraid to write is…'},
-        {id:'j-shift',type:'journal',icon:'🌗',name:'The moment something changed',desc:'Capture a before-and-after moment without overexplaining it.',preview:'Before this moment, I believed…\\nThe exact moment was…\\nMy body noticed…\\nAfterward, I could no longer…\\nThe image that holds it is…'},
-        {id:'j-unsaid',type:'journal',icon:'☎️',name:'The conversation I wish we had',desc:'Find tension, voice, and the words that stayed inside.',preview:'You said…\\nI answered…\\nWhat I wanted to say was…\\nWhat I needed you to understand…\\nWhat I understand now…'},
-        {id:'s-hook',type:'song',icon:'🪩',name:'Hook-first song',desc:'Build outward from one unforgettable phrase.',preview:'Hook / title\\nVerse 1: Where are we?\\nPre: Why can’t this stay contained?\\nChorus: Central truth\\nVerse 2: What changed?\\nBridge: Deepest admission'},
-        {id:'s-story',type:'song',icon:'🎞️',name:'Story song',desc:'Use scenes and a clear emotional turn.',preview:'Cold open image\\nVerse 1: Before\\nChorus: What it means\\nVerse 2: The turning moment\\nBridge: After / realization\\nFinal chorus: Same truth, changed meaning'},
-        {id:'s-anthem',type:'song',icon:'💖',name:'Self-return anthem',desc:'Move from outside judgment to inner authority.',preview:'Verse 1: The pressure\\nPre: The cost\\nChorus: My declaration\\nVerse 2: Evidence of growth\\nBridge: What I choose now\\nFinal chorus: Bigger declaration'},
-        {id:'s-fragment',type:'song',icon:'🎮',name:'Eight-bar fragment',desc:'A tiny container for days when “finish a song” is too large.',preview:'Image (2 bars)\\nTension (2 bars)\\nTurn (2 bars)\\nHook (2 bars)'},
-        {id:'t-short',type:'story',icon:'🍿',name:'Short story arc',desc:'A focused change built from five essential beats.',preview:'Opening image\\nWant appears\\nPressure / obstacle\\nChoice or realization\\nClosing image that shows change'},
-        {id:'t-personal',type:'story',icon:'📼',name:'Personal narrative',desc:'Turn memory into meaning without flattening the truth.',preview:'Present-day doorway\\nSpecific memory\\nWhat I believed then\\nWhat complicated it\\nWhat I understand now'},
-        {id:'t-scene',type:'story',icon:'🎭',name:'Single scene',desc:'Write one charged moment with a clear scene job.',preview:'Where and when\\nWho wants what\\nWhat is unsaid\\nWhat shifts\\nLast image / line'},
-        {id:'t-video',type:'story',icon:'🎬',name:'Animated music story',desc:'Plan a visual narrative that can live beside a song.',preview:'Visual motif\\nCharacter state\\nInciting image\\nEscalating images\\nEmotional turn\\nFinal visual echo'}
+        {id:'j-daily',type:'journal',icon:'🌤️',name:'Daily feelings check-in',desc:'For an ordinary day when you need to understand what is sitting with you.',preview:'HOW DO I FEEL RIGHT NOW?\\n\\nWHAT HAPPENED TODAY THAT AFFECTED ME?\\n\\nWHAT AM I STILL THINKING ABOUT?\\n\\nWHAT DID I NEED TODAY?\\n\\nONE TRUE SENTENCE ABOUT TODAY:'},
+        {id:'j-faith',type:'journal',icon:'🕊️',name:'Faith + Bible reflection',desc:'Connect Scripture, your real life, your questions, and what you are learning.',preview:'SCRIPTURE OR MESSAGE I AM REFLECTING ON:\\n\\nWHAT STANDS OUT TO ME?\\n\\nWHAT DOES THIS BRING UP IN MY REAL LIFE?\\n\\nWHAT AM I QUESTIONING OR STRUGGLING WITH?\\n\\nWHAT MIGHT GOD BE SHOWING OR REMINDING ME?\\n\\nA PRAYER IN MY OWN WORDS:'},
+        {id:'j-situation',type:'journal',icon:'🫧',name:'Process a situation',desc:'Slow down a confusing interaction and separate what happened from what it meant to you.',preview:'WHAT HAPPENED?\\n\\nWHAT WAS ACTUALLY SAID OR DONE?\\n\\nWHAT DID I FEEL IN THE MOMENT?\\n\\nWHAT STORY DID MY MIND CREATE ABOUT IT?\\n\\nWHAT DO I KNOW, AND WHAT AM I ASSUMING?\\n\\nWHAT DO I WISH I COULD SAY?\\n\\nWHAT DO I NEED NOW?'},
+        {id:'j-life',type:'journal',icon:'🛤️',name:'Life direction + growth',desc:'For work, identity, change, goals, and the person you are becoming.',preview:'WHERE DO I FEEL STUCK OR RESTLESS?\\n\\nWHAT PART OF MY LIFE WANTS TO GROW?\\n\\nWHAT AM I OUTGROWING?\\n\\nWHAT WOULD A MORE HONEST LIFE LOOK LIKE?\\n\\nWHAT IS ONE SMALL MOVE I CAN MAKE?\\n\\nA SENTENCE MY FUTURE SELF MAY NEED:'},
+        {id:'j-self',type:'journal',icon:'💗',name:'Self-love + boundaries',desc:'Return to your own voice when other people’s opinions feel louder.',preview:'WHAT HURT OR DRAINED ME?\\n\\nWHAT DID I NEED BUT NOT RECEIVE?\\n\\nWHERE DID I ABANDON MY OWN FEELINGS?\\n\\nWHAT WOULD IT LOOK LIKE TO CHOOSE MYSELF WITH LOVE?\\n\\nWHAT BOUNDARY OR TRUTH DO I WANT TO REMEMBER?\\n\\nWORDS I WANT TO SAY TO MYSELF:'},
+        {id:'j-good',type:'journal',icon:'🍯',name:'Good moments + gratitude',desc:'Capture joy, tenderness, beauty, and the parts of life you do not want to rush past.',preview:'WHAT FELT GOOD TODAY?\\n\\nWHAT SMALL DETAIL DO I WANT TO REMEMBER?\\n\\nWHO OR WHAT MADE LIFE FEEL SOFTER?\\n\\nWHAT AM I PROUD OF?\\n\\nWHAT AM I THANKFUL FOR RIGHT NOW?\\n\\nIF THIS FEELING WERE A SONG, WHAT WOULD IT SOUND LIKE?'},
+
+        {id:'s-faith-ballad',type:'song',icon:'🕯️',name:'Faith + gratitude ballad',desc:'A slow-building R&B ballad that moves from uncertainty into trust or gratitude.',sections:[
+          {name:'Verse 1',type:'Verse 1',purpose:'Show the specific moment when you felt afraid, tired, doubtful, or in need.'},
+          {name:'Pre-Chorus',type:'Pre-Chorus',purpose:'Let the emotion rise. What question, prayer, or realization is trying to break through?'},
+          {name:'Chorus',type:'Chorus',purpose:'Sing the simple central truth you want to return to. Keep it emotionally direct.'},
+          {name:'Verse 2',type:'Verse 2',purpose:'Show the evidence, memory, or change that makes the chorus believable.'},
+          {name:'Bridge',type:'Bridge',purpose:'Reach the most surrendered, vulnerable, or vocally open admission.'},
+          {name:'Final Chorus',type:'Final Chorus',purpose:'Return to the truth with more certainty, harmony, or emotional lift.'}
+        ]},
+        {id:'s-confession',type:'song',icon:'🌙',name:'Late-night R&B confession',desc:'Intimate and restrained: details first, the honest admission in the chorus.',sections:[
+          {name:'Intro',type:'Intro',purpose:'Set the late-night mood with one image, sound, question, or unfinished thought.'},
+          {name:'Verse 1',type:'Verse 1',purpose:'Show what happened through precise details instead of explaining everything.'},
+          {name:'Pre-Chorus',type:'Pre-Chorus',purpose:'Say what you have been trying not to admit.'},
+          {name:'Chorus',type:'Chorus',purpose:'Deliver the confession or emotional question in the clearest, most memorable language.'},
+          {name:'Verse 2',type:'Verse 2',purpose:'Complicate the feeling. What do you want even though you know better?'},
+          {name:'Bridge',type:'Bridge',purpose:'Drop the protection and say the rawest truth.'},
+          {name:'Final Chorus',type:'Final Chorus',purpose:'Return with a changed vocal feeling—stronger, softer, or more resigned.'}
+        ]},
+        {id:'s-warm-reflection',type:'song',icon:'☕',name:'Warm neo-soul reflection',desc:'Gentle, wise, and spacious—a repeated truth surrounded by personal reflection.',sections:[
+          {name:'Opening Mantra',type:'Intro',purpose:'Begin with a short thought that could be repeated like a grounding mantra.'},
+          {name:'Verse 1',type:'Verse 1',purpose:'Observe yourself honestly. What pattern, fear, or hope are you noticing?'},
+          {name:'Refrain',type:'Chorus',purpose:'State one warm, repeatable truth without overexplaining it.'},
+          {name:'Verse 2',type:'Verse 2',purpose:'Offer the wisdom you are slowly learning—not a perfect answer.'},
+          {name:'Bridge',type:'Bridge',purpose:'Let the perspective shift. What are you choosing or releasing now?'},
+          {name:'Final Refrain',type:'Final Chorus',purpose:'Repeat the truth with space for harmony, ad-libs, or quiet conviction.'}
+        ]},
+        {id:'s-boundary',type:'song',icon:'💎',name:'Love + boundaries slow jam',desc:'A smooth relationship song that moves from the pattern to the boundary.',sections:[
+          {name:'Verse 1',type:'Verse 1',purpose:'Describe the relationship pattern and one moment that represents it.'},
+          {name:'Pre-Chorus',type:'Pre-Chorus',purpose:'Name what the pattern is costing you emotionally.'},
+          {name:'Chorus',type:'Chorus',purpose:'State the boundary, standard, or question listeners should remember.'},
+          {name:'Verse 2',type:'Verse 2',purpose:'Show what you have realized about yourself since the first verse.'},
+          {name:'Bridge',type:'Bridge',purpose:'Choose self-respect, honesty, or a final vulnerable request.'},
+          {name:'Final Chorus',type:'Final Chorus',purpose:'Repeat the boundary with more authority or peace.'}
+        ]},
+        {id:'s-devotion',type:'song',icon:'🌹',name:'Tender devotion song',desc:'A warm love song built from ordinary details instead of generic declarations.',sections:[
+          {name:'Verse 1',type:'Verse 1',purpose:'Show one ordinary detail that makes this love feel real.'},
+          {name:'Pre-Chorus',type:'Pre-Chorus',purpose:'Describe the quiet realization growing from that moment.'},
+          {name:'Chorus',type:'Chorus',purpose:'Give the listener the emotional promise or title line.'},
+          {name:'Verse 2',type:'Verse 2',purpose:'Show another side of the connection or how you have changed.'},
+          {name:'Bridge',type:'Bridge',purpose:'Reveal the fear, gratitude, or depth beneath the love.'},
+          {name:'Final Chorus',type:'Final Chorus',purpose:'Open the vocals and let the central promise feel fully lived-in.'}
+        ]},
+        {id:'s-fragment',type:'song',icon:'🎮',name:'Eight-bar R&B idea',desc:'For days when a whole song is too much. Finish one small musical thought.',sections:[
+          {name:'Eight-bar idea',type:'Custom',purpose:'Bars 1–2: image. Bars 3–4: feeling. Bars 5–6: turn. Bars 7–8: memorable final line or hook.'}
+        ]},
+        {id:'t-simple',type:'story',icon:'🎬',name:'Simple personal story',desc:'Six questions and one draft—no complicated story vocabulary.',preview:'What happened?\\nWho is this about?\\nWhat did they want?\\nWhat got in the way?\\nWhat changed?\\nWhat should the reader understand?'}
       ];
 
       const uid = prefix => (prefix || 'id') + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7);
@@ -522,17 +569,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       const defaultSection = (name='Verse 1', type=name) => ({id:uid('sec'),name,type,purpose:SECTION_JOBS[type] || SECTION_JOBS.Custom,lyrics:'',bars:'',status:'Idea',notes:'',alternates:[]});
       const storyScene = (name='Scene 1') => ({id:uid('scene'),name,purpose:'',setting:'',characters:'',want:'',conflict:'',turn:'',draft:'',notes:'',status:'Idea'});
 
-      function makeSong(title='Untitled Song', templateId='s-story', spark='') {
-        let names = ['Intro','Verse 1','Pre-Chorus','Chorus','Verse 2','Bridge','Final Chorus','Outro'];
-        if (templateId === 's-fragment') names = ['Eight-bar fragment'];
-        if (templateId === 's-hook') names = ['Hook Lab','Verse 1','Pre-Chorus','Chorus','Verse 2','Bridge','Final Chorus'];
-        const sections = names.map(name => defaultSection(name, SECTION_JOBS[name] ? name : 'Custom'));
+      function makeSong(title='Untitled Song', templateId='s-confession', spark='') {
+        const plan=TEMPLATES.find(t=>t.id===templateId&&t.type==='song');
+        const source=plan?.sections||[
+          {name:'Verse 1',type:'Verse 1',purpose:SECTION_JOBS['Verse 1']},
+          {name:'Chorus',type:'Chorus',purpose:SECTION_JOBS.Chorus},
+          {name:'Verse 2',type:'Verse 2',purpose:SECTION_JOBS['Verse 2']},
+          {name:'Bridge',type:'Bridge',purpose:SECTION_JOBS.Bridge},
+          {name:'Final Chorus',type:'Final Chorus',purpose:SECTION_JOBS['Final Chorus']}
+        ];
+        const sections=source.map(item=>({...defaultSection(item.name,item.type),purpose:item.purpose}));
         return {id:uid('song'),kind:'song',title,status:'Spark',createdAt:now(),updatedAt:now(),sourceSparkId:'',genre:'',tempo:'',key:'',references:'',audioLink:'',productionNotes:'',compass:{...blankCompass(),spark},sections,activeSectionId:sections[0].id,parkingLot:[],revision:Object.fromEntries(REVISION_PASSES.map(x=>[x,false])),breadcrumb:blankBreadcrumb(),versions:[],coachNotes:[],templateId};
       }
-      function makeStory(title='Untitled Story', templateId='t-short', spark='') {
-        const sceneNames = templateId === 't-scene' ? ['The scene'] : templateId === 't-video' ? ['Opening image','Inciting image','Escalation','Emotional turn','Final echo'] : ['Opening','Pressure builds','Turning point','Aftermath','Closing image'];
+      function makeStory(title='Untitled Story', templateId='t-simple', spark='') {
+        const sceneNames = ['The story'];
         const scenes = sceneNames.map(storyScene);
-        return {id:uid('story'),kind:'story',title,status:'Spark',createdAt:now(),updatedAt:now(),sourceSparkId:'',format:'Short story',logline:'',theme:'',compass:{...blankCompass(),want:'',need:'',theme:''},characters:[],scenes,activeSceneId:scenes[0].id,outline:'',draft:'',parkingLot:[],bridge:{songId:'',originalTruth:'',storyTruth:'',songTruth:''},revision:Object.fromEntries(REVISION_PASSES.slice(0,5).map(x=>[x,false])),breadcrumb:blankBreadcrumb(),versions:[],coachNotes:[],templateId};
+        return {id:uid('story'),kind:'story',title,status:'Spark',createdAt:now(),updatedAt:now(),sourceSparkId:'',format:'Short story',logline:'',theme:'',mainCharacter:'',obstacle:'',storyBeginning:'',storyMiddle:'',storyEnding:'',compass:{...blankCompass(),want:'',need:'',theme:''},characters:[],scenes,activeSceneId:scenes[0].id,outline:'',draft:'',parkingLot:[],bridge:{songId:'',originalTruth:'',storyTruth:'',songTruth:''},revision:Object.fromEntries(REVISION_PASSES.slice(0,5).map(x=>[x,false])),breadcrumb:blankBreadcrumb(),versions:[],coachNotes:[],templateId};
       }
       const defaults = () => ({
         version:1,
@@ -619,12 +671,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));
         document.querySelectorAll('.nav button[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
         const titles={
-          home:['Studio Home','A soft place to turn real moments into songs and stories.'],
-          journal:['Journal + Sparks','Mine your real life for the lines that glow.'],
+          home:['Studio Home','Write what happened, find the line that matters, and turn it into music.'],
+          journal:['Journal Room','Choose a topic, write freely, then highlight the words you want to keep.'],
           songs:['Song Lab','Write with structure while protecting the feeling.'],
-          stories:['Story Lab','Build scenes, characters, and change one clear move at a time.'],
-          library:['Templates + Inspiration','Support when you need it; freedom when you do not.'],
-          projects:['Project Board','Every spark has a place, even before it has a plan.'],
+          stories:['Simple Story Builder','Answer six plain questions, then shape a beginning, middle, and ending.'],
+          library:['Writing Guides','Real journal prompts and soulful R&B song shapes you can use immediately.'],
+          projects:['My Projects','See what you started, what comes next, and where to continue.'],
           settings:['Settings + Backup','Keep your creative room comfortable and safe.']
         };
         document.getElementById('page-title').textContent=titles[name][0];
@@ -641,7 +693,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
 
       function renderHome() {
         const words=state.journal.reduce((n,x)=>n+wordCount(x.body),0)+state.songs.reduce((n,s)=>n+s.sections.reduce((m,x)=>m+wordCount(x.lyrics),0),0)+state.stories.reduce((n,s)=>n+wordCount(s.draft)+s.scenes.reduce((m,x)=>m+wordCount(x.draft),0),0);
-        const stats=[['✨',state.sparks.length,'sparks protected'],['🎧',state.songs.length,'songs growing'],['🎬',state.stories.length,'stories growing'],['📝',words.toLocaleString(),'words captured']];
+        const stats=[['✨',state.sparks.length,'highlighted lines'],['🎧',state.songs.length,'songs growing'],['🎬',state.stories.length,'stories growing'],['📝',words.toLocaleString(),'words captured']];
         document.getElementById('home-stats').innerHTML=stats.map(x=>'<div class="stat"><span>'+x[0]+'</span><b>'+x[1]+'</b><small>'+x[2]+'</small></div>').join('');
         const projects=allProjects().sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt))).slice(0,3);
         document.getElementById('continue-list').innerHTML=projects.length?projects.map(p=>'<button class="list-item clickable" data-open-project="'+p.id+'"><span><h4>'+esc(p.title)+'</h4><p>'+esc(p.kind==='song'?'Song':'Story')+' · '+esc(p.status)+' · updated '+fmtDate(p.updatedAt)+'</p></span><span>→</span></button>').join(''):'<div class="empty"><span class="emoji">🎹</span>Your first project will wait here for you.</div>';
@@ -698,24 +750,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       }
 
       function openQuickCapture(prefill='',why='') {
-        openForm('Catch a spark',
-          '<div class="form-grid">'+field('phrase','The phrase, image, or idea',prefill,'textarea','span-2')+
-          field('context','Where it came from','')+field('emotion','Emotion / energy','')+
-          field('theme','Possible theme','')+selectField('use','What might it become?','Undecided',['Undecided','Song','Story','Both'])+
-          selectField('priority','When should it return?','Soon',['Now','Soon','Someday'])+
-          field('why','Why it matters',why,'textarea','span-2')+'</div>',
-          'Protect this spark',
+        openForm('Add a highlighted line',
+          '<p>Use this when the line did not come from a saved journal entry.</p><div class="form-grid">'+field('phrase','Line, image, or thought',prefill,'textarea','span-2')+
+          field('why','What feeling or truth does it hold?',why,'textarea','span-2')+'</div>',
+          'Save highlighted line',
           form=>{
             const v=values(form); if(!v.phrase.trim()){toast('Give the spark at least one line.');return false;}
-            state.sparks.unshift({...v,id:uid('spark'),createdAt:now(),updatedAt:now(),private:true});
-            saveState();renderAll();toast('Spark protected in the vault ✦');
+            state.sparks.unshift({...v,context:'Added manually',emotion:'',theme:'',use:'Song',priority:'Soon',id:uid('spark'),createdAt:now(),updatedAt:now(),private:true});
+            saveState();renderAll();toast('Highlighted line saved ✦');
           });
       }
       function openJournal(id='',templateId='') {
-        const old=state.journal.find(x=>x.id===id) || {id:'',title:'',date:isoDate(new Date()),mood:'',tags:'',body:templateId?(TEMPLATES.find(t=>t.id===templateId)?.preview||''):'',favoriteLine:''};
+        const template=TEMPLATES.find(t=>t.id===templateId&&t.type==='journal');
+        const old=state.journal.find(x=>x.id===id) || {id:'',title:template?template.name:'',date:isoDate(new Date()),mood:'',tags:template?template.name:'',body:template?template.preview+'\n\n':''};
         openForm(old.id?'Edit journal entry':'New journal entry',
-          '<div class="form-grid">'+field('title','Entry title',old.title)+field('date','Date',old.date,'date')+field('mood','Mood / energy',old.mood)+field('tags','Tags (comma separated)',old.tags)+field('body','Write the honest version',old.body,'textarea','span-2')+field('favoriteLine','Line to remember',old.favoriteLine,'textarea','span-2')+'</div>'+
-          '<div class="guided section-space"><strong>No performance required:</strong> this is source material, not a finished piece. Specific details are usually more useful than polished sentences.</div>'+
+          (template?'<div class="privacy-note"><b>'+esc(template.icon+' '+template.name)+'</b><br>'+esc(template.desc)+'</div>':'')+
+          '<div class="form-grid section-space">'+field('title','Entry title',old.title)+field('date','Date',old.date,'date')+field('mood','How do you feel?',old.mood)+field('tags','Topic or tags',old.tags)+field('body','Your journal page — write beneath each question',old.body,'textarea','span-2')+'</div>'+
+          '<div class="guided section-space"><strong>This is not songwriting yet.</strong> Answer naturally, repeat yourself, and tell the truth. You will choose the musical lines afterward.</div>'+
           (old.id?'<button type="button" class="btn danger small section-space" data-delete-journal="'+old.id+'">Delete entry</button>':''),
           old.id?'Save entry':'Save entry',
           form=>{
@@ -727,18 +778,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       }
       function openSpark(id='') {
         const old=state.sparks.find(x=>x.id===id) || {id:'',phrase:'',context:'',emotion:'',theme:'',use:'Undecided',priority:'Soon',why:''};
-        openForm(old.id?'Edit spark':'New spark',
-          '<div class="form-grid">'+field('phrase','The spark',old.phrase,'textarea','span-2')+field('context','Source / context',old.context)+field('emotion','Emotion / energy',old.emotion)+field('theme','Theme',old.theme)+selectField('use','Possible use',old.use,['Undecided','Song','Story','Both'])+selectField('priority','Priority',old.priority,['Now','Soon','Someday'])+field('why','Why it matters',old.why,'textarea','span-2')+'</div>'+
-          (old.id?'<button type="button" class="btn danger small section-space" data-delete-spark="'+old.id+'">Delete spark</button>':''),
-          old.id?'Save spark':'Protect spark',
+        openForm(old.id?'Edit highlighted line':'Add a highlighted line',
+          '<div class="form-grid">'+field('phrase','Highlighted words',old.phrase,'textarea','span-2')+field('why','Feeling or truth inside the line',old.why,'textarea','span-2')+field('context','Journal or situation it came from',old.context,'textarea','span-2')+'</div>'+
+          (old.id?'<button type="button" class="btn danger small section-space" data-delete-spark="'+old.id+'">Delete highlighted line</button>':''),
+          old.id?'Save line':'Save line',
           form=>{
             const v=values(form);if(!v.phrase.trim()){toast('Give the spark at least one line.');return false;}
             const item={...old,...v,id:old.id||uid('spark'),createdAt:old.createdAt||now(),updatedAt:now(),private:true};
             const i=state.sparks.findIndex(x=>x.id===item.id);if(i>=0)state.sparks[i]=item;else state.sparks.unshift(item);
-            saveState();renderJournal();renderHome();toast('Spark saved');
+            saveState();renderJournal();renderHome();toast('Highlighted line saved');
           });
       }
-      function renderJournal() {
+      function renderJournalLegacy() {
         document.querySelectorAll('[data-journal-tab]').forEach(b=>b.classList.toggle('active',b.dataset.journalTab===ui.journalTab));
         ['entries','mine','sparks'].forEach(name=>document.getElementById('journal-panel-'+name).hidden=name!==ui.journalTab);
         const search=(document.getElementById('journal-search')?.value||'').toLowerCase();
@@ -770,32 +821,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           </article>`).join(''):'<div class="empty span-2"><span class="emoji">✨</span>No sparks match this view yet. Save the line before you decide what it is.</div>';
       }
 
-      function openNewSong(sparkId='',templateId='s-story') {
+      function renderJournal() {
+        const topics=TEMPLATES.filter(t=>t.type==='journal');
+        document.getElementById('journal-topic-list').innerHTML=topics.map(t=>`
+          <article class="card template-card">
+            <div class="template-icon">${t.icon}</div>
+            <h3>${esc(t.name)}</h3>
+            <p>${esc(t.desc)}</p>
+            <details><summary>See the questions</summary><div class="preview-box section-space">${esc(t.preview)}</div></details>
+            <div class="actions"><button class="btn primary small" data-use-template="${t.id}">Write about this</button></div>
+          </article>`).join('');
+
+        const search=(document.getElementById('journal-search')?.value||'').toLowerCase();
+        const sort=document.getElementById('journal-sort')?.value||'newest';
+        let entries=state.journal.filter(x=>(x.title+' '+x.mood+' '+x.tags+' '+x.body).toLowerCase().includes(search));
+        entries.sort((a,b)=>sort==='oldest'?String(a.date).localeCompare(String(b.date)):sort==='title'?a.title.localeCompare(b.title):String(b.date).localeCompare(String(a.date)));
+        document.getElementById('journal-list').innerHTML=entries.length?entries.map(x=>`
+          <article class="card tint-gold">
+            <div class="card-top"><div><span class="chip">${fmtDate(x.date)}</span><h3 class="section-space">${esc(x.title)}</h3></div><div class="sticker">📓</div></div>
+            <p class="sensitive">${esc(firstWords(x.body,38)||'No journal text yet.')}</p>
+            <div class="chips">${x.mood?'<span class="chip">'+esc(x.mood)+'</span>':''}</div>
+            <div class="actions section-space"><button class="btn small" data-edit-journal="${x.id}">Edit entry</button><button class="btn small primary" data-mine-journal="${x.id}">Highlight for a song</button></div>
+          </article>`).join(''):'<div class="empty span-2"><span class="emoji">📖</span>Choose a topic above or open a blank journal page.</div>';
+
+        const source=document.getElementById('mine-source'),current=source.value;
+        source.innerHTML='<option value="">Choose an entry…</option>'+state.journal.map(x=>'<option value="'+x.id+'">'+esc(x.title)+'</option>').join('');
+        if(state.journal.some(x=>x.id===current))source.value=current;
+
+        const sparkSearch=(document.getElementById('spark-search')?.value||'').toLowerCase();
+        const highlights=state.sparks.filter(x=>(x.phrase+' '+x.context+' '+x.emotion+' '+x.theme).toLowerCase().includes(sparkSearch));
+        document.getElementById('spark-list').innerHTML=highlights.length?highlights.map(x=>`
+          <article class="card tint-pink">
+            <div class="card-top"><label class="check"><input class="highlight-select" type="checkbox" value="${x.id}"><span>Select</span></label><button class="icon-btn" data-edit-spark="${x.id}" aria-label="Edit highlighted line">✎</button></div>
+            <h3 class="sensitive">“${esc(x.phrase)}”</h3>
+            <p>${esc(x.why||x.context||'No meaning note added yet.')}</p>
+            <div class="actions section-space"><button class="btn small primary" data-develop-spark="${x.id}" data-kind="song">Start a song with this</button></div>
+          </article>`).join(''):'<div class="empty span-2"><span class="emoji">✨</span>Your highlighted journal lines will appear here.</div>';
+      }
+
+      function songPlanPreview(id){
+        const plan=TEMPLATES.find(t=>t.id===id&&t.type==='song');if(!plan)return '';
+        return '<b>'+esc(plan.name)+'</b><br>'+plan.sections.map((s,i)=>(i+1)+'. '+esc(s.name)+' — '+esc(s.purpose)).join('<br>');
+      }
+      function openNewSong(sparkId='',templateId='s-confession',prefill='') {
         const spark=state.sparks.find(x=>x.id===sparkId);
         const songTemplates=TEMPLATES.filter(t=>t.type==='song');
         openForm('Start a song',
-          '<div class="form-grid">'+field('title','Working title',spark?firstWords(spark.phrase,6):'')+
+          '<div class="form-grid">'+field('title','Working title',spark?firstWords(spark.phrase,6):prefill?firstWords(prefill,6):'')+
           '<div class="field"><label for="f-template">Starting shape</label><select id="f-template" name="template">'+songTemplates.map(t=>'<option value="'+t.id+'" '+(t.id===templateId?'selected':'')+'>'+esc(t.name)+'</option>').join('')+'</select></div>'+
-          field('spark','Original spark',spark?spark.phrase:'','textarea','span-2')+'</div><div class="guided section-space"><strong>Working title means temporary.</strong> You can rename the song at any time. The original spark stays in your Creative Compass.</div>',
+          field('spark','Highlighted line(s) or central idea',prefill||(spark?spark.phrase:''),'textarea','span-2')+'</div><div class="preview-box section-space" id="song-plan-preview">'+songPlanPreview(templateId)+'</div><div class="guided section-space"><strong>The plan only gives each section a job.</strong> It will never supply or copy another artist’s lyrics, melody, or personal voice.</div>',
           'Open Song Lab',
           form=>{const v=values(form),song=makeSong(v.title.trim()||'Untitled Song',v.template,v.spark);song.sourceSparkId=sparkId;state.songs.unshift(song);state.activeSongId=song.id;saveState();setView('songs');toast('New song room opened 🎧');}
         );
       }
-      function openNewStory(sparkId='',templateId='t-short') {
+      function openNewStory(sparkId='',templateId='t-simple') {
         const spark=state.sparks.find(x=>x.id===sparkId);
         const storyTemplates=TEMPLATES.filter(t=>t.type==='story');
         openForm('Start a story',
           '<div class="form-grid">'+field('title','Working title',spark?firstWords(spark.phrase,6):'')+
           '<div class="field"><label for="f-template">Starting shape</label><select id="f-template" name="template">'+storyTemplates.map(t=>'<option value="'+t.id+'" '+(t.id===templateId?'selected':'')+'>'+esc(t.name)+'</option>').join('')+'</select></div>'+
           field('spark','Original spark',spark?spark.phrase:'','textarea','span-2')+'</div>',
-          'Open Story Lab',
+          'Open Simple Story Builder',
           form=>{const v=values(form),story=makeStory(v.title.trim()||'Untitled Story',v.template,v.spark);story.sourceSparkId=sparkId;state.stories.unshift(story);state.activeStoryId=story.id;saveState();setView('stories');toast('New story room opened 🎬');}
         );
       }
 
       function renderSongs() {
         const root=document.getElementById('song-workspace');
-        if(!state.songs.length){root.innerHTML='<div class="empty"><span class="emoji">🎤</span><h3>Your Song Lab is ready</h3><p>Begin with a journal spark, a hook, an image, or a feeling you cannot name yet.</p><button class="btn primary" data-action="new-song">Start the first song</button></div>';return;}
+        if(!state.songs.length){root.innerHTML='<div class="empty"><span class="emoji">🎤</span><h3>Your Song Lab is ready</h3><p>Begin with a highlighted journal line, a hook, an image, or a feeling you cannot name yet.</p><button class="btn primary" data-action="new-song">Start the first song</button></div>';return;}
         if(!activeSong())state.activeSongId=state.songs[0].id;
         const p=activeSong();state.activeSongId=p.id;
         if(!p.sections?.length)p.sections=[defaultSection()];
@@ -823,18 +916,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
               </div>
 
               <details class="card compass" open>
-                <summary>Creative Compass <button type="button" class="help" data-help="compass" aria-label="Explain Creative Compass">?</button></summary>
-                <div class="guided section-space"><strong>North star:</strong> answer in plain language. These are decisions, not polished lyrics. If the song changes honestly, use “Evolve compass” and keep the older direction in history.</div>
+                <summary>Song direction — 4 simple answers <button type="button" class="help" data-help="compass" aria-label="Explain song direction">?</button></summary>
+                <div class="guided section-space"><strong>Keep it simple:</strong> these answers keep the song connected to the feeling that started it. They do not need to sound like lyrics.</div>
                 <div class="compass-grid">
-                  ${fieldMarkup('Original spark','spark',p.compass.spark,'What sentence or image began this?',true,'compass')}
-                  ${fieldMarkup('Central truth','truth',p.compass.truth,'What is this really saying?',true,'compass')}
-                  ${fieldMarkup('Emotional destination','destination',p.compass.destination,'What should the listener feel or understand?',true,'compass')}
-                  ${fieldMarkup('Beginning belief','beginBelief',p.compass.beginBelief,'What does the speaker believe at first?',true,'compass')}
-                  ${fieldMarkup('Ending belief','endBelief',p.compass.endBelief,'What changes by the end?',true,'compass')}
-                  ${fieldMarkup('Must-keep line','mustKeep',p.compass.mustKeep,'Which line carries the heartbeat?',true,'compass')}
-                  ${fieldMarkup('Not this song','notThis',p.compass.notThis,'What tempting direction does not belong?',true,'compass')}
+                  ${fieldMarkup('The line that started it','spark',p.compass.spark,'Paste the highlighted journal line.',true,'compass')}
+                  ${fieldMarkup('What the song is really about','truth',p.compass.truth,'Say it plainly, in one or two sentences.',true,'compass')}
+                  ${fieldMarkup('How the listener should feel','destination',p.compass.destination,'Comforted, understood, longing, hopeful…',true,'compass')}
+                  ${fieldMarkup('The line you most want to keep','mustKeep',p.compass.mustKeep,'This can become a hook or emotional center.',true,'compass')}
                 </div>
-                <div class="actions section-space"><button class="btn primary" data-direction="song">🧭 Find my way back</button><button class="btn" data-check-song>Check current section</button><button class="btn ghost" data-evolve-compass="song">Evolve compass</button></div>
+                <details class="fold section-space">
+                  <summary>Advanced direction (optional)</summary>
+                  <div class="compass-grid section-space">
+                    ${fieldMarkup('What I believe at the beginning','beginBelief',p.compass.beginBelief,'',true,'compass')}
+                    ${fieldMarkup('What changes by the ending','endBelief',p.compass.endBelief,'',true,'compass')}
+                    ${fieldMarkup('What this song is not about','notThis',p.compass.notThis,'A direction you do not want to drift into.',true,'compass')}
+                  </div>
+                </details>
+                <div class="actions section-space"><button class="btn primary" data-direction="song">🧭 Help me find my way back</button><button class="btn" data-check-song>Check this section</button><button class="btn ghost" data-evolve-compass="song">Save changed direction</button></div>
               </details>
 
               <div class="grid two section-space">
@@ -858,7 +956,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
                 </section>
                 <aside class="grid">
                   <section class="card tint-gold"><div class="card-top"><div><h3>Alternate lines</h3><p>Options are not commitments.</p></div><div class="sticker">🔀</div></div><div class="list section-space">${alternates}</div></section>
-                  <section class="card tint-pink"><div class="card-top"><div><h3>Side Quest Parking Lot</h3><p>Keep the gem. Protect the song.</p></div><button class="help" data-help="sidequest">?</button></div><div class="list section-space">${parking}</div><button class="btn small section-space" data-add-parking>＋ Park an idea</button></section>
+                  <section class="card tint-pink"><div class="card-top"><div><h3>Saved lines not used yet</h3><p>Keep good lines without forcing them into this section.</p></div><button class="help" data-help="sidequest">?</button></div><div class="list section-space">${parking}</div><button class="btn small section-space" data-add-parking>＋ Save a line here</button></section>
                 </aside>
               </div>
 
@@ -907,7 +1005,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         return fieldMarkup('What I accomplished','accomplished',b.accomplished,'',true,'breadcrumb')+fieldMarkup('What I am figuring out','figuring',b.figuring,'',true,'breadcrumb')+fieldMarkup('Next smallest step','nextStep',b.nextStep,'',true,'breadcrumb')+fieldMarkup('Open to this next time','openTo',b.openTo,'',true,'breadcrumb');
       }
 
-      function renderStories() {
+      function renderStoriesLegacy() {
         const root=document.getElementById('story-workspace');
         if(!state.stories.length){root.innerHTML='<div class="empty"><span class="emoji">🎬</span><h3>Your Story Lab is ready</h3><p>Begin with a memory, a character, one charged scene, or a question you cannot answer yet.</p><button class="btn primary" data-action="new-story">Start the first story</button></div>';return;}
         if(!activeStory())state.activeStoryId=state.stories[0].id;
@@ -1016,6 +1114,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           </div>`;
       }
 
+      function renderStories() {
+        const root=document.getElementById('story-workspace');
+        if(!state.stories.length){
+          root.innerHTML='<div class="empty"><span class="emoji">🎬</span><h3>Start with what happened</h3><p>The builder will ask six ordinary questions and then give you one large place to write.</p><button class="btn primary" data-action="new-story">Start a simple story</button></div>';
+          return;
+        }
+        if(!activeStory())state.activeStoryId=state.stories[0].id;
+        const p=activeStory();state.activeStoryId=p.id;
+        p.compass=p.compass||blankCompass();p.breadcrumb=p.breadcrumb||blankBreadcrumb();
+        const rail=state.stories.map(x=>`<button class="rail-project ${x.id===p.id?'active':''}" data-select-story="${x.id}"><b>${esc(x.title)}</b><small>${esc(x.status)} · ${fmtDate(x.updatedAt)}</small></button>`).join('');
+        root.innerHTML=`
+          <div class="workspace">
+            <aside class="project-rail">
+              <div class="rail-head"><b>My stories</b><button class="icon-btn" data-action="new-story" aria-label="New story">＋</button></div>
+              <div id="story-rail-list">${rail}</div>
+            </aside>
+            <div class="work-main">
+              <div class="work-toolbar">
+                <div><b class="sensitive">${esc(p.title)}</b><div class="small-text muted">Simple story worksheet · saved locally</div></div>
+                <div class="actions"><select data-story-field="status">${STATUSES.map(x=>'<option '+(x===p.status?'selected':'')+'>'+x+'</option>').join('')}</select><button class="btn small" data-story-snapshot>📸 Snapshot</button><button class="btn small" data-versions="story">Versions</button></div>
+              </div>
+
+              <div class="card tint-lilac">
+                <div class="card-top"><div><p class="eyebrow">Part 1 — understand the story</p><h2>Answer six plain questions</h2><p>Short answers are enough. These answers help you know what story you are actually writing.</p></div><div class="sticker">1–6</div></div>
+                <div class="form-grid section-space">
+                  ${fieldMarkup('1. What happened?','spark',p.compass.spark,'Describe the real or imagined situation in simple words.',true,'compass','span-2')}
+                  ${fieldMarkup('2. Who is the story mainly about?','mainCharacter',p.mainCharacter||'','Name the person and what they are like at the beginning.',true,'story')}
+                  ${fieldMarkup('3. What do they want?','want',p.compass.want||'','What are they trying to receive, change, prove, protect, or escape?',true,'compass')}
+                  ${fieldMarkup('4. What gets in the way?','obstacle',p.obstacle||'','A person, fear, secret, belief, situation, or choice.',true,'story')}
+                  ${fieldMarkup('5. What changes by the end?','endBelief',p.compass.endBelief||'','What do they realize, choose, lose, or finally understand?',true,'compass')}
+                  ${fieldMarkup('6. What should the reader understand?','truth',p.compass.truth||'','The emotional truth—not a lesson you have to force.',true,'compass','span-2')}
+                </div>
+              </div>
+
+              <div class="card section-space tint-gold">
+                <p class="eyebrow">Part 2 — shape it</p><h2>Beginning, middle, and ending</h2>
+                <p>You are only planning what changes. This does not need to sound beautiful.</p>
+                <div class="form-grid section-space">
+                  ${fieldMarkup('Beginning: where are they and what feels normal?','storyBeginning',p.storyBeginning||'','',true,'story')}
+                  ${fieldMarkup('Middle: what pressure or choice makes things harder?','storyMiddle',p.storyMiddle||'','',true,'story')}
+                  ${fieldMarkup('Ending: what is different now?','storyEnding',p.storyEnding||'','',true,'story','span-2')}
+                </div>
+              </div>
+
+              <div class="card section-space">
+                <div class="card-top"><div><p class="eyebrow">Part 3 — write it</p><h2>Full story draft</h2><p>Use the questions as a map, not as headings you must keep.</p></div><div class="sticker">✍🏾</div></div>
+                <div class="field section-space"><label>Working title</label><input data-story-field="title" value="${esc(p.title)}"></div>
+                <div class="field section-space"><label>Your story</label><textarea class="lyrics sensitive" data-story-field="draft" placeholder="Begin with a specific moment, image, action, or line of dialogue.">${esc(p.draft||'')}</textarea></div>
+                <div class="counter"><span>${wordCount(p.draft)} words</span><span>There is no required length.</span></div>
+                <div class="actions section-space"><button class="btn primary" data-story-to-song>Use this truth in a song</button><button class="btn" data-coach="story">Ask Studio Coach</button></div>
+              </div>
+
+              <div class="card section-space tint-mint"><h2>Before I stop</h2><p>Leave yourself one easy instruction for next time.</p><div class="field"><label>Next smallest step</label><textarea data-breadcrumb-field="nextStep">${esc(p.breadcrumb.nextStep||'')}</textarea></div></div>
+              <div class="actions section-space"><button class="btn" data-archive-project="${p.id}">Move story to archive</button></div>
+            </div>
+          </div>`;
+      }
+
       function openCharacter(id='') {
         const p=activeStory();if(!p)return;
         const old=p.characters.find(x=>x.id===id)||{id:'',name:'',role:'',want:'',need:'',fear:'',contradiction:'',voice:''};
@@ -1027,7 +1183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         );
       }
 
-      function renderLibrary() {
+      function renderLibraryLegacy() {
         document.querySelectorAll('[data-library-tab]').forEach(b=>b.classList.toggle('active',b.dataset.libraryTab===ui.libraryTab));
         document.getElementById('library-panel-templates').hidden=ui.libraryTab!=='templates';
         document.getElementById('library-panel-inspiration').hidden=ui.libraryTab!=='inspiration';
@@ -1048,11 +1204,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         );
       }
 
-      function renderProjects() {
+      function renderProjectsLegacy() {
         const q=(document.getElementById('project-search')?.value||'').toLowerCase(),type=document.getElementById('project-type-filter')?.value||'all',status=document.getElementById('project-status-filter')?.value||'all';
         const projects=allProjects().filter(p=>(p.title+' '+(p.compass?.truth||'')).toLowerCase().includes(q)&&(type==='all'||p.kind===type)&&(status==='all'||p.status===status));
         const groups=[['Seeds',['Spark','Developing']],['In the making',['Drafting','Revising','Finalizing']],['Complete + archive',['Finished','Shared','Archived']]];
         document.getElementById('project-board').innerHTML=groups.map(group=>`<section class="column"><h3>${group[0]} <span class="chip">${projects.filter(p=>group[1].includes(p.status)).length}</span></h3>${projects.filter(p=>group[1].includes(p.status)).sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt))).map(p=>`<article class="project-card"><div class="card-top"><span class="chip">${p.kind==='song'?'🎧 Song':'🎬 Story'}</span><span class="small-text">${projectProgress(p)}%</span></div><h4 class="sensitive">${esc(p.title)}</h4><p>${esc(firstWords(p.compass?.truth||p.logline||p.breadcrumb?.nextStep||'No central truth yet.',18))}</p><div class="progress"><i style="width:${projectProgress(p)}%"></i></div><div class="actions section-space"><button class="btn small primary" data-open-project="${p.id}">Open</button><select class="small-text" data-board-status="${p.id}">${STATUSES.map(x=>'<option '+(x===p.status?'selected':'')+'>'+x+'</option>').join('')}</select>${p.status==='Archived'?'<button class="btn small danger" data-delete-project="'+p.id+'">Delete</button>':''}</div></article>`).join('')||'<div class="empty">Nothing here yet.</div>'}</section>`).join('');
+      }
+
+      function renderLibrary() {
+        const journals=TEMPLATES.filter(t=>t.type==='journal');
+        const songs=TEMPLATES.filter(t=>t.type==='song');
+        document.getElementById('journal-template-list').innerHTML=journals.map(t=>`
+          <article class="card template-card">
+            <div class="template-icon">${t.icon}</div><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p>
+            <details><summary>Read every question</summary><div class="preview-box section-space">${esc(t.preview)}</div></details>
+            <div class="actions"><button class="btn primary small" data-use-template="${t.id}">Open this journal page</button></div>
+          </article>`).join('');
+        document.getElementById('song-template-list').innerHTML=songs.map(t=>`
+          <article class="card template-card">
+            <div class="template-icon">${t.icon}</div><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p>
+            <div class="preview-box">${t.sections.map((s,i)=>'<b>'+(i+1)+'. '+esc(s.name)+'</b><br>'+esc(s.purpose)).join('<br><br>')}</div>
+            <div class="actions"><button class="btn primary small" data-use-template="${t.id}">Use this song plan</button></div>
+          </article>`).join('');
+        document.getElementById('inspiration-list').innerHTML=state.inspiration.length?state.inspiration.map(x=>`
+          <article class="card"><div class="card-top"><span class="chip">${esc(x.type)}</span><button class="icon-btn" data-edit-inspiration="${x.id}">✎</button></div><h3>${esc(x.title)}</h3><p><b>What I am learning:</b> ${esc(x.works||'—')}</p>${safeUrl(x.link)?'<a class="btn small" href="'+esc(safeUrl(x.link))+'" target="_blank" rel="noopener noreferrer">Open reference</a>':''}</article>`).join(''):'<div class="empty span-2">No references saved—and you do not need any to begin writing.</div>';
+      }
+
+      function renderProjects() {
+        const q=(document.getElementById('project-search')?.value||'').toLowerCase();
+        const type=document.getElementById('project-type-filter')?.value||'all';
+        const status=document.getElementById('project-status-filter')?.value||'all';
+        const projects=allProjects().filter(p=>(p.title+' '+(p.compass?.truth||'')).toLowerCase().includes(q)&&(type==='all'||p.kind===type)&&(status==='all'||p.status===status)).sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)));
+        document.getElementById('project-board').innerHTML=projects.length?projects.map(p=>`
+          <article class="card ${p.kind==='song'?'tint-pink':'tint-lilac'}">
+            <div class="card-top"><div><span class="chip">${p.kind==='song'?'🎧 Song':'🎬 Story'}</span><h3 class="sensitive section-space">${esc(p.title)}</h3></div><span class="chip status">${esc(p.status)}</span></div>
+            <p><b>Central idea:</b> ${esc(firstWords(p.compass?.truth||p.compass?.spark||p.logline||'Not named yet.',28))}</p>
+            <div class="sticky-note"><b>Next time:</b><p>${esc(p.breadcrumb?.nextStep||(p.kind==='song'?'Open the current section and add one honest line.':'Answer the next unfinished story question.'))}</p></div>
+            <div class="actions section-space"><button class="btn primary" data-open-project="${p.id}">Continue ${p.kind==='song'?'song':'story'}</button><select data-board-status="${p.id}">${STATUSES.map(x=>'<option '+(x===p.status?'selected':'')+'>'+x+'</option>').join('')}</select>${p.status==='Archived'?'<button class="btn small danger" data-delete-project="'+p.id+'">Delete</button>':''}</div>
+          </article>`).join(''):'<div class="empty span-2"><span class="emoji">🗂️</span>No projects match these filters. Your journal entries remain in the Journal Room.</div>';
       }
 
       function createSnapshot(kind,label='Manual snapshot') {
@@ -1157,10 +1346,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           return 'SONG: '+p.title+'\\nSECTION: '+s.name+'\\nSECTION JOB: '+s.purpose+'\\nLYRICS:\\n'+s.lyrics+'\\nCENTRAL TRUTH: '+(p.compass.truth||'[blank]');
         }
         if(ui.coachSource==='story'&&activeStory()){
-          const p=activeStory(),s=p.scenes.find(x=>x.id===p.activeSceneId)||p.scenes[0];
+          const p=activeStory();
           if(scope==='compass')return 'STORY: '+p.title+'\\nSTORY COMPASS\\n'+JSON.stringify(p.compass,null,2);
           if(scope==='project')return 'STORY PROJECT\\n'+JSON.stringify({...p,versions:[],coachNotes:[]},null,2);
-          return 'STORY: '+p.title+'\\nSCENE: '+s.name+'\\nSCENE JOB: '+s.purpose+'\\nDRAFT:\\n'+s.draft+'\\nCENTRAL TRUTH: '+(p.compass.truth||'[blank]');
+          return 'STORY: '+p.title+'\\nWHAT HAPPENED: '+(p.compass.spark||'[blank]')+'\\nWHO IT IS ABOUT: '+(p.mainCharacter||'[blank]')+'\\nWHAT THEY WANT: '+(p.compass.want||'[blank]')+'\\nOBSTACLE: '+(p.obstacle||'[blank]')+'\\nWHAT CHANGES: '+(p.compass.endBelief||'[blank]')+'\\nREADER TRUTH: '+(p.compass.truth||'[blank]')+'\\nFULL DRAFT:\\n'+(p.draft||'[blank]');
         }
         return custom||'General creative planning. No project text included.';
       }
@@ -1207,6 +1396,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(t.matches('[data-close-dialog]')){t.closest('dialog')?.close();return;}
         if(t.dataset.view){setView(t.dataset.view);return;}
         if(t.dataset.help){event.preventDefault();openHelp(t.dataset.help);return;}
+        if(t.dataset.action==='start-guided'){
+          setView('journal');
+          document.getElementById('journal-topic-list')?.scrollIntoView({behavior:'smooth',block:'start'});
+          toast('Step 1: choose a journal topic that fits today.');
+          return;
+        }
         if(t.dataset.action==='quick-capture'){openQuickCapture();return;}
         if(t.dataset.action==='new-journal'){openJournal();return;}
         if(t.dataset.action==='new-song'){openNewSong();return;}
@@ -1219,14 +1414,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(t.dataset.editJournal){openJournal(t.dataset.editJournal);return;}
         if(t.dataset.editSpark){openSpark(t.dataset.editSpark);return;}
         if(t.dataset.mineJournal){
-          const j=state.journal.find(x=>x.id===t.dataset.mineJournal);if(j){ui.journalTab='mine';renderJournal();document.getElementById('mine-source').value=j.id;document.getElementById('mine-text').value=j.body;document.getElementById('mine-manual').value=j.favoriteLine||'';setView('journal');}
+          const j=state.journal.find(x=>x.id===t.dataset.mineJournal);
+          if(j){
+            setView('journal');
+            document.getElementById('mine-source').value=j.id;
+            document.getElementById('mine-text').value=j.body;
+            document.getElementById('mine-manual').value='';
+            document.getElementById('mine-why').value='';
+            document.getElementById('highlight-studio')?.scrollIntoView({behavior:'smooth',block:'start'});
+          }
           return;
         }
         if(t.dataset.developSpark){t.dataset.kind==='song'?openNewSong(t.dataset.developSpark):openNewStory(t.dataset.developSpark);return;}
         if(t.id==='save-mined-spark'){
           const area=document.getElementById('mine-text'),selected=area.value.slice(area.selectionStart,area.selectionEnd).trim(),manual=document.getElementById('mine-manual').value.trim();
           const phrase=selected||manual;if(!phrase){toast('Select words in the journal box or type the phrase.');return;}
-          openQuickCapture(phrase,document.getElementById('mine-why').value);return;
+          const sourceId=document.getElementById('mine-source').value,j=state.journal.find(x=>x.id===sourceId);
+          state.sparks.unshift({phrase,why:document.getElementById('mine-why').value.trim(),context:j?'From journal: '+j.title:'Added in the Journal Room',emotion:'',theme:'',use:'Song',priority:'Soon',sourceJournalId:sourceId,id:uid('spark'),createdAt:now(),updatedAt:now(),private:true});
+          saveState();
+          document.getElementById('mine-manual').value='';document.getElementById('mine-why').value='';
+          renderJournal();renderHome();toast('Highlighted line saved ✦');return;
+        }
+        if(t.id==='start-selected-song'){
+          const ids=[...document.querySelectorAll('.highlight-select:checked')].map(x=>x.value);
+          const lines=ids.map(id=>state.sparks.find(x=>x.id===id)?.phrase).filter(Boolean);
+          if(!lines.length){toast('Select at least one highlighted line first.');return;}
+          openNewSong('', 's-confession', lines.join('\n'));return;
+        }
+        if(t.hasAttribute('data-story-to-song')){
+          const p=activeStory();if(!p)return;
+          const seed=[p.compass?.truth,p.compass?.spark].filter(Boolean).join('\n');
+          openNewSong('', 's-warm-reflection', seed);return;
         }
         if(t.dataset.selectSong){state.activeSongId=t.dataset.selectSong;saveState();renderSongs();return;}
         if(t.dataset.selectStory){state.activeStoryId=t.dataset.selectStory;saveState();renderStories();return;}
@@ -1332,7 +1550,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(el.id==='journal-sort'||el.id==='journal-search'||el.id==='spark-search'||el.id==='spark-use-filter'||el.id==='spark-priority-filter')renderJournal();
         if(el.id==='template-filter'||el.id==='inspiration-search'||el.id==='inspiration-type-filter')renderLibrary();
         if(el.id==='project-search'||el.id==='project-type-filter'||el.id==='project-status-filter')renderProjects();
-        if(el.id==='mine-source'){const j=state.journal.find(x=>x.id===el.value);document.getElementById('mine-text').value=j?.body||'';document.getElementById('mine-manual').value=j?.favoriteLine||'';}
+        if(el.id==='mine-source'){const j=state.journal.find(x=>x.id===el.value);document.getElementById('mine-text').value=j?.body||'';document.getElementById('mine-manual').value='';document.getElementById('mine-why').value='';}
+        if(el.id==='f-template'&&document.getElementById('song-plan-preview'))document.getElementById('song-plan-preview').innerHTML=songPlanPreview(el.value);
         if(el.id==='song-section-select'){const p=activeSong();p.activeSectionId=el.value;saveState();renderSongs();}
         if(el.id==='story-scene-select'){const p=activeStory();p.activeSceneId=el.value;saveState();renderStories();}
         if(el.dataset.boardStatus){const p=getProject(el.dataset.boardStatus);if(p){const old=p.status;p.status=el.value;touch(p);renderProjects();if(!['Finished','Shared'].includes(old)&&['Finished','Shared'].includes(p.status)){confetti();toast('You finished something real ✦');}}}
@@ -1348,6 +1567,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(event.target.id==='song-rail-search'){const q=event.target.value.toLowerCase();document.querySelectorAll('#song-rail-list .rail-project').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));}
         if(event.target.id==='story-rail-search'){const q=event.target.value.toLowerCase();document.querySelectorAll('#story-rail-list .rail-project').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));}
       });
+      function copyJournalSelection(event){
+        const area=event.target;if(area?.id!=='mine-text')return;
+        const selected=area.value.slice(area.selectionStart,area.selectionEnd).trim();
+        if(selected)document.getElementById('mine-manual').value=selected;
+      }
+      document.addEventListener('mouseup',copyJournalSelection);
+      document.addEventListener('keyup',copyJournalSelection);
       document.getElementById('generic-form').addEventListener('submit',event=>{
         event.preventDefault();if(typeof ui.genericSubmit==='function'){const result=ui.genericSubmit(event.currentTarget);if(result!==false)document.getElementById('generic-dialog').close();}
       });
