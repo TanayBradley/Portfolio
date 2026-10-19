@@ -162,15 +162,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
     .template-card{display:flex;flex-direction:column;min-height:250px}.template-card .template-icon{font-size:2rem}.template-card .actions{margin-top:auto}.preview-box{max-height:340px;overflow:auto;white-space:pre-wrap;padding:14px;border-radius:15px;background:#f8f3fb;color:#54435c;font-size:.83rem}#f-body{min-height:430px}
     .prompt-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.prompt-controls .search{flex:1;min-width:220px}.prompt-controls .search input{max-width:none}.topic-count{margin-left:auto;color:var(--muted);font-size:.78rem;font-weight:800}
     .highlight-reader{min-height:360px;padding:clamp(20px,4vw,34px);border:2px solid #e8d8bb;border-radius:20px;background:linear-gradient(90deg,rgba(244,225,198,.35) 1px,transparent 1px),#fffdf7;background-size:28px 100%;box-shadow:inset 0 0 0 7px rgba(255,255,255,.6);white-space:pre-wrap;font:1.03rem/1.85 Georgia,serif;color:#342c38;cursor:text;user-select:text}.highlight-reader.empty{display:grid;place-items:center;font-family:inherit;color:var(--muted);cursor:default}.highlight-reader mark{padding:2px 1px;border-radius:4px;color:inherit;box-decoration-break:clone;-webkit-box-decoration-break:clone}.marker-yellow{background:linear-gradient(transparent 12%,rgba(255,220,111,.68) 12%,rgba(255,220,111,.68) 88%,transparent 88%)}.marker-pink{background:linear-gradient(transparent 12%,rgba(255,166,204,.62) 12%,rgba(255,166,204,.62) 88%,transparent 88%)}.marker-mint{background:linear-gradient(transparent 12%,rgba(139,226,193,.62) 12%,rgba(139,226,193,.62) 88%,transparent 88%)}.marker-lilac{background:linear-gradient(transparent 12%,rgba(190,162,242,.58) 12%,rgba(190,162,242,.58) 88%,transparent 88%)}.marker-blue{background:linear-gradient(transparent 12%,rgba(145,205,242,.55) 12%,rgba(145,205,242,.55) 88%,transparent 88%)}
-    .highlighter-toolbar{position:sticky;bottom:10px;z-index:5;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;padding:11px;border:var(--line);border-radius:18px;background:rgba(255,255,255,.94);box-shadow:0 12px 32px rgba(65,40,76,.14);backdrop-filter:blur(10px)}.marker-btn{display:inline-flex;align-items:center;gap:7px;min-height:39px;padding:7px 11px;border:2px solid transparent;border-radius:12px;background:#fff;cursor:pointer;font-size:.76rem;font-weight:900}.marker-btn:before{content:"";width:23px;height:10px;border-radius:4px;transform:rotate(-3deg)}.marker-btn[data-highlight-color="yellow"]:before{background:#ffdc6f}.marker-btn[data-highlight-color="pink"]:before{background:#ffa6cc}.marker-btn[data-highlight-color="mint"]:before{background:#8be2c1}.marker-btn[data-highlight-color="lilac"]:before{background:#bea2f2}.marker-btn[data-highlight-color="blue"]:before{background:#91cdf2}.marker-btn:hover{border-color:#aa82d0;transform:translateY(-1px)}.selection-preview{flex:1;min-width:220px;padding:9px 12px;border-radius:12px;background:#f6f0f8;color:#695b70;font-size:.78rem}.selection-preview.ready{background:#fff4c8;color:#604b1c}
-    .highlight-card{border-left:7px solid var(--marker,#ffdc6f)}.highlight-card[data-color="pink"]{--marker:#ffa6cc}.highlight-card[data-color="mint"]{--marker:#8be2c1}.highlight-card[data-color="lilac"]{--marker:#bea2f2}.highlight-card[data-color="blue"]{--marker:#91cdf2}.highlight-card[data-color="yellow"]{--marker:#ffdc6f}.highlight-quote{font:1.02rem/1.55 Georgia,serif}.group-card{overflow:hidden;border-top:8px solid #b78cdd}.group-lines{display:grid;gap:8px;margin:14px 0}.group-line{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:9px;align-items:start;padding:10px;border-radius:13px;background:#fff}.color-dot{width:11px;height:11px;margin-top:6px;border-radius:50%;background:var(--marker,#ffdc6f)}.group-line select{width:auto;max-width:150px;padding:7px;font-size:.72rem}.song-seed-lines{display:grid;gap:8px}.song-seed-line{padding:10px 12px;border-left:5px solid var(--pink);border-radius:0 12px 12px 0;background:#fff}.mini-step{display:flex;gap:9px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #eadfea}.mini-step:last-child{border:0}.mini-step b{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:9px;background:var(--lilac)}
+    .highlighter-toolbar{position:sticky;top:10px;z-index:20;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;padding:11px;border:var(--line);border-radius:18px;background:rgba(255,255,255,.96);box-shadow:0 12px 32px rgba(65,40,76,.17);backdrop-filter:blur(12px)}.marker-btn{display:inline-flex;align-items:center;gap:7px;min-height:39px;padding:7px 11px;border:2px solid transparent;border-radius:12px;background:#fff;cursor:pointer;font-size:.76rem;font-weight:900}.marker-btn:before{content:"";width:23px;height:10px;border-radius:4px;transform:rotate(-3deg)}.marker-btn[data-highlight-color="yellow"]:before{background:#ffdc6f}.marker-btn[data-highlight-color="pink"]:before{background:#ffa6cc}.marker-btn[data-highlight-color="mint"]:before{background:#8be2c1}.marker-btn[data-highlight-color="lilac"]:before{background:#bea2f2}.marker-btn[data-highlight-color="blue"]:before{background:#91cdf2}.marker-btn:hover{border-color:#aa82d0;transform:translateY(-1px)}.selection-preview{flex:1;min-width:220px;padding:9px 12px;border-radius:12px;background:#f6f0f8;color:#695b70;font-size:.78rem}.selection-preview.ready{background:#fff4c8;color:#604b1c}
+    .highlight-card{border-left:7px solid var(--marker,#ffdc6f)}.highlight-card[data-color="pink"]{--marker:#ffa6cc}.highlight-card[data-color="mint"]{--marker:#8be2c1}.highlight-card[data-color="lilac"]{--marker:#bea2f2}.highlight-card[data-color="blue"]{--marker:#91cdf2}.highlight-card[data-color="yellow"]{--marker:#ffdc6f}.highlight-card[draggable="true"]{cursor:grab}.highlight-card.dragging{opacity:.45;cursor:grabbing}.highlight-quote{font:1.02rem/1.55 Georgia,serif}.drop-zone{min-height:74px;transition:background .18s,box-shadow .18s,transform .18s}.drop-zone.drag-over{background:#f3e9ff!important;box-shadow:0 0 0 3px #9b6bc5,0 16px 34px rgba(69,39,82,.16);transform:translateY(-2px)}.drop-hint{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.76rem;font-weight:800}.drag-handle{display:inline-grid;place-items:center;width:24px;height:28px;border-radius:8px;background:#f1e9f4;color:#72567e;font-weight:900;cursor:grab}.group-card{overflow:hidden;border-top:8px solid #b78cdd}.group-lines{display:grid;gap:8px;margin:14px 0}.group-line{display:grid;grid-template-columns:24px 12px minmax(0,1fr) auto;gap:9px;align-items:start;padding:10px;border-radius:13px;background:#fff}.color-dot{width:11px;height:11px;margin-top:8px;border-radius:50%;background:var(--marker,#ffdc6f)}.group-line select{width:auto;max-width:150px;padding:7px;font-size:.72rem}.song-seed-lines{display:grid;gap:8px}.song-seed-line{padding:10px 12px;border-left:5px solid var(--pink);border-radius:0 12px 12px 0;background:#fff}.mini-step{display:flex;gap:9px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #eadfea}.mini-step:last-child{border:0}.mini-step b{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:9px;background:var(--lilac)}
+    .production-overview{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.5fr);gap:18px}.production-score{display:grid;place-items:center;align-content:center;min-height:190px;text-align:center;background:linear-gradient(145deg,#fff6fb,#efe8ff)}.production-score b{font:700 clamp(2.7rem,6vw,4.4rem)/1 Georgia,serif;color:var(--plum-2)}.production-stage-list{display:grid;gap:10px}.production-stage{border:2px solid #e8dfea;border-radius:18px;background:#fff;overflow:hidden}.production-stage summary{display:flex;align-items:center;gap:10px;padding:14px;cursor:pointer;list-style:none}.production-stage summary::-webkit-details-marker{display:none}.production-stage summary:after{content:"＋";margin-left:auto;font-weight:900}.production-stage[open] summary:after{content:"−"}.stage-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:var(--lilac);font-size:1.15rem}.stage-copy{min-width:0;flex:1}.stage-copy b{display:block}.stage-copy small{color:var(--muted)}.stage-count{padding:5px 9px;border-radius:999px;background:#f3edf5;font-size:.72rem;font-weight:900}.production-stage.complete{border-color:#8acfb2}.production-stage.complete .stage-count{background:#def5ea;color:#285f4a}.stage-body{padding:0 14px 15px}.production-task{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:12px}.production-task:hover{background:#faf5fc}.production-task input{flex:0 0 19px;width:19px;margin-top:2px}.production-task.done span{text-decoration:line-through;color:#779286}.production-list{display:grid;gap:9px}.production-row{display:grid;grid-template-columns:minmax(120px,.7fr) minmax(0,1.4fr) auto;gap:10px;align-items:start;padding:12px;border:var(--line);border-radius:15px;background:#fff}.production-row h4{margin:0 0 3px}.production-row p{margin:0;font-size:.8rem}.file-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.file-field{padding:12px;border-radius:15px;background:#faf6fb}.file-field a{display:inline-block;margin-top:6px;font-size:.75rem;font-weight:800}.split-total{font:700 1.25rem Georgia,serif}.split-total.warn{color:#a04f65}.split-total.good{color:#2f7b60}
     dialog{width:min(720px,calc(100% - 28px));max-height:88vh;padding:0;border:0;border-radius:26px;background:var(--paper);box-shadow:0 30px 90px rgba(33,15,41,.35)}dialog::backdrop{background:rgba(39,22,45,.55);backdrop-filter:blur(5px)}.dialog-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:18px 21px;border-bottom:var(--line);background:rgba(255,250,245,.96)}.dialog-head h2{margin:0;font-family:Georgia,serif}.dialog-body{padding:21px;overflow:auto}.dialog-foot{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:9px;padding:14px 21px;border-top:var(--line);background:rgba(255,250,245,.97)}
     .coach-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:14px}.coach-scope{padding:14px;border-radius:18px;background:#f5edfb}.coach-chat{min-height:280px;max-height:420px;overflow:auto;padding:14px;border:var(--line);border-radius:18px;background:#fff}.bubble{max-width:88%;margin:8px 0;padding:11px 13px;border-radius:15px;white-space:pre-wrap;font-size:.84rem}.bubble.user{margin-left:auto;background:var(--lilac)}.bubble.assistant{background:#edf9f5}.coach-reply-actions{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 16px}
     .toast{position:fixed;right:20px;bottom:20px;z-index:300;max-width:340px;padding:13px 16px;border-radius:15px;color:#fff;background:#3b2944;box-shadow:var(--shadow);transform:translateY(120px);opacity:0;transition:.25s}.toast.show{transform:none;opacity:1}.confetti{position:fixed;inset:0;z-index:290;pointer-events:none;overflow:hidden}.confetti i{position:absolute;top:-20px;width:9px;height:16px;border-radius:3px;animation:fall 1.8s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(620deg)}}
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}.muted{color:var(--muted)}.small-text{font-size:.78rem}.danger-zone{border-color:rgba(189,72,108,.25);background:#fff7f9}.divider{height:1px;margin:16px 0;background:#e9dfe9}.privacy-note{padding:13px;border-radius:14px;background:#fff1d9;color:#6a4b1f;font-size:.8rem}.version{padding:11px;border-bottom:1px solid #eadfea}.version:last-child{border:0}
     @media(max-width:1050px){.grid.four,.grid.five{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:220px minmax(0,1fr)}.revision-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:820px){:root{--sidebar:0px}.shell{display:block}.sidebar{transform:translateX(-105%);width:min(300px,86vw);transition:.22s}.sidebar.open{transform:none}.main{padding:15px 14px 45px}.mobile-menu{display:inline-grid}.topbar{align-items:flex-start}.topbar p{font-size:.8rem}.top-actions .hide-mobile{display:none}.workspace{display:block}.project-rail{position:relative;top:auto;max-height:260px;margin-bottom:14px}.compass-grid,.form-grid{grid-template-columns:1fr}.span-2{grid-column:auto}.coach-layout{grid-template-columns:1fr}.work-toolbar{top:4px}.board{grid-template-columns:repeat(3,270px)}}
-    @media(max-width:620px){.grid.two,.grid.three,.grid.four,.grid.five{grid-template-columns:1fr}.hero h2{font-size:2.25rem}.topbar h1{font-size:1.55rem}.top-actions{justify-content:flex-end}.revision-grid{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(7,150px)}.section-switcher{grid-template-columns:42px minmax(130px,1fr) 42px}.dialog-body{padding:16px}.card{padding:17px}.work-toolbar{align-items:flex-start}.work-toolbar .actions{justify-content:flex-end}.group-line{grid-template-columns:12px 1fr}.group-line select{grid-column:2;width:100%;max-width:none}.highlighter-toolbar{position:relative;bottom:auto}.marker-btn span{display:none}}
+    @media(max-width:620px){.grid.two,.grid.three,.grid.four,.grid.five{grid-template-columns:1fr}.hero h2{font-size:2.25rem}.topbar h1{font-size:1.55rem}.top-actions{justify-content:flex-end}.revision-grid{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(7,150px)}.section-switcher{grid-template-columns:42px minmax(130px,1fr) 42px}.dialog-body{padding:16px}.card{padding:17px}.work-toolbar{align-items:flex-start}.work-toolbar .actions{justify-content:flex-end}.group-line{grid-template-columns:24px 12px 1fr}.group-line select{grid-column:3;width:100%;max-width:none}.highlighter-toolbar{top:7px;padding:8px}.highlighter-toolbar .selection-preview{order:-1;min-width:100%;padding:7px 9px}.marker-btn{min-height:35px;padding:5px 8px}.marker-btn span{display:none}.production-overview,.file-grid{grid-template-columns:1fr}.production-row{grid-template-columns:1fr}.production-row .actions{justify-content:flex-start}}
   </style>
 </head>
 <body class="guided-on">
@@ -186,6 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         <button class="active" data-view="home"><span class="icon">🏠</span>Studio Home</button>
         <button data-view="journal"><span class="icon">📓</span>Journal Room</button>
         <button data-view="songs"><span class="icon">🎧</span>Song Lab</button>
+        <button data-view="production"><span class="icon">🎚️</span>Production Room</button>
         <button data-view="stories"><span class="icon">🎬</span>Simple Story Builder</button>
       </nav>
       <div class="nav-label">Organize</div>
@@ -315,7 +317,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
             <div class="field"><label for="mine-source">Journal entry to study</label><select id="mine-source"><option value="">Choose an entry…</option></select></div>
             <div class="guided"><strong>What deserves a highlight?</strong> A repeated thought, sharp image, emotional turn, contradiction, realization, or sentence that still sticks with you.</div>
           </div>
-          <div id="mine-text-display" class="highlight-reader empty sensitive section-space" tabindex="0">Choose a journal entry above to begin.</div>
           <div class="highlighter-toolbar" aria-label="Journal highlighters">
             <div id="selection-preview" class="selection-preview">Select a meaningful passage in the journal first.</div>
             <button class="marker-btn" data-highlight-color="yellow" type="button"><span>Yellow</span></button>
@@ -326,14 +327,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
             <button class="btn small" data-action="quick-capture">＋ Add a line manually</button>
             <button class="btn small" data-ai-journal="feelings">✨ Help me name the feeling</button>
           </div>
+          <div id="mine-text-display" class="highlight-reader empty sensitive section-space" tabindex="0">Choose a journal entry above to begin.</div>
           <p class="small-text muted"><b>About the colors:</b> use whichever color feels right. Colors help your eyes; the groups below decide which lines belong to the same song.</p>
         </div>
 
         <div class="card section-space tint-pink" id="organize-studio">
-          <div class="card-top"><div><p class="eyebrow">Step 4</p><h2>Sort the lines into possible songs</h2><p>Lines about the same topic or feeling belong together. Anything that does not fit stays safely in Unsorted for another song or story.</p></div><div class="actions"><button class="btn primary" id="create-highlight-group">Group selected lines</button><button class="btn" data-ai-journal="groups">✨ Suggest possible groups</button></div></div>
+          <div class="card-top"><div><p class="eyebrow">Step 4</p><h2>Sort the lines into possible songs</h2><p>Drag a highlight card into any existing song group—or back to Unsorted. On a phone or keyboard, use each card’s Move menu.</p></div><div class="actions"><button class="btn primary" id="create-highlight-group">Group selected lines</button><button class="btn" data-ai-journal="groups">✨ Suggest possible groups</button></div></div>
           <div class="filterbar section-space"><div class="search"><input id="spark-search" placeholder="Search highlighted lines…" aria-label="Search highlighted lines"></div><span class="chip" id="highlight-scope-label">Showing all highlights</span></div>
-          <div class="card tint-gold">
-            <div class="card-top"><div><h3>Unsorted highlights</h3><p>Check the lines that feel like they belong in the same song, then choose “Group selected lines.”</p></div><span class="chip" id="ungrouped-count">0</span></div>
+          <div class="card tint-gold drop-zone" data-drop-group="">
+            <div class="card-top"><div><h3>Unsorted highlights</h3><p>Check related lines to create a new group, or drop an existing card here when it does not fit.</p><div class="drop-hint">↕ Grab a card and move it</div></div><span class="chip" id="ungrouped-count">0</span></div>
             <div id="ungrouped-highlight-list" class="grid three section-space"></div>
           </div>
           <div class="section-head section-space"><div><p class="eyebrow">Step 5</p><h2>Develop each song idea</h2><p>For one group, finish “This song is about…,” choose a chorus phrase, and decide what truth or response the song builds toward.</p></div></div>
@@ -347,6 +349,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           <button class="btn primary" data-action="new-song">＋ New song</button>
         </div>
         <div id="song-workspace"></div>
+      </section>
+
+      <section class="view" id="view-production">
+        <div class="section-head">
+          <div><p class="eyebrow">From idea to final master</p><h2>Production Room</h2><p>Track the whole life of each song—planning, arrangement, vocals, editing, mixing, mastering, files, credits, and release.</p></div>
+          <button class="btn" data-view="songs">✍🏾 Back to Song Lab</button>
+        </div>
+        <div id="production-workspace"></div>
       </section>
 
       <section class="view" id="view-stories">
@@ -504,6 +514,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         Outro:'Leave us with the final image, echo, or unresolved feeling.',
         Custom:'Give this section one clear job before filling it with lines.'
       };
+      const PRODUCTION_STAGES = [
+        {id:'foundation',icon:'🧭',name:'Foundation',desc:'Know what you are making before adding layers.',tasks:[['theme','Central theme and emotional destination confirmed'],['lyrics','Working lyric draft is complete enough to record'],['structure','Song structure is chosen'],['music','Key, tempo, and time signature are confirmed']]},
+        {id:'arrangement',icon:'🎹',name:'Arrangement',desc:'Map the musical journey and energy.',tasks:[['direction','Sonic direction and core instruments are chosen'],['map','Arrangement map is complete'],['transitions','Transitions, drops, and lifts are planned'],['demo','A demo bounce has been exported']]},
+        {id:'recording_prep',icon:'🎛️',name:'Recording prep',desc:'Prepare the session so creativity is not interrupted.',tasks:[['session','Project, folders, and track names are organized'],['signal','Mic, room, input level, and headphone mix are checked'],['sheet','Final working lyric sheet is ready'],['plan','Warm-up, vocal approach, and recording plan are ready']]},
+        {id:'vocals',icon:'🎙️',name:'Recording',desc:'Capture the lead and supporting vocal world.',tasks:[['lead','Lead vocals are recorded'],['comp','Best lead takes are chosen or comped'],['doubles','Doubles are recorded where needed'],['backgrounds','Harmonies and background vocals are recorded'],['adlibs','Ad-libs and final vocal textures are recorded']]},
+        {id:'editing',icon:'✂️',name:'Editing',desc:'Clean and prepare every part before mixing.',tasks:[['cleanup','Noise, clicks, breaths, and unwanted audio are cleaned'],['timing','Timing edits are complete'],['tuning','Pitch correction is complete where needed'],['fades','Fades and crossfades are checked'],['consolidate','Session is consolidated, named, and backed up']]},
+        {id:'mixing',icon:'🎚️',name:'Mixing',desc:'Build clarity, feeling, space, and movement.',tasks:[['gain','Gain staging and rough balance are complete'],['balance','Final level and pan balance is working'],['processing','EQ, compression, and saturation are intentional'],['effects','Reverb, delay, automation, and transitions are complete'],['reference','Mix is checked against references and on multiple systems'],['approval','Mix is approved for mastering']]},
+        {id:'mastering',icon:'💿',name:'Mastering',desc:'Create the final listening files.',tasks:[['premaster','Clean premaster is exported'],['master','Master is created at the correct format and level'],['systems','Master is checked on headphones, car, phone, and speakers'],['exports','Final WAV and listening MP3 are exported']]},
+        {id:'release',icon:'🚀',name:'Release prep',desc:'Finish the information, ownership, delivery, and rollout.',tasks:[['credits','Credits and splits are confirmed'],['metadata','Title, writers, producers, lyrics, and metadata are final'],['art','Cover art and visual assets are ready'],['distribution','Distributor upload and delivery checks are complete'],['plan','Release date and promotion plan are ready'],['archive','Final files, stems, artwork, and project are backed up']]}
+      ];
       const HELP = {
         privacy: ['Private by design','The page includes noindex instructions and your writing is stored in this browser. That keeps it out of normal site navigation and search results, but it is not a password. Use your web host’s password protection for stronger privacy.'],
         breadcrumbs: ['Session breadcrumbs','Before stopping, write what you accomplished, what is still unclear, and the smallest next step. The next time you open the project, you will not have to reconstruct your thinking.'],
@@ -511,7 +531,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         compass: ['Song direction','Four plain answers keep the song tied to the feeling that started it: the first line, the real meaning, the listener feeling, and the line you most want to keep.'],
         sidequest: ['Saved lines not used yet','A good line may not belong in the section you are writing. Save it here so it stays safe without confusing the current section.'],
         versions: ['Versions','A snapshot freezes the project as it is right now. Make one before major restructuring. Restoring creates a safety snapshot first, so experimentation stays reversible.'],
-        coach: ['Studio Coach','Choose exactly how much context to include. “Copy + Open ChatGPT” keeps you in control and works without API setup. The in-page option requires a server API key and never places that secret in the browser.']
+        coach: ['Studio Coach','Choose exactly how much context to include. “Copy + Open ChatGPT” keeps you in control and works without API setup. The in-page option requires a server API key and never places that secret in the browser.'],
+        production: ['Production Room','This is a practical checklist, not a rulebook. Open only the stage you are working on. A task can stay unchecked when it does not apply to your song. Use the logs for decisions you may need to remember later.']
       };
       const TEMPLATES = [
         {id:'j-daily',type:'journal',category:'Feelings + Mood',icon:'🌤️',name:'Daily feelings check-in',desc:'For an ordinary day when you need to understand what is sitting with you.',preview:'HOW DO I FEEL RIGHT NOW?\\n\\nWHAT HAPPENED TODAY THAT AFFECTED ME?\\n\\nWHAT AM I STILL THINKING ABOUT?\\n\\nWHAT DID I NEED TODAY?\\n\\nONE TRUE SENTENCE ABOUT TODAY:'},
@@ -611,6 +632,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       const blankBreadcrumb = () => ({accomplished:'',figuring:'',nextStep:'',openTo:'',updatedAt:''});
       const defaultSection = (name='Verse 1', type=name) => ({id:uid('sec'),name,type,purpose:SECTION_JOBS[type] || SECTION_JOBS.Custom,lyrics:'',bars:'',status:'Idea',notes:'',alternates:[]});
       const storyScene = (name='Scene 1') => ({id:uid('scene'),name,purpose:'',setting:'',characters:'',want:'',conflict:'',turn:'',draft:'',notes:'',status:'Idea'});
+      function blankProduction(song={}) {
+        return {
+          nextStep:'',timeSignature:'4/4',sonicDirection:'',currentStage:'foundation',checklist:{},stageNotes:{},
+          arrangement:(song.sections||[]).map(section=>({id:uid('arr'),section:section.name||section.type||'Section',bars:section.bars||'',energy:'',instruments:'',notes:''})),
+          vocalTakes:[],sessions:[],versions:[],credits:[],
+          files:{project:'',instrumental:'',stems:'',mix:'',master:'',artwork:'',lyrics:''},
+          release:{artistName:'',songTitle:song.title||'',writers:'',producers:'',releaseDate:'',distributor:'',isrc:'',upc:'',explicit:'No',copyright:''}
+        };
+      }
+      function ensureProduction(song) {
+        const base=blankProduction(song),saved=song.production&&typeof song.production==='object'?song.production:{};
+        song.production={...base,...saved,checklist:{...base.checklist,...(saved.checklist||{})},stageNotes:{...base.stageNotes,...(saved.stageNotes||{})},files:{...base.files,...(saved.files||{})},release:{...base.release,...(saved.release||{})}};
+        ['arrangement','vocalTakes','sessions','versions','credits'].forEach(key=>{if(!Array.isArray(song.production[key]))song.production[key]=[];});
+        if(!song.production.release.songTitle)song.production.release.songTitle=song.title||'';
+        return song.production;
+      }
 
       function makeSong(title='Untitled Song', templateId='s-confession', spark='') {
         const plan=TEMPLATES.find(t=>t.id===templateId&&t.type==='song');
@@ -622,7 +659,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           {name:'Final Chorus',type:'Final Chorus',purpose:SECTION_JOBS['Final Chorus']}
         ];
         const sections=source.map(item=>({...defaultSection(item.name,item.type),purpose:item.purpose}));
-        return {id:uid('song'),kind:'song',title,status:'Spark',createdAt:now(),updatedAt:now(),sourceSparkId:'',sourceGroupId:'',sourceHighlightIds:[],sourceLines:[],groupResponse:'',genre:'',tempo:'',key:'',references:'',audioLink:'',productionNotes:'',compass:{...blankCompass(),spark},sections,activeSectionId:sections[0].id,parkingLot:[],revision:Object.fromEntries(REVISION_PASSES.map(x=>[x,false])),breadcrumb:blankBreadcrumb(),versions:[],coachNotes:[],templateId};
+        const song={id:uid('song'),kind:'song',title,status:'Spark',createdAt:now(),updatedAt:now(),sourceSparkId:'',sourceGroupId:'',sourceHighlightIds:[],sourceLines:[],groupResponse:'',genre:'',tempo:'',key:'',references:'',audioLink:'',productionNotes:'',compass:{...blankCompass(),spark},sections,activeSectionId:sections[0].id,parkingLot:[],revision:Object.fromEntries(REVISION_PASSES.map(x=>[x,false])),breadcrumb:blankBreadcrumb(),versions:[],coachNotes:[],templateId};
+        song.production=blankProduction(song);
+        return song;
       }
       function makeStory(title='Untitled Story', templateId='t-simple', spark='') {
         const sceneNames = ['The story'];
@@ -718,6 +757,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           home:['Studio Home','Write what happened, find the line that matters, and turn it into music.'],
           journal:['Journal Room','Write freely, highlight the emotional threads, and group them into possible songs.'],
           songs:['Song Lab','Write with structure while protecting the feeling.'],
+          production:['Production Room','Carry each song from demo and vocal takes through final files and release.'],
           stories:['Simple Story Builder','Answer six plain questions, then shape a beginning, middle, and ending.'],
           library:['Writing Guides','Real journal prompts and soulful R&B song shapes you can use immediately.'],
           projects:['My Projects','See what you started, what comes next, and where to continue.'],
@@ -727,6 +767,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         document.getElementById('page-subtitle').textContent=titles[name][1];
         document.getElementById('sidebar').classList.remove('open');
         if(name==='songs') renderSongs();
+        if(name==='production') renderProduction();
         if(name==='stories') renderStories();
         if(name==='journal') renderJournal();
         if(name==='library') renderLibrary();
@@ -911,8 +952,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         document.getElementById('highlight-scope-label').textContent=journal?'Showing: '+journal.title:'Showing all highlights';
         document.getElementById('ungrouped-count').textContent=String(unsorted.length);
         document.getElementById('ungrouped-highlight-list').innerHTML=unsorted.length?unsorted.map(x=>`
-          <article class="card highlight-card" data-color="${esc(x.color||'yellow')}">
-            <div class="card-top"><label class="check"><input class="ungrouped-highlight-select" type="checkbox" value="${x.id}"><span>Group this</span></label><button class="icon-btn" data-edit-spark="${x.id}" aria-label="Edit highlighted line">✎</button></div>
+          <article class="card highlight-card" data-color="${esc(x.color||'yellow')}" draggable="true" data-drag-highlight="${x.id}" aria-label="Draggable highlighted line">
+            <div class="card-top"><label class="check"><input class="ungrouped-highlight-select" type="checkbox" value="${x.id}"><span>Group this</span></label><div class="actions"><span class="drag-handle" title="Drag this card" aria-hidden="true">⠿</span><button class="icon-btn" data-edit-spark="${x.id}" aria-label="Edit highlighted line">✎</button></div></div>
             <div class="highlight-quote sensitive">“${esc(x.phrase)}”</div><p>${esc(x.emotion||x.why||'Feeling not named yet.')}</p>
             <div class="actions"><button class="btn small" data-ai-highlight="${x.id}">✨ Name the feeling</button><select data-highlight-group="${x.id}" aria-label="Move highlighted line">${groupMoveOptions('')}</select></div>
           </article>`).join(''):'<div class="empty span-2"><span class="emoji">🖍️</span>'+(journal?'No unsorted highlights from this entry. Select a passage above or look inside its song groups.':'Choose a journal or add a line manually.')+'</div>';
@@ -920,9 +961,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         const groupHtml=groups.map(g=>{
           const lines=highlights.filter(x=>x.groupId===g.id);if(!lines.length)return '';
           const chorusValid=lines.some(x=>x.id===g.chorusHighlightId)?g.chorusHighlightId:'';
-          return `<article class="card group-card">
+          return `<article class="card group-card drop-zone" data-drop-group="${g.id}">
             <div class="card-top"><div><span class="chip">${lines.length} line${lines.length===1?'':'s'}</span><h3 class="section-space">${esc(g.title)}</h3><p>${esc(g.feeling||'Feeling not named yet')}</p></div><button class="icon-btn" data-edit-highlight-group="${g.id}" aria-label="Edit group">✎</button></div>
-            <div class="group-lines">${lines.map(x=>`<div class="group-line highlight-card" data-color="${esc(x.color||'yellow')}"><span class="color-dot"></span><span class="sensitive">“${esc(x.phrase)}”</span><select data-highlight-group="${x.id}" aria-label="Move line to another group">${groupMoveOptions(g.id)}</select></div>`).join('')}</div>
+            <div class="drop-hint">Drop another highlight anywhere in this card</div>
+            <div class="group-lines">${lines.map(x=>`<div class="group-line highlight-card" data-color="${esc(x.color||'yellow')}" draggable="true" data-drag-highlight="${x.id}" aria-label="Draggable highlighted line"><span class="drag-handle" title="Drag this card" aria-hidden="true">⠿</span><span class="color-dot"></span><span class="sensitive">“${esc(x.phrase)}”</span><select data-highlight-group="${x.id}" aria-label="Move line to another group">${groupMoveOptions(g.id)}</select></div>`).join('')}</div>
             <div class="field"><label>This song is about…</label><textarea data-highlight-group-field="summary" data-group-id="${g.id}" placeholder="Example: wanting connection while trying to protect myself from rejection.">${esc(g.summary||'')}</textarea></div>
             <div class="field section-space"><label>Possible chorus phrase</label><select data-group-chorus="${g.id}"><option value="">Choose the line that carries the center…</option>${lines.map(x=>'<option value="'+x.id+'" '+(x.id===chorusValid?'selected':'')+'>'+esc(firstWords(x.phrase,14))+'</option>').join('')}</select></div>
             <div class="field section-space"><label>What truth, answer, or response could the song build toward?</label><textarea data-highlight-group-field="response" data-group-id="${g.id}" placeholder="Example: You are wanted. You are not alone.">${esc(g.response||'')}</textarea></div>
@@ -930,6 +972,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           </article>`;
         }).join('');
         document.getElementById('highlight-group-list').innerHTML=groupHtml||'<div class="empty span-2"><span class="emoji">🗂️</span>Select related highlights above and make your first possible-song group.</div>';
+      }
+      function moveHighlightToGroup(highlightId,newGroupId='') {
+        const item=state.sparks.find(s=>s.id===highlightId);if(!item)return;
+        if(newGroupId&&!state.highlightGroups.some(group=>group.id===newGroupId))return;
+        const oldGroupId=item.groupId||'',oldGroup=state.highlightGroups.find(group=>group.id===oldGroupId);
+        if(oldGroupId===newGroupId)return;
+        item.groupId=newGroupId;item.updatedAt=now();
+        if(oldGroup?.chorusHighlightId===item.id)oldGroup.chorusHighlightId='';
+        if(oldGroupId&&!state.sparks.some(spark=>spark.groupId===oldGroupId))state.highlightGroups=state.highlightGroups.filter(group=>group.id!==oldGroupId);
+        saveState();renderHighlightWorkspace();toast(newGroupId?'Line moved into its song group.':'Line returned to Unsorted.');
       }
       function openHighlightGroup(ids=[],groupId='') {
         const old=state.highlightGroups.find(x=>x.id===groupId)||{id:'',title:'',feeling:'',summary:'',chorusHighlightId:'',response:''};
@@ -1016,6 +1068,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
                   <select data-song-field="status" aria-label="Song status">${STATUSES.map(x=>'<option '+(x===p.status?'selected':'')+'>'+x+'</option>').join('')}</select>
                   <button class="btn small" data-song-snapshot>📸 Snapshot</button>
                   <button class="btn small" data-versions="song">Versions</button>
+                  <button class="btn small primary" data-view="production">🎚️ Produce</button>
                 </div>
               </div>
 
@@ -1101,6 +1154,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
               <div class="actions section-space"><button class="btn" data-archive-project="${p.id}">Move song to archive</button></div>
             </div>
           </div>`;
+      }
+      function productionStats(song) {
+        const production=ensureProduction(song),tasks=PRODUCTION_STAGES.flatMap(stage=>stage.tasks.map(task=>({stage,task,key:stage.id+':'+task[0]})));
+        const done=tasks.filter(item=>!!production.checklist[item.key]).length;
+        return {done,total:tasks.length,percent:tasks.length?Math.round(done/tasks.length*100):0,next:tasks.find(item=>!production.checklist[item.key])};
+      }
+      function productionListEmpty(icon,text){return '<div class="empty"><span class="emoji">'+icon+'</span>'+esc(text)+'</div>';}
+      function renderProduction() {
+        const root=document.getElementById('production-workspace');if(!root)return;
+        if(!state.songs.length){root.innerHTML='<div class="empty"><span class="emoji">🎚️</span><h3>The Production Room is ready</h3><p>Start a song first. Its complete production path will appear here automatically.</p><button class="btn primary" data-action="new-song">Start a song</button></div>';return;}
+        const song=activeSong()||state.songs[0];state.activeSongId=song.id;const production=ensureProduction(song),stats=productionStats(song);
+        const rail=state.songs.map(item=>`<button class="rail-project ${item.id===song.id?'active':''}" data-select-production-song="${item.id}"><b>${esc(item.title)}</b><small>${productionStats(item).percent}% produced · ${esc(item.status)}</small></button>`).join('');
+        const stages=PRODUCTION_STAGES.map((stage,index)=>{
+          const completed=stage.tasks.filter(task=>production.checklist[stage.id+':'+task[0]]).length,complete=completed===stage.tasks.length;
+          const tasks=stage.tasks.map(task=>{const key=stage.id+':'+task[0],done=!!production.checklist[key];return `<label class="production-task ${done?'done':''}"><input type="checkbox" data-production-task="${key}" ${done?'checked':''}><span>${esc(task[1])}</span></label>`;}).join('');
+          return `<details class="production-stage ${complete?'complete':''}" data-production-stage-card="${stage.id}" ${(stats.next?.stage.id===stage.id||(!stats.next&&index===PRODUCTION_STAGES.length-1))?'open':''}>
+            <summary><span class="stage-icon">${stage.icon}</span><span class="stage-copy"><b>${esc(stage.name)}</b><small>${esc(stage.desc)}</small></span><span class="stage-count" id="production-stage-count-${stage.id}">${completed}/${stage.tasks.length}</span></summary>
+            <div class="stage-body">${tasks}<div class="field section-space"><label>Notes for this stage</label><textarea data-production-stage-note="${stage.id}" placeholder="Decisions, problems, reminders, or what you want to try next…">${esc(production.stageNotes[stage.id]||'')}</textarea></div></div>
+          </details>`;
+        }).join('');
+        const arrangement=production.arrangement.length?production.arrangement.map(item=>`<div class="production-row"><div><h4>${esc(item.section||'Section')}</h4><span class="chip">${esc(item.bars||'?')} bars</span></div><div><p><b>Energy:</b> ${esc(item.energy||'Not set')}</p><p><b>Sounds:</b> ${esc(item.instruments||'Not set')}</p><p>${esc(item.notes||'')}</p></div><div class="actions"><button class="icon-btn" data-edit-arrangement="${item.id}" aria-label="Edit arrangement section">✎</button><button class="icon-btn" data-delete-production-item="arrangement:${item.id}" aria-label="Delete arrangement section">×</button></div></div>`).join(''):productionListEmpty('🎹','Add the sections, energy, and sounds that shape the song.');
+        const takes=production.vocalTakes.length?production.vocalTakes.slice().reverse().map(item=>`<div class="production-row"><div><h4>${esc(item.section||'Full song')}</h4><span class="chip">${esc(item.type||'Lead')} · Take ${esc(item.take||'?')}</span></div><div><p><b>${item.keeper==='Yes'?'⭐ Keeper':'Rating: '+esc(item.rating||'—')}</b> · ${fmtDate(item.date)}</p><p>${esc(item.notes||'')}</p></div><div class="actions"><button class="icon-btn" data-edit-vocal-take="${item.id}" aria-label="Edit vocal take">✎</button><button class="icon-btn" data-delete-production-item="vocalTakes:${item.id}" aria-label="Delete vocal take">×</button></div></div>`).join(''):productionListEmpty('🎙️','Log takes so you remember what was strong and what still needs recording.');
+        const sessions=production.sessions.length?production.sessions.slice().reverse().map(item=>`<div class="production-row"><div><h4>${esc(item.type||'Studio session')}</h4><span class="chip">${fmtDate(item.date)}</span></div><div><p><b>Goal:</b> ${esc(item.goal||'—')}</p><p><b>Finished:</b> ${esc(item.completed||'—')}</p><p><b>Next:</b> ${esc(item.nextStep||'—')}</p>${item.collaborators?'<p><b>With:</b> '+esc(item.collaborators)+'</p>':''}</div><div class="actions"><button class="icon-btn" data-edit-production-session="${item.id}" aria-label="Edit production session">✎</button><button class="icon-btn" data-delete-production-item="sessions:${item.id}" aria-label="Delete production session">×</button></div></div>`).join(''):productionListEmpty('🗓️','After a work session, record what happened and the smallest next step.');
+        const versions=production.versions.length?production.versions.slice().reverse().map(item=>`<div class="production-row"><div><h4>${esc(item.name||'Untitled version')}</h4><span class="chip">${fmtDate(item.date)}</span></div><div><p>${esc(item.notes||'')}</p>${safeUrl(item.link)?'<a href="'+esc(safeUrl(item.link))+'" target="_blank" rel="noopener noreferrer">Open version ↗</a>':''}</div><div class="actions"><button class="icon-btn" data-edit-production-version="${item.id}" aria-label="Edit version">✎</button><button class="icon-btn" data-delete-production-item="versions:${item.id}" aria-label="Delete version">×</button></div></div>`).join(''):productionListEmpty('💾','Save named versions such as Demo 1, Vocal Comp, Mix 2, and Final Master.');
+        const credits=production.credits.length?production.credits.map(item=>`<div class="production-row"><div><h4>${esc(item.name||'Unnamed contributor')}</h4><span class="chip">${esc(item.role||'Role')}</span></div><div><p><b>Split:</b> ${esc(item.split||'0')}%</p><p>${esc(item.notes||item.contact||'')}</p></div><div class="actions"><button class="icon-btn" data-edit-production-credit="${item.id}" aria-label="Edit credit">✎</button><button class="icon-btn" data-delete-production-item="credits:${item.id}" aria-label="Delete credit">×</button></div></div>`).join(''):productionListEmpty('🤝','Add everyone who contributed and record the agreed credit or split.');
+        const splitTotal=production.credits.reduce((sum,item)=>sum+(Number(item.split)||0),0);
+        const fileLabels={project:'DAW project / session',instrumental:'Instrumental or demo',stems:'Stems folder',mix:'Approved mix',master:'Final master',artwork:'Cover artwork',lyrics:'Final lyric sheet'};
+        const files=Object.entries(fileLabels).map(([key,label])=>`<div class="file-field"><div class="field"><label>${label}</label><input data-production-file="${key}" value="${esc(production.files[key]||'')}" placeholder="Paste a Drive, Dropbox, or file link"></div>${safeUrl(production.files[key])?'<a href="'+esc(safeUrl(production.files[key]))+'" target="_blank" rel="noopener noreferrer">Open saved file ↗</a>':''}</div>`).join('');
+        const releaseFields=[['artistName','Artist name'],['songTitle','Final song title'],['writers','Writers'],['producers','Producers'],['releaseDate','Release date','date'],['distributor','Distributor'],['isrc','ISRC'],['upc','UPC / release code'],['copyright','Copyright line']].map(([key,label,type])=>`<div class="field"><label>${label}</label><input type="${type||'text'}" data-production-release="${key}" value="${esc(production.release[key]||'')}"></div>`).join('');
+        root.innerHTML=`<div class="workspace">
+          <aside class="project-rail"><div class="rail-head"><b>Choose a song</b><button class="icon-btn" data-action="new-song" aria-label="New song">＋</button></div><div class="field"><input id="production-rail-search" placeholder="Search songs…" aria-label="Search songs"></div><div id="production-rail-list">${rail}</div></aside>
+          <div class="work-main">
+            <div class="work-toolbar"><div><b class="sensitive">${esc(song.title)}</b><div class="small-text muted">Production control room · autosaved locally</div></div><div class="actions"><button class="btn small" data-view="songs">✍🏾 Lyrics</button><button class="btn small" data-production-coach>✨ Ask Studio Coach</button><button class="help" data-help="production" aria-label="Explain the Production Room">?</button></div></div>
+            <div class="production-overview">
+              <section class="card production-score"><b id="production-progress-number">${stats.percent}%</b><strong>production complete</strong><div class="progress section-space" style="width:min(270px,100%)"><i id="production-progress-bar" style="width:${stats.percent}%"></i></div><small id="production-progress-copy">${stats.done} of ${stats.total} checkpoints</small></section>
+              <section class="card tint-mint"><p class="eyebrow">The next clear move</p><h2 id="production-next-task">${stats.next?esc(stats.next.stage.name+': '+stats.next.task[1]):'The production path is complete ✦'}</h2><p>Use this as your breadcrumb. You can still work out of order whenever the song needs it.</p><div class="field section-space"><label>My actual next step</label><textarea data-production-field="nextStep" placeholder="Example: Record three clean chorus leads Tuesday at 6 PM.">${esc(production.nextStep||'')}</textarea></div></section>
+            </div>
+
+            <details class="card fold section-space" open><summary>Song setup + sonic direction</summary><div class="form-grid section-space">
+              ${fieldMarkup('Genre / sonic world','genre',song.genre,'Warm neo-soul, intimate R&B…',false,'song')}
+              ${fieldMarkup('Tempo','tempo',song.tempo,'72 BPM or slow pocket',false,'song')}
+              ${fieldMarkup('Key','key',song.key,'Example: F# minor',false,'song')}
+              <div class="field"><label>Time signature</label><input data-production-field="timeSignature" value="${esc(production.timeSignature||'4/4')}"></div>
+              <div class="field span-2"><label>Sonic direction</label><textarea data-production-field="sonicDirection" placeholder="Textures, mood, space, vocal feeling, instruments, and what this should not become…">${esc(production.sonicDirection||'')}</textarea></div>
+              ${fieldMarkup('Reference songs / notes','references',song.references,'What are you studying—not copying?',true,'song','span-2')}
+            </div></details>
+
+            <section class="card section-space"><div class="card-top"><div><p class="eyebrow">Start to finish</p><h2>Production path</h2><p>Open only the stage you are working on. Checkpoints update the progress above.</p></div><div class="sticker">🎚️</div></div><div class="production-stage-list section-space">${stages}</div></section>
+
+            <details class="card fold section-space"><summary>Arrangement map</summary><p>Plan when each part enters, changes energy, or gets out of the way.</p><button class="btn small primary" data-add-arrangement>＋ Add arrangement section</button><div class="production-list section-space">${arrangement}</div></details>
+            <details class="card fold section-space"><summary>Vocal take tracker</summary><p>Keep the useful takes visible without trusting filenames or memory.</p><button class="btn small primary" data-add-vocal-take>＋ Log a vocal take</button><div class="production-list section-space">${takes}</div></details>
+            <details class="card fold section-space"><summary>Production session log</summary><p>Record the goal, what actually got finished, and where to start next time.</p><button class="btn small primary" data-add-production-session>＋ Log a session</button><div class="production-list section-space">${sessions}</div></details>
+            <details class="card fold section-space"><summary>Files + version control</summary><p>Store links—not the large audio files themselves—so you can find the right version quickly.</p><div class="file-grid section-space">${files}</div><div class="divider"></div><button class="btn small primary" data-add-production-version>＋ Add named version</button><div class="production-list section-space">${versions}</div></details>
+            <details class="card fold section-space"><summary>Credits + splits</summary><div class="card-top section-space"><p>Write agreements down while everyone remembers them.</p><div class="split-total ${splitTotal===100?'good':'warn'}">Total: ${splitTotal}%</div></div><button class="btn small primary" data-add-production-credit>＋ Add contributor</button><div class="production-list section-space">${credits}</div></details>
+            <details class="card fold section-space"><summary>Release details</summary><p>Keep the final metadata beside the song instead of scattered across messages.</p><div class="form-grid section-space">${releaseFields}<div class="field"><label>Explicit?</label><select data-production-release="explicit"><option ${production.release.explicit==='No'?'selected':''}>No</option><option ${production.release.explicit==='Yes'?'selected':''}>Yes</option></select></div></div></details>
+          </div>
+        </div>`;
+      }
+      function updateProductionProgressUI() {
+        const song=activeSong();if(!song)return;const production=ensureProduction(song),stats=productionStats(song);
+        const number=document.getElementById('production-progress-number'),bar=document.getElementById('production-progress-bar'),copy=document.getElementById('production-progress-copy'),next=document.getElementById('production-next-task');
+        if(number)number.textContent=stats.percent+'%';if(bar)bar.style.width=stats.percent+'%';if(copy)copy.textContent=stats.done+' of '+stats.total+' checkpoints';if(next)next.textContent=stats.next?stats.next.stage.name+': '+stats.next.task[1]:'The production path is complete ✦';
+        PRODUCTION_STAGES.forEach(stage=>{const done=stage.tasks.filter(task=>production.checklist[stage.id+':'+task[0]]).length,count=document.getElementById('production-stage-count-'+stage.id),card=document.querySelector('[data-production-stage-card="'+stage.id+'"]');if(count)count.textContent=done+'/'+stage.tasks.length;if(card)card.classList.toggle('complete',done===stage.tasks.length);});
+      }
+      function openArrangement(id='') {
+        const production=ensureProduction(activeSong()),old=production.arrangement.find(x=>x.id===id)||{id:'',section:'',bars:'',energy:'',instruments:'',notes:''};
+        openForm(old.id?'Edit arrangement section':'Add arrangement section','<div class="form-grid">'+field('section','Section name',old.section)+field('bars','Bars',old.bars)+field('energy','Energy / intensity',old.energy)+field('instruments','Sounds or instruments',old.instruments)+field('notes','Transitions, drops, or production notes',old.notes,'textarea','span-2')+'</div>',old.id?'Save section':'Add section',form=>{const v=values(form),item={...old,...v,id:old.id||uid('arr')};const index=production.arrangement.findIndex(x=>x.id===item.id);if(index>=0)production.arrangement[index]=item;else production.arrangement.push(item);touch(activeSong());renderProduction();});
+      }
+      function openVocalTake(id='') {
+        const production=ensureProduction(activeSong()),old=production.vocalTakes.find(x=>x.id===id)||{id:'',date:isoDate(new Date()),section:'',take:'',type:'Lead',rating:'',keeper:'No',notes:''};
+        openForm(old.id?'Edit vocal take':'Log a vocal take','<div class="form-grid">'+field('date','Date',old.date,'date')+field('section','Song section',old.section)+field('take','Take number or filename',old.take)+selectField('type','Vocal type',old.type,['Lead','Double','Harmony','Background','Ad-lib','Scratch'])+field('rating','Rating or quick note',old.rating)+selectField('keeper','Keeper?',old.keeper,['No','Yes'])+field('notes','What worked / what to try next',old.notes,'textarea','span-2')+'</div>',old.id?'Save take':'Add take',form=>{const v=values(form),item={...old,...v,id:old.id||uid('take')};const index=production.vocalTakes.findIndex(x=>x.id===item.id);if(index>=0)production.vocalTakes[index]=item;else production.vocalTakes.push(item);touch(activeSong());renderProduction();});
+      }
+      function openProductionSession(id='') {
+        const production=ensureProduction(activeSong()),old=production.sessions.find(x=>x.id===id)||{id:'',date:isoDate(new Date()),type:'Recording',goal:'',completed:'',nextStep:'',collaborators:''};
+        openForm(old.id?'Edit production session':'Log a production session','<div class="form-grid">'+field('date','Date',old.date,'date')+selectField('type','Session type',old.type,['Writing','Production','Recording','Vocal comping','Editing','Mixing','Mastering','Release prep'])+field('goal','Goal for the session',old.goal,'textarea')+field('completed','What I completed',old.completed,'textarea')+field('nextStep','Smallest next step',old.nextStep,'textarea')+field('collaborators','Collaborators / notes',old.collaborators,'textarea')+'</div>',old.id?'Save session':'Add session',form=>{const v=values(form),item={...old,...v,id:old.id||uid('psession')};const index=production.sessions.findIndex(x=>x.id===item.id);if(index>=0)production.sessions[index]=item;else production.sessions.push(item);production.nextStep=v.nextStep||production.nextStep;touch(activeSong());renderProduction();});
+      }
+      function openProductionVersion(id='') {
+        const production=ensureProduction(activeSong()),old=production.versions.find(x=>x.id===id)||{id:'',name:'',date:isoDate(new Date()),link:'',notes:''};
+        openForm(old.id?'Edit file version':'Add a named version','<div class="form-grid">'+field('name','Version name',old.name)+field('date','Date',old.date,'date')+field('link','File link',old.link,'url','span-2')+field('notes','What changed / what to listen for',old.notes,'textarea','span-2')+'</div>',old.id?'Save version':'Add version',form=>{const v=values(form),item={...old,...v,id:old.id||uid('pversion')};const index=production.versions.findIndex(x=>x.id===item.id);if(index>=0)production.versions[index]=item;else production.versions.push(item);touch(activeSong());renderProduction();});
+      }
+      function openProductionCredit(id='') {
+        const production=ensureProduction(activeSong()),old=production.credits.find(x=>x.id===id)||{id:'',name:'',role:'',split:'',contact:'',notes:''};
+        openForm(old.id?'Edit contributor':'Add a contributor','<div class="form-grid">'+field('name','Name',old.name)+field('role','Role / credit',old.role)+field('split','Agreed split %',old.split,'number')+field('contact','Contact or PRO information',old.contact)+field('notes','Agreement notes',old.notes,'textarea','span-2')+'</div>',old.id?'Save contributor':'Add contributor',form=>{const v=values(form),item={...old,...v,id:old.id||uid('credit')};const index=production.credits.findIndex(x=>x.id===item.id);if(index>=0)production.credits[index]=item;else production.credits.push(item);touch(activeSong());renderProduction();});
       }
       function fieldMarkup(label,name,value,placeholder='',area=false,scope='song',extra='') {
         const attr=scope==='compass'?'data-compass-field="'+name+'"':'data-'+scope+'-field="'+name+'"';
@@ -1491,7 +1627,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         document.getElementById('setting-guided').checked=!!state.settings.guided;
         document.getElementById('setting-privacy').checked=!!state.settings.privacyOnStart;
       }
-      function renderAll(){renderHome();renderJournal();renderSongs();renderStories();renderLibrary();renderProjects();renderSettings();}
+      function renderAll(){renderHome();renderJournal();renderSongs();renderProduction();renderStories();renderLibrary();renderProjects();renderSettings();}
       function openProject(id) {
         const p=getProject(id);if(!p)return;
         if(p.kind==='song'){state.activeSongId=id;setView('songs');}else{state.activeStoryId=id;setView('stories');}
@@ -1571,6 +1707,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
             if(lines.length<2){toast('Highlight at least two unsorted lines before asking for group ideas.');return;}
             openJournalCoach('Suggest 2–5 possible song groups for these highlighted lines. For each group, list the line numbers that belong together and complete: “This song is about…”. Keep lines separate when they point to different topics. Do not write lyrics yet.','UNSORTED HIGHLIGHTS:\n'+lines.map((x,i)=>(i+1)+'. '+x.phrase).join('\n'));
           }
+          return;
+        }
+        if(t.dataset.selectProductionSong){state.activeSongId=t.dataset.selectProductionSong;saveState();renderProduction();return;}
+        if(t.hasAttribute('data-production-coach')){openCoach('song');const scope=document.querySelector('input[name="coach-scope"][value="project"]');if(scope)scope.checked=true;document.getElementById('coach-question').value='Review my production plan and progress. What is the clearest next step, and what important decision or checkpoint might I be overlooking?';return;}
+        if(t.hasAttribute('data-add-arrangement')){openArrangement();return;}
+        if(t.dataset.editArrangement){openArrangement(t.dataset.editArrangement);return;}
+        if(t.hasAttribute('data-add-vocal-take')){openVocalTake();return;}
+        if(t.dataset.editVocalTake){openVocalTake(t.dataset.editVocalTake);return;}
+        if(t.hasAttribute('data-add-production-session')){openProductionSession();return;}
+        if(t.dataset.editProductionSession){openProductionSession(t.dataset.editProductionSession);return;}
+        if(t.hasAttribute('data-add-production-version')){openProductionVersion();return;}
+        if(t.dataset.editProductionVersion){openProductionVersion(t.dataset.editProductionVersion);return;}
+        if(t.hasAttribute('data-add-production-credit')){openProductionCredit();return;}
+        if(t.dataset.editProductionCredit){openProductionCredit(t.dataset.editProductionCredit);return;}
+        if(t.dataset.deleteProductionItem){
+          const [key,id]=t.dataset.deleteProductionItem.split(':'),production=ensureProduction(activeSong());
+          if(Array.isArray(production[key])&&confirm('Delete this production record?')){production[key]=production[key].filter(item=>item.id!==id);touch(activeSong());renderProduction();}
           return;
         }
         if(t.hasAttribute('data-story-to-song')){
@@ -1677,6 +1830,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(el.dataset.breadcrumbField!==undefined){p=ui.view==='stories'?activeStory():activeSong();if(p){p.breadcrumb=p.breadcrumb||blankBreadcrumb();p.breadcrumb[el.dataset.breadcrumbField]=el.value;p.breadcrumb.updatedAt=now();touch(p);}}
         if(el.dataset.bridgeField!==undefined&&(p=activeStory())){p.bridge=p.bridge||{};p.bridge[el.dataset.bridgeField]=el.value;touch(p);}
         if(el.dataset.highlightGroupField!==undefined){const g=state.highlightGroups.find(x=>x.id===el.dataset.groupId);if(g){g[el.dataset.highlightGroupField]=el.value;g.updatedAt=now();saveState();}}
+        if(el.dataset.productionField!==undefined&&(p=activeSong())){const production=ensureProduction(p);production[el.dataset.productionField]=el.value;touch(p);}
+        if(el.dataset.productionStageNote!==undefined&&(p=activeSong())){const production=ensureProduction(p);production.stageNotes[el.dataset.productionStageNote]=el.value;touch(p);}
+        if(el.dataset.productionFile!==undefined&&(p=activeSong())){const production=ensureProduction(p);production.files[el.dataset.productionFile]=el.value;touch(p);}
+        if(el.dataset.productionRelease!==undefined&&(p=activeSong())){const production=ensureProduction(p);production.release[el.dataset.productionRelease]=el.value;touch(p);}
       });
       document.addEventListener('change',event=>{
         const el=event.target;
@@ -1686,7 +1843,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(el.id==='template-filter'||el.id==='inspiration-search'||el.id==='inspiration-type-filter')renderLibrary();
         if(el.id==='project-search'||el.id==='project-type-filter'||el.id==='project-status-filter')renderProjects();
         if(el.id==='mine-source')renderHighlightWorkspace(el.value);
-        if(el.dataset.highlightGroup!==undefined){const x=state.sparks.find(s=>s.id===el.dataset.highlightGroup);if(x){const oldGroupId=x.groupId,oldGroup=state.highlightGroups.find(g=>g.id===oldGroupId);x.groupId=el.value;x.updatedAt=now();if(oldGroup?.chorusHighlightId===x.id)oldGroup.chorusHighlightId='';if(oldGroupId&&!state.sparks.some(s=>s.groupId===oldGroupId))state.highlightGroups=state.highlightGroups.filter(g=>g.id!==oldGroupId);saveState();renderHighlightWorkspace();toast(el.value?'Line moved into its song group.':'Line returned to Unsorted.');}}
+        if(el.dataset.highlightGroup!==undefined)moveHighlightToGroup(el.dataset.highlightGroup,el.value);
+        if(el.dataset.productionTask!==undefined){const p=activeSong();if(p){const production=ensureProduction(p);production.checklist[el.dataset.productionTask]=el.checked;el.closest('.production-task')?.classList.toggle('done',el.checked);touch(p);updateProductionProgressUI();}}
         if(el.dataset.groupChorus!==undefined){const g=state.highlightGroups.find(x=>x.id===el.dataset.groupChorus);if(g){g.chorusHighlightId=el.value;g.updatedAt=now();saveState();toast(el.value?'Chorus phrase selected.':'Chorus choice cleared.');}}
         if(el.id==='f-template'&&document.getElementById('song-plan-preview'))document.getElementById('song-plan-preview').innerHTML=songPlanPreview(el.value);
         if(el.id==='song-section-select'){const p=activeSong();p.activeSectionId=el.value;saveState();renderSongs();}
@@ -1704,8 +1862,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(event.target.id==='inspiration-search')renderLibrary();
         if(event.target.id==='project-search')renderProjects();
         if(event.target.id==='song-rail-search'){const q=event.target.value.toLowerCase();document.querySelectorAll('#song-rail-list .rail-project').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));}
+        if(event.target.id==='production-rail-search'){const q=event.target.value.toLowerCase();document.querySelectorAll('#production-rail-list .rail-project').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));}
         if(event.target.id==='story-rail-search'){const q=event.target.value.toLowerCase();document.querySelectorAll('#story-rail-list .rail-project').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));}
       });
+      let draggedHighlightId='';
+      document.addEventListener('dragstart',event=>{
+        const card=event.target.closest?.('[data-drag-highlight]');if(!card)return;
+        draggedHighlightId=card.dataset.dragHighlight;card.classList.add('dragging');event.dataTransfer.effectAllowed='move';event.dataTransfer.setData('text/plain',draggedHighlightId);
+      });
+      document.addEventListener('dragover',event=>{
+        const zone=event.target.closest?.('[data-drop-group]');if(!zone||!draggedHighlightId)return;
+        event.preventDefault();event.dataTransfer.dropEffect='move';document.querySelectorAll('.drop-zone.drag-over').forEach(item=>{if(item!==zone)item.classList.remove('drag-over');});zone.classList.add('drag-over');
+      });
+      document.addEventListener('dragleave',event=>{const zone=event.target.closest?.('[data-drop-group]');if(zone&&!zone.contains(event.relatedTarget))zone.classList.remove('drag-over');});
+      document.addEventListener('drop',event=>{
+        const zone=event.target.closest?.('[data-drop-group]');if(!zone)return;event.preventDefault();const id=event.dataTransfer.getData('text/plain')||draggedHighlightId;document.querySelectorAll('.drop-zone.drag-over').forEach(item=>item.classList.remove('drag-over'));if(id)moveHighlightToGroup(id,zone.dataset.dropGroup||'');draggedHighlightId='';
+      });
+      document.addEventListener('dragend',event=>{event.target.closest?.('[data-drag-highlight]')?.classList.remove('dragging');document.querySelectorAll('.drop-zone.drag-over').forEach(item=>item.classList.remove('drag-over'));draggedHighlightId='';});
       document.addEventListener('mouseup',event=>{if(event.target.closest?.('#mine-text-display'))captureJournalSelection();});
       document.addEventListener('keyup',event=>{if(event.target.closest?.('#mine-text-display'))captureJournalSelection();});
       document.getElementById('generic-form').addEventListener('submit',event=>{
