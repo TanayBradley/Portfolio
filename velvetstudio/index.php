@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
     .banner{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:20px;padding:11px 14px;border:1px solid rgba(88,49,103,.1);border-radius:15px;background:rgba(255,255,255,.67);font-size:.79rem;color:var(--muted)}
     .view{display:none}.view.active{display:block}.hero{position:relative;overflow:hidden;padding:clamp(24px,4vw,42px);border:var(--line);border-radius:32px;background:linear-gradient(120deg,rgba(255,255,255,.95),rgba(255,242,220,.88));box-shadow:var(--shadow)}.hero:after{content:"♫";position:absolute;right:5%;bottom:-34px;color:rgba(123,74,140,.1);font-size:180px;transform:rotate(-12deg)}.eyebrow{margin:0 0 8px;color:var(--plum-2);font-size:.74rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.hero h2{max-width:720px;margin:0;font-family:Georgia,serif;font-size:clamp(2rem,5vw,4.2rem);line-height:1.02}.hero p{max-width:670px;color:var(--muted);font-size:1.02rem}.hero-actions{position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
     .sparkle{display:inline-block;animation:twinkle 2.1s infinite alternate}@keyframes twinkle{from{transform:scale(.85) rotate(-7deg);opacity:.55}to{transform:scale(1.15) rotate(7deg);opacity:1}}
-    .grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.section-space{margin-top:22px}.card{position:relative;padding:20px;border:var(--line);border-radius:var(--radius);background:rgba(255,255,255,.9);box-shadow:var(--soft-shadow)}.card.tint-pink{background:linear-gradient(145deg,#fff,#fff0f6)}.card.tint-mint{background:linear-gradient(145deg,#fff,#edfbf6)}.card.tint-lilac{background:linear-gradient(145deg,#fff,#f3ecff)}.card.tint-gold{background:linear-gradient(145deg,#fff,#fff7df)}.card h2,.card h3{margin:0 0 7px}.card h2{font-family:Georgia,serif}.card p{color:var(--muted)}.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.sticker{display:grid;place-items:center;width:44px;height:44px;border-radius:15px;background:var(--cream);font-size:22px;transform:rotate(3deg)}
+    .grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.grid.five{grid-template-columns:repeat(5,minmax(0,1fr))}.section-space{margin-top:22px}.card{position:relative;padding:20px;border:var(--line);border-radius:var(--radius);background:rgba(255,255,255,.9);box-shadow:var(--soft-shadow)}.card.tint-pink{background:linear-gradient(145deg,#fff,#fff0f6)}.card.tint-mint{background:linear-gradient(145deg,#fff,#edfbf6)}.card.tint-lilac{background:linear-gradient(145deg,#fff,#f3ecff)}.card.tint-gold{background:linear-gradient(145deg,#fff,#fff7df)}.card h2,.card h3{margin:0 0 7px}.card h2{font-family:Georgia,serif}.card p{color:var(--muted)}.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.sticker{display:grid;place-items:center;width:44px;height:44px;border-radius:15px;background:var(--cream);font-size:22px;transform:rotate(3deg)}
     .stat{padding:18px;border:var(--line);border-radius:20px;background:rgba(255,255,255,.8)}.stat b{display:block;font-family:Georgia,serif;font-size:1.8rem}.stat small{color:var(--muted)}
     .progress{height:10px;overflow:hidden;border-radius:999px;background:#eee6ef}.progress i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--pink),var(--plum-2));transition:width .3s}
     .section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:18px}.section-head h2{margin:0;font-family:Georgia,serif;font-size:clamp(1.45rem,3vw,2.15rem)}.section-head p{margin:4px 0 0;color:var(--muted)}
@@ -160,13 +160,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
     .week-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.week-title{font-weight:900;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));gap:8px;overflow:auto;padding-bottom:6px}.day{min-height:170px;padding:10px;border:var(--line);border-radius:16px;background:rgba(255,255,255,.8)}.day.today{border-color:#9970c7;background:#faf5ff}.day-head{display:flex;justify-content:space-between;margin-bottom:8px;font-size:.76rem;font-weight:900}.session{display:block;width:100%;margin:6px 0;padding:8px;border:0;border-left:4px solid var(--coral);border-radius:9px;background:#fff0f2;text-align:left;cursor:pointer;font-size:.72rem}.session.done{opacity:.62;text-decoration:line-through;border-color:var(--green);background:#edf9f5}
     .board{display:grid;grid-template-columns:repeat(3,minmax(250px,1fr));gap:12px;overflow:auto}.column{min-height:300px;padding:12px;border:var(--line);border-radius:19px;background:rgba(255,255,255,.57)}.column h3{margin:2px 0 11px}.project-card{margin-bottom:10px;padding:13px;border:var(--line);border-radius:14px;background:#fff;box-shadow:0 5px 13px rgba(52,34,63,.06)}.project-card h4{margin:0 0 4px}.project-card p{margin:0 0 9px;font-size:.77rem;color:var(--muted)}
     .template-card{display:flex;flex-direction:column;min-height:250px}.template-card .template-icon{font-size:2rem}.template-card .actions{margin-top:auto}.preview-box{max-height:340px;overflow:auto;white-space:pre-wrap;padding:14px;border-radius:15px;background:#f8f3fb;color:#54435c;font-size:.83rem}#f-body{min-height:430px}
+    .prompt-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.prompt-controls .search{flex:1;min-width:220px}.prompt-controls .search input{max-width:none}.topic-count{margin-left:auto;color:var(--muted);font-size:.78rem;font-weight:800}
+    .highlight-reader{min-height:360px;padding:clamp(20px,4vw,34px);border:2px solid #e8d8bb;border-radius:20px;background:linear-gradient(90deg,rgba(244,225,198,.35) 1px,transparent 1px),#fffdf7;background-size:28px 100%;box-shadow:inset 0 0 0 7px rgba(255,255,255,.6);white-space:pre-wrap;font:1.03rem/1.85 Georgia,serif;color:#342c38;cursor:text;user-select:text}.highlight-reader.empty{display:grid;place-items:center;font-family:inherit;color:var(--muted);cursor:default}.highlight-reader mark{padding:2px 1px;border-radius:4px;color:inherit;box-decoration-break:clone;-webkit-box-decoration-break:clone}.marker-yellow{background:linear-gradient(transparent 12%,rgba(255,220,111,.68) 12%,rgba(255,220,111,.68) 88%,transparent 88%)}.marker-pink{background:linear-gradient(transparent 12%,rgba(255,166,204,.62) 12%,rgba(255,166,204,.62) 88%,transparent 88%)}.marker-mint{background:linear-gradient(transparent 12%,rgba(139,226,193,.62) 12%,rgba(139,226,193,.62) 88%,transparent 88%)}.marker-lilac{background:linear-gradient(transparent 12%,rgba(190,162,242,.58) 12%,rgba(190,162,242,.58) 88%,transparent 88%)}.marker-blue{background:linear-gradient(transparent 12%,rgba(145,205,242,.55) 12%,rgba(145,205,242,.55) 88%,transparent 88%)}
+    .highlighter-toolbar{position:sticky;bottom:10px;z-index:5;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;padding:11px;border:var(--line);border-radius:18px;background:rgba(255,255,255,.94);box-shadow:0 12px 32px rgba(65,40,76,.14);backdrop-filter:blur(10px)}.marker-btn{display:inline-flex;align-items:center;gap:7px;min-height:39px;padding:7px 11px;border:2px solid transparent;border-radius:12px;background:#fff;cursor:pointer;font-size:.76rem;font-weight:900}.marker-btn:before{content:"";width:23px;height:10px;border-radius:4px;transform:rotate(-3deg)}.marker-btn[data-highlight-color="yellow"]:before{background:#ffdc6f}.marker-btn[data-highlight-color="pink"]:before{background:#ffa6cc}.marker-btn[data-highlight-color="mint"]:before{background:#8be2c1}.marker-btn[data-highlight-color="lilac"]:before{background:#bea2f2}.marker-btn[data-highlight-color="blue"]:before{background:#91cdf2}.marker-btn:hover{border-color:#aa82d0;transform:translateY(-1px)}.selection-preview{flex:1;min-width:220px;padding:9px 12px;border-radius:12px;background:#f6f0f8;color:#695b70;font-size:.78rem}.selection-preview.ready{background:#fff4c8;color:#604b1c}
+    .highlight-card{border-left:7px solid var(--marker,#ffdc6f)}.highlight-card[data-color="pink"]{--marker:#ffa6cc}.highlight-card[data-color="mint"]{--marker:#8be2c1}.highlight-card[data-color="lilac"]{--marker:#bea2f2}.highlight-card[data-color="blue"]{--marker:#91cdf2}.highlight-card[data-color="yellow"]{--marker:#ffdc6f}.highlight-quote{font:1.02rem/1.55 Georgia,serif}.group-card{overflow:hidden;border-top:8px solid #b78cdd}.group-lines{display:grid;gap:8px;margin:14px 0}.group-line{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:9px;align-items:start;padding:10px;border-radius:13px;background:#fff}.color-dot{width:11px;height:11px;margin-top:6px;border-radius:50%;background:var(--marker,#ffdc6f)}.group-line select{width:auto;max-width:150px;padding:7px;font-size:.72rem}.song-seed-lines{display:grid;gap:8px}.song-seed-line{padding:10px 12px;border-left:5px solid var(--pink);border-radius:0 12px 12px 0;background:#fff}.mini-step{display:flex;gap:9px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #eadfea}.mini-step:last-child{border:0}.mini-step b{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:9px;background:var(--lilac)}
     dialog{width:min(720px,calc(100% - 28px));max-height:88vh;padding:0;border:0;border-radius:26px;background:var(--paper);box-shadow:0 30px 90px rgba(33,15,41,.35)}dialog::backdrop{background:rgba(39,22,45,.55);backdrop-filter:blur(5px)}.dialog-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:18px 21px;border-bottom:var(--line);background:rgba(255,250,245,.96)}.dialog-head h2{margin:0;font-family:Georgia,serif}.dialog-body{padding:21px;overflow:auto}.dialog-foot{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:9px;padding:14px 21px;border-top:var(--line);background:rgba(255,250,245,.97)}
     .coach-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:14px}.coach-scope{padding:14px;border-radius:18px;background:#f5edfb}.coach-chat{min-height:280px;max-height:420px;overflow:auto;padding:14px;border:var(--line);border-radius:18px;background:#fff}.bubble{max-width:88%;margin:8px 0;padding:11px 13px;border-radius:15px;white-space:pre-wrap;font-size:.84rem}.bubble.user{margin-left:auto;background:var(--lilac)}.bubble.assistant{background:#edf9f5}.coach-reply-actions{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 16px}
     .toast{position:fixed;right:20px;bottom:20px;z-index:300;max-width:340px;padding:13px 16px;border-radius:15px;color:#fff;background:#3b2944;box-shadow:var(--shadow);transform:translateY(120px);opacity:0;transition:.25s}.toast.show{transform:none;opacity:1}.confetti{position:fixed;inset:0;z-index:290;pointer-events:none;overflow:hidden}.confetti i{position:absolute;top:-20px;width:9px;height:16px;border-radius:3px;animation:fall 1.8s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(620deg)}}
     .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}.muted{color:var(--muted)}.small-text{font-size:.78rem}.danger-zone{border-color:rgba(189,72,108,.25);background:#fff7f9}.divider{height:1px;margin:16px 0;background:#e9dfe9}.privacy-note{padding:13px;border-radius:14px;background:#fff1d9;color:#6a4b1f;font-size:.8rem}.version{padding:11px;border-bottom:1px solid #eadfea}.version:last-child{border:0}
-    @media(max-width:1050px){.grid.four{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:220px minmax(0,1fr)}.revision-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:1050px){.grid.four,.grid.five{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:220px minmax(0,1fr)}.revision-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:820px){:root{--sidebar:0px}.shell{display:block}.sidebar{transform:translateX(-105%);width:min(300px,86vw);transition:.22s}.sidebar.open{transform:none}.main{padding:15px 14px 45px}.mobile-menu{display:inline-grid}.topbar{align-items:flex-start}.topbar p{font-size:.8rem}.top-actions .hide-mobile{display:none}.workspace{display:block}.project-rail{position:relative;top:auto;max-height:260px;margin-bottom:14px}.compass-grid,.form-grid{grid-template-columns:1fr}.span-2{grid-column:auto}.coach-layout{grid-template-columns:1fr}.work-toolbar{top:4px}.board{grid-template-columns:repeat(3,270px)}}
-    @media(max-width:620px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.hero h2{font-size:2.25rem}.topbar h1{font-size:1.55rem}.top-actions{justify-content:flex-end}.revision-grid{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(7,150px)}.section-switcher{grid-template-columns:42px minmax(130px,1fr) 42px}.dialog-body{padding:16px}.card{padding:17px}.work-toolbar{align-items:flex-start}.work-toolbar .actions{justify-content:flex-end}}
+    @media(max-width:620px){.grid.two,.grid.three,.grid.four,.grid.five{grid-template-columns:1fr}.hero h2{font-size:2.25rem}.topbar h1{font-size:1.55rem}.top-actions{justify-content:flex-end}.revision-grid{grid-template-columns:1fr}.calendar{grid-template-columns:repeat(7,150px)}.section-switcher{grid-template-columns:42px minmax(130px,1fr) 42px}.dialog-body{padding:16px}.card{padding:17px}.work-toolbar{align-items:flex-start}.work-toolbar .actions{justify-content:flex-end}.group-line{grid-template-columns:12px 1fr}.group-line select{grid-column:2;width:100%;max-width:none}.highlighter-toolbar{position:relative;bottom:auto}.marker-btn span{display:none}}
   </style>
 </head>
 <body class="guided-on">
@@ -204,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       <header class="topbar">
         <div class="top-actions">
           <button class="icon-btn mobile-menu" id="mobile-menu" aria-label="Open navigation">☰</button>
-          <div><h1 id="page-title">Studio Home</h1><p id="page-subtitle">A soft place to turn real moments into songs and stories.</p></div>
+          <div><h1 id="page-title">Studio Home</h1><p id="page-subtitle">Write honestly, find the emotional threads, and turn one thread into a song.</p></div>
         </div>
         <div class="top-actions">
           <button class="btn ghost hide-mobile" id="guided-toggle" title="Show or hide small explanations">💡 Guided: On</button>
@@ -222,7 +226,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         <div class="hero">
           <p class="eyebrow">Your creative headquarters <span class="sparkle">✦</span></p>
           <h2>Write what happened. Find what matters. Turn it into music.</h2>
-          <p>You do not have to know whether something is a song yet. Begin with a guided journal topic, highlight the lines carrying emotion, and let the studio walk you into an original R&amp;B song.</p>
+          <p>You do not have to know whether something is a song yet. Write the whole truth first, highlight every line carrying emotion, sort those lines into possible song ideas, and build one idea at a time.</p>
           <div class="hero-actions">
             <button class="btn primary" data-action="start-guided">✨ Start: Journal → Song</button>
             <button class="btn pink" data-view="journal">📓 Just journal</button>
@@ -232,11 +236,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
 
         <div class="card section-space tint-gold">
           <div class="card-top"><div><p class="eyebrow">Your main creative path</p><h2>How Journal → Song works</h2><p>One step at a time. You never have to use every feature.</p></div><div class="sticker">🛤️</div></div>
-          <div class="grid four section-space">
+          <div class="grid five section-space">
             <div class="stat"><b>1</b><strong>Choose a topic</strong><small>Daily feelings, faith, a situation, self-worth, or life.</small></div>
             <div class="stat"><b>2</b><strong>Write freely</strong><small>Answer the prompts in your own words. It does not need to sound musical.</small></div>
-            <div class="stat"><b>3</b><strong>Highlight lines</strong><small>Save 1–3 sentences that hold the strongest emotion or image.</small></div>
-            <div class="stat"><b>4</b><strong>Build the song</strong><small>Choose a soulful R&amp;B structure and shape each section.</small></div>
+            <div class="stat"><b>3</b><strong>Highlight deeply</strong><small>Mark every repeated thought, sharp image, emotional turn, or sticky sentence.</small></div>
+            <div class="stat"><b>4</b><strong>Group the lines</strong><small>Separate different topics and name what each possible song is about.</small></div>
+            <div class="stat"><b>5</b><strong>Build one song</strong><small>Choose the chorus phrase; use the other lines as verse material.</small></div>
           </div>
           <button class="btn primary section-space" data-action="start-guided">Begin with Step 1</button>
         </div>
@@ -284,7 +289,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         </div>
 
         <div class="card tint-lilac">
-          <div class="card-top"><div><h2>Choose a journal topic</h2><p>These are actual guided journal pages. Clicking one opens its questions in your writing space.</p></div><div class="sticker">📝</div></div>
+          <div class="card-top"><div><h2>Choose a journal topic</h2><p>Browse by what is happening in your life. Every choice opens a full page of questions—not a tiny one-line prompt.</p></div><div class="sticker">📝</div></div>
+          <div class="prompt-controls section-space">
+            <div class="search"><input id="journal-topic-search" placeholder="Search topics like confidence, love, work…" aria-label="Search journal topics"></div>
+            <select id="topic-category-filter" aria-label="Filter journal topics">
+              <option value="all">All topics</option><option>Feelings + Mood</option><option>Relationships</option><option>Faith</option><option>Life + Growth</option><option>Work + Confidence</option><option>Creativity</option><option>Healing</option><option>Joy + Memory</option>
+            </select>
+            <span class="topic-count" id="journal-topic-count"></span>
+          </div>
           <div id="journal-topic-list" class="grid three section-space"></div>
         </div>
 
@@ -298,25 +310,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         </div>
 
         <div class="card section-space tint-gold" id="highlight-studio">
-          <div class="card-top"><div><p class="eyebrow">Step 3</p><h2>Highlight lines for a song</h2><p>Select a saved entry below. Then select the exact words inside the journal text and press “Save highlighted line.”</p></div><button class="help" data-help="mining">?</button></div>
+          <div class="card-top"><div><p class="eyebrow">Step 3</p><h2>Read once. Then highlight what stays with you.</h2><p>Choose a saved entry, read the whole thing without editing, then select words directly on the journal page. Tap a color and the passage becomes a saved card automatically.</p></div><button class="help" data-help="mining">?</button></div>
           <div class="grid two section-space">
-            <div>
-              <div class="field"><label for="mine-source">Journal entry</label><select id="mine-source"><option value="">Choose an entry…</option></select></div>
-              <div class="field section-space"><label for="mine-text">Journal text — select words directly in this box</label><textarea id="mine-text" class="sensitive" rows="15" placeholder="Choose one of your entries above."></textarea></div>
-            </div>
-            <div>
-              <div class="field"><label for="mine-manual">Selected line appears here</label><textarea id="mine-manual" class="sensitive" rows="5" placeholder="Select text on the left, or type the line here."></textarea></div>
-              <div class="field section-space"><label for="mine-why">What feeling or truth does this line hold?</label><textarea id="mine-why" rows="4" placeholder="Example: I was asking for love, but I was also learning to choose myself."></textarea></div>
-              <button class="btn primary section-space" id="save-mined-spark">Save highlighted line</button>
-              <div class="guided section-space"><strong>Keep it simple:</strong> save only the lines that still feel alive when you reread them. They do not need to rhyme.</div>
-            </div>
+            <div class="field"><label for="mine-source">Journal entry to study</label><select id="mine-source"><option value="">Choose an entry…</option></select></div>
+            <div class="guided"><strong>What deserves a highlight?</strong> A repeated thought, sharp image, emotional turn, contradiction, realization, or sentence that still sticks with you.</div>
           </div>
+          <div id="mine-text-display" class="highlight-reader empty sensitive section-space" tabindex="0">Choose a journal entry above to begin.</div>
+          <div class="highlighter-toolbar" aria-label="Journal highlighters">
+            <div id="selection-preview" class="selection-preview">Select a meaningful passage in the journal first.</div>
+            <button class="marker-btn" data-highlight-color="yellow" type="button"><span>Yellow</span></button>
+            <button class="marker-btn" data-highlight-color="pink" type="button"><span>Pink</span></button>
+            <button class="marker-btn" data-highlight-color="mint" type="button"><span>Mint</span></button>
+            <button class="marker-btn" data-highlight-color="lilac" type="button"><span>Lilac</span></button>
+            <button class="marker-btn" data-highlight-color="blue" type="button"><span>Blue</span></button>
+            <button class="btn small" data-action="quick-capture">＋ Add a line manually</button>
+            <button class="btn small" data-ai-journal="feelings">✨ Help me name the feeling</button>
+          </div>
+          <p class="small-text muted"><b>About the colors:</b> use whichever color feels right. Colors help your eyes; the groups below decide which lines belong to the same song.</p>
         </div>
 
-        <div class="card section-space tint-pink">
-          <div class="card-top"><div><p class="eyebrow">Step 4</p><h2>My highlighted lines</h2><p>Select one or several lines, then start your song.</p></div><div class="actions"><button class="btn primary" id="start-selected-song">Start song from selected</button><button class="btn" data-action="quick-capture">＋ Add a line manually</button></div></div>
-          <div class="filterbar section-space"><div class="search"><input id="spark-search" placeholder="Search highlighted lines…" aria-label="Search highlighted lines"></div><select id="spark-use-filter" hidden><option value="all">All uses</option></select><select id="spark-priority-filter" hidden><option value="all">All priorities</option></select></div>
-          <div id="spark-list" class="grid three"></div>
+        <div class="card section-space tint-pink" id="organize-studio">
+          <div class="card-top"><div><p class="eyebrow">Step 4</p><h2>Sort the lines into possible songs</h2><p>Lines about the same topic or feeling belong together. Anything that does not fit stays safely in Unsorted for another song or story.</p></div><div class="actions"><button class="btn primary" id="create-highlight-group">Group selected lines</button><button class="btn" data-ai-journal="groups">✨ Suggest possible groups</button></div></div>
+          <div class="filterbar section-space"><div class="search"><input id="spark-search" placeholder="Search highlighted lines…" aria-label="Search highlighted lines"></div><span class="chip" id="highlight-scope-label">Showing all highlights</span></div>
+          <div class="card tint-gold">
+            <div class="card-top"><div><h3>Unsorted highlights</h3><p>Check the lines that feel like they belong in the same song, then choose “Group selected lines.”</p></div><span class="chip" id="ungrouped-count">0</span></div>
+            <div id="ungrouped-highlight-list" class="grid three section-space"></div>
+          </div>
+          <div class="section-head section-space"><div><p class="eyebrow">Step 5</p><h2>Develop each song idea</h2><p>For one group, finish “This song is about…,” choose a chorus phrase, and decide what truth or response the song builds toward.</p></div></div>
+          <div id="highlight-group-list" class="grid two"></div>
         </div>
       </section>
 
@@ -486,19 +507,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       const HELP = {
         privacy: ['Private by design','The page includes noindex instructions and your writing is stored in this browser. That keeps it out of normal site navigation and search results, but it is not a password. Use your web host’s password protection for stronger privacy.'],
         breadcrumbs: ['Session breadcrumbs','Before stopping, write what you accomplished, what is still unclear, and the smallest next step. The next time you open the project, you will not have to reconstruct your thinking.'],
-        mining: ['Journal mining','The goal is not to make the journal entry “good.” Look for one phrase with energy—an image, contradiction, secret, question, or emotional turn—then save it with enough context to remember why it mattered.'],
+        mining: ['Journal highlighting','Read the complete entry once before marking anything. Then highlight every repeated thought, sharp image, emotional turn, contradiction, realization, or sentence that still has energy. Different colors are visual tools—not rules. The grouping step decides which lines belong to the same song.'],
         compass: ['Song direction','Four plain answers keep the song tied to the feeling that started it: the first line, the real meaning, the listener feeling, and the line you most want to keep.'],
         sidequest: ['Saved lines not used yet','A good line may not belong in the section you are writing. Save it here so it stays safe without confusing the current section.'],
         versions: ['Versions','A snapshot freezes the project as it is right now. Make one before major restructuring. Restoring creates a safety snapshot first, so experimentation stays reversible.'],
         coach: ['Studio Coach','Choose exactly how much context to include. “Copy + Open ChatGPT” keeps you in control and works without API setup. The in-page option requires a server API key and never places that secret in the browser.']
       };
       const TEMPLATES = [
-        {id:'j-daily',type:'journal',icon:'🌤️',name:'Daily feelings check-in',desc:'For an ordinary day when you need to understand what is sitting with you.',preview:'HOW DO I FEEL RIGHT NOW?\\n\\nWHAT HAPPENED TODAY THAT AFFECTED ME?\\n\\nWHAT AM I STILL THINKING ABOUT?\\n\\nWHAT DID I NEED TODAY?\\n\\nONE TRUE SENTENCE ABOUT TODAY:'},
-        {id:'j-faith',type:'journal',icon:'🕊️',name:'Faith + Bible reflection',desc:'Connect Scripture, your real life, your questions, and what you are learning.',preview:'SCRIPTURE OR MESSAGE I AM REFLECTING ON:\\n\\nWHAT STANDS OUT TO ME?\\n\\nWHAT DOES THIS BRING UP IN MY REAL LIFE?\\n\\nWHAT AM I QUESTIONING OR STRUGGLING WITH?\\n\\nWHAT MIGHT GOD BE SHOWING OR REMINDING ME?\\n\\nA PRAYER IN MY OWN WORDS:'},
-        {id:'j-situation',type:'journal',icon:'🫧',name:'Process a situation',desc:'Slow down a confusing interaction and separate what happened from what it meant to you.',preview:'WHAT HAPPENED?\\n\\nWHAT WAS ACTUALLY SAID OR DONE?\\n\\nWHAT DID I FEEL IN THE MOMENT?\\n\\nWHAT STORY DID MY MIND CREATE ABOUT IT?\\n\\nWHAT DO I KNOW, AND WHAT AM I ASSUMING?\\n\\nWHAT DO I WISH I COULD SAY?\\n\\nWHAT DO I NEED NOW?'},
-        {id:'j-life',type:'journal',icon:'🛤️',name:'Life direction + growth',desc:'For work, identity, change, goals, and the person you are becoming.',preview:'WHERE DO I FEEL STUCK OR RESTLESS?\\n\\nWHAT PART OF MY LIFE WANTS TO GROW?\\n\\nWHAT AM I OUTGROWING?\\n\\nWHAT WOULD A MORE HONEST LIFE LOOK LIKE?\\n\\nWHAT IS ONE SMALL MOVE I CAN MAKE?\\n\\nA SENTENCE MY FUTURE SELF MAY NEED:'},
-        {id:'j-self',type:'journal',icon:'💗',name:'Self-love + boundaries',desc:'Return to your own voice when other people’s opinions feel louder.',preview:'WHAT HURT OR DRAINED ME?\\n\\nWHAT DID I NEED BUT NOT RECEIVE?\\n\\nWHERE DID I ABANDON MY OWN FEELINGS?\\n\\nWHAT WOULD IT LOOK LIKE TO CHOOSE MYSELF WITH LOVE?\\n\\nWHAT BOUNDARY OR TRUTH DO I WANT TO REMEMBER?\\n\\nWORDS I WANT TO SAY TO MYSELF:'},
-        {id:'j-good',type:'journal',icon:'🍯',name:'Good moments + gratitude',desc:'Capture joy, tenderness, beauty, and the parts of life you do not want to rush past.',preview:'WHAT FELT GOOD TODAY?\\n\\nWHAT SMALL DETAIL DO I WANT TO REMEMBER?\\n\\nWHO OR WHAT MADE LIFE FEEL SOFTER?\\n\\nWHAT AM I PROUD OF?\\n\\nWHAT AM I THANKFUL FOR RIGHT NOW?\\n\\nIF THIS FEELING WERE A SONG, WHAT WOULD IT SOUND LIKE?'},
+        {id:'j-daily',type:'journal',category:'Feelings + Mood',icon:'🌤️',name:'Daily feelings check-in',desc:'For an ordinary day when you need to understand what is sitting with you.',preview:'HOW DO I FEEL RIGHT NOW?\\n\\nWHAT HAPPENED TODAY THAT AFFECTED ME?\\n\\nWHAT AM I STILL THINKING ABOUT?\\n\\nWHAT DID I NEED TODAY?\\n\\nONE TRUE SENTENCE ABOUT TODAY:'},
+        {id:'j-faith',type:'journal',category:'Faith',icon:'🕊️',name:'Faith + Bible reflection',desc:'Connect Scripture, your real life, your questions, and what you are learning.',preview:'SCRIPTURE OR MESSAGE I AM REFLECTING ON:\\n\\nWHAT STANDS OUT TO ME?\\n\\nWHAT DOES THIS BRING UP IN MY REAL LIFE?\\n\\nWHAT AM I QUESTIONING OR STRUGGLING WITH?\\n\\nWHAT MIGHT GOD BE SHOWING OR REMINDING ME?\\n\\nA PRAYER IN MY OWN WORDS:'},
+        {id:'j-situation',type:'journal',category:'Relationships',icon:'🫧',name:'Process a situation',desc:'Slow down a confusing interaction and separate what happened from what it meant to you.',preview:'WHAT HAPPENED?\\n\\nWHAT WAS ACTUALLY SAID OR DONE?\\n\\nWHAT DID I FEEL IN THE MOMENT?\\n\\nWHAT STORY DID MY MIND CREATE ABOUT IT?\\n\\nWHAT DO I KNOW, AND WHAT AM I ASSUMING?\\n\\nWHAT DO I WISH I COULD SAY?\\n\\nWHAT DO I NEED NOW?'},
+        {id:'j-life',type:'journal',category:'Life + Growth',icon:'🛤️',name:'Life direction + growth',desc:'For work, identity, change, goals, and the person you are becoming.',preview:'WHERE DO I FEEL STUCK OR RESTLESS?\\n\\nWHAT PART OF MY LIFE WANTS TO GROW?\\n\\nWHAT AM I OUTGROWING?\\n\\nWHAT WOULD A MORE HONEST LIFE LOOK LIKE?\\n\\nWHAT IS ONE SMALL MOVE I CAN MAKE?\\n\\nA SENTENCE MY FUTURE SELF MAY NEED:'},
+        {id:'j-self',type:'journal',category:'Healing',icon:'💗',name:'Self-love + boundaries',desc:'Return to your own voice when other people’s opinions feel louder.',preview:'WHAT HURT OR DRAINED ME?\\n\\nWHAT DID I NEED BUT NOT RECEIVE?\\n\\nWHERE DID I ABANDON MY OWN FEELINGS?\\n\\nWHAT WOULD IT LOOK LIKE TO CHOOSE MYSELF WITH LOVE?\\n\\nWHAT BOUNDARY OR TRUTH DO I WANT TO REMEMBER?\\n\\nWORDS I WANT TO SAY TO MYSELF:'},
+        {id:'j-good',type:'journal',category:'Joy + Memory',icon:'🍯',name:'Good moments + gratitude',desc:'Capture joy, tenderness, beauty, and the parts of life you do not want to rush past.',preview:'WHAT FELT GOOD TODAY?\\n\\nWHAT SMALL DETAIL DO I WANT TO REMEMBER?\\n\\nWHO OR WHAT MADE LIFE FEEL SOFTER?\\n\\nWHAT AM I PROUD OF?\\n\\nWHAT AM I THANKFUL FOR RIGHT NOW?\\n\\nIF THIS FEELING WERE A SONG, WHAT WOULD IT SOUND LIKE?'},
+        {id:'j-emotion',type:'journal',category:'Feelings + Mood',icon:'🎨',name:'Name the emotion',desc:'Go beyond “good,” “bad,” or “fine” and understand the layers.',preview:'WHAT AM I FEELING IN MY BODY?\\n\\nIF I COULD NAME THREE EMOTIONS, WHAT ARE THEY?\\n\\nWHICH FEELING IS LOUDEST?\\n\\nWHAT MAY BE UNDERNEATH IT?\\n\\nWHAT DOES THIS FEELING NEED ME TO KNOW?'},
+        {id:'j-overthinking',type:'journal',category:'Feelings + Mood',icon:'🌀',name:'Overthinking reset',desc:'Separate the situation, the fear, and what you actually know.',preview:'WHAT THOUGHT KEEPS REPEATING?\\n\\nWHAT AM I AFRAID THIS MEANS?\\n\\nWHAT FACTS DO I ACTUALLY HAVE?\\n\\nWHAT AM I ASSUMING OR PREDICTING?\\n\\nWHAT CAN REMAIN UNANSWERED TONIGHT?'},
+        {id:'j-anger',type:'journal',category:'Feelings + Mood',icon:'🔥',name:'Anger without judgment',desc:'Listen for the hurt, value, or boundary underneath the anger.',preview:'WHAT MADE ME ANGRY?\\n\\nWHAT LINE WAS CROSSED?\\n\\nWHAT HURT OR FEAR MAY BE UNDER THE ANGER?\\n\\nWHAT DOES MY ANGER PROTECT?\\n\\nWHAT RESPONSE WOULD RESPECT ME AND MY VALUES?'},
+        {id:'j-heavy',type:'journal',category:'Feelings + Mood',icon:'🌧️',name:'When everything feels heavy',desc:'Write gently when sadness, numbness, or exhaustion is hard to explain.',preview:'WHAT FEELS HEAVIEST RIGHT NOW?\\n\\nWHEN DID I NOTICE THE SHIFT?\\n\\nWHAT HAVE I BEEN CARRYING QUIETLY?\\n\\nWHAT DO I WISH SOMEONE WOULD NOTICE?\\n\\nWHAT WOULD MAKE TODAY 5% SOFTER?'},
+        {id:'j-connection',type:'journal',category:'Relationships',icon:'🫶🏾',name:'Connection + loneliness',desc:'Explore wanting closeness while protecting yourself from rejection.',preview:'WHO DO I MISS OR WANT TO FEEL CLOSER TO?\\n\\nWHAT STOPS ME FROM REACHING OUT?\\n\\nWHEN DO I FEEL WANTED?\\n\\nHOW DO I LEAVE BEFORE SOMEONE CAN LEAVE ME?\\n\\nWHAT KIND OF CONNECTION AM I REALLY ASKING FOR?'},
+        {id:'j-relationship',type:'journal',category:'Relationships',icon:'🌹',name:'Relationship truth check',desc:'Look honestly at love, safety, effort, confusion, and what you need.',preview:'WHAT MOMENT AM I TRYING TO UNDERSTAND?\\n\\nWHAT FELT LOVING OR SAFE?\\n\\nWHAT FELT CONFUSING, SMALL, OR PAINFUL?\\n\\nWHAT PATTERN HAVE I NOTICED?\\n\\nWHAT DO I WANT TO BE TRUE—AND WHAT IS TRUE NOW?'},
+        {id:'j-unsaid',type:'journal',category:'Relationships',icon:'💬',name:'What I wish I could say',desc:'Give the unsaid words somewhere honest to land.',preview:'WHO AM I SPEAKING TO?\\n\\nWHAT HAVE I BEEN HOLDING BACK?\\n\\nWHAT AM I AFRAID WILL HAPPEN IF I SAY IT?\\n\\nWHAT DO I NEED THEM TO UNDERSTAND?\\n\\nWRITE THE UNFILTERED VERSION:'},
+        {id:'j-boundary',type:'journal',category:'Relationships',icon:'🚪',name:'Boundary clarity',desc:'Decide what protects your peace without turning your heart off.',preview:'WHAT KEEPS HAPPENING?\\n\\nHOW DOES IT AFFECT ME?\\n\\nWHAT AM I NO LONGER WILLING TO ACCEPT?\\n\\nWHAT BOUNDARY WOULD BE CLEAR AND REALISTIC?\\n\\nWHAT WILL I DO IF IT IS IGNORED?'},
+        {id:'j-prayer',type:'journal',category:'Faith',icon:'🕯️',name:'Honest prayer journal',desc:'Pray without performing or pretending you already understand.',preview:'GOD, HERE IS WHAT I AM REALLY FEELING:\\n\\nHERE IS WHAT I DO NOT UNDERSTAND:\\n\\nHERE IS WHAT I AM AFRAID TO ASK FOR:\\n\\nHERE IS WHAT I NEED HELP RELEASING:\\n\\nHELP ME REMEMBER:'},
+        {id:'j-sermon',type:'journal',category:'Faith',icon:'📖',name:'Message or sermon study',desc:'Process a teaching instead of only writing down what was said.',preview:'MAIN SCRIPTURE OR IDEA:\\n\\nWHAT DID THE SPEAKER SAY?\\n\\nWHAT DO I AGREE WITH OR QUESTION?\\n\\nWHAT DOES THE TEXT SAY IN CONTEXT?\\n\\nWHERE DOES THIS TOUCH MY REAL LIFE?\\n\\nWHAT DO I WANT TO STUDY FURTHER?'},
+        {id:'j-decision',type:'journal',category:'Life + Growth',icon:'🧭',name:'Make sense of a decision',desc:'Compare choices without forcing yourself into an instant answer.',preview:'WHAT DECISION AM I FACING?\\n\\nWHAT DOES EACH OPTION GIVE ME?\\n\\nWHAT DOES EACH OPTION COST ME?\\n\\nWHICH FEAR IS INFORMATION, AND WHICH IS ONLY FEAR?\\n\\nWHICH CHOICE FITS MY VALUES?'},
+        {id:'j-future',type:'journal',category:'Life + Growth',icon:'🌱',name:'A note from future me',desc:'Use imagination to hear the wiser version of your own voice.',preview:'IMAGINE ME ONE YEAR FROM NOW. WHERE AM I?\\n\\nWHAT DID I STOP APOLOGIZING FOR?\\n\\nWHAT DID I PRACTICE CONSISTENTLY?\\n\\nWHAT DOES FUTURE ME WANT CURRENT ME TO KNOW?\\n\\nTHE NEXT SMALL STEP SHE THANKS ME FOR:'},
+        {id:'j-work',type:'journal',category:'Work + Confidence',icon:'💻',name:'Process the workday',desc:'Untangle pressure, people, accomplishments, and what needs to change.',preview:'WHAT HAPPENED AT WORK TODAY?\\n\\nWHAT REQUIRED THE MOST ENERGY?\\n\\nWHAT DID I HANDLE WELL?\\n\\nWHERE DID I FEEL DISMISSED, CONFUSED, OR PRESSURED?\\n\\nWHAT IS MY RESPONSIBILITY—AND WHAT IS NOT?'},
+        {id:'j-confidence',type:'journal',category:'Work + Confidence',icon:'👑',name:'When I feel not good enough',desc:'Challenge the moment without pretending it did not hurt.',preview:'WHAT MADE ME QUESTION MYSELF?\\n\\nWHAT DID I IMMEDIATELY BELIEVE ABOUT ME?\\n\\nWHAT EVIDENCE CHALLENGES THAT BELIEF?\\n\\nWHAT SKILL AM I STILL LEARNING?\\n\\nWHAT WOULD SELF-RESPECT SAY RIGHT NOW?'},
+        {id:'j-pressure',type:'journal',category:'Work + Confidence',icon:'⏱️',name:'Think after pressure',desc:'Review a moment when you froze, rushed, or struggled to answer.',preview:'WHAT PUT ME UNDER PRESSURE?\\n\\nWHAT HAPPENED IN MY BODY OR MIND?\\n\\nWHAT DID I KNOW BUT STRUGGLE TO SAY?\\n\\nWHAT ANSWER WOULD I GIVE NOW?\\n\\nWHAT PHRASE COULD BUY ME THINKING TIME NEXT TIME?'},
+        {id:'j-artist',type:'journal',category:'Creativity',icon:'🎙️',name:'Artist check-in',desc:'Reconnect with why you create and what wants to come out now.',preview:'WHAT HAVE I BEEN WANTING TO CREATE?\\n\\nWHAT FEELING, IMAGE, OR QUESTION KEEPS RETURNING?\\n\\nWHAT AM I AFRAID PEOPLE MAY THINK?\\n\\nWHAT WOULD I MAKE IF I DID NOT HAVE TO IMPRESS ANYONE?\\n\\nONE LINE MY ARTIST SELF WANTS TO SAY:'},
+        {id:'j-memory-song',type:'journal',category:'Creativity',icon:'🎞️',name:'Turn a memory into material',desc:'Capture sensory details that can later become lyrics or a scene.',preview:'WHAT MEMORY AM I ENTERING?\\n\\nWHAT CAN I SEE, HEAR, SMELL, TASTE, OR TOUCH?\\n\\nWHAT WAS SAID OR LEFT UNSAID?\\n\\nWHAT DID I BELIEVE THEN?\\n\\nWHAT DO I UNDERSTAND NOW?\\n\\nTHE IMAGE I CANNOT FORGET:'},
+        {id:'j-creative-block',type:'journal',category:'Creativity',icon:'🎮',name:'Creative block reset',desc:'Make the next move small when your ideas feel stuck or judged.',preview:'WHAT AM I TRYING TO MAKE?\\n\\nWHERE DO I GET STUCK?\\n\\nWHAT AM I EXPECTING TO BE PERFECT TOO EARLY?\\n\\nWHAT PART STILL FEELS FUN?\\n\\nWHAT IS THE TINIEST VERSION I COULD FINISH?'},
+        {id:'j-pattern',type:'journal',category:'Healing',icon:'🧶',name:'Notice an old pattern',desc:'Study a repeating reaction with curiosity instead of shame.',preview:'WHAT PATTERN DO I KEEP NOTICING?\\n\\nWHEN DOES IT USUALLY BEGIN?\\n\\nWHAT AM I TRYING TO PROTECT MYSELF FROM?\\n\\nHOW DOES IT HELP ME—AND LIMIT ME NOW?\\n\\nWHAT COULD A SAFER NEW RESPONSE LOOK LIKE?'},
+        {id:'j-release',type:'journal',category:'Healing',icon:'🍃',name:'Release what I cannot control',desc:'Name what belongs to you and what you can put down.',preview:'WHAT AM I TRYING TO CONTROL?\\n\\nWHY DOES LETTING GO FEEL UNSAFE?\\n\\nWHAT PART IS ACTUALLY MINE TO HANDLE?\\n\\nWHAT BELONGS TO ANOTHER PERSON OR OUTCOME?\\n\\nWHAT CAN I CHOOSE INSTEAD?'},
+        {id:'j-celebrate',type:'journal',category:'Joy + Memory',icon:'🪩',name:'Celebrate myself',desc:'Give progress the same attention you usually give problems.',preview:'WHAT DID I DO THAT DESERVES TO BE NOTICED?\\n\\nWHAT TOOK COURAGE, PATIENCE, OR PRACTICE?\\n\\nWHAT WOULD THE OLD ME BE PROUD TO SEE?\\n\\nHOW DO I WANT TO CELEBRATE?\\n\\nTHE LINE I WANT TO REMEMBER:'},
+        {id:'j-person',type:'journal',category:'Joy + Memory',icon:'📸',name:'A person I want to remember',desc:'Write the details of someone’s presence, love, humor, or impact.',preview:'WHO AM I WRITING ABOUT?\\n\\nWHAT SMALL THING DO THEY DO THAT FEELS LIKE THEM?\\n\\nWHAT MOMENT DO I KEEP REPLAYING?\\n\\nWHAT HAVE THEY TAUGHT OR GIVEN ME?\\n\\nWHAT DO I WISH I COULD TELL THEM?'},
 
         {id:'s-faith-ballad',type:'song',icon:'🕯️',name:'Faith + gratitude ballad',desc:'A slow-building R&B ballad that moves from uncertainty into trust or gratitude.',sections:[
           {name:'Verse 1',type:'Verse 1',purpose:'Show the specific moment when you felt afraid, tired, doubtful, or in need.'},
@@ -579,7 +622,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           {name:'Final Chorus',type:'Final Chorus',purpose:SECTION_JOBS['Final Chorus']}
         ];
         const sections=source.map(item=>({...defaultSection(item.name,item.type),purpose:item.purpose}));
-        return {id:uid('song'),kind:'song',title,status:'Spark',createdAt:now(),updatedAt:now(),sourceSparkId:'',genre:'',tempo:'',key:'',references:'',audioLink:'',productionNotes:'',compass:{...blankCompass(),spark},sections,activeSectionId:sections[0].id,parkingLot:[],revision:Object.fromEntries(REVISION_PASSES.map(x=>[x,false])),breadcrumb:blankBreadcrumb(),versions:[],coachNotes:[],templateId};
+        return {id:uid('song'),kind:'song',title,status:'Spark',createdAt:now(),updatedAt:now(),sourceSparkId:'',sourceGroupId:'',sourceHighlightIds:[],sourceLines:[],groupResponse:'',genre:'',tempo:'',key:'',references:'',audioLink:'',productionNotes:'',compass:{...blankCompass(),spark},sections,activeSectionId:sections[0].id,parkingLot:[],revision:Object.fromEntries(REVISION_PASSES.map(x=>[x,false])),breadcrumb:blankBreadcrumb(),versions:[],coachNotes:[],templateId};
       }
       function makeStory(title='Untitled Story', templateId='t-simple', spark='') {
         const sceneNames = ['The story'];
@@ -589,7 +632,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       const defaults = () => ({
         version:1,
         settings:{name:'Tanay',studioName:'Velvet Ink Studio',guided:true,privacyOnStart:false},
-        journal:[],sparks:[],songs:[],stories:[],inspiration:[],sessions:[],
+        journal:[],sparks:[],highlightGroups:[],songs:[],stories:[],inspiration:[],sessions:[],
         activeSongId:'',activeStoryId:'',coachThreads:{general:[]}
       });
       function loadState() {
@@ -598,13 +641,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           if (!saved || typeof saved !== 'object') return defaults();
           const base = defaults();
           const merged = {...base,...saved,settings:{...base.settings,...(saved.settings || {})}};
-          ['journal','sparks','songs','stories','inspiration','sessions'].forEach(k => { if (!Array.isArray(merged[k])) merged[k]=[]; });
+          ['journal','sparks','highlightGroups','songs','stories','inspiration','sessions'].forEach(k => { if (!Array.isArray(merged[k])) merged[k]=[]; });
+          merged.sparks=merged.sparks.map(s=>({...s,color:s.color||'yellow',groupId:s.groupId||''}));
           if (!merged.coachThreads || typeof merged.coachThreads !== 'object') merged.coachThreads={general:[]};
           return merged;
         } catch (error) { return defaults(); }
       }
       let state = loadState();
-      let ui = {view:'home',journalTab:'entries',libraryTab:'templates',weekStart:startOfWeek(new Date()),sessionScope:'week',coachSource:'general',coachLastReply:'',genericSubmit:null,directionText:''};
+      let ui = {view:'home',journalTab:'entries',libraryTab:'templates',weekStart:startOfWeek(new Date()),sessionScope:'week',coachSource:'general',coachLastReply:'',coachContextOverride:'',genericSubmit:null,directionText:'',activeJournalId:'',pendingHighlight:null};
       let saveTimer;
 
       function saveState(message='Saved') {
@@ -672,7 +716,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         document.querySelectorAll('.nav button[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
         const titles={
           home:['Studio Home','Write what happened, find the line that matters, and turn it into music.'],
-          journal:['Journal Room','Choose a topic, write freely, then highlight the words you want to keep.'],
+          journal:['Journal Room','Write freely, highlight the emotional threads, and group them into possible songs.'],
           songs:['Song Lab','Write with structure while protecting the feeling.'],
           stories:['Simple Story Builder','Answer six plain questions, then shape a beginning, middle, and ending.'],
           library:['Writing Guides','Real journal prompts and soulful R&B song shapes you can use immediately.'],
@@ -752,17 +796,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
       function openQuickCapture(prefill='',why='') {
         openForm('Add a highlighted line',
           '<p>Use this when the line did not come from a saved journal entry.</p><div class="form-grid">'+field('phrase','Line, image, or thought',prefill,'textarea','span-2')+
-          field('why','What feeling or truth does it hold?',why,'textarea','span-2')+'</div>',
+          field('emotion','Feeling words','')+selectField('color','Card color','yellow',['yellow','pink','mint','lilac','blue'])+field('why','What feeling or truth does it hold?',why,'textarea','span-2')+'</div>',
           'Save highlighted line',
           form=>{
             const v=values(form); if(!v.phrase.trim()){toast('Give the spark at least one line.');return false;}
-            state.sparks.unshift({...v,context:'Added manually',emotion:'',theme:'',use:'Song',priority:'Soon',id:uid('spark'),createdAt:now(),updatedAt:now(),private:true});
-            saveState();renderAll();toast('Highlighted line saved ✦');
+            state.sparks.unshift({...v,context:'Added manually',theme:'',use:'Song',priority:'Soon',groupId:'',sourceJournalId:'',start:null,end:null,id:uid('spark'),createdAt:now(),updatedAt:now(),private:true});
+            saveState();renderJournal();renderHome();toast('Highlighted line saved in Unsorted ✦');
           });
       }
       function openJournal(id='',templateId='') {
         const template=TEMPLATES.find(t=>t.id===templateId&&t.type==='journal');
-        const old=state.journal.find(x=>x.id===id) || {id:'',title:template?template.name:'',date:isoDate(new Date()),mood:'',tags:template?template.name:'',body:template?template.preview+'\n\n':''};
+        const old=state.journal.find(x=>x.id===id) || {id:'',title:template?template.name:'',date:isoDate(new Date()),mood:'',tags:template?[template.category,template.name].filter(Boolean).join(', '):'',body:template?template.preview+'\n\n':''};
         openForm(old.id?'Edit journal entry':'New journal entry',
           (template?'<div class="privacy-note"><b>'+esc(template.icon+' '+template.name)+'</b><br>'+esc(template.desc)+'</div>':'')+
           '<div class="form-grid section-space">'+field('title','Entry title',old.title)+field('date','Date',old.date,'date')+field('mood','How do you feel?',old.mood)+field('tags','Topic or tags',old.tags)+field('body','Your journal page — write beneath each question',old.body,'textarea','span-2')+'</div>'+
@@ -777,14 +821,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           });
       }
       function openSpark(id='') {
-        const old=state.sparks.find(x=>x.id===id) || {id:'',phrase:'',context:'',emotion:'',theme:'',use:'Undecided',priority:'Soon',why:''};
+        const old=state.sparks.find(x=>x.id===id) || {id:'',phrase:'',context:'',emotion:'',theme:'',use:'Undecided',priority:'Soon',why:'',color:'yellow',groupId:''};
         openForm(old.id?'Edit highlighted line':'Add a highlighted line',
-          '<div class="form-grid">'+field('phrase','Highlighted words',old.phrase,'textarea','span-2')+field('why','Feeling or truth inside the line',old.why,'textarea','span-2')+field('context','Journal or situation it came from',old.context,'textarea','span-2')+'</div>'+
+          '<div class="form-grid">'+field('phrase','Highlighted words',old.phrase,'textarea','span-2')+field('emotion','Feeling words',old.emotion||'')+selectField('color','Highlighter color',old.color||'yellow',['yellow','pink','mint','lilac','blue'])+field('why','Feeling or truth inside the line',old.why,'textarea','span-2')+field('context','Journal or situation it came from',old.context,'textarea','span-2')+'</div>'+
           (old.id?'<button type="button" class="btn danger small section-space" data-delete-spark="'+old.id+'">Delete highlighted line</button>':''),
           old.id?'Save line':'Save line',
           form=>{
             const v=values(form);if(!v.phrase.trim()){toast('Give the spark at least one line.');return false;}
-            const item={...old,...v,id:old.id||uid('spark'),createdAt:old.createdAt||now(),updatedAt:now(),private:true};
+            const changedPhrase=old.id&&v.phrase.trim()!==old.phrase;
+            const item={...old,...v,phrase:v.phrase.trim(),groupId:old.groupId||'',start:changedPhrase?null:old.start??null,end:changedPhrase?null:old.end??null,id:old.id||uid('spark'),createdAt:old.createdAt||now(),updatedAt:now(),private:true};
             const i=state.sparks.findIndex(x=>x.id===item.id);if(i>=0)state.sparks[i]=item;else state.sparks.unshift(item);
             saveState();renderJournal();renderHome();toast('Highlighted line saved');
           });
@@ -821,57 +866,115 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           </article>`).join(''):'<div class="empty span-2"><span class="emoji">✨</span>No sparks match this view yet. Save the line before you decide what it is.</div>';
       }
 
-      function renderJournal() {
-        const topics=TEMPLATES.filter(t=>t.type==='journal');
-        document.getElementById('journal-topic-list').innerHTML=topics.map(t=>`
+      function renderJournalTopics() {
+        const q=(document.getElementById('journal-topic-search')?.value||'').toLowerCase();
+        const category=document.getElementById('topic-category-filter')?.value||'all';
+        const topics=TEMPLATES.filter(t=>t.type==='journal'&&(category==='all'||t.category===category)&&(t.name+' '+t.desc+' '+t.category+' '+t.preview).toLowerCase().includes(q));
+        document.getElementById('journal-topic-count').textContent=topics.length+' topic'+(topics.length===1?'':'s');
+        document.getElementById('journal-topic-list').innerHTML=topics.length?topics.map(t=>`
           <article class="card template-card">
-            <div class="template-icon">${t.icon}</div>
-            <h3>${esc(t.name)}</h3>
-            <p>${esc(t.desc)}</p>
-            <details><summary>See the questions</summary><div class="preview-box section-space">${esc(t.preview)}</div></details>
-            <div class="actions"><button class="btn primary small" data-use-template="${t.id}">Write about this</button></div>
-          </article>`).join('');
-
-        const search=(document.getElementById('journal-search')?.value||'').toLowerCase();
-        const sort=document.getElementById('journal-sort')?.value||'newest';
+            <div class="card-top"><div class="template-icon">${t.icon}</div><span class="chip">${esc(t.category||'Journal')}</span></div>
+            <h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p>
+            <details><summary>Read every question</summary><div class="preview-box section-space">${esc(t.preview)}</div></details>
+            <div class="actions"><button class="btn primary small" data-use-template="${t.id}">Open this journal page</button></div>
+          </article>`).join(''):'<div class="empty span-2">No journal topics match that search. Try a feeling, situation, or broader category.</div>';
+      }
+      function positionedHighlights(journal) {
+        if(!journal)return [];
+        const body=String(journal.body||''),accepted=[];
+        state.sparks.filter(x=>x.sourceJournalId===journal.id).sort((a,b)=>String(a.createdAt).localeCompare(String(b.createdAt))).forEach(item=>{
+          let start=Number(item.start),end=Number(item.end);
+          if(!Number.isFinite(start)||!Number.isFinite(end)||start<0||end<=start||body.slice(start,end)!==item.phrase){start=body.indexOf(item.phrase);end=start<0?-1:start+item.phrase.length;}
+          if(start<0||accepted.some(x=>start<x.end&&end>x.start))return;
+          accepted.push({item,start,end});
+        });
+        return accepted.sort((a,b)=>a.start-b.start);
+      }
+      function markedJournalHtml(journal) {
+        const body=String(journal?.body||''),marks=positionedHighlights(journal);let cursor=0,html='';
+        marks.forEach(({item,start,end})=>{html+=esc(body.slice(cursor,start));html+='<mark class="marker-'+esc(item.color||'yellow')+'" data-inline-highlight="'+item.id+'" title="Saved highlight">'+esc(body.slice(start,end))+'</mark>';cursor=end;});
+        return html+esc(body.slice(cursor));
+      }
+      function visibleHighlights() {
+        const scope=ui.activeJournalId,q=(document.getElementById('spark-search')?.value||'').toLowerCase();
+        return state.sparks.filter(x=>(!scope||x.sourceJournalId===scope)&&(x.phrase+' '+x.context+' '+x.emotion+' '+x.theme+' '+x.why).toLowerCase().includes(q));
+      }
+      function groupMoveOptions(selected='') {
+        return '<option value="">Unsorted</option>'+state.highlightGroups.map(g=>'<option value="'+g.id+'" '+(g.id===selected?'selected':'')+'>'+esc(g.title)+'</option>').join('');
+      }
+      function renderHighlightWorkspace(journalId=ui.activeJournalId) {
+        ui.activeJournalId=journalId||'';ui.pendingHighlight=null;
+        const journal=state.journal.find(x=>x.id===ui.activeJournalId),reader=document.getElementById('mine-text-display'),preview=document.getElementById('selection-preview');
+        if(journal&&journal.body){reader.classList.remove('empty');reader.dataset.journalId=journal.id;reader.innerHTML=markedJournalHtml(journal);preview.textContent='Select a meaningful passage above, then tap a highlighter color.';preview.classList.remove('ready');}
+        else{reader.classList.add('empty');reader.dataset.journalId='';reader.textContent=journal?'This entry is blank. Edit it before highlighting.':'Choose a journal entry above to begin.';preview.textContent='Select a journal entry first.';preview.classList.remove('ready');}
+        const highlights=visibleHighlights(),validGroupIds=new Set(state.highlightGroups.map(g=>g.id)),unsorted=highlights.filter(x=>!x.groupId||!validGroupIds.has(x.groupId));
+        document.getElementById('highlight-scope-label').textContent=journal?'Showing: '+journal.title:'Showing all highlights';
+        document.getElementById('ungrouped-count').textContent=String(unsorted.length);
+        document.getElementById('ungrouped-highlight-list').innerHTML=unsorted.length?unsorted.map(x=>`
+          <article class="card highlight-card" data-color="${esc(x.color||'yellow')}">
+            <div class="card-top"><label class="check"><input class="ungrouped-highlight-select" type="checkbox" value="${x.id}"><span>Group this</span></label><button class="icon-btn" data-edit-spark="${x.id}" aria-label="Edit highlighted line">✎</button></div>
+            <div class="highlight-quote sensitive">“${esc(x.phrase)}”</div><p>${esc(x.emotion||x.why||'Feeling not named yet.')}</p>
+            <div class="actions"><button class="btn small" data-ai-highlight="${x.id}">✨ Name the feeling</button><select data-highlight-group="${x.id}" aria-label="Move highlighted line">${groupMoveOptions('')}</select></div>
+          </article>`).join(''):'<div class="empty span-2"><span class="emoji">🖍️</span>'+(journal?'No unsorted highlights from this entry. Select a passage above or look inside its song groups.':'Choose a journal or add a line manually.')+'</div>';
+        const groups=state.highlightGroups.filter(g=>!journal||state.sparks.some(x=>x.groupId===g.id&&x.sourceJournalId===journal.id));
+        const groupHtml=groups.map(g=>{
+          const lines=highlights.filter(x=>x.groupId===g.id);if(!lines.length)return '';
+          const chorusValid=lines.some(x=>x.id===g.chorusHighlightId)?g.chorusHighlightId:'';
+          return `<article class="card group-card">
+            <div class="card-top"><div><span class="chip">${lines.length} line${lines.length===1?'':'s'}</span><h3 class="section-space">${esc(g.title)}</h3><p>${esc(g.feeling||'Feeling not named yet')}</p></div><button class="icon-btn" data-edit-highlight-group="${g.id}" aria-label="Edit group">✎</button></div>
+            <div class="group-lines">${lines.map(x=>`<div class="group-line highlight-card" data-color="${esc(x.color||'yellow')}"><span class="color-dot"></span><span class="sensitive">“${esc(x.phrase)}”</span><select data-highlight-group="${x.id}" aria-label="Move line to another group">${groupMoveOptions(g.id)}</select></div>`).join('')}</div>
+            <div class="field"><label>This song is about…</label><textarea data-highlight-group-field="summary" data-group-id="${g.id}" placeholder="Example: wanting connection while trying to protect myself from rejection.">${esc(g.summary||'')}</textarea></div>
+            <div class="field section-space"><label>Possible chorus phrase</label><select data-group-chorus="${g.id}"><option value="">Choose the line that carries the center…</option>${lines.map(x=>'<option value="'+x.id+'" '+(x.id===chorusValid?'selected':'')+'>'+esc(firstWords(x.phrase,14))+'</option>').join('')}</select></div>
+            <div class="field section-space"><label>What truth, answer, or response could the song build toward?</label><textarea data-highlight-group-field="response" data-group-id="${g.id}" placeholder="Example: You are wanted. You are not alone.">${esc(g.response||'')}</textarea></div>
+            <div class="actions section-space"><button class="btn primary" data-build-group-song="${g.id}">Build a song from this group</button><button class="btn small" data-ai-group="${g.id}" data-ai-task="feeling">✨ Name feeling</button><button class="btn small" data-ai-group="${g.id}" data-ai-task="summary">✨ Help summarize</button><button class="btn small" data-ai-group="${g.id}" data-ai-task="chorus">✨ Chorus ideas</button><button class="btn small danger" data-delete-highlight-group="${g.id}">Delete group</button></div>
+          </article>`;
+        }).join('');
+        document.getElementById('highlight-group-list').innerHTML=groupHtml||'<div class="empty span-2"><span class="emoji">🗂️</span>Select related highlights above and make your first possible-song group.</div>';
+      }
+      function openHighlightGroup(ids=[],groupId='') {
+        const old=state.highlightGroups.find(x=>x.id===groupId)||{id:'',title:'',feeling:'',summary:'',chorusHighlightId:'',response:''};
+        if(!old.id&&!ids.length){toast('Select at least one unsorted highlight first.');return;}
+        openForm(old.id?'Edit song-idea group':'Group these highlighted lines',
+          '<div class="privacy-note">A group is one possible song—not a commitment. Name the shared topic or feeling. You can move lines later.</div><div class="form-grid section-space">'+field('title','Group name',old.title,'text','span-2')+field('feeling','Main feeling or tension',old.feeling,'text','span-2')+'</div>',
+          old.id?'Save group':'Create group',
+          form=>{const v=values(form);if(!v.title.trim()){toast('Give this possible song a short group name.');return false;}const group={...old,...v,title:v.title.trim(),id:old.id||uid('group'),createdAt:old.createdAt||now(),updatedAt:now()};const i=state.highlightGroups.findIndex(x=>x.id===group.id);if(i>=0)state.highlightGroups[i]=group;else state.highlightGroups.unshift(group);if(!old.id)state.sparks.forEach(x=>{if(ids.includes(x.id))x.groupId=group.id;});saveState();renderHighlightWorkspace();toast(old.id?'Group updated':'Song-idea group created ✦');}
+        );
+      }
+      function renderJournal() {
+        renderJournalTopics();
+        const search=(document.getElementById('journal-search')?.value||'').toLowerCase(),sort=document.getElementById('journal-sort')?.value||'newest';
         let entries=state.journal.filter(x=>(x.title+' '+x.mood+' '+x.tags+' '+x.body).toLowerCase().includes(search));
         entries.sort((a,b)=>sort==='oldest'?String(a.date).localeCompare(String(b.date)):sort==='title'?a.title.localeCompare(b.title):String(b.date).localeCompare(String(a.date)));
         document.getElementById('journal-list').innerHTML=entries.length?entries.map(x=>`
           <article class="card tint-gold">
             <div class="card-top"><div><span class="chip">${fmtDate(x.date)}</span><h3 class="section-space">${esc(x.title)}</h3></div><div class="sticker">📓</div></div>
             <p class="sensitive">${esc(firstWords(x.body,38)||'No journal text yet.')}</p>
-            <div class="chips">${x.mood?'<span class="chip">'+esc(x.mood)+'</span>':''}</div>
-            <div class="actions section-space"><button class="btn small" data-edit-journal="${x.id}">Edit entry</button><button class="btn small primary" data-mine-journal="${x.id}">Highlight for a song</button></div>
+            <div class="chips">${x.mood?'<span class="chip">'+esc(x.mood)+'</span>':''}<span class="chip">${state.sparks.filter(s=>s.sourceJournalId===x.id).length} highlights</span></div>
+            <div class="actions section-space"><button class="btn small" data-edit-journal="${x.id}">Edit entry</button><button class="btn small primary" data-mine-journal="${x.id}">Read + highlight</button></div>
           </article>`).join(''):'<div class="empty span-2"><span class="emoji">📖</span>Choose a topic above or open a blank journal page.</div>';
-
-        const source=document.getElementById('mine-source'),current=source.value;
+        const source=document.getElementById('mine-source'),current=ui.activeJournalId||source.value;
         source.innerHTML='<option value="">Choose an entry…</option>'+state.journal.map(x=>'<option value="'+x.id+'">'+esc(x.title)+'</option>').join('');
-        if(state.journal.some(x=>x.id===current))source.value=current;
-
-        const sparkSearch=(document.getElementById('spark-search')?.value||'').toLowerCase();
-        const highlights=state.sparks.filter(x=>(x.phrase+' '+x.context+' '+x.emotion+' '+x.theme).toLowerCase().includes(sparkSearch));
-        document.getElementById('spark-list').innerHTML=highlights.length?highlights.map(x=>`
-          <article class="card tint-pink">
-            <div class="card-top"><label class="check"><input class="highlight-select" type="checkbox" value="${x.id}"><span>Select</span></label><button class="icon-btn" data-edit-spark="${x.id}" aria-label="Edit highlighted line">✎</button></div>
-            <h3 class="sensitive">“${esc(x.phrase)}”</h3>
-            <p>${esc(x.why||x.context||'No meaning note added yet.')}</p>
-            <div class="actions section-space"><button class="btn small primary" data-develop-spark="${x.id}" data-kind="song">Start a song with this</button></div>
-          </article>`).join(''):'<div class="empty span-2"><span class="emoji">✨</span>Your highlighted journal lines will appear here.</div>';
+        if(state.journal.some(x=>x.id===current)){source.value=current;ui.activeJournalId=current;}else ui.activeJournalId='';
+        renderHighlightWorkspace(ui.activeJournalId);
       }
 
       function songPlanPreview(id){
         const plan=TEMPLATES.find(t=>t.id===id&&t.type==='song');if(!plan)return '';
         return '<b>'+esc(plan.name)+'</b><br>'+plan.sections.map((s,i)=>(i+1)+'. '+esc(s.name)+' — '+esc(s.purpose)).join('<br>');
       }
-      function openNewSong(sparkId='',templateId='s-confession',prefill='') {
+      function openNewSong(sparkId='',templateId='s-confession',prefill='',groupId='') {
         const spark=state.sparks.find(x=>x.id===sparkId);
+        const group=state.highlightGroups.find(x=>x.id===groupId);
+        const groupLines=group?state.sparks.filter(x=>x.groupId===group.id):[];
+        const chorusLine=groupLines.find(x=>x.id===group?.chorusHighlightId)?.phrase||'';
+        const seedText=prefill||(groupLines.length?groupLines.map(x=>x.phrase).join('\n'):(spark?spark.phrase:''));
         const songTemplates=TEMPLATES.filter(t=>t.type==='song');
         openForm('Start a song',
-          '<div class="form-grid">'+field('title','Working title',spark?firstWords(spark.phrase,6):prefill?firstWords(prefill,6):'')+
+          '<div class="form-grid">'+field('title','Working title',group?.title||(spark?firstWords(spark.phrase,6):seedText?firstWords(seedText,6):''))+
           '<div class="field"><label for="f-template">Starting shape</label><select id="f-template" name="template">'+songTemplates.map(t=>'<option value="'+t.id+'" '+(t.id===templateId?'selected':'')+'>'+esc(t.name)+'</option>').join('')+'</select></div>'+
-          field('spark','Highlighted line(s) or central idea',prefill||(spark?spark.phrase:''),'textarea','span-2')+'</div><div class="preview-box section-space" id="song-plan-preview">'+songPlanPreview(templateId)+'</div><div class="guided section-space"><strong>The plan only gives each section a job.</strong> It will never supply or copy another artist’s lyrics, melody, or personal voice.</div>',
+          field('truth','This song is about…',group?.summary||'','textarea','span-2')+field('chorus','Possible chorus phrase',chorusLine,'textarea')+field('response','Truth or response it builds toward',group?.response||'','textarea')+field('spark','Journal lines for verse details and inspiration',seedText,'textarea','span-2')+'</div><div class="preview-box section-space" id="song-plan-preview">'+songPlanPreview(templateId)+'</div><div class="guided section-space"><strong>The journal lines stay visible as source material.</strong> The plan gives every section a job while your lyrics, melody, and voice stay original.</div>',
           'Open Song Lab',
-          form=>{const v=values(form),song=makeSong(v.title.trim()||'Untitled Song',v.template,v.spark);song.sourceSparkId=sparkId;state.songs.unshift(song);state.activeSongId=song.id;saveState();setView('songs');toast('New song room opened 🎧');}
+          form=>{const v=values(form),song=makeSong(v.title.trim()||'Untitled Song',v.template,v.spark);song.sourceSparkId=sparkId;song.sourceGroupId=groupId;song.sourceHighlightIds=groupLines.map(x=>x.id);song.sourceLines=groupLines.map(x=>({id:x.id,text:x.phrase,color:x.color||'yellow',role:x.id===group?.chorusHighlightId?'Possible chorus':'Verse detail / inspiration'}));song.groupResponse=v.response;song.compass.truth=v.truth;song.compass.mustKeep=v.chorus;song.compass.destination=group?.feeling||'';state.songs.unshift(song);state.activeSongId=song.id;saveState();setView('songs');toast('New song room opened with your journal lines 🎧');}
         );
       }
       function openNewStory(sparkId='',templateId='t-simple') {
@@ -898,6 +1001,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         const parking=p.parkingLot?.length?p.parkingLot.map(x=>`<div class="list-item"><span><h4 class="sensitive">${esc(x.text)}</h4><p>${esc(x.note||'Saved for later')}</p></span><span class="actions"><button class="btn small" data-return-line="${x.id}">Move into section</button><button class="icon-btn" data-delete-parking="${x.id}" aria-label="Delete parked line">×</button></span></div>`).join(''):'<div class="empty">No side quests parked. That is allowed too.</div>';
         const alternates=section.alternates?.length?section.alternates.map((x,i)=>'<div class="alt-line"><div class="sensitive">'+esc(x)+'</div><div class="actions section-space"><button class="btn small" data-use-alternate="'+i+'">Move to lyrics</button><button class="btn small ghost" data-delete-alternate="'+i+'">Delete</button></div></div>').join(''):'<p class="muted small-text">Alternate lines can wait here without crowding the draft.</p>';
         const notes=(p.coachNotes||[]).slice().reverse().slice(0,4).map(n=>'<div class="sticky-note"><p>'+esc(firstWords(n.text,35))+'</p><small>'+fmtDate(n.createdAt)+'</small></div>').join('');
+        const sourceMaterial=p.sourceLines?.length?`<details class="card fold section-space" open><summary>Journal lines for this song (${p.sourceLines.length})</summary><p>These are source material, not finished lyrics. The chorus choice marks the emotional center; the other lines can feed verses, images, background, or a different section.</p><div class="song-seed-lines section-space">${p.sourceLines.map(x=>'<div class="song-seed-line sensitive"><span class="chip">'+esc(x.role||'Inspiration')+'</span><div class="section-space">“'+esc(x.text)+'”</div></div>').join('')}</div>${p.groupResponse?'<div class="sticky-note section-space"><b>Possible truth or response</b><p>'+esc(p.groupResponse)+'</p></div>':''}</details>`:'';
         root.innerHTML=`
           <div class="workspace">
             <aside class="project-rail">
@@ -934,6 +1038,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
                 </details>
                 <div class="actions section-space"><button class="btn primary" data-direction="song">🧭 Help me find my way back</button><button class="btn" data-check-song>Check this section</button><button class="btn ghost" data-evolve-compass="song">Save changed direction</button></div>
               </details>
+
+              ${sourceMaterial}
 
               <div class="grid two section-space">
                 <section class="card">
@@ -1216,7 +1322,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         const songs=TEMPLATES.filter(t=>t.type==='song');
         document.getElementById('journal-template-list').innerHTML=journals.map(t=>`
           <article class="card template-card">
-            <div class="template-icon">${t.icon}</div><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p>
+            <div class="card-top"><div class="template-icon">${t.icon}</div><span class="chip">${esc(t.category||'Journal')}</span></div><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p>
             <details><summary>Read every question</summary><div class="preview-box section-space">${esc(t.preview)}</div></details>
             <div class="actions"><button class="btn primary small" data-use-template="${t.id}">Open this journal page</button></div>
           </article>`).join('');
@@ -1338,7 +1444,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         const scope=document.querySelector('input[name="coach-scope"]:checked')?.value||'current';
         const custom=document.getElementById('coach-custom').value.trim();
         if(scope==='custom')return custom||'[No custom context supplied]';
-        if(scope==='journal')return 'JOURNAL / MINING TEXT\\n'+(document.getElementById('mine-text').value||'[blank]')+'\\nIMPORTANT PHRASE\\n'+(document.getElementById('mine-manual').value||'[blank]');
+        if(scope==='journal')return ui.coachContextOverride||('JOURNAL TEXT\\n'+(document.getElementById('mine-text-display')?.textContent||'[blank]')+'\\nCURRENT SELECTION\\n'+(ui.pendingHighlight?.phrase||'[none]'));
         if(ui.coachSource==='song'&&activeSong()){
           const p=activeSong(),s=p.sections.find(x=>x.id===p.activeSectionId)||p.sections[0];
           if(scope==='compass')return 'SONG: '+p.title+'\\nCREATIVE COMPASS\\n'+JSON.stringify(p.compass,null,2);
@@ -1390,6 +1496,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         const p=getProject(id);if(!p)return;
         if(p.kind==='song'){state.activeSongId=id;setView('songs');}else{state.activeStoryId=id;setView('stories');}
       }
+      function captureJournalSelection() {
+        const reader=document.getElementById('mine-text-display'),selection=window.getSelection();
+        if(!reader||reader.classList.contains('empty')||!selection||selection.isCollapsed||!selection.rangeCount)return;
+        const range=selection.getRangeAt(0);if(!reader.contains(range.commonAncestorContainer))return;
+        const before=document.createRange();before.selectNodeContents(reader);before.setEnd(range.startContainer,range.startOffset);
+        const raw=range.toString(),leading=raw.length-raw.trimStart().length,phrase=raw.trim();if(!phrase)return;
+        const start=before.toString().length+leading;
+        ui.pendingHighlight={journalId:reader.dataset.journalId,phrase,start,end:start+phrase.length};
+        const preview=document.getElementById('selection-preview');preview.textContent='Selected: “'+firstWords(phrase,24)+'”';preview.classList.add('ready');
+      }
+      function addJournalHighlight(color) {
+        const pending=ui.pendingHighlight,journal=state.journal.find(x=>x.id===pending?.journalId);
+        if(!pending||!journal){toast('Select a meaningful passage in the journal first.');return;}
+        const overlaps=positionedHighlights(journal).some(x=>pending.start<x.end&&pending.end>x.start);
+        if(overlaps){toast('That selection overlaps a line you already highlighted. Choose a fresh passage.');return;}
+        state.sparks.unshift({id:uid('spark'),phrase:pending.phrase,why:'',emotion:'',theme:'',context:'From journal: '+journal.title,use:'Song',priority:'Soon',color,groupId:'',sourceJournalId:journal.id,start:pending.start,end:pending.end,createdAt:now(),updatedAt:now(),private:true});
+        saveState();renderHighlightWorkspace(journal.id);renderHome();window.getSelection()?.removeAllRanges();toast('Highlighted and added to Unsorted ✦');
+      }
+      function groupContext(group) {
+        const lines=state.sparks.filter(x=>x.groupId===group.id);
+        return 'POSSIBLE SONG GROUP: '+group.title+'\nCURRENT FEELING: '+(group.feeling||'[not named]')+'\nHIGHLIGHTED JOURNAL LINES:\n'+lines.map((x,i)=>(i+1)+'. '+x.phrase).join('\n')+'\nCURRENT SUMMARY: '+(group.summary||'[blank]')+'\nCURRENT CHORUS CHOICE: '+(lines.find(x=>x.id===group.chorusHighlightId)?.phrase||'[blank]')+'\nPOSSIBLE RESPONSE: '+(group.response||'[blank]');
+      }
+      function openJournalCoach(question,context) {
+        ui.coachContextOverride=context||'';openCoach('journal');document.getElementById('coach-question').value=question;
+      }
 
       document.addEventListener('click',event=>{
         const t=event.target.closest('button,a');if(!t)return;
@@ -1418,28 +1549,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
           if(j){
             setView('journal');
             document.getElementById('mine-source').value=j.id;
-            document.getElementById('mine-text').value=j.body;
-            document.getElementById('mine-manual').value='';
-            document.getElementById('mine-why').value='';
+            renderHighlightWorkspace(j.id);
             document.getElementById('highlight-studio')?.scrollIntoView({behavior:'smooth',block:'start'});
           }
           return;
         }
         if(t.dataset.developSpark){t.dataset.kind==='song'?openNewSong(t.dataset.developSpark):openNewStory(t.dataset.developSpark);return;}
-        if(t.id==='save-mined-spark'){
-          const area=document.getElementById('mine-text'),selected=area.value.slice(area.selectionStart,area.selectionEnd).trim(),manual=document.getElementById('mine-manual').value.trim();
-          const phrase=selected||manual;if(!phrase){toast('Select words in the journal box or type the phrase.');return;}
-          const sourceId=document.getElementById('mine-source').value,j=state.journal.find(x=>x.id===sourceId);
-          state.sparks.unshift({phrase,why:document.getElementById('mine-why').value.trim(),context:j?'From journal: '+j.title:'Added in the Journal Room',emotion:'',theme:'',use:'Song',priority:'Soon',sourceJournalId:sourceId,id:uid('spark'),createdAt:now(),updatedAt:now(),private:true});
-          saveState();
-          document.getElementById('mine-manual').value='';document.getElementById('mine-why').value='';
-          renderJournal();renderHome();toast('Highlighted line saved ✦');return;
-        }
-        if(t.id==='start-selected-song'){
-          const ids=[...document.querySelectorAll('.highlight-select:checked')].map(x=>x.value);
-          const lines=ids.map(id=>state.sparks.find(x=>x.id===id)?.phrase).filter(Boolean);
-          if(!lines.length){toast('Select at least one highlighted line first.');return;}
-          openNewSong('', 's-confession', lines.join('\n'));return;
+        if(t.dataset.highlightColor){addJournalHighlight(t.dataset.highlightColor);return;}
+        if(t.id==='create-highlight-group'){const ids=[...document.querySelectorAll('.ungrouped-highlight-select:checked')].map(x=>x.value);openHighlightGroup(ids);return;}
+        if(t.dataset.editHighlightGroup){openHighlightGroup([],t.dataset.editHighlightGroup);return;}
+        if(t.dataset.deleteHighlightGroup){const g=state.highlightGroups.find(x=>x.id===t.dataset.deleteHighlightGroup);if(g&&confirm('Delete this group? Its highlighted lines will return to Unsorted.')){state.sparks.forEach(x=>{if(x.groupId===g.id)x.groupId='';});state.highlightGroups=state.highlightGroups.filter(x=>x.id!==g.id);saveState();renderHighlightWorkspace();toast('Group removed; the lines are safe in Unsorted.');}return;}
+        if(t.dataset.buildGroupSong){openNewSong('', 's-confession','',t.dataset.buildGroupSong);return;}
+        if(t.dataset.aiHighlight){const x=state.sparks.find(s=>s.id===t.dataset.aiHighlight);if(x)openJournalCoach('Give me a concise list of precise feeling words or emotional tensions that may fit this line. Explain the difference between the best three. Do not rewrite the line.','HIGHLIGHTED JOURNAL LINE:\n'+x.phrase+'\nMY CURRENT NOTE:\n'+(x.why||'[blank]'));return;}
+        if(t.dataset.aiGroup){const g=state.highlightGroups.find(x=>x.id===t.dataset.aiGroup);if(!g)return;const tasks={feeling:'Name the emotional feeling or tension connecting these lines. Give 5 precise options and explain the best 2.',summary:'Help me complete “This song is about…” in one honest sentence. Give 3 concise options without turning them into lyrics.',chorus:'Study these lines and suggest which existing phrase has the strongest chorus potential. Then offer 3 original ways I could develop the idea without copying any artist.'};openJournalCoach(tasks[t.dataset.aiTask]||tasks.summary,groupContext(g));return;}
+        if(t.dataset.aiJournal){
+          const lines=visibleHighlights().filter(x=>!x.groupId),journal=state.journal.find(x=>x.id===ui.activeJournalId);
+          if(t.dataset.aiJournal==='feelings'){
+            const context=ui.pendingHighlight?.phrase||lines.map(x=>x.phrase).join('\n')||journal?.body||'';
+            openJournalCoach('Help me name the emotions and tensions in this writing. Give a useful feeling-word bank, point to the exact phrases that suggest each feeling, and ask me one clarifying question. Do not rewrite my journal.',context||'[No journal text selected]');
+          }else{
+            if(lines.length<2){toast('Highlight at least two unsorted lines before asking for group ideas.');return;}
+            openJournalCoach('Suggest 2–5 possible song groups for these highlighted lines. For each group, list the line numbers that belong together and complete: “This song is about…”. Keep lines separate when they point to different topics. Do not write lyrics yet.','UNSORTED HIGHLIGHTS:\n'+lines.map((x,i)=>(i+1)+'. '+x.phrase).join('\n'));
+          }
+          return;
         }
         if(t.hasAttribute('data-story-to-song')){
           const p=activeStory();if(!p)return;
@@ -1510,7 +1642,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(t.dataset.googleSession){const s=state.sessions.find(x=>x.id===t.dataset.googleSession);if(s)window.open(googleCalendarUrl(s),'_blank','noopener,noreferrer');return;}
         if(t.dataset.deleteSession){if(confirm('Delete this studio session?')){state.sessions=state.sessions.filter(x=>x.id!==t.dataset.deleteSession);saveState();document.getElementById('generic-dialog').close();renderHome();}return;}
         if(t.dataset.deleteJournal){if(confirm('Delete this journal entry? Export a backup first if needed.')){state.journal=state.journal.filter(x=>x.id!==t.dataset.deleteJournal);saveState();closeDialogs();renderJournal();renderHome();}return;}
-        if(t.dataset.deleteSpark){if(confirm('Delete this spark?')){state.sparks=state.sparks.filter(x=>x.id!==t.dataset.deleteSpark);saveState();closeDialogs();renderJournal();renderHome();}return;}
+        if(t.dataset.deleteSpark){if(confirm('Delete this highlighted line?')){const removed=state.sparks.find(x=>x.id===t.dataset.deleteSpark),group=state.highlightGroups.find(g=>g.id===removed?.groupId);state.sparks=state.sparks.filter(x=>x.id!==t.dataset.deleteSpark);if(group){if(group.chorusHighlightId===removed.id)group.chorusHighlightId='';if(!state.sparks.some(x=>x.groupId===group.id))state.highlightGroups=state.highlightGroups.filter(x=>x.id!==group.id);}saveState();closeDialogs();renderJournal();renderHome();}return;}
         if(t.dataset.deleteCharacter){const p=activeStory();if(confirm('Delete this character card?')){p.characters=p.characters.filter(x=>x.id!==t.dataset.deleteCharacter);touch(p);closeDialogs();renderStories();}return;}
         if(t.dataset.deleteInspiration){if(confirm('Delete this inspiration reference?')){state.inspiration=state.inspiration.filter(x=>x.id!==t.dataset.deleteInspiration);saveState();closeDialogs();renderLibrary();}return;}
         if(t.dataset.archiveProject){const p=getProject(t.dataset.archiveProject);if(p){p.status='Archived';touch(p);renderAll();setView('projects');toast('Project moved to the archive');}return;}
@@ -1544,13 +1676,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(el.dataset.sceneField!==undefined&&(p=activeStory())){unit=p.scenes.find(x=>x.id===p.activeSceneId);if(unit){unit[el.dataset.sceneField]=el.value;touch(p);}}
         if(el.dataset.breadcrumbField!==undefined){p=ui.view==='stories'?activeStory():activeSong();if(p){p.breadcrumb=p.breadcrumb||blankBreadcrumb();p.breadcrumb[el.dataset.breadcrumbField]=el.value;p.breadcrumb.updatedAt=now();touch(p);}}
         if(el.dataset.bridgeField!==undefined&&(p=activeStory())){p.bridge=p.bridge||{};p.bridge[el.dataset.bridgeField]=el.value;touch(p);}
+        if(el.dataset.highlightGroupField!==undefined){const g=state.highlightGroups.find(x=>x.id===el.dataset.groupId);if(g){g[el.dataset.highlightGroupField]=el.value;g.updatedAt=now();saveState();}}
       });
       document.addEventListener('change',event=>{
         const el=event.target;
-        if(el.id==='journal-sort'||el.id==='journal-search'||el.id==='spark-search'||el.id==='spark-use-filter'||el.id==='spark-priority-filter')renderJournal();
+        if(el.id==='journal-sort'||el.id==='journal-search')renderJournal();
+        if(el.id==='spark-search')renderHighlightWorkspace();
+        if(el.id==='topic-category-filter')renderJournalTopics();
         if(el.id==='template-filter'||el.id==='inspiration-search'||el.id==='inspiration-type-filter')renderLibrary();
         if(el.id==='project-search'||el.id==='project-type-filter'||el.id==='project-status-filter')renderProjects();
-        if(el.id==='mine-source'){const j=state.journal.find(x=>x.id===el.value);document.getElementById('mine-text').value=j?.body||'';document.getElementById('mine-manual').value='';document.getElementById('mine-why').value='';}
+        if(el.id==='mine-source')renderHighlightWorkspace(el.value);
+        if(el.dataset.highlightGroup!==undefined){const x=state.sparks.find(s=>s.id===el.dataset.highlightGroup);if(x){const oldGroupId=x.groupId,oldGroup=state.highlightGroups.find(g=>g.id===oldGroupId);x.groupId=el.value;x.updatedAt=now();if(oldGroup?.chorusHighlightId===x.id)oldGroup.chorusHighlightId='';if(oldGroupId&&!state.sparks.some(s=>s.groupId===oldGroupId))state.highlightGroups=state.highlightGroups.filter(g=>g.id!==oldGroupId);saveState();renderHighlightWorkspace();toast(el.value?'Line moved into its song group.':'Line returned to Unsorted.');}}
+        if(el.dataset.groupChorus!==undefined){const g=state.highlightGroups.find(x=>x.id===el.dataset.groupChorus);if(g){g.chorusHighlightId=el.value;g.updatedAt=now();saveState();toast(el.value?'Chorus phrase selected.':'Chorus choice cleared.');}}
         if(el.id==='f-template'&&document.getElementById('song-plan-preview'))document.getElementById('song-plan-preview').innerHTML=songPlanPreview(el.value);
         if(el.id==='song-section-select'){const p=activeSong();p.activeSectionId=el.value;saveState();renderSongs();}
         if(el.id==='story-scene-select'){const p=activeStory();p.activeSceneId=el.value;saveState();renderStories();}
@@ -1561,25 +1698,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['studio_coach'])) {
         if(el.dataset.sectionField==='type'){const p=activeSong(),s=p.sections.find(x=>x.id===p.activeSectionId);s.purpose=SECTION_JOBS[el.value]||SECTION_JOBS.Custom;touch(p);renderSongs();}
       });
       document.addEventListener('input',event=>{
-        if(event.target.id==='journal-search'||event.target.id==='spark-search')renderJournal();
+        if(event.target.id==='journal-search')renderJournal();
+        if(event.target.id==='spark-search')renderHighlightWorkspace();
+        if(event.target.id==='journal-topic-search')renderJournalTopics();
         if(event.target.id==='inspiration-search')renderLibrary();
         if(event.target.id==='project-search')renderProjects();
         if(event.target.id==='song-rail-search'){const q=event.target.value.toLowerCase();document.querySelectorAll('#song-rail-list .rail-project').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));}
         if(event.target.id==='story-rail-search'){const q=event.target.value.toLowerCase();document.querySelectorAll('#story-rail-list .rail-project').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));}
       });
-      function copyJournalSelection(event){
-        const area=event.target;if(area?.id!=='mine-text')return;
-        const selected=area.value.slice(area.selectionStart,area.selectionEnd).trim();
-        if(selected)document.getElementById('mine-manual').value=selected;
-      }
-      document.addEventListener('mouseup',copyJournalSelection);
-      document.addEventListener('keyup',copyJournalSelection);
+      document.addEventListener('mouseup',event=>{if(event.target.closest?.('#mine-text-display'))captureJournalSelection();});
+      document.addEventListener('keyup',event=>{if(event.target.closest?.('#mine-text-display'))captureJournalSelection();});
       document.getElementById('generic-form').addEventListener('submit',event=>{
         event.preventDefault();if(typeof ui.genericSubmit==='function'){const result=ui.genericSubmit(event.currentTarget);if(result!==false)document.getElementById('generic-dialog').close();}
       });
       document.getElementById('import-file').addEventListener('change',event=>{
         const file=event.target.files[0];if(!file)return;const reader=new FileReader();
-        reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!data||!Array.isArray(data.songs)||!Array.isArray(data.stories))throw new Error('Not a Velvet Ink backup');if(confirm('Import this backup and replace the studio data currently in this browser?')){state={...defaults(),...data,settings:{...defaults().settings,...(data.settings||{})}};saveState('Backup restored');renderAll();setView('home');toast('Studio backup restored');}}catch(e){toast('That file does not look like a valid studio backup.');}event.target.value='';};
+        reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!data||!Array.isArray(data.songs)||!Array.isArray(data.stories))throw new Error('Not a Velvet Ink backup');if(confirm('Import this backup and replace the studio data currently in this browser?')){const base=defaults();state={...base,...data,settings:{...base.settings,...(data.settings||{})}};['journal','sparks','highlightGroups','songs','stories','inspiration','sessions'].forEach(k=>{if(!Array.isArray(state[k]))state[k]=[];});state.sparks=state.sparks.map(s=>({...s,color:s.color||'yellow',groupId:s.groupId||''}));saveState('Backup restored');renderAll();setView('home');toast('Studio backup restored');}}catch(e){toast('That file does not look like a valid studio backup.');}event.target.value='';};
         reader.readAsText(file);
       });
       document.addEventListener('keydown',event=>{
