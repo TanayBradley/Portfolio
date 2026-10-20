@@ -1,0 +1,2862 @@
+<!DOCTYPE html>
+<!--
+  BRAIN BLOOM ACADEMY — private/unlisted learning portal for tanaybradley.com
+
+  INSTALLATION
+  1. Upload this file to the root folder of your existing website.
+  2. Visit: https://tanaybradley.com/brain-bloom-academy.php
+  3. Do not add the page to your public navigation.
+
+  PRIVACY NOTE
+  The noindex tags below ask search engines not to list this page, but an unlisted
+  URL is not the same as password protection. Notes and grades are stored only in
+  this browser using localStorage. If Google Calendar is enabled, only calendar
+  event data you explicitly sync is sent to Google's Calendar API. Use the built-in
+  Export Backup button regularly.
+
+  This file contains its own HTML, CSS, and JavaScript and needs no database.
+  The optional Google connection loads Google Identity Services after you click Connect.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="referrer" content="no-referrer">
+  <title>Brain Bloom Academy | Tanay's Study Portal</title>
+  <style>
+    :root {
+      --ink: #332a4a;
+      --ink-soft: #675f7c;
+      --paper: #fffdf9;
+      --paper-2: #fff9f2;
+      --lavender: #b8a5ff;
+      --lavender-deep: #7b61d1;
+      --pink: #ffabc7;
+      --peach: #ffc6a8;
+      --mint: #aee8d2;
+      --sky: #a9d9ff;
+      --lemon: #ffe69a;
+      --lilac: #e7ddff;
+      --rose: #ffe0ea;
+      --green: #4b9d7e;
+      --red: #c94c6e;
+      --shadow: 0 16px 40px rgba(72, 50, 112, 0.13);
+      --shadow-soft: 0 8px 22px rgba(72, 50, 112, 0.09);
+      --border: 2px solid rgba(83, 64, 118, 0.13);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --sidebar: 258px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 171, 199, .32), transparent 25%),
+        radial-gradient(circle at 90% 12%, rgba(169, 217, 255, .36), transparent 24%),
+        radial-gradient(circle at 68% 88%, rgba(174, 232, 210, .34), transparent 28%),
+        linear-gradient(135deg, #fffaf5 0%, #f8f3ff 50%, #f3fbff 100%);
+      font-family: "Trebuchet MS", "Avenir Next", Avenir, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .36;
+      background-image: radial-gradient(rgba(91, 73, 129, .16) 1px, transparent 1px);
+      background-size: 22px 22px;
+      z-index: -2;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button { color: inherit; }
+    a { color: var(--lavender-deep); }
+    :focus-visible { outline: 3px solid #6750c9; outline-offset: 3px; }
+    [hidden] { display: none !important; }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar);
+      padding: 24px 18px;
+      overflow-y: auto;
+      color: #fff;
+      background:
+        linear-gradient(160deg, rgba(77, 57, 124, .97), rgba(104, 73, 154, .97)),
+        #594281;
+      box-shadow: 12px 0 35px rgba(67, 46, 103, .18);
+      z-index: 30;
+    }
+
+    .sidebar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .12;
+      background-image:
+        radial-gradient(circle at 20% 12%, #fff 0 2px, transparent 3px),
+        radial-gradient(circle at 75% 35%, #fff 0 1px, transparent 2px),
+        radial-gradient(circle at 45% 73%, #fff 0 1.5px, transparent 2.5px);
+      background-size: 80px 80px, 64px 64px, 95px 95px;
+    }
+
+    .brand {
+      position: relative;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: 0 4px 28px;
+      z-index: 1;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border: 2px solid rgba(255,255,255,.45);
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--pink), var(--lemon));
+      box-shadow: 0 8px 18px rgba(32, 20, 62, .25);
+      font-size: 27px;
+      transform: rotate(-4deg);
+    }
+
+    .brand strong { display: block; font-size: 1.04rem; letter-spacing: .01em; }
+    .brand small { display: block; color: #e8def8; font-size: .73rem; }
+
+    .nav-label {
+      position: relative;
+      margin: 18px 12px 8px;
+      color: #cabfe3;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    .nav-list { position: relative; display: grid; gap: 8px; z-index: 1; }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 13px;
+      border: 0;
+      border-radius: 14px;
+      color: #eee8fa;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .nav-button:hover { background: rgba(255,255,255,.1); transform: translateX(3px); }
+    .nav-button.active { color: var(--ink); background: #fff; box-shadow: 0 9px 22px rgba(30, 20, 56, .22); }
+    .nav-icon { width: 26px; text-align: center; font-size: 1.2rem; }
+
+    .sidebar-card {
+      position: relative;
+      margin-top: 24px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 18px;
+      color: #fff;
+      background: rgba(255,255,255,.09);
+      backdrop-filter: blur(8px);
+      z-index: 1;
+    }
+
+    .sidebar-card strong { display: block; margin-bottom: 5px; }
+    .sidebar-card p { margin: 0; color: #ded4ef; font-size: .8rem; }
+
+    .main {
+      grid-column: 2;
+      min-width: 0;
+      padding: 26px clamp(18px, 3vw, 44px) 54px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .topbar h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.35rem); }
+    .topbar p { margin: 4px 0 0; color: var(--ink-soft); }
+
+    .topbar-actions { display: flex; gap: 10px; align-items: center; }
+    .level-pill, .privacy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 8px 13px;
+      border: var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow-soft);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .view { display: none; animation: viewIn .28s ease; }
+    .view.active { display: block; }
+    @keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .card {
+      border: var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(230px, .55fr);
+      gap: 24px;
+      min-height: 260px;
+      padding: clamp(24px, 4vw, 42px);
+      overflow: hidden;
+      border: 2px solid rgba(91, 69, 131, .14);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,.75), transparent 20%),
+        linear-gradient(135deg, #f1e9ff 0%, #ffe7ef 50%, #fff1cf 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before, .hero::after {
+      position: absolute;
+      pointer-events: none;
+      font-size: 64px;
+      opacity: .18;
+      transform: rotate(-12deg);
+    }
+    .hero::before { content: "♫"; right: 34%; top: 14px; }
+    .hero::after { content: "✦"; right: 6%; bottom: 4px; transform: rotate(12deg); }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #7256b0;
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .hero h2 { max-width: 720px; margin: 0 0 12px; font-family: Georgia, serif; font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.03; }
+    .hero-copy { max-width: 690px; margin: 0 0 22px; color: #5f5670; font-size: 1rem; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      min-height: 43px;
+      padding: 9px 15px;
+      border: 2px solid transparent;
+      border-radius: 13px;
+      font-weight: 850;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+    }
+    .btn:hover { transform: translateY(-2px); filter: saturate(1.06); }
+    .btn-primary { color: #fff; background: linear-gradient(135deg, #7458c5, #9271da); box-shadow: 0 9px 20px rgba(100, 73, 167, .25); }
+    .btn-secondary { border-color: rgba(103, 80, 152, .18); background: rgba(255,255,255,.78); }
+    .btn-pink { color: #653047; background: var(--pink); }
+    .btn-mint { color: #235b49; background: var(--mint); }
+    .btn-danger { color: #9a2447; border-color: rgba(201,76,110,.25); background: #fff0f4; }
+    .btn-small { min-height: 36px; padding: 7px 11px; border-radius: 10px; font-size: .82rem; }
+    .btn-icon { width: 41px; padding: 0; }
+
+    .hero-level {
+      position: relative;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .progress-ring {
+      --progress: 0deg;
+      display: grid;
+      place-items: center;
+      width: 152px;
+      height: 152px;
+      border-radius: 50%;
+      background: conic-gradient(#795fd0 var(--progress), rgba(255,255,255,.58) 0);
+      box-shadow: inset 0 0 0 1px rgba(76, 54, 118, .08), 0 13px 28px rgba(70,48,108,.15);
+    }
+
+    .progress-ring-inner {
+      display: grid;
+      place-items: center;
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      background: #fffaf8;
+      text-align: center;
+    }
+    .progress-ring strong { display: block; font-size: 1.7rem; line-height: 1; }
+    .progress-ring span { color: var(--ink-soft); font-size: .72rem; }
+    .xp-copy { color: #695e79; font-size: .82rem; font-weight: 800; text-align: center; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .stat-card { position: relative; min-height: 122px; padding: 18px; overflow: hidden; }
+    .stat-card::after { content: attr(data-sticker); position: absolute; right: 9px; bottom: -8px; font-size: 49px; opacity: .17; transform: rotate(-8deg); }
+    .stat-label { color: var(--ink-soft); font-size: .77rem; font-weight: 850; letter-spacing: .04em; text-transform: uppercase; }
+    .stat-value { margin-top: 6px; font-size: 1.8rem; font-weight: 950; }
+    .stat-detail { color: var(--ink-soft); font-size: .76rem; }
+
+    .dashboard-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(280px, .75fr); gap: 18px; }
+    .panel { padding: 20px; }
+    .panel + .panel { margin-top: 18px; }
+    .panel-header { display: flex; justify-content: space-between; gap: 14px; align-items: center; margin-bottom: 15px; }
+    .panel-header h3, .section-title h2 { margin: 0; font-family: Georgia, serif; }
+    .panel-header p, .section-title p { margin: 4px 0 0; color: var(--ink-soft); font-size: .86rem; }
+
+    .course-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .course-mini {
+      position: relative;
+      min-height: 150px;
+      padding: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(77,59,109,.1);
+      border-radius: 17px;
+      background: var(--course-color, #f3edff);
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .course-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+    .course-mini-icon { font-size: 1.5rem; }
+    .course-code { display: inline-block; margin-top: 8px; color: #6a5e78; font-size: .67rem; font-weight: 900; letter-spacing: .08em; }
+    .course-mini h4 { margin: 5px 0; font-size: .97rem; line-height: 1.22; }
+    .tiny-progress { height: 7px; margin-top: 12px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.72); }
+    .tiny-progress > span { display: block; height: 100%; border-radius: inherit; background: #765ac8; }
+    .tiny-progress-copy { margin-top: 5px; color: var(--ink-soft); font-size: .68rem; }
+
+    .list-stack { display: grid; gap: 10px; }
+    .list-item {
+      display: grid;
+      grid-template-columns: auto minmax(0,1fr) auto;
+      gap: 11px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid rgba(78,61,108,.11);
+      border-radius: 14px;
+      background: #fff;
+    }
+    .list-item-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; background: var(--lilac); }
+    .list-item strong { display: block; font-size: .85rem; }
+    .list-item small { color: var(--ink-soft); }
+    .empty-state { padding: 28px 18px; color: var(--ink-soft); text-align: center; border: 2px dashed rgba(84,64,119,.18); border-radius: 16px; background: rgba(255,255,255,.52); }
+    .empty-state .big-emoji { display: block; margin-bottom: 6px; font-size: 2rem; }
+
+    .badge-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; }
+    .badge {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 11px;
+      border-radius: 14px;
+      background: #f8f4ff;
+      opacity: .43;
+      filter: grayscale(.55);
+    }
+    .badge.earned { opacity: 1; filter: none; background: linear-gradient(135deg, #fff2ca, #ffe2ed); box-shadow: inset 0 0 0 1px rgba(108,79,145,.1); }
+    .badge-icon { font-size: 1.45rem; }
+    .badge strong { display: block; font-size: .75rem; }
+    .badge small { display: block; color: var(--ink-soft); font-size: .65rem; }
+
+    .section-title { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 20px; }
+    .section-title h2 { font-size: clamp(1.45rem, 2.7vw, 2rem); }
+
+    .semester-tabs { display: flex; gap: 9px; margin-bottom: 18px; padding-bottom: 5px; overflow-x: auto; scrollbar-width: thin; }
+    .semester-tab { flex: 0 0 auto; min-height: 39px; padding: 7px 13px; border: 2px solid rgba(92,71,129,.12); border-radius: 999px; background: rgba(255,255,255,.73); font-weight: 850; cursor: pointer; }
+    .semester-tab.active { color: #fff; border-color: transparent; background: #755bc5; box-shadow: 0 8px 18px rgba(85,61,145,.21); }
+
+    .semester-banner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 23px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--semester-a, #e7ddff), var(--semester-b, #ffe4ed));
+      box-shadow: var(--shadow-soft);
+    }
+    .semester-banner h3 { margin: 0 0 5px; font-family: Georgia, serif; font-size: 1.55rem; }
+    .semester-banner p { max-width: 800px; margin: 0; color: #62586e; }
+    .semester-number { font-family: Georgia, serif; font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; opacity: .22; line-height: .8; }
+
+    .curriculum-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .curriculum-card { position: relative; padding: 20px; overflow: hidden; }
+    .curriculum-card::after { content: attr(data-icon); position: absolute; right: 12px; top: 5px; font-size: 64px; opacity: .09; transform: rotate(9deg); }
+    .course-topline { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    .course-status { padding: 5px 9px; border-radius: 999px; color: #635971; background: #f1ecf8; font-size: .68rem; font-weight: 850; }
+    .course-status.in-progress { color: #5b3e9a; background: #ebe2ff; }
+    .course-status.completed { color: #256249; background: #dff6eb; }
+    .curriculum-card h4 { margin: 12px 0 7px; font-size: 1.08rem; }
+    .curriculum-card p { margin: 0 0 12px; color: var(--ink-soft); font-size: .84rem; }
+    .outcome-list { margin: 0 0 16px; padding-left: 20px; color: #5e556d; font-size: .79rem; }
+    .outcome-list li + li { margin-top: 4px; }
+    .course-configured { display: flex; gap: 8px; align-items: center; min-height: 34px; margin: 12px 0; padding: 7px 10px; border-radius: 10px; background: #faf8fd; color: #625970; font-size: .76rem; }
+
+    .notes-layout { display: grid; grid-template-columns: 285px minmax(0,1fr); min-height: 680px; overflow: hidden; }
+    .notes-sidebar { padding: 16px; border-right: 2px solid rgba(79,61,110,.09); background: #faf7ff; }
+    .notes-sidebar-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .notes-sidebar h3 { margin: 0; font-family: Georgia, serif; }
+    .filter-stack { display: grid; gap: 8px; margin-bottom: 12px; }
+    .search-input, .field input, .field select, .field textarea, .note-title-input, .toolbar select {
+      width: 100%;
+      border: 2px solid rgba(78,61,108,.14);
+      border-radius: 11px;
+      color: var(--ink);
+      background: #fff;
+    }
+    .search-input { min-height: 40px; padding: 8px 11px; }
+    .note-list { display: grid; gap: 8px; max-height: 550px; overflow-y: auto; padding-right: 3px; }
+    .note-list-item { width: 100%; padding: 12px; border: 2px solid transparent; border-radius: 13px; background: #fff; cursor: pointer; text-align: left; }
+    .note-list-item:hover { border-color: rgba(117,91,197,.2); }
+    .note-list-item.active { border-color: #9c82e2; background: #f2edff; }
+    .note-list-item strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .note-list-item small { display: block; margin-top: 3px; color: var(--ink-soft); font-size: .68rem; }
+    .note-course-dot { display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: var(--dot, var(--lavender)); }
+
+    .notes-editor-shell { min-width: 0; background: #fff; }
+    .note-meta { display: grid; grid-template-columns: minmax(0,1fr) 220px auto; gap: 10px; align-items: center; padding: 15px 18px; border-bottom: 1px solid rgba(79,61,110,.1); }
+    .note-title-input { min-height: 43px; padding: 8px 11px; font-size: 1.05rem; font-weight: 900; }
+    .note-meta select { min-height: 43px; padding: 8px; border: 2px solid rgba(78,61,108,.14); border-radius: 11px; background: #fff; }
+    .note-actions { display: flex; gap: 7px; }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(79,61,110,.1);
+      background: linear-gradient(90deg, #fff8fb, #f8f5ff, #f4fbff);
+    }
+    .toolbar button, .toolbar select, .toolbar-label {
+      min-width: 36px;
+      min-height: 36px;
+      border: 1px solid rgba(79,61,110,.14);
+      border-radius: 9px;
+      background: #fff;
+      cursor: pointer;
+    }
+    .toolbar button:hover { background: #eee8ff; }
+    .toolbar select { width: auto; padding: 4px 8px; }
+    .toolbar-divider { width: 1px; height: 28px; margin: 0 2px; background: rgba(79,61,110,.15); }
+    .toolbar-label { position: relative; display: inline-grid; place-items: center; overflow: hidden; }
+    .toolbar-label input[type="color"] { position: absolute; inset: 0; width: 120%; height: 120%; opacity: 0; cursor: pointer; }
+    .color-dot { width: 17px; height: 5px; margin-top: 2px; border-radius: 99px; background: var(--swatch); }
+    .swatch-row { display: flex; gap: 4px; }
+    .swatch { width: 25px !important; min-width: 25px !important; height: 25px !important; min-height: 25px !important; padding: 0 !important; border-radius: 50% !important; background: var(--swatch) !important; }
+
+    .note-editor {
+      min-height: 510px;
+      padding: 34px clamp(22px, 5vw, 66px) 70px;
+      color: #302a3d;
+      background:
+        linear-gradient(rgba(255,255,255,.94), rgba(255,255,255,.94)),
+        repeating-linear-gradient(0deg, transparent 0 31px, #e8e0f4 32px);
+      outline: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.03rem;
+      line-height: 1.85;
+    }
+    .note-editor:empty::before { content: attr(data-placeholder); color: #9a91a8; pointer-events: none; }
+    .note-editor h2, .note-editor h3 { color: #4c3e68; line-height: 1.25; }
+    .note-editor blockquote { margin: 18px 0; padding: 12px 17px; border-left: 5px solid var(--pink); border-radius: 0 12px 12px 0; background: #fff3f7; }
+    .note-editor ul.bullet-boba, .note-editor ul.bullet-music, .note-editor ul.bullet-spark, .note-editor ul.bullet-game { list-style: none; padding-left: 28px; }
+    .note-editor ul.bullet-boba li::before { content: "●"; color: #8d5b3f; margin-right: 10px; }
+    .note-editor ul.bullet-music li::before { content: "♫"; color: #7b61d1; margin-right: 10px; }
+    .note-editor ul.bullet-spark li::before { content: "✦"; color: #db8a24; margin-right: 10px; }
+    .note-editor ul.bullet-game li::before { content: "➜"; color: #408bc3; margin-right: 10px; }
+    .note-editor ol.alpha { list-style-type: lower-alpha; }
+    .note-editor ol.roman { list-style-type: lower-roman; }
+    .note-save-line { padding: 7px 17px; border-top: 1px solid rgba(79,61,110,.08); color: var(--ink-soft); background: #fbf9fd; font-size: .72rem; text-align: right; }
+
+    .grade-summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 18px; }
+    .grade-card { padding: 16px; }
+    .grade-card strong { display: block; margin-top: 4px; font-size: 1.45rem; }
+    .grade-card small { color: var(--ink-soft); }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; margin-bottom: 13px; }
+    .filter-bar select, .filter-bar input { min-height: 40px; padding: 7px 10px; border: 2px solid rgba(78,61,108,.13); border-radius: 11px; background: #fff; }
+    .table-wrap { overflow-x: auto; border: var(--border); border-radius: 17px; background: #fff; box-shadow: var(--shadow-soft); }
+    table { width: 100%; border-collapse: collapse; min-width: 850px; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid rgba(78,61,108,.09); text-align: left; vertical-align: middle; }
+    th { color: #655b73; background: #faf7fd; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+    td { font-size: .84rem; }
+    tbody tr:hover { background: #fffbfd; }
+    .status-chip { display: inline-block; padding: 5px 8px; border-radius: 999px; background: #f0edf5; font-size: .68rem; font-weight: 850; }
+    .status-chip.completed { color: #28664e; background: #dff5eb; }
+    .status-chip.in-progress { color: #60449b; background: #ece4ff; }
+    .status-chip.overdue { color: #a63353; background: #ffe3ea; }
+    .grade-letter { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: #fff; background: #765ac8; font-weight: 950; }
+
+    .study-grid { display: grid; grid-template-columns: minmax(320px,.85fr) minmax(0,1.15fr); gap: 18px; }
+    .timer-card { padding: 24px; text-align: center; background: linear-gradient(145deg, #eee7ff, #fff0f5); }
+    .timer-mode-row { display: flex; justify-content: center; gap: 7px; margin-bottom: 15px; }
+    .mode-chip { padding: 6px 10px; border: 1px solid rgba(82,62,117,.15); border-radius: 999px; background: rgba(255,255,255,.72); cursor: pointer; font-size: .73rem; font-weight: 850; }
+    .mode-chip.active { color: #fff; background: #755bc5; }
+    .timer-display { margin: 6px 0 15px; font-family: Georgia, serif; font-size: clamp(3.6rem, 10vw, 6rem); font-weight: 900; letter-spacing: -.05em; }
+    .timer-card select { width: min(100%, 360px); min-height: 43px; margin-bottom: 13px; padding: 8px; border: 2px solid rgba(83,65,118,.14); border-radius: 11px; background: #fff; }
+    .weekly-meter { height: 12px; overflow: hidden; border-radius: 99px; background: #eee9f5; }
+    .weekly-meter span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--mint), #65bc9d); }
+    .recall-card { margin-top: 18px; padding: 21px; background: linear-gradient(145deg, #fff3c9, #ffe8f0); }
+    .recall-prompt { min-height: 90px; margin: 13px 0; padding: 15px; border: 2px dashed rgba(100,73,130,.2); border-radius: 14px; background: rgba(255,255,255,.65); font-family: Georgia, serif; font-size: 1rem; }
+    .study-log-card { padding: 20px; }
+
+    .settings-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 17px; }
+    .settings-card { padding: 21px; }
+    .settings-card h3 { margin: 0 0 5px; font-family: Georgia, serif; }
+    .settings-card > p { margin: 0 0 17px; color: var(--ink-soft); font-size: .84rem; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    .field { display: grid; gap: 5px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #5f566d; font-size: .73rem; font-weight: 850; }
+    .field input, .field select, .field textarea { min-height: 43px; padding: 9px 10px; }
+    .field textarea { min-height: 92px; resize: vertical; }
+    .helper { color: var(--ink-soft); font-size: .7rem; }
+    .privacy-box { padding: 14px; border: 2px solid rgba(91,68,129,.12); border-radius: 14px; background: #fff9e7; font-size: .82rem; }
+
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .tool-card { padding: 21px; }
+    .tool-card.wide { grid-column: 1 / -1; }
+    .planner-tool-grid { grid-template-columns: 1fr; }
+    .tool-card h3 { margin: 0; font-family: Georgia, serif; }
+    .tool-card > p, .tool-copy { margin: 5px 0 16px; color: var(--ink-soft); font-size: .84rem; }
+    .metric-strip { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-bottom: 18px; }
+    .metric { padding: 14px; border: var(--border); border-radius: 15px; background: rgba(255,255,255,.76); }
+    .metric span { display: block; color: var(--ink-soft); font-size: .68rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+    .metric strong { display: block; margin-top: 4px; font-size: 1.25rem; }
+    .accordion-form { margin-bottom: 16px; border: 2px dashed rgba(91,68,129,.16); border-radius: 16px; background: rgba(255,255,255,.6); }
+    .accordion-form summary { padding: 13px 15px; cursor: pointer; font-weight: 900; }
+    .accordion-form[open] summary { border-bottom: 1px solid rgba(91,68,129,.1); }
+    .accordion-form form { padding: 15px; }
+    .record-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 11px; }
+    .record-card { position: relative; padding: 15px; border: 2px solid rgba(85,65,117,.1); border-radius: 16px; background: #fff; }
+    .record-card h4 { margin: 5px 0 7px; }
+    .record-card p { margin: 6px 0; color: var(--ink-soft); font-size: .78rem; white-space: pre-wrap; }
+    .record-card small { color: var(--ink-soft); }
+    .record-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .record-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tag { display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 999px; color: #5b4f6d; background: #f1ecfa; font-size: .66rem; font-weight: 850; }
+    .tag.mint { color: #28664e; background: #dff5eb; }
+    .tag.pink { color: #8d3655; background: #ffe3ed; }
+    .tag.gold { color: #765812; background: #fff0be; }
+    .check-row { display: flex; align-items: center; gap: 8px; }
+    .check-row input { width: 18px; height: 18px; accent-color: #755bc5; }
+
+    .week-list { display: grid; gap: 10px; }
+    .planner-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+    .planner-controls .button-row { margin: 0; }
+    .planner-scope { width: auto; min-width: 145px; padding: 8px 31px 8px 10px; font-size: .74rem; }
+    .planner-week-label { margin: 0 0 11px; color: var(--ink-soft); font-size: .78rem; font-weight: 850; }
+    .plan-item { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 13px; border: var(--border); border-radius: 15px; background: #fff; }
+    .plan-item[data-plan-open] { cursor: pointer; transition: transform .16s ease, box-shadow .16s ease; }
+    .plan-item[data-plan-open]:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .plan-item.done { opacity: .64; background: #f5fbf8; }
+    .plan-item.done h4 { text-decoration: line-through; }
+    .plan-date { display: grid; place-items: center; width: 48px; min-height: 50px; border-radius: 13px; background: linear-gradient(145deg, #eee6ff, #ffe8f0); font-weight: 950; text-align: center; line-height: 1.05; }
+    .plan-date small { font-size: .6rem; text-transform: uppercase; }
+    .plan-item h4 { margin: 0 0 3px; }
+
+    .calendar-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; }
+    .calendar-view-switch { display: inline-flex; padding: 3px; border: var(--border); border-radius: 12px; background: #f6f2fb; }
+    .calendar-view-switch button { padding: 6px 10px; border: 0; border-radius: 9px; color: var(--ink-soft); background: transparent; cursor: pointer; font: inherit; font-size: .69rem; font-weight: 900; }
+    .calendar-view-switch button.active { color: #fff; background: #765bc6; box-shadow: 0 3px 9px rgba(81,58,130,.2); }
+    .calendar-sync { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; margin: 0 0 14px; padding: 12px; border: 2px dashed rgba(91,68,129,.16); border-radius: 16px; background: linear-gradient(135deg,#faf7ff,#f3fff9); }
+    .calendar-sync strong, .calendar-sync small { display: block; }
+    .calendar-sync small { margin-top: 3px; color: var(--ink-soft); font-size: .7rem; }
+    .calendar-sync.connected { border-style: solid; border-color: rgba(67,151,111,.25); background: #f1fff8; }
+    .calendar-sync-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .google-setup { grid-column: 1 / -1; padding-top: 2px; }
+    .google-setup summary { color: #6c54b5; cursor: pointer; font-size: .72rem; font-weight: 900; }
+    .google-setup-grid { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px; align-items: end; margin-top: 10px; }
+    .google-setup-grid label { display: block; margin-bottom: 4px; color: var(--ink-soft); font-size: .67rem; font-weight: 850; }
+    .google-setup-help { grid-column: 1 / -1; margin: 0; color: var(--ink-soft); font-size: .67rem; line-height: 1.45; }
+    .calendar-shell { overflow: hidden; border: var(--border); border-radius: 18px; background: #fff; }
+    .calendar-head { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); background: #f4effb; }
+    .calendar-head span { padding: 9px 5px; color: var(--ink-soft); font-size: .68rem; font-weight: 900; text-align: center; text-transform: uppercase; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); }
+    .calendar-day { min-width: 0; min-height: 132px; max-height: 230px; overflow-y: auto; padding: 8px; border-top: 1px solid rgba(78,61,108,.09); border-right: 1px solid rgba(78,61,108,.09); background: #fff; }
+    .calendar-day:nth-child(7n) { border-right: 0; }
+    .calendar-day.muted { background: #fbf9fd; color: #aaa1b5; }
+    .calendar-day.today { background: #fff8e1; box-shadow: inset 0 0 0 2px #f1ca64; }
+    .calendar-number { display: grid; place-items: center; width: 27px; height: 27px; margin: 0 0 5px auto; border: 0; border-radius: 50%; color: inherit; background: transparent; cursor: pointer; font: inherit; font-size: .74rem; font-weight: 950; }
+    .calendar-number:hover { background: #eee7ff; }
+    .calendar-event { display: block; width: 100%; margin: 4px 0; padding: 5px 6px; overflow: hidden; border: 0; border-left: 4px solid #8269ce; border-radius: 7px; color: #4e4260; background: #eee7ff; cursor: pointer; font: inherit; font-size: .61rem; font-weight: 750; line-height: 1.25; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+    .calendar-event:hover, .calendar-event:focus-visible { filter: saturate(1.15); box-shadow: 0 3px 8px rgba(67,48,102,.14); outline: none; }
+    .calendar-event.done { opacity: .55; text-decoration: line-through; }
+    .calendar-event.assignment { background: #ffe2ec; }
+    .calendar-event.plan { background: #dff5eb; }
+    .calendar-event.capstone { background: #fff0be; }
+    .calendar-event.career { background: #dfeeff; }
+    .calendar-event.google { border-left-color: #4285f4; background: #e8f0fe; }
+    .calendar-grid.week-view .calendar-day { min-height: 330px; max-height: 500px; }
+    .calendar-grid.week-view .calendar-event { padding: 7px; font-size: .66rem; white-space: normal; }
+    .calendar-empty-day { display: block; padding: 12px 3px; color: #aaa1b5; font-size: .62rem; text-align: center; }
+    .sync-badge { margin-left: 4px; font-size: .62rem; }
+
+    .mastery-course-select { max-width: 620px; margin-bottom: 15px; }
+    .outcome-stack { display: grid; gap: 11px; }
+    .outcome-card { padding: 15px; border: var(--border); border-radius: 16px; background: #fff; }
+    .outcome-card.mastered { background: linear-gradient(135deg, #f2fff8, #fffbea); border-color: rgba(70,154,115,.25); }
+    .outcome-card h4 { margin: 0 0 10px; }
+    .mastery-checks { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; }
+    .mastery-checks label { display: flex; align-items: center; gap: 6px; padding: 8px; border-radius: 10px; background: #f8f5fc; font-size: .72rem; font-weight: 800; }
+    .mastery-checks input { width: 17px; height: 17px; accent-color: #4b9d7e; }
+    .quiz-stage { min-height: 150px; padding: 18px; border: 2px dashed rgba(87,66,123,.2); border-radius: 17px; background: linear-gradient(145deg, #fffaf0, #f6f0ff); }
+    .quiz-stage h4 { margin: 5px 0 9px; font-family: Georgia, serif; font-size: 1.1rem; }
+    .quiz-answer { margin-top: 12px; padding: 12px; border-radius: 12px; background: #fff; white-space: pre-wrap; }
+
+    .portfolio-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .portfolio-jump a { padding: 7px 11px; border: var(--border); border-radius: 999px; color: var(--ink); background: rgba(255,255,255,.8); font-size: .72rem; font-weight: 850; text-decoration: none; }
+    .portfolio-jump a:hover { background: #eee7ff; }
+    .section-anchor { scroll-margin-top: 16px; }
+    .progress-track { height: 9px; margin: 9px 0; overflow: hidden; border-radius: 99px; background: #eee9f4; }
+    .progress-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #b8a5ff, #ffabc7); }
+    .confidence-dots { letter-spacing: 2px; color: #7b61d1; }
+
+    .career-board { display: grid; grid-template-columns: repeat(5, minmax(185px,1fr)); gap: 11px; overflow-x: auto; padding-bottom: 5px; }
+    .career-column { min-height: 240px; padding: 11px; border-radius: 16px; background: rgba(242,237,249,.7); }
+    .career-column h4 { margin: 0 0 10px; font-family: Georgia, serif; }
+    .career-card { margin-bottom: 9px; padding: 12px; border: var(--border); border-radius: 13px; background: #fff; }
+    .career-card strong, .career-card small { display: block; }
+    .career-card small { margin-top: 3px; color: var(--ink-soft); }
+    .celebration-banner { position: relative; overflow: hidden; background: linear-gradient(135deg, #fff0bd, #ffddec 48%, #e5ddff); }
+    .celebration-banner::after { content: "🎉 🧋 🎮 🎤"; position: absolute; right: 15px; bottom: 4px; font-size: 2.4rem; opacity: .17; transform: rotate(-6deg); }
+    .milestone-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 9px; }
+    .milestone { padding: 11px; border-radius: 14px; background: #f5f1fa; opacity: .48; }
+    .milestone.earned { opacity: 1; background: linear-gradient(135deg, #fff5cf, #ffe5ef); box-shadow: inset 0 0 0 1px rgba(95,70,126,.1); }
+    .milestone span { font-size: 1.35rem; }
+    .milestone strong, .milestone small { display: block; }
+    .milestone small { color: var(--ink-soft); font-size: .67rem; }
+    .confetti-piece { position: fixed; top: -25px; z-index: 500; width: 10px; height: 16px; border-radius: 2px; pointer-events: none; animation: confettiFall 2.6s linear forwards; }
+    @keyframes confettiFall { to { transform: translate3d(var(--drift), 110vh, 720deg); opacity: .25; } }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(44,33,63,.58);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+    }
+    .modal {
+      width: min(760px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 2px solid rgba(255,255,255,.48);
+      border-radius: 24px;
+      background: var(--paper);
+      box-shadow: 0 30px 80px rgba(38,25,59,.3);
+    }
+    .modal-header { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 19px 21px; border-bottom: 1px solid rgba(75,58,104,.1); background: rgba(255,253,249,.95); backdrop-filter: blur(8px); z-index: 1; }
+    .modal-header h2 { margin: 0; font-family: Georgia, serif; font-size: 1.4rem; }
+    .modal-close { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #f1edf6; cursor: pointer; font-size: 1.2rem; }
+    .modal-body { padding: 21px; }
+    .modal-footer { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 9px; padding: 16px 21px 21px; }
+    .modal-course-overview { margin-bottom: 17px; padding: 15px; border-radius: 16px; background: linear-gradient(135deg, #f0eaff, #fff0f5); }
+    .modal-course-overview p { margin: 5px 0 10px; color: var(--ink-soft); }
+
+    .toast-region { position: fixed; right: 20px; bottom: 20px; display: grid; gap: 9px; z-index: 200; }
+    .toast { min-width: 250px; max-width: 360px; padding: 13px 15px; border: 2px solid rgba(84,63,120,.13); border-radius: 14px; background: #fff; box-shadow: var(--shadow); animation: toastIn .25s ease; }
+    .toast.success { border-left: 6px solid var(--green); }
+    .toast.error { border-left: 6px solid var(--red); }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    .mobile-menu { display: none; }
+
+    @media (max-width: 1050px) {
+      :root { --sidebar: 222px; }
+      .stats-grid, .grade-summary-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .dashboard-grid, .study-grid { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-level { grid-template-columns: auto 1fr; justify-content: start; }
+      .progress-ring { width: 125px; height: 125px; }
+      .progress-ring-inner { width: 95px; height: 95px; }
+      .metric-strip { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .calendar-day { min-height: 96px; }
+    }
+
+    @media (max-width: 820px) {
+      .app-shell { display: block; }
+      .sidebar { transform: translateX(-105%); transition: transform .25s ease; }
+      body.menu-open .sidebar { transform: translateX(0); }
+      body.menu-open::after { content: ""; position: fixed; inset: 0; background: rgba(35,26,51,.42); z-index: 20; }
+      .main { padding: 18px 15px 35px; }
+      .mobile-menu { display: inline-grid; place-items: center; width: 43px; height: 43px; border: var(--border); border-radius: 12px; background: #fff; box-shadow: var(--shadow-soft); cursor: pointer; }
+      .topbar { align-items: flex-start; }
+      .privacy-pill { display: none; }
+      .curriculum-grid, .settings-grid { grid-template-columns: 1fr; }
+      .tool-grid { grid-template-columns: 1fr; }
+      .tool-card.wide { grid-column: auto; }
+      .notes-layout { grid-template-columns: 1fr; }
+      .notes-sidebar { border-right: 0; border-bottom: 2px solid rgba(79,61,110,.09); }
+      .note-list { max-height: 230px; }
+      .note-meta { grid-template-columns: 1fr; }
+      .note-actions { justify-content: flex-end; }
+      .course-mini-grid { grid-template-columns: 1fr; }
+      .record-grid, .milestone-grid { grid-template-columns: 1fr; }
+      .calendar-day { min-height: 82px; padding: 5px; }
+      .calendar-event { font-size: .52rem; }
+      .calendar-sync { grid-template-columns: 1fr; }
+      .calendar-sync-actions { justify-content: flex-start; }
+      .google-setup { grid-column: auto; }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-actions .level-pill { display: none; }
+      .hero { padding: 24px 20px; }
+      .hero h2 { font-size: 2.2rem; }
+      .hero-level { grid-template-columns: 1fr; justify-items: center; }
+      .stats-grid, .grade-summary-grid { grid-template-columns: 1fr 1fr; }
+      .stat-card { min-height: 105px; padding: 14px; }
+      .stat-value { font-size: 1.45rem; }
+      .semester-banner { grid-template-columns: 1fr; }
+      .semester-number { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .toolbar-divider, .swatch-row { display: none; }
+      .note-editor { min-height: 430px; padding: 24px 20px 60px; }
+      .section-title { align-items: flex-start; flex-direction: column; }
+      .metric-strip { grid-template-columns: 1fr 1fr; }
+      .mastery-checks { grid-template-columns: 1fr; }
+      .calendar-day { min-height: 68px; }
+      .calendar-event { padding: 3px; }
+      .calendar-shell { overflow-x: auto; }
+      .calendar-head, .calendar-grid { min-width: 720px; }
+      .plan-item { grid-template-columns: auto minmax(0,1fr); }
+      .plan-item .record-actions { grid-column: 1 / -1; justify-content: flex-end; }
+      .google-setup-grid { grid-template-columns: 1fr; }
+      .google-setup-help { grid-column: auto; }
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      body.print-note .notes-editor-shell, body.print-note .notes-editor-shell * { visibility: visible; }
+      body.print-note .notes-editor-shell { position: absolute; inset: 0; width: 100%; }
+      body.print-note .toolbar, body.print-note .note-actions, body.print-note .note-save-line, body.print-note .note-meta select { display: none !important; }
+      body.print-note .note-title-input { border: 0; font-size: 1.5rem; }
+      body.print-note .note-editor { background: #fff; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Study portal navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🌸</div>
+        <div><strong>Brain Bloom</strong><small>Boba, beats & big-brain energy</small></div>
+      </div>
+
+      <div class="nav-label">My academy</div>
+      <nav class="nav-list">
+        <button class="nav-button active" data-view="dashboard"><span class="nav-icon">🏡</span>Dashboard</button>
+        <button class="nav-button" data-view="curriculum"><span class="nav-icon">🗺️</span>Curriculum Map</button>
+        <button class="nav-button" data-view="notes"><span class="nav-icon">📝</span>Study Notes</button>
+        <button class="nav-button" data-view="grades"><span class="nav-icon">🏆</span>Assignments & Grades</button>
+        <button class="nav-button" data-view="study"><span class="nav-icon">🎧</span>Study Lounge</button>
+      </nav>
+
+      <div class="nav-label">Growth tools</div>
+      <nav class="nav-list">
+        <button class="nav-button" data-view="planner"><span class="nav-icon">🗓️</span>Planner & Calendar</button>
+        <button class="nav-button" data-view="mastery"><span class="nav-icon">🧠</span>Mastery Lab</button>
+        <button class="nav-button" data-view="portfolio"><span class="nav-icon">🌱</span>Learning Portfolio</button>
+        <button class="nav-button" data-view="career"><span class="nav-icon">🚀</span>Career Tracker</button>
+      </nav>
+
+      <div class="nav-label">Control room</div>
+      <nav class="nav-list">
+        <button class="nav-button" data-view="settings"><span class="nav-icon">⚙️</span>Settings & Backup</button>
+      </nav>
+
+      <div class="sidebar-card">
+        <strong>🧋 Private study portal</strong>
+        <p>This page is marked noindex. Your school data stays inside this browser unless you export it.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+          <div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <p id="pageSubtitle">Your learning world, organized and ready.</p>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <div class="privacy-pill">🔒 Unlisted page</div>
+          <div class="level-pill"><span>🎮</span><span id="topLevel">Level 1</span></div>
+        </div>
+      </header>
+
+      <section class="view active" id="view-dashboard" aria-labelledby="pageTitle">
+        <div class="hero">
+          <div>
+            <p class="eyebrow" id="heroSemester">Semester 1 · Build the Foundation</p>
+            <h2 id="heroGreeting">Hey, Tanay—let’s grow that brilliant brain.</h2>
+            <p class="hero-copy" id="heroQuote">Your goal is not to know everything. It is to understand, communicate, and trust your ability to learn.</p>
+            <div class="button-row">
+              <button class="btn btn-primary" data-quick="note">✍🏾 Start a note</button>
+              <button class="btn btn-secondary" data-quick="assignment">✨ Add assignment</button>
+              <button class="btn btn-secondary" data-view-jump="study">🎧 Enter study lounge</button>
+            </div>
+          </div>
+          <div class="hero-level">
+            <div class="progress-ring" id="overallRing">
+              <div class="progress-ring-inner"><div><strong id="overallProgress">0%</strong><span>semester progress</span></div></div>
+            </div>
+            <div class="xp-copy"><span id="xpValue">0 XP</span><br><span id="xpNext">100 XP to Level 2</span></div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="card stat-card" data-sticker="🏆"><div class="stat-label">Current grade</div><div class="stat-value" id="dashGrade">—</div><div class="stat-detail">Across graded work</div></div>
+          <div class="card stat-card" data-sticker="📝"><div class="stat-label">Study notes</div><div class="stat-value" id="dashNotes">0</div><div class="stat-detail">Ideas captured</div></div>
+          <div class="card stat-card" data-sticker="⏱️"><div class="stat-label">Study time</div><div class="stat-value" id="dashMinutes">0m</div><div class="stat-detail">Logged this week</div></div>
+          <div class="card stat-card" data-sticker="🔥"><div class="stat-label">Learning streak</div><div class="stat-value" id="dashStreak">0 days</div><div class="stat-detail">Keep the combo going</div></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div>
+            <div class="card panel">
+              <div class="panel-header"><div><h3 id="currentCoursesTitle">Semester 1 Courses</h3><p>Tap any class to configure your real online course.</p></div><button class="btn btn-small btn-secondary" data-view-jump="curriculum">Full map</button></div>
+              <div class="course-mini-grid" id="dashboardCourses"></div>
+            </div>
+            <div class="card panel">
+              <div class="panel-header"><div><h3>Coming up</h3><p>Your nearest assignment deadlines.</p></div><button class="btn btn-small btn-secondary" data-quick="assignment">Add one</button></div>
+              <div class="list-stack" id="upcomingAssignments"></div>
+            </div>
+          </div>
+          <div>
+            <div class="card panel">
+              <div class="panel-header"><div><h3>Achievement shelf</h3><p>Small wins still count as XP.</p></div></div>
+              <div class="badge-grid" id="badgeGrid"></div>
+            </div>
+            <div class="card panel">
+              <div class="panel-header"><div><h3>Recent notes</h3><p>Jump back into your thinking.</p></div></div>
+              <div class="list-stack" id="recentNotes"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card panel celebration-banner" style="margin-top:18px;">
+          <div class="panel-header"><div><h3>Bloom celebration shelf</h3><p>Progress deserves receipts, confetti, and possibly boba.</p></div><button class="btn btn-small btn-secondary" data-view-jump="career">Open victory shelf</button></div>
+          <div class="milestone-grid" id="dashboardMilestones"></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-curriculum">
+        <div class="section-title">
+          <div><p class="eyebrow">Eight-semester learning journey</p><h2>Curriculum Map</h2><p>Every semester builds on the one before it. The UX Career Lab travels with you the entire way.</p></div>
+          <button class="btn btn-primary" id="setCurrentSemester">Make this my current semester</button>
+        </div>
+        <div class="semester-tabs" id="semesterTabs" role="tablist" aria-label="Choose a semester"></div>
+        <div id="semesterContent"></div>
+      </section>
+
+      <section class="view" id="view-notes">
+        <div class="section-title">
+          <div><p class="eyebrow">Colorful thoughts live here</p><h2>Study Notes</h2><p>Write, highlight, organize, search, and return to what you learned.</p></div>
+          <button class="btn btn-primary" id="newNoteTop">✍🏾 New note</button>
+        </div>
+        <div class="card notes-layout">
+          <aside class="notes-sidebar">
+            <div class="notes-sidebar-header"><h3>Notebook</h3><button class="btn btn-small btn-icon btn-pink" id="newNoteSide" aria-label="Create a note">＋</button></div>
+            <div class="filter-stack">
+              <input class="search-input" id="noteSearch" type="search" placeholder="Search your notes…" aria-label="Search notes">
+              <select class="search-input" id="noteCourseFilter" aria-label="Filter notes by course"></select>
+            </div>
+            <div class="note-list" id="noteList"></div>
+          </aside>
+          <div class="notes-editor-shell" id="notesEditorShell">
+            <div class="note-meta">
+              <input class="note-title-input" id="noteTitle" placeholder="Give this note a title…" aria-label="Note title">
+              <select id="noteCourse" aria-label="Note course"></select>
+              <div class="note-actions">
+                <button class="btn btn-small btn-secondary" id="printNote" title="Print this note">🖨️</button>
+                <button class="btn btn-small btn-danger" id="deleteNote" title="Delete this note">🗑️</button>
+              </div>
+            </div>
+            <div class="toolbar" id="noteToolbar" aria-label="Note formatting toolbar">
+              <select id="formatBlock" title="Text style" aria-label="Text style">
+                <option value="p">Normal</option><option value="h2">Heading</option><option value="h3">Subheading</option><option value="blockquote">Quote</option>
+              </select>
+              <button type="button" data-cmd="bold" title="Bold"><strong>B</strong></button>
+              <button type="button" data-cmd="italic" title="Italic"><em>I</em></button>
+              <button type="button" data-cmd="underline" title="Underline"><u>U</u></button>
+              <button type="button" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+              <span class="toolbar-divider"></span>
+              <select id="bulletStyle" title="Bullet style" aria-label="Bullet style">
+                <option value="disc">• Dots</option><option value="boba">● Boba</option><option value="music">♫ Music</option><option value="spark">✦ Sparkles</option><option value="game">➜ Game arrows</option>
+              </select>
+              <select id="numberStyle" title="Numbered list style" aria-label="Numbered list style">
+                <option value="decimal">1. Numbers</option><option value="alpha">a. Letters</option><option value="roman">i. Roman</option>
+              </select>
+              <span class="toolbar-divider"></span>
+              <button type="button" data-cmd="justifyLeft" title="Align left">≡</button>
+              <button type="button" data-cmd="justifyCenter" title="Center">☰</button>
+              <button type="button" data-cmd="undo" title="Undo">↶</button>
+              <button type="button" data-cmd="redo" title="Redo">↷</button>
+              <span class="toolbar-divider"></span>
+              <label class="toolbar-label" title="Choose text color">A<div class="color-dot" style="--swatch:#7b61d1"></div><input type="color" id="textColor" value="#332a4a" aria-label="Text color"></label>
+              <label class="toolbar-label" title="Choose highlighter color">🖍️<div class="color-dot" style="--swatch:#ffe69a"></div><input type="color" id="highlightColor" value="#ffe69a" aria-label="Highlight color"></label>
+              <div class="swatch-row" aria-label="Quick highlighter colors">
+                <button class="swatch" type="button" data-highlight="#ffe69a" style="--swatch:#ffe69a" title="Yellow highlighter"></button>
+                <button class="swatch" type="button" data-highlight="#ffcddd" style="--swatch:#ffcddd" title="Pink highlighter"></button>
+                <button class="swatch" type="button" data-highlight="#ccefe2" style="--swatch:#ccefe2" title="Mint highlighter"></button>
+                <button class="swatch" type="button" data-highlight="#dfd3ff" style="--swatch:#dfd3ff" title="Lavender highlighter"></button>
+                <button class="swatch" type="button" data-highlight="#cfeaff" style="--swatch:#cfeaff" title="Blue highlighter"></button>
+              </div>
+              <span class="toolbar-divider"></span>
+              <button type="button" id="insertTemplate" title="Insert study-note template">📋 Template</button>
+              <select id="stickerInsert" title="Insert a study sticker" aria-label="Insert a study sticker">
+                <option value="">✨ Sticker</option><option>🧋</option><option>🎧</option><option>🎮</option><option>🎤</option><option>🌸</option><option>💡</option><option>🧠</option><option>✅</option><option>❓</option>
+              </select>
+              <button type="button" data-cmd="removeFormat" title="Clear formatting">Tx</button>
+            </div>
+            <div id="noteEditor" class="note-editor" contenteditable="true" role="textbox" aria-multiline="true" data-placeholder="Start typing what you learned…"></div>
+            <div class="note-save-line" id="noteSaveStatus">Your work saves automatically in this browser.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-grades">
+        <div class="section-title">
+          <div><p class="eyebrow">Receipts for your growth</p><h2>Assignments & Grades</h2><p>Track the work—not just the intention.</p></div>
+          <button class="btn btn-primary" id="addAssignmentTop">✨ Add assignment</button>
+        </div>
+        <div class="grade-summary-grid" id="gradeSummary"></div>
+        <div class="filter-bar">
+          <select id="assignmentSemesterFilter" aria-label="Filter assignments by semester"></select>
+          <select id="assignmentCourseFilter" aria-label="Filter assignments by course"></select>
+          <select id="assignmentStatusFilter" aria-label="Filter assignments by status"><option value="all">All statuses</option><option>Not started</option><option>In progress</option><option>Completed</option></select>
+          <input id="assignmentSearch" type="search" placeholder="Search assignments…" aria-label="Search assignments">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Assignment</th><th>Class</th><th>Type</th><th>Due</th><th>Status</th><th>Score</th><th>Grade</th><th></th></tr></thead>
+            <tbody id="assignmentTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="view" id="view-study">
+        <div class="section-title">
+          <div><p class="eyebrow">Focus mode: activated</p><h2>Study Lounge</h2><p>Use focused sessions, active recall, and short reflections so the information actually stays.</p></div>
+          <button class="btn btn-primary" id="logSessionTop">＋ Log study session</button>
+        </div>
+        <div class="study-grid">
+          <div>
+            <div class="card timer-card">
+              <div class="timer-mode-row"><button class="mode-chip active" data-minutes="25">25 Focus</button><button class="mode-chip" data-minutes="50">50 Deep Work</button><button class="mode-chip" data-minutes="5">5 Break</button></div>
+              <div class="timer-display" id="timerDisplay">25:00</div>
+              <select id="timerCourse" aria-label="Course for this study session"></select>
+              <div class="button-row" style="justify-content:center;"><button class="btn btn-primary" id="timerStart">▶ Start</button><button class="btn btn-secondary" id="timerReset">↺ Reset</button></div>
+              <p class="helper" id="timerMessage" style="margin-top:13px;">Pick a class, silence the chaos, and do one focused round.</p>
+            </div>
+            <div class="card recall-card">
+              <div class="panel-header"><div><h3>Recall Roulette 🎲</h3><p>Answer without looking at your notes first.</p></div></div>
+              <select class="search-input" id="recallCourse" aria-label="Course for recall prompt"></select>
+              <div class="recall-prompt" id="recallPrompt">Choose a class and spin for a recall challenge.</div>
+              <button class="btn btn-pink" id="spinRecall">Spin a prompt</button>
+            </div>
+          </div>
+          <div>
+            <div class="card study-log-card">
+              <div class="panel-header"><div><h3>This week's rhythm</h3><p id="weeklyStudyCopy">0 of 8 planned hours</p></div><strong id="weeklyStudyPercent">0%</strong></div>
+              <div class="weekly-meter"><span id="weeklyStudyBar" style="width:0%"></span></div>
+            </div>
+            <div class="card study-log-card" style="margin-top:18px;">
+              <div class="panel-header"><div><h3>Study log</h3><p>Minutes, topics, and what actually clicked.</p></div></div>
+              <div class="list-stack" id="studyLog"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-planner">
+        <div class="section-title">
+          <div><p class="eyebrow">A real schedule for a real life</p><h2>Planner & Calendar</h2><p>Balance learning, job searching, UX, music, rest, and everything else without pretending every day has 47 hours.</p></div>
+          <button class="btn btn-primary" id="addPlanTop">＋ Add task</button>
+        </div>
+        <div class="metric-strip" id="plannerSummary"></div>
+        <div class="tool-grid planner-tool-grid">
+          <div class="card tool-card">
+            <div class="panel-header"><div><h3>Weekly plan</h3><p>Every task in the selected week—nothing hidden after the fourth item.</p></div></div>
+            <div class="planner-controls">
+              <div class="button-row">
+                <button class="btn btn-small btn-secondary" id="plannerWeekPrev" aria-label="Previous week">‹</button>
+                <button class="btn btn-small btn-secondary" id="plannerToday">This week</button>
+                <button class="btn btn-small btn-secondary" id="plannerWeekNext" aria-label="Next week">›</button>
+              </div>
+              <select class="planner-scope" id="plannerScope" aria-label="Tasks to show"><option value="week">Selected week</option><option value="upcoming">All upcoming</option><option value="all">All tasks</option></select>
+            </div>
+            <p class="planner-week-label" id="plannerWeekLabel"></p>
+            <div class="week-list" id="plannerList"></div>
+          </div>
+          <div class="card tool-card">
+            <div class="panel-header"><div><h3 id="calendarTitle">Calendar</h3><p>Click a task to edit it, move it, or mark it done.</p></div>
+              <div class="calendar-toolbar">
+                <div class="calendar-view-switch" aria-label="Calendar view"><button class="active" data-calendar-view="week">Week</button><button data-calendar-view="month">Month</button></div>
+                <button class="btn btn-small btn-secondary" id="calendarPrev" aria-label="Previous calendar period">‹</button>
+                <button class="btn btn-small btn-secondary" id="calendarToday">Today</button>
+                <button class="btn btn-small btn-secondary" id="calendarNext" aria-label="Next calendar period">›</button>
+              </div>
+            </div>
+            <div class="calendar-sync" id="googleCalendarPanel">
+              <div><strong>📅 Google Calendar</strong><small id="googleCalendarStatus">Not connected · export works without setup</small></div>
+              <div class="calendar-sync-actions">
+                <button class="btn btn-small btn-secondary" id="googleConnect">Connect</button>
+                <button class="btn btn-small btn-secondary" id="googleRefresh" hidden>Refresh</button>
+                <button class="btn btn-small btn-mint" id="googleSyncWeek" disabled>Sync week</button>
+                <button class="btn btn-small btn-secondary" id="googleExportWeek">Export .ics</button>
+                <button class="btn btn-small btn-secondary" id="googleDisconnect" hidden>Disconnect</button>
+              </div>
+              <details class="google-setup" id="googleSetupDetails">
+                <summary>Google connection setup</summary>
+                <div class="google-setup-grid">
+                  <div><label for="googleClientId">Google OAuth web Client ID</label><input id="googleClientId" autocomplete="off" placeholder="123…apps.googleusercontent.com"></div>
+                  <button class="btn btn-small btn-primary" id="googleSaveClientId" type="button">Save Client ID</button>
+                  <p class="google-setup-help">In <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener">Google Cloud credentials ↗</a>, enable the Calendar API, create a Web application OAuth Client ID, and add this page's exact website origin under Authorized JavaScript origins. A client secret does not belong in this file.</p>
+                </div>
+              </details>
+            </div>
+            <div class="calendar-shell">
+              <div class="calendar-head"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-mastery">
+        <div class="section-title">
+          <div><p class="eyebrow">Know it, explain it, remember it</p><h2>Mastery Lab</h2><p>Measure your starting point, practice retrieval, and prove that learning stayed with you.</p></div>
+        </div>
+        <div class="tool-grid">
+          <div class="card tool-card wide">
+            <div class="panel-header"><div><h3>Baseline & final assessments</h3><p>Use the same or equivalent assessment at the beginning and end so improvement is visible.</p></div></div>
+            <div class="metric-strip" id="assessmentSummary"></div>
+            <details class="accordion-form" id="assessmentDetails">
+              <summary>＋ Record an assessment</summary>
+              <form id="assessmentForm" class="form-grid">
+                <input id="assessmentId" type="hidden">
+                <div class="field"><label for="assessmentCourse">Class</label><select id="assessmentCourse" required></select></div>
+                <div class="field"><label for="assessmentType">Assessment type</label><select id="assessmentType"><option>Baseline</option><option>Checkpoint</option><option>Final</option></select></div>
+                <div class="field"><label for="assessmentDate">Date</label><input id="assessmentDate" type="date" required></div>
+                <div class="field"><label for="assessmentScore">Score (%)</label><input id="assessmentScore" type="number" min="0" max="100" step="0.1" required></div>
+                <div class="field full"><label for="assessmentNotes">What did the score reveal?</label><textarea id="assessmentNotes" placeholder="Strengths, gaps, what to practice next…"></textarea></div>
+                <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save assessment</button><button class="btn btn-secondary" type="button" id="clearAssessmentForm">Clear</button></div></div>
+              </form>
+            </details>
+            <div class="record-grid" id="assessmentList"></div>
+          </div>
+
+          <div class="card tool-card wide">
+            <div class="panel-header"><div><h3>Mastery checklist</h3><p>A topic counts as mastered after practice, explanation without notes, and delayed recall.</p></div><strong id="masterySummary">0%</strong></div>
+            <select class="search-input mastery-course-select" id="masteryCourse" aria-label="Choose a class for the mastery checklist"></select>
+            <div class="outcome-stack" id="masteryOutcomes"></div>
+          </div>
+
+          <div class="card tool-card">
+            <h3>Practice-question bank</h3><p>Build questions from your lessons instead of only rereading.</p>
+            <details class="accordion-form" id="questionDetails">
+              <summary>＋ Add or edit a question</summary>
+              <form id="questionForm" class="form-grid">
+                <input id="questionId" type="hidden">
+                <div class="field full"><label for="questionCourse">Class</label><select id="questionCourse" required></select></div>
+                <div class="field full"><label for="questionPrompt">Question</label><textarea id="questionPrompt" required placeholder="What would test whether I really understand this?"></textarea></div>
+                <div class="field full"><label for="questionAnswer">Answer in your own words</label><textarea id="questionAnswer" required></textarea></div>
+                <div class="field"><label for="questionConfidence">Confidence</label><select id="questionConfidence"><option value="1">1 · New</option><option value="2">2 · Shaky</option><option value="3">3 · Growing</option><option value="4">4 · Strong</option><option value="5">5 · Mastered</option></select></div>
+                <div class="field"><label for="questionNextReview">Next review</label><input id="questionNextReview" type="date"></div>
+                <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save question</button><button class="btn btn-secondary" type="button" id="clearQuestionForm">Clear</button></div></div>
+              </form>
+            </details>
+            <div class="record-grid" id="questionList"></div>
+          </div>
+          <div class="card tool-card">
+            <div class="panel-header"><div><h3>Quick quiz</h3><p>Reveal only after answering out loud or on paper.</p></div><button class="btn btn-small btn-pink" id="newQuizQuestion">New question</button></div>
+            <div class="quiz-stage" id="quizStage"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-portfolio">
+        <div class="section-title">
+          <div><p class="eyebrow">The evidence that your brain is blooming</p><h2>Learning Portfolio</h2><p>Keep the projects, reading, feedback, speaking practice, and reflections that show how you changed.</p></div>
+        </div>
+        <nav class="portfolio-jump" aria-label="Learning portfolio sections"><a href="#capstones">Capstones</a><a href="#feedback">Feedback</a><a href="#reading">Reading</a><a href="#speaking">Speaking</a><a href="#reflections">Reflections</a></nav>
+        <div class="tool-grid">
+          <div class="card tool-card wide section-anchor" id="capstones">
+            <div class="panel-header"><div><h3>Semester capstone projects</h3><p>Combine multiple classes into one meaningful project each term.</p></div></div>
+            <details class="accordion-form" id="capstoneDetails">
+              <summary>＋ Add or edit a capstone</summary>
+              <form id="capstoneForm" class="form-grid">
+                <input id="capstoneId" type="hidden">
+                <div class="field"><label for="capstoneSemester">Semester</label><select id="capstoneSemester"></select></div>
+                <div class="field"><label for="capstoneStatus">Status</label><select id="capstoneStatus"><option>Idea</option><option>Planned</option><option>In progress</option><option>Completed</option></select></div>
+                <div class="field full"><label for="capstoneTitle">Project title</label><input id="capstoneTitle" required></div>
+                <div class="field"><label for="capstoneDue">Target date</label><input id="capstoneDue" type="date"></div>
+                <div class="field"><label for="capstoneProgress">Progress (%)</label><input id="capstoneProgress" type="number" min="0" max="100" value="0"></div>
+                <div class="field full"><label for="capstoneGoal">What will this project prove?</label><textarea id="capstoneGoal"></textarea></div>
+                <div class="field full"><label for="capstoneEvidence">Project or evidence link</label><input id="capstoneEvidence" type="url" placeholder="https://…"></div>
+                <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save capstone</button><button class="btn btn-secondary" type="button" id="clearCapstoneForm">Clear</button></div></div>
+              </form>
+            </details>
+            <div class="record-grid" id="capstoneList"></div>
+          </div>
+
+          <div class="card tool-card wide section-anchor" id="feedback">
+            <h3>Feedback & revisions</h3><p>Keep the original feedback beside what you changed so revision becomes visible—not mysterious.</p>
+            <details class="accordion-form" id="feedbackDetails"><summary>＋ Add or edit feedback</summary>
+              <form id="feedbackForm" class="form-grid">
+                <input id="feedbackId" type="hidden">
+                <div class="field"><label for="feedbackCourse">Class</label><select id="feedbackCourse"></select></div>
+                <div class="field"><label for="feedbackDate">Date</label><input id="feedbackDate" type="date"></div>
+                <div class="field"><label for="feedbackProject">Assignment or project</label><input id="feedbackProject" required></div>
+                <div class="field"><label for="feedbackReviewer">Reviewer</label><input id="feedbackReviewer" placeholder="Friend, instructor, mentor, AI…"></div>
+                <div class="field full"><label for="feedbackReceived">Feedback received</label><textarea id="feedbackReceived" required></textarea></div>
+                <div class="field full"><label for="feedbackChanges">What I revised or decided</label><textarea id="feedbackChanges"></textarea></div>
+                <div class="field"><label for="feedbackStatus">Revision status</label><select id="feedbackStatus"><option>To review</option><option>Revising</option><option>Revised</option><option>Not using</option></select></div>
+                <div class="field"><label for="feedbackLink">Revised version link</label><input id="feedbackLink" type="url" placeholder="https://…"></div>
+                <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save feedback</button><button class="btn btn-secondary" type="button" id="clearFeedbackForm">Clear</button></div></div>
+              </form>
+            </details>
+            <div class="record-grid" id="feedbackList"></div>
+          </div>
+
+          <div class="card tool-card section-anchor" id="reading">
+            <h3>Reading library</h3><p>Track books, articles, stories, vocabulary, and what you actually took away.</p>
+            <details class="accordion-form" id="readingDetails"><summary>＋ Add or edit reading</summary>
+              <form id="readingForm" class="form-grid">
+                <input id="readingId" type="hidden">
+                <div class="field full"><label for="readingTitle">Title</label><input id="readingTitle" required></div>
+                <div class="field"><label for="readingAuthor">Author / source</label><input id="readingAuthor"></div>
+                <div class="field"><label for="readingType">Type</label><select id="readingType"><option>Book</option><option>Article</option><option>Essay</option><option>Research paper</option><option>Story / Literature</option><option>Course reading</option></select></div>
+                <div class="field"><label for="readingCourse">Class</label><select id="readingCourse"></select></div>
+                <div class="field"><label for="readingStatus">Status</label><select id="readingStatus"><option>Want to read</option><option>Reading</option><option>Finished</option><option>Paused</option></select></div>
+                <div class="field"><label for="readingProgress">Progress (%)</label><input id="readingProgress" type="number" min="0" max="100" value="0"></div>
+                <div class="field full"><label for="readingUrl">Link</label><input id="readingUrl" type="url" placeholder="https://…"></div>
+                <div class="field full"><label for="readingTakeaway">Summary, vocabulary, or key takeaway</label><textarea id="readingTakeaway"></textarea></div>
+                <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save reading</button><button class="btn btn-secondary" type="button" id="clearReadingForm">Clear</button></div></div>
+              </form>
+            </details>
+            <div class="record-grid" id="readingList"></div>
+          </div>
+
+          <div class="card tool-card section-anchor" id="speaking">
+            <h3>Speaking-practice log</h3><p>Track clarity and confidence across explanations, interviews, presentations, and pressure practice.</p>
+            <details class="accordion-form" id="speakingDetails"><summary>＋ Log speaking practice</summary>
+              <form id="speakingForm" class="form-grid">
+                <input id="speakingId" type="hidden">
+                <div class="field"><label for="speakingDate">Date</label><input id="speakingDate" type="date" required></div>
+                <div class="field"><label for="speakingCourse">Class</label><select id="speakingCourse"></select></div>
+                <div class="field full"><label for="speakingTopic">Topic or question</label><input id="speakingTopic" required></div>
+                <div class="field"><label for="speakingFormat">Practice type</label><select id="speakingFormat"><option>Explain a concept</option><option>Public speaking</option><option>Interview answer</option><option>Case-study presentation</option><option>Thinking under pressure</option><option>Vocal delivery</option></select></div>
+                <div class="field"><label for="speakingMinutes">Minutes</label><input id="speakingMinutes" type="number" min="1" max="180" value="5"></div>
+                <div class="field"><label for="speakingConfidence">Confidence (1–5)</label><input id="speakingConfidence" type="number" min="1" max="5" value="3"></div>
+                <div class="field"><label for="speakingRecording">Recording link (optional)</label><input id="speakingRecording" type="url" placeholder="https://…"></div>
+                <div class="field full"><label for="speakingReflection">What improved? What will I adjust?</label><textarea id="speakingReflection"></textarea></div>
+                <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save practice</button><button class="btn btn-secondary" type="button" id="clearSpeakingForm">Clear</button></div></div>
+              </form>
+            </details>
+            <div class="record-grid" id="speakingList"></div>
+          </div>
+
+          <div class="card tool-card wide section-anchor" id="reflections">
+            <h3>Reflection journal</h3><p>Notice what is working before automatically deciding you are behind.</p>
+            <details class="accordion-form" id="reflectionDetails"><summary>＋ Add a weekly reflection</summary>
+              <form id="reflectionForm" class="form-grid">
+                <input id="reflectionId" type="hidden">
+                <div class="field"><label for="reflectionDate">Week ending</label><input id="reflectionDate" type="date" required></div>
+                <div class="field"><label for="reflectionSemester">Semester</label><select id="reflectionSemester"></select></div>
+                <div class="field"><label for="reflectionMood">This week felt…</label><select id="reflectionMood"><option>🌱 Starting</option><option>🙂 Steady</option><option>✨ Proud</option><option>😵 Overloaded</option><option>🧩 Confused</option><option>🔥 Focused</option></select></div>
+                <div class="field"><label for="reflectionWins">Wins</label><textarea id="reflectionWins" required></textarea></div>
+                <div class="field"><label for="reflectionLearned">What I understand better</label><textarea id="reflectionLearned"></textarea></div>
+                <div class="field"><label for="reflectionChallenge">What is still difficult</label><textarea id="reflectionChallenge"></textarea></div>
+                <div class="field full"><label for="reflectionNext">One adjustment for next week</label><textarea id="reflectionNext"></textarea></div>
+                <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save reflection</button><button class="btn btn-secondary" type="button" id="clearReflectionForm">Clear</button></div></div>
+              </form>
+            </details>
+            <div class="record-grid" id="reflectionList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-career">
+        <div class="section-title">
+          <div><p class="eyebrow">Learning has somewhere to go</p><h2>Career Applications Tracker</h2><p>Keep applications, follow-ups, interviews, lessons, and wins in one place.</p></div>
+        </div>
+        <div class="metric-strip" id="careerSummary"></div>
+        <div class="card tool-card wide">
+          <details class="accordion-form" id="applicationDetails"><summary>＋ Add or edit an application</summary>
+            <form id="applicationForm" class="form-grid">
+              <input id="applicationId" type="hidden">
+              <div class="field"><label for="applicationCompany">Company</label><input id="applicationCompany" required></div>
+              <div class="field"><label for="applicationRole">Role</label><input id="applicationRole" required></div>
+              <div class="field full"><label for="applicationUrl">Job link</label><input id="applicationUrl" type="url" placeholder="https://…"></div>
+              <div class="field"><label for="applicationDate">Applied date</label><input id="applicationDate" type="date"></div>
+              <div class="field"><label for="applicationStatus">Stage</label><select id="applicationStatus"><option>Wishlist</option><option>Applied</option><option>Interview</option><option>Offer</option><option>Closed</option></select></div>
+              <div class="field"><label for="applicationFollowUp">Follow-up date</label><input id="applicationFollowUp" type="date"></div>
+              <div class="field"><label for="applicationContact">Contact / recruiter</label><input id="applicationContact"></div>
+              <div class="field full"><label for="applicationNotes">Notes, interview lessons, or next step</label><textarea id="applicationNotes"></textarea></div>
+              <div class="field full"><div class="button-row"><button class="btn btn-primary" type="submit">Save application</button><button class="btn btn-secondary" type="button" id="clearApplicationForm">Clear</button></div></div>
+            </form>
+          </details>
+          <div class="career-board" id="careerBoard"></div>
+        </div>
+
+        <div class="tool-grid" style="margin-top:18px;">
+          <div class="card tool-card celebration-banner">
+            <h3>Victory shelf</h3><p>Automatic milestones from across your academy.</p>
+            <div class="milestone-grid" id="milestoneShelf"></div>
+          </div>
+          <div class="card tool-card">
+            <h3>Personal reward jar</h3><p>Choose a small reward for a meaningful milestone. Yes, “get a boba” is academically valid here.</p>
+            <form id="rewardForm" class="form-grid">
+              <input id="rewardId" type="hidden">
+              <div class="field full"><label for="rewardMilestone">When I…</label><input id="rewardMilestone" required placeholder="Finish my first course"></div>
+              <div class="field full"><label for="rewardTreat">I will celebrate with…</label><input id="rewardTreat" required placeholder="A boba, new game night, creative day…"></div>
+              <div class="field full"><button class="btn btn-primary" type="submit">Add reward</button></div>
+            </form>
+            <div class="list-stack" id="rewardList" style="margin-top:15px;"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-settings">
+        <div class="section-title"><div><p class="eyebrow">Make the academy yours</p><h2>Settings & Backup</h2><p>Choose your current term, learning goal, weekly rhythm, and keep a safe copy of your work.</p></div></div>
+        <div class="settings-grid">
+          <div class="card settings-card">
+            <h3>Student profile</h3><p>This information personalizes your dashboard.</p>
+            <form id="profileForm" class="form-grid">
+              <div class="field"><label for="studentName">Your name</label><input id="studentName" required></div>
+              <div class="field"><label for="currentSemesterSetting">Current semester</label><select id="currentSemesterSetting"></select></div>
+              <div class="field"><label for="termStart">Term start</label><input id="termStart" type="date"></div>
+              <div class="field"><label for="weeklyHours">Weekly study-hour goal</label><input id="weeklyHours" type="number" min="1" max="60" step="1"></div>
+              <div class="field full"><label for="learningGoal">Why I am doing this</label><textarea id="learningGoal"></textarea></div>
+              <div class="field full"><button class="btn btn-primary" type="submit">Save profile</button></div>
+            </form>
+          </div>
+          <div class="card settings-card">
+            <h3>Backup your school</h3><p>Because browser storage can be cleared, export a backup after important study sessions.</p>
+            <div class="button-row" style="margin-bottom:14px;"><button class="btn btn-mint" id="exportData">⬇ Export backup</button><label class="btn btn-secondary" for="importData" style="cursor:pointer;">⬆ Import backup</label><input id="importData" type="file" accept="application/json" hidden></div>
+            <div class="privacy-box"><strong>Where is my data?</strong><br>Your academy records stay in this browser on this device. If you choose Google Calendar sync, the planner tasks you sync are sent to Google's Calendar API; your notes, grades, reflections, and other academy records stay local.</div>
+          </div>
+          <div class="card settings-card">
+            <h3>Hidden-page setup</h3><p>This file is designed to live outside your main portfolio navigation.</p>
+            <div class="privacy-box">
+              Suggested address: <strong>tanaybradley.com/brain-bloom-academy.php</strong><br><br>
+              The page includes search-engine noindex instructions. Do not link it in your header, footer, sitemap, or portfolio project grid. For true access protection, use password protection provided by your web host.
+            </div>
+          </div>
+          <div class="card settings-card">
+            <h3>Fresh start</h3><p>This removes every class, note, grade, plan, assessment, portfolio entry, application, reward, and study session saved by this page.</p>
+            <button class="btn btn-danger" id="resetData">Reset all academy data</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="courseModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
+      <div class="modal-header"><h2 id="courseModalTitle">Configure class</h2><button class="modal-close" data-close="courseModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <div class="modal-course-overview" id="courseModalOverview"></div>
+        <form id="courseForm" class="form-grid">
+          <input id="courseIdField" type="hidden">
+          <div class="field full"><label for="selectedCourseName">Online course or resource name</label><input id="selectedCourseName" placeholder="Example: Grammar and Punctuation"></div>
+          <div class="field"><label for="courseProvider">Platform/provider</label><input id="courseProvider" placeholder="Coursera, Khan Academy, book…"></div>
+          <div class="field"><label for="courseInstructor">Instructor</label><input id="courseInstructor" placeholder="Optional"></div>
+          <div class="field full"><label for="courseUrl">Course link</label><input id="courseUrl" type="url" placeholder="https://…"></div>
+          <div class="field"><label for="courseStart">Start date</label><input id="courseStart" type="date"></div>
+          <div class="field"><label for="courseEnd">Target completion</label><input id="courseEnd" type="date"></div>
+          <div class="field"><label for="courseStatus">Status</label><select id="courseStatus"><option>Not started</option><option>In progress</option><option>Completed</option><option>Paused</option></select></div>
+          <div class="field"><label for="courseTarget">Target grade (%)</label><input id="courseTarget" type="number" min="0" max="100" value="85"></div>
+          <div class="field full"><label for="courseGoal">What I want to be able to do after this class</label><textarea id="courseGoal" placeholder="Write the outcome in your own words…"></textarea></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary" id="courseOpenLink">Open course link</button><button class="btn btn-secondary" id="courseAddNote">＋ Note</button><button class="btn btn-secondary" id="courseAddAssignment">＋ Assignment</button><button class="btn btn-primary" id="saveCourse">Save class</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="assignmentModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="assignmentModalTitle">
+      <div class="modal-header"><h2 id="assignmentModalTitle">Add assignment</h2><button class="modal-close" data-close="assignmentModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <form id="assignmentForm" class="form-grid">
+          <input id="assignmentId" type="hidden">
+          <div class="field full"><label for="assignmentTitle">Assignment name</label><input id="assignmentTitle" required placeholder="Example: Week 1 retrieval practice"></div>
+          <div class="field full"><label for="assignmentCourse">Class</label><select id="assignmentCourse" required></select></div>
+          <div class="field"><label for="assignmentType">Type</label><select id="assignmentType"><option>Practice</option><option>Reading</option><option>Quiz</option><option>Assignment</option><option>Essay</option><option>Presentation</option><option>Project</option><option>Exam</option></select></div>
+          <div class="field"><label for="assignmentDue">Due date</label><input id="assignmentDue" type="date"></div>
+          <div class="field"><label for="assignmentStatus">Status</label><select id="assignmentStatus"><option>Not started</option><option>In progress</option><option>Completed</option></select></div>
+          <div class="field"><label for="pointsPossible">Points possible</label><input id="pointsPossible" type="number" min="0" step="0.1" placeholder="100"></div>
+          <div class="field"><label for="pointsEarned">Points earned</label><input id="pointsEarned" type="number" min="0" step="0.1" placeholder="Leave blank until graded"></div>
+          <div class="field full"><label for="assignmentDetails">Directions or reflection</label><textarea id="assignmentDetails" placeholder="What does finished look like? What did you learn?"></textarea></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-danger" id="deleteAssignment" hidden>Delete</button><button class="btn btn-secondary" data-close="assignmentModal">Cancel</button><button class="btn btn-primary" id="saveAssignment">Save assignment</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="sessionModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sessionModalTitle">
+      <div class="modal-header"><h2 id="sessionModalTitle">Log study session</h2><button class="modal-close" data-close="sessionModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <form id="sessionForm" class="form-grid">
+          <div class="field"><label for="sessionDate">Date</label><input id="sessionDate" type="date" required></div>
+          <div class="field"><label for="sessionMinutes">Minutes</label><input id="sessionMinutes" type="number" min="1" max="600" required value="25"></div>
+          <div class="field full"><label for="sessionCourse">Class</label><select id="sessionCourse" required></select></div>
+          <div class="field full"><label for="sessionTopic">What did you study?</label><input id="sessionTopic" placeholder="Lesson, chapter, skill, or assignment"></div>
+          <div class="field full"><label for="sessionReflection">What clicked—or what is still confusing?</label><textarea id="sessionReflection"></textarea></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-secondary" data-close="sessionModal">Cancel</button><button class="btn btn-primary" id="saveSession">Log session</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="planModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="planModalTitle">
+      <div class="modal-header"><h2 id="planModalTitle">Add task</h2><button class="modal-close" data-close="planModal" aria-label="Close">×</button></div>
+      <div class="modal-body">
+        <form id="planForm" class="form-grid">
+          <input id="planId" type="hidden">
+          <div class="field"><label for="planDate">Date</label><input id="planDate" type="date" required></div>
+          <div class="field"><label for="planTime">Start time</label><input id="planTime" type="time"></div>
+          <div class="field full"><label for="planTitle">What are you doing?</label><input id="planTitle" required placeholder="Grammar lesson, portfolio edits, vocal practice…"></div>
+          <div class="field"><label for="planCategory">Life area</label><select id="planCategory"><option>School</option><option>UX / Career</option><option>Job search</option><option>Music / Creative</option><option>Work</option><option>Rest / Personal</option></select></div>
+          <div class="field"><label for="planCourse">Class (optional)</label><select id="planCourse"></select></div>
+          <div class="field"><label for="planMinutes">Planned minutes</label><input id="planMinutes" type="number" min="5" max="720" step="5" value="45"></div>
+          <div class="field"><label for="planStatus">Status</label><select id="planStatus"><option>Planned</option><option>Completed</option><option>Moved</option><option>Skipped</option></select></div>
+          <div class="field full"><label class="check-row"><input id="planSyncGoogle" type="checkbox"> Keep this task synced with Google Calendar <span class="sync-badge" id="planSyncBadge"></span></label></div>
+        </form>
+      </div>
+      <div class="modal-footer"><button class="btn btn-danger" id="deletePlan" hidden>Delete</button><button class="btn btn-mint" id="completePlan" hidden>✓ Task done</button><button class="btn btn-secondary" data-close="planModal">Cancel</button><button class="btn btn-primary" id="savePlan" type="submit" form="planForm">Save task</button></div>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    "use strict";
+
+    const STORAGE_KEY = "brainBloomAcademy_v1";
+
+    const semesters = [
+      {
+        id: 1,
+        title: "Build the Foundation",
+        description: "Create the learning system, strengthen basic communication, rebuild math without shame, and begin the job transition immediately.",
+        colors: ["#e7ddff", "#ffe4ed"],
+        courses: ["LR101", "COM101", "MATH101", "UX101"]
+      },
+      {
+        id: 2,
+        title: "Understand & Explain",
+        description: "Move from recognizing information to identifying the main idea, explaining it clearly, and using numbers in everyday reasoning.",
+        colors: ["#dff6ee", "#ddecff"],
+        courses: ["READ201", "COM201", "MATH201", "UX201"]
+      },
+      {
+        id: 3,
+        title: "Think Critically & Write",
+        description: "Learn to test claims, separate evidence from assumption, build arguments, and write organized academic and professional work.",
+        colors: ["#fff0c8", "#ffe2e9"],
+        courses: ["THINK301", "LOGIC301", "WRITE301", "UX301"]
+      },
+      {
+        id: 4,
+        title: "Speak & Respond",
+        description: "Strengthen verbal organization, composure, psychology knowledge, interview responses, and the ability to think while being observed.",
+        colors: ["#f0e4ff", "#dff4ff"],
+        courses: ["SPEAK401", "PRESS401", "PSY401", "UX401"]
+      },
+      {
+        id: 5,
+        title: "Research & Data",
+        description: "Ask answerable questions, judge evidence, understand statistics, and turn research findings into useful recommendations.",
+        colors: ["#dcf7ed", "#fff0cb"],
+        courses: ["RES501", "STAT501", "DATA501", "UX501"]
+      },
+      {
+        id: 6,
+        title: "Understand the World",
+        description: "Build practical knowledge of history, civic life, economics, finance, science, and the business systems surrounding design work.",
+        colors: ["#dcecff", "#e9e0ff"],
+        courses: ["HIST601", "ECON601", "SCI601", "UX601"]
+      },
+      {
+        id: 7,
+        title: "Create & Interpret",
+        description: "Study how people create meaning through stories, music, art, writing, content, culture, and accessible experiences.",
+        colors: ["#ffe2ee", "#fff1c9"],
+        courses: ["LIT701", "ART701", "WRITE701", "UX701"]
+      },
+      {
+        id: 8,
+        title: "Lead & Launch",
+        description: "Combine communication, project leadership, business analysis, and UX into a confident capstone and career-launch system.",
+        colors: ["#e5dcff", "#d8f3e8"],
+        courses: ["PM801", "BA801", "COM801", "UX801"]
+      }
+    ];
+
+    const curriculum = [
+      { id:"LR101", semester:1, icon:"🧠", color:"#eee7ff", title:"Learning & Memory Foundations", focus:"Memory, retrieval, note-taking, study habits, and review systems.", outcomes:["Use active recall and spaced review", "Build notes that support understanding", "Recognize the difference between familiarity and mastery", "Create a repeatable weekly study system"], prereq:"Starting point" },
+      { id:"COM101", semester:1, icon:"✍🏾", color:"#ffe6ef", title:"Communication Foundations I", focus:"Grammar, punctuation, spelling, vocabulary, and clear sentence construction.", outcomes:["Identify the parts of a complete sentence", "Use essential punctuation accurately", "Improve spelling and vocabulary through context", "Write clear simple and compound sentences"], prereq:"Take alongside LR101" },
+      { id:"MATH101", semester:1, icon:"➗", color:"#e1f3ff", title:"Mathematics Foundations I", focus:"Four operations, order of operations, fractions, decimals, and percentages.", outcomes:["Calculate accurately without rushing", "Translate between fractions, decimals, and percentages", "Use estimation to check answers", "Explain each step in plain language"], prereq:"Starting point" },
+      { id:"UX101", semester:1, icon:"💼", color:"#e1f6ed", title:"UX Career Lab I", focus:"Career direction, résumé, portfolio audit, applications, and a sustainable job-search system.", outcomes:["Choose a focused UX-related target", "Audit existing case studies", "Create a weekly application rhythm", "Explain transferable work experience"], prereq:"Runs every semester" },
+
+      { id:"READ201", semester:2, icon:"📖", color:"#fff0cc", title:"Reading Comprehension & Active Notes", focus:"Main ideas, context clues, annotation, summarizing, paraphrasing, and delayed recall.", outcomes:["Identify main and supporting ideas", "Annotate without highlighting everything", "Summarize without copying", "Recall a text after time has passed"], prereq:"LR101 + COM101" },
+      { id:"COM201", semester:2, icon:"🧩", color:"#eee5ff", title:"Communication Foundations II", focus:"Paragraphs, sentence variety, transitions, vocabulary in context, and clear expression.", outcomes:["Write focused paragraphs", "Connect ideas with transitions", "Vary sentence length and structure", "Choose precise words without overcomplicating"], prereq:"COM101" },
+      { id:"MATH201", semester:2, icon:"📊", color:"#dff3ff", title:"Quantitative Reasoning", focus:"Ratios, proportions, percent change, introductory algebra, graphs, and tables.", outcomes:["Solve ratio and proportion problems", "Calculate percent increase and decrease", "Read graphs and tables accurately", "Use variables to solve basic problems"], prereq:"MATH101" },
+      { id:"UX201", semester:2, icon:"🔎", color:"#def5ea", title:"UX Career Lab II", focus:"UX research, analysis, problem statements, evidence, and rebuilding one case study.", outcomes:["Turn observations into findings", "Separate evidence from assumptions", "Write a clear problem statement", "Improve one portfolio case study"], prereq:"UX101 + READ201" },
+
+      { id:"THINK301", semester:3, icon:"💡", color:"#fff1ca", title:"Critical Thinking & Information Literacy", focus:"Facts, opinions, inferences, bias, source reliability, and misinformation.", outcomes:["Separate fact from interpretation", "Identify assumptions and bias", "Evaluate source credibility", "Pause before accepting or repeating a claim"], prereq:"READ201" },
+      { id:"LOGIC301", semester:3, icon:"⚖️", color:"#e9e1ff", title:"Logic, Argument & Evidence", focus:"Claims, reasons, evidence, assumptions, fallacies, counterarguments, and sound conclusions.", outcomes:["Map the structure of an argument", "Recognize common reasoning errors", "Use evidence that actually supports a claim", "Respond to counterarguments fairly"], prereq:"THINK301" },
+      { id:"WRITE301", semester:3, icon:"📝", color:"#ffe4ec", title:"Academic & Essay Writing", focus:"Thesis statements, outlines, cohesion, essays, evidence, revision, and citation basics.", outcomes:["Plan before drafting", "Write a defensible thesis", "Build cohesive body paragraphs", "Revise a complete essay using feedback"], prereq:"COM201 + READ201" },
+      { id:"UX301", semester:3, icon:"🎨", color:"#dff4eb", title:"UX Career Lab III", focus:"Evidence-based case studies, metrics, portfolio storytelling, and iteration.", outcomes:["Connect decisions to evidence", "Use an honest project narrative", "Explain impact with appropriate metrics", "Publish a stronger case study"], prereq:"UX201 + WRITE301" },
+
+      { id:"SPEAK401", semester:4, icon:"🎤", color:"#ffe6ef", title:"Public Speaking & Verbal Communication", focus:"Speech structure, delivery, vocal presence, audience awareness, and explaining without a full script.", outcomes:["Organize a beginning, middle, and end", "Speak from key points instead of memorizing", "Use examples to clarify ideas", "Review recordings and improve delivery"], prereq:"WRITE301" },
+      { id:"PRESS401", semester:4, icon:"⚡", color:"#fff0cc", title:"Thinking & Answering Under Pressure", focus:"Active listening, pausing, organizing answers, clarifying questions, Q&A, and interviews.", outcomes:["Use a pause–structure–respond method", "Ask clarifying questions without panic", "Answer unexpected follow-ups", "Separate confidence from knowing everything"], prereq:"SPEAK401 + LOGIC301" },
+      { id:"PSY401", semester:4, icon:"🪞", color:"#e9e1ff", title:"Psychology & Human Behavior", focus:"Cognition, motivation, perception, decision-making, social psychology, and learning.", outcomes:["Explain major influences on behavior", "Connect cognition to learning and memory", "Recognize common decision biases", "Apply psychology without diagnosing people"], prereq:"THINK301" },
+      { id:"UX401", semester:4, icon:"🗣️", color:"#def5ea", title:"UX Career Lab IV", focus:"Mock interviews, case-study presentations, design challenges, follow-up questions, and feedback.", outcomes:["Present a case study clearly", "Answer behavioral questions with evidence", "Think aloud during a challenge", "Receive feedback without losing your point of view"], prereq:"UX301 + SPEAK401" },
+
+      { id:"RES501", semester:5, icon:"🔬", color:"#dff4ff", title:"Research Methods & Evidence", focus:"Research questions, qualitative and quantitative methods, sampling, ethics, synthesis, and limitations.", outcomes:["Write an answerable research question", "Choose an appropriate research method", "Recognize sampling and study limitations", "Synthesize multiple sources responsibly"], prereq:"THINK301 + WRITE301" },
+      { id:"STAT501", semester:5, icon:"📈", color:"#fff0cc", title:"Statistics & Probability", focus:"Averages, distributions, probability, variation, correlation, causation, and interpreting results.", outcomes:["Calculate and interpret common averages", "Understand variability and basic probability", "Distinguish correlation from causation", "Question misleading statistics"], prereq:"MATH201" },
+      { id:"DATA501", semester:5, icon:"💻", color:"#e8e0ff", title:"Excel, Data Literacy & Visualization", focus:"Formulas, tables, charts, pivot tables, Power BI basics, and data storytelling.", outcomes:["Clean and organize a small dataset", "Use essential formulas and pivot tables", "Choose an honest chart", "Explain what data does and does not show"], prereq:"MATH201 + STAT501" },
+      { id:"UX501", semester:5, icon:"🧪", color:"#dcf5e9", title:"UX Career Lab V", focus:"A complete research plan, findings analysis, UX metrics, data storytelling, and recommendations.", outcomes:["Plan a small research study", "Code or group qualitative findings", "Connect findings to recommendations", "Present a research-backed decision"], prereq:"RES501 + DATA501" },
+
+      { id:"HIST601", semester:6, icon:"🏛️", color:"#fff0cf", title:"History & Civic Understanding", focus:"Chronological reasoning, primary sources, major U.S. and world developments, government, and civic systems.", outcomes:["Place events in context", "Compare primary and secondary sources", "Explain basic branches and levels of government", "Connect past events to present systems"], prereq:"READ201 + THINK301" },
+      { id:"ECON601", semester:6, icon:"💵", color:"#def4e9", title:"Economics, Personal Finance & Business Math", focus:"Supply and demand, inflation, budgeting, interest, taxes, profit, margin, and financial decisions.", outcomes:["Explain foundational economic ideas", "Calculate interest, profit, and margin", "Compare financial options", "Build decisions around goals instead of pressure"], prereq:"MATH201" },
+      { id:"SCI601", semester:6, icon:"🌎", color:"#dfeeff", title:"Life & Physical Science Literacy", focus:"Scientific method, biology, health, chemistry, physics, earth science, and evaluating scientific claims.", outcomes:["Explain how scientific evidence develops", "Understand foundational concepts across sciences", "Interpret a basic scientific study", "Recognize exaggerated health or science claims"], prereq:"RES501 + STAT501" },
+      { id:"UX601", semester:6, icon:"🧭", color:"#e9e1ff", title:"UX Career Lab VI", focus:"Business and process analysis, stakeholder mapping, workflows, requirements, and service blueprints.", outcomes:["Map a current-state process", "Identify root causes instead of symptoms", "Write clear requirements", "Connect user needs with business operations"], prereq:"UX501 + ECON601" },
+
+      { id:"LIT701", semester:7, icon:"📚", color:"#ffe4ed", title:"Literature, Storytelling & Analysis", focus:"Close reading, themes, character, symbolism, narrative structure, interpretation, and written analysis.", outcomes:["Read for meaning beyond plot", "Support an interpretation with textual evidence", "Analyze character and theme", "Explain how structure changes impact"], prereq:"WRITE301 + THINK301" },
+      { id:"ART701", semester:7, icon:"🎶", color:"#fff0c9", title:"Music, Arts & Cultural Literacy", focus:"Music history, visual arts, performance, interpretation, and cultural context.", outcomes:["Describe artistic choices with specific language", "Place selected works in cultural context", "Compare different interpretations", "Connect artistic form to emotional effect"], prereq:"HIST601" },
+      { id:"WRITE701", semester:7, icon:"💌", color:"#e7ddff", title:"Professional & Creative Communication", focus:"Emails, reports, proposals, instructions, SOPs, creative writing, voice, editing, and proofreading.", outcomes:["Match tone to purpose and audience", "Write clear workplace documents", "Develop a distinct creative voice", "Edit for clarity, concision, and correctness"], prereq:"WRITE301 + COM201" },
+      { id:"UX701", semester:7, icon:"🌈", color:"#def4ea", title:"UX Career Lab VII", focus:"Content design, storytelling, portfolio voice, accessibility, and cross-functional communication.", outcomes:["Improve interface and case-study content", "Explain accessibility decisions", "Adapt communication for different partners", "Create a cohesive professional voice"], prereq:"UX601 + WRITE701" },
+
+      { id:"PM801", semester:8, icon:"🗓️", color:"#dfeeff", title:"Project Management & Agile Foundations", focus:"Scope, timelines, risk, stakeholders, Agile, Scrum, Kanban, and continuous improvement.", outcomes:["Break work into realistic tasks", "Track scope, risk, and dependencies", "Explain core Agile practices", "Choose a workflow that fits the work"], prereq:"UX601" },
+      { id:"BA801", semester:8, icon:"🧠", color:"#fff0ce", title:"Business & Process Analysis", focus:"Process mapping, root-cause analysis, requirements, KPIs, change, and solution evaluation.", outcomes:["Investigate a business problem systematically", "Define useful requirements and measures", "Compare possible solutions", "Present a defensible recommendation"], prereq:"ECON601 + UX601" },
+      { id:"COM801", semester:8, icon:"🤝", color:"#ffe2ec", title:"Advanced Communication & Leadership", focus:"Facilitation, persuasion, negotiation, conflict, presentations, feedback, and executive summaries.", outcomes:["Facilitate a structured discussion", "Disagree without losing clarity", "Write an executive-level summary", "Communicate a decision and its reasoning"], prereq:"PRESS401 + WRITE701" },
+      { id:"UX801", semester:8, icon:"🚀", color:"#dcf5e8", title:"UX Career Lab Capstone", focus:"A polished portfolio, complete capstone, job-search campaign, mock interview, and 30/60/90-day plan.", outcomes:["Publish a coherent portfolio", "Complete one evidence-rich capstone", "Run a focused application campaign", "Enter the next role with a learning plan"], prereq:"All previous UX Career Labs" }
+    ];
+
+    const defaultState = () => ({
+      version: 2,
+      profile: {
+        name: "Tanay",
+        currentSemester: 1,
+        termStart: "",
+        weeklyHours: 8,
+        learningGoal: "Build a mind I trust: understand information, communicate clearly, think under pressure, strengthen my career, and keep learning for life."
+      },
+      calendarSettings: {
+        googleClientId: ""
+      },
+      coursePrefs: {},
+      assignments: [],
+      notes: [],
+      studySessions: [],
+      planner: [],
+      assessments: [],
+      mastery: {},
+      questions: [],
+      feedback: [],
+      capstones: [],
+      reading: [],
+      speaking: [],
+      reflections: [],
+      applications: [],
+      rewards: [],
+      celebrated: [],
+      activeNoteId: null
+    });
+
+    let state = loadState();
+    let displayedSemester = state.profile.currentSemester;
+    let noteSaveTimer = null;
+    let savedRange = null;
+    let plannerWeekCursor = startOfWeek(new Date());
+    let calendarCursor = new Date(plannerWeekCursor);
+    let calendarViewMode = "week";
+    let plannerScope = "week";
+    let googleAccessToken = null;
+    let googleTokenClient = null;
+    let googleCalendarEvents = [];
+    let activeQuizQuestionId = null;
+    let quizAnswerVisible = false;
+    let timer = { totalSeconds: 25 * 60, remaining: 25 * 60, minutes: 25, running: false, interval: null };
+
+    const viewMeta = {
+      dashboard: ["Dashboard", "Your learning world, organized and ready."],
+      curriculum: ["Curriculum Map", "See what comes next and why it comes next."],
+      notes: ["Study Notes", "Capture ideas in a notebook that actually feels like you."],
+      grades: ["Assignments & Grades", "Track evidence of progress without turning learning into punishment."],
+      study: ["Study Lounge", "Focus, retrieve, explain, repeat."],
+      planner: ["Planner & Calendar", "Give your learning a realistic place in your actual life."],
+      mastery: ["Mastery Lab", "Measure, retrieve, explain, and remember."],
+      portfolio: ["Learning Portfolio", "Keep the evidence of how your understanding changed."],
+      career: ["Career Tracker", "Turn learning into applications, interviews, and a new role."],
+      settings: ["Settings & Backup", "Keep your academy personal, private, and backed up."]
+    };
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return defaultState();
+        const parsed = JSON.parse(raw);
+        const fresh = defaultState();
+        return {
+          ...fresh,
+          ...parsed,
+          profile: { ...fresh.profile, ...(parsed.profile || {}) },
+          calendarSettings: { ...fresh.calendarSettings, ...(parsed.calendarSettings || {}) },
+          coursePrefs: parsed.coursePrefs || {},
+          assignments: Array.isArray(parsed.assignments) ? parsed.assignments : [],
+          notes: Array.isArray(parsed.notes) ? parsed.notes : [],
+          studySessions: Array.isArray(parsed.studySessions) ? parsed.studySessions : [],
+          planner: Array.isArray(parsed.planner) ? parsed.planner : [],
+          assessments: Array.isArray(parsed.assessments) ? parsed.assessments : [],
+          mastery: parsed.mastery && typeof parsed.mastery === "object" ? parsed.mastery : {},
+          questions: Array.isArray(parsed.questions) ? parsed.questions : [],
+          feedback: Array.isArray(parsed.feedback) ? parsed.feedback : [],
+          capstones: Array.isArray(parsed.capstones) ? parsed.capstones : [],
+          reading: Array.isArray(parsed.reading) ? parsed.reading : [],
+          speaking: Array.isArray(parsed.speaking) ? parsed.speaking : [],
+          reflections: Array.isArray(parsed.reflections) ? parsed.reflections : [],
+          applications: Array.isArray(parsed.applications) ? parsed.applications : [],
+          rewards: Array.isArray(parsed.rewards) ? parsed.rewards : [],
+          celebrated: Array.isArray(parsed.celebrated) ? parsed.celebrated : []
+        };
+      } catch (error) {
+        console.warn("Could not load Brain Bloom data", error);
+        return defaultState();
+      }
+    }
+
+    function saveState(message = "Saved") {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      const status = document.getElementById("noteSaveStatus");
+      if (status) status.textContent = `${message} · ${new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"})}`;
+      const milestone = typeof milestoneDefinitions === "function" ? milestoneDefinitions().find(item => item.earned && !state.celebrated.includes(item.key)) : null;
+      if (milestone && document.getElementById("toastRegion")) {
+        state.celebrated.push(milestone.key);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        setTimeout(() => celebrate(`${milestone.icon} Achievement unlocked: ${milestone.title}!`), 80);
+      }
+    }
+
+    function uid(prefix) {
+      return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    }
+
+    function esc(value) {
+      return String(value ?? "").replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
+    }
+
+    function safeUrl(value) {
+      if (!value) return "";
+      try {
+        const url = new URL(value, window.location.href);
+        return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+      } catch { return ""; }
+    }
+
+    function courseById(id) { return curriculum.find(course => course.id === id); }
+    function semesterById(id) { return semesters.find(semester => semester.id === Number(id)); }
+    function prefFor(id) { return { status:"Not started", targetGrade:85, ...state.coursePrefs[id] }; }
+
+    function courseOptions(selected = "", includeAll = false) {
+      const groups = semesters.map(semester => {
+        const options = semester.courses.map(id => {
+          const course = courseById(id);
+          return `<option value="${course.id}" ${course.id === selected ? "selected" : ""}>${esc(course.id)} · ${esc(course.title)}</option>`;
+        }).join("");
+        return `<optgroup label="Semester ${semester.id}: ${esc(semester.title)}">${options}</optgroup>`;
+      }).join("");
+      return `${includeAll ? '<option value="all">All classes</option>' : ""}${groups}`;
+    }
+
+    function formatDate(value, fallback = "No date") {
+      if (!value) return fallback;
+      const date = new Date(`${value}T12:00:00`);
+      return Number.isNaN(date.getTime()) ? fallback : date.toLocaleDateString(undefined, { month:"short", day:"numeric", year:"numeric" });
+    }
+
+    function localDateString(date = new Date()) {
+      const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+      return local.toISOString().slice(0,10);
+    }
+
+    function getCourseAssignments(courseId) { return state.assignments.filter(item => item.courseId === courseId); }
+
+    function courseProgress(courseId) {
+      const assignments = getCourseAssignments(courseId);
+      if (assignments.length) return Math.round(assignments.filter(item => item.status === "Completed").length / assignments.length * 100);
+      const status = prefFor(courseId).status;
+      return status === "Completed" ? 100 : status === "In progress" ? 35 : status === "Paused" ? 15 : 0;
+    }
+
+    function courseGrade(courseId) {
+      const graded = getCourseAssignments(courseId).filter(item => Number(item.possible) > 0 && item.earned !== "" && item.earned !== null && item.earned !== undefined);
+      if (!graded.length) return null;
+      const earned = graded.reduce((sum, item) => sum + Number(item.earned), 0);
+      const possible = graded.reduce((sum, item) => sum + Number(item.possible), 0);
+      return possible ? earned / possible * 100 : null;
+    }
+
+    function aggregateGrade(courseIds = curriculum.map(c => c.id)) {
+      const graded = state.assignments.filter(item => courseIds.includes(item.courseId) && Number(item.possible) > 0 && item.earned !== "" && item.earned !== null && item.earned !== undefined);
+      if (!graded.length) return null;
+      const earned = graded.reduce((sum, item) => sum + Number(item.earned), 0);
+      const possible = graded.reduce((sum, item) => sum + Number(item.possible), 0);
+      return possible ? earned / possible * 100 : null;
+    }
+
+    function letterGrade(percentage) {
+      if (percentage === null || Number.isNaN(percentage)) return "—";
+      if (percentage >= 90) return "A";
+      if (percentage >= 80) return "B";
+      if (percentage >= 70) return "C";
+      if (percentage >= 60) return "D";
+      return "F";
+    }
+
+    function semesterProgress(id) {
+      const semester = semesterById(id);
+      if (!semester) return 0;
+      return Math.round(semester.courses.reduce((sum, courseId) => sum + courseProgress(courseId), 0) / semester.courses.length);
+    }
+
+    function weeklyMinutes() {
+      const now = new Date();
+      const day = (now.getDay() + 6) % 7;
+      const monday = new Date(now);
+      monday.setHours(0,0,0,0);
+      monday.setDate(now.getDate() - day);
+      return state.studySessions.filter(session => new Date(`${session.date}T12:00:00`) >= monday).reduce((sum, session) => sum + Number(session.minutes || 0), 0);
+    }
+
+    function learningStreak() {
+      const dates = new Set([
+        ...state.studySessions.map(session => session.date),
+        ...state.notes.map(note => note.updatedAt ? localDateString(new Date(note.updatedAt)) : "")
+      ].filter(Boolean));
+      let streak = 0;
+      const cursor = new Date();
+      cursor.setHours(12,0,0,0);
+      if (!dates.has(localDateString(cursor))) cursor.setDate(cursor.getDate() - 1);
+      while (dates.has(localDateString(cursor))) { streak++; cursor.setDate(cursor.getDate() - 1); }
+      return streak;
+    }
+
+    function xpTotal() {
+      const completed = state.assignments.filter(item => item.status === "Completed").length;
+      const minutes = state.studySessions.reduce((sum, session) => sum + Number(session.minutes || 0), 0);
+      const configured = Object.values(state.coursePrefs).filter(pref => pref.selectedName || pref.url).length;
+      const mastered = Object.values(state.mastery || {}).reduce((sum, course) => sum + Object.values(course || {}).filter(item => item.practice && item.explain && item.delayed).length, 0);
+      const portfolioWork = state.capstones.filter(x=>x.status === "Completed").length * 75 + state.reflections.length * 12 + state.speaking.length * 15;
+      const careerWork = state.applications.filter(x=>x.status !== "Wishlist").length * 18;
+      return completed * 30 + state.notes.length * 12 + Math.floor(minutes / 10) * 5 + configured * 8 + mastered * 20 + portfolioWork + careerWork;
+    }
+
+    function levelInfo() {
+      const xp = xpTotal();
+      const level = Math.floor(xp / 100) + 1;
+      const inLevel = xp % 100;
+      return { xp, level, inLevel, next: 100 - inLevel };
+    }
+
+    function toast(message, type = "success") {
+      const node = document.createElement("div");
+      node.className = `toast ${type}`;
+      node.textContent = message;
+      document.getElementById("toastRegion").appendChild(node);
+      setTimeout(() => node.remove(), 3300);
+    }
+
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.hidden = false;
+      document.body.style.overflow = "hidden";
+      setTimeout(() => modal.querySelector("input:not([type=hidden]), select, button")?.focus(), 20);
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).hidden = true;
+      if (![...document.querySelectorAll(".modal-backdrop")].some(modal => !modal.hidden)) document.body.style.overflow = "";
+    }
+
+    function showView(name) {
+      if (!viewMeta[name]) name = "dashboard";
+      document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === `view-${name}`));
+      document.querySelectorAll(".nav-button[data-view]").forEach(button => button.classList.toggle("active", button.dataset.view === name));
+      document.getElementById("pageTitle").textContent = viewMeta[name][0];
+      document.getElementById("pageSubtitle").textContent = viewMeta[name][1];
+      location.hash = name === "dashboard" ? "" : name;
+      document.body.classList.remove("menu-open");
+      window.scrollTo({ top:0, behavior:"smooth" });
+      if (name === "dashboard") renderDashboard();
+      if (name === "curriculum") renderCurriculum();
+      if (name === "notes") renderNotes();
+      if (name === "grades") renderGrades();
+      if (name === "study") renderStudy();
+      if (name === "planner") renderPlanner();
+      if (name === "mastery") renderMastery();
+      if (name === "portfolio") renderPortfolio();
+      if (name === "career") renderCareer();
+      if (name === "settings") renderSettings();
+    }
+
+    function renderAll() {
+      renderDashboard();
+      renderCurriculum();
+      populateSharedCourseSelects();
+      renderNotes();
+      renderGrades();
+      renderStudy();
+      renderPlanner();
+      renderMastery();
+      renderPortfolio();
+      renderCareer();
+      renderSettings();
+      const info = levelInfo();
+      document.getElementById("topLevel").textContent = `Level ${info.level}`;
+    }
+
+    function renderDashboard() {
+      const semester = semesterById(state.profile.currentSemester);
+      const progress = semesterProgress(semester.id);
+      const grade = aggregateGrade(semester.courses);
+      const info = levelInfo();
+      document.getElementById("heroSemester").textContent = `Semester ${semester.id} · ${semester.title}`;
+      document.getElementById("heroGreeting").textContent = `Hey, ${state.profile.name || "student"}—let’s grow that brilliant brain.`;
+      document.getElementById("heroQuote").textContent = state.profile.learningGoal || "Understand deeply. Communicate clearly. Keep growing.";
+      document.getElementById("overallProgress").textContent = `${progress}%`;
+      document.getElementById("overallRing").style.setProperty("--progress", `${progress * 3.6}deg`);
+      document.getElementById("xpValue").textContent = `${info.xp} XP · Level ${info.level}`;
+      document.getElementById("xpNext").textContent = `${info.next} XP to Level ${info.level + 1}`;
+      document.getElementById("dashGrade").textContent = grade === null ? "—" : `${grade.toFixed(1)}%`;
+      document.getElementById("dashNotes").textContent = state.notes.length;
+      const minutes = weeklyMinutes();
+      document.getElementById("dashMinutes").textContent = minutes >= 60 ? `${Math.floor(minutes/60)}h ${minutes%60}m` : `${minutes}m`;
+      document.getElementById("dashStreak").textContent = `${learningStreak()} days`;
+      document.getElementById("currentCoursesTitle").textContent = `Semester ${semester.id} Courses`;
+
+      document.getElementById("dashboardCourses").innerHTML = semester.courses.map(id => {
+        const course = courseById(id); const pref = prefFor(id); const pct = courseProgress(id);
+        return `<article class="course-mini" style="--course-color:${course.color}" data-course-open="${course.id}" tabindex="0" role="button" aria-label="Open ${esc(course.title)}">
+          <div class="course-mini-icon">${course.icon}</div><span class="course-code">${course.id}</span><h4>${esc(course.title)}</h4>
+          <small>${pref.selectedName ? esc(pref.selectedName) : "Choose your online course"}</small>
+          <div class="tiny-progress"><span style="width:${pct}%"></span></div><div class="tiny-progress-copy">${pct}% complete · ${esc(pref.status)}</div>
+        </article>`;
+      }).join("");
+
+      const upcoming = state.assignments.filter(item => item.status !== "Completed" && item.due).sort((a,b) => a.due.localeCompare(b.due)).slice(0,5);
+      document.getElementById("upcomingAssignments").innerHTML = upcoming.length ? upcoming.map(item => {
+        const course = courseById(item.courseId);
+        return `<div class="list-item"><div class="list-item-icon">${course?.icon || "📌"}</div><div><strong>${esc(item.title)}</strong><small>${esc(course?.title || "Unknown class")} · ${formatDate(item.due)}</small></div><button class="btn btn-small btn-secondary" data-assignment-edit="${item.id}">Edit</button></div>`;
+      }).join("") : emptyState("📅", "No deadlines yet", "Add your first assignment when you choose a course.");
+
+      const recent = [...state.notes].sort((a,b) => (b.updatedAt || "").localeCompare(a.updatedAt || "")).slice(0,4);
+      document.getElementById("recentNotes").innerHTML = recent.length ? recent.map(note => {
+        const course = courseById(note.courseId);
+        return `<button class="list-item" style="width:100%; text-align:left; cursor:pointer;" data-note-open="${note.id}"><div class="list-item-icon">${course?.icon || "📝"}</div><div><strong>${esc(note.title || "Untitled note")}</strong><small>${esc(course?.title || "Unfiled")} · ${new Date(note.updatedAt).toLocaleDateString()}</small></div><span>›</span></button>`;
+      }).join("") : emptyState("📝", "Your notebook is waiting", "Create a note and start collecting evidence of your growth.");
+
+      const badges = [
+        { icon:"🧋", title:"First Sip", text:"Create your first note", earned:state.notes.length >= 1 },
+        { icon:"🎧", title:"Beat Drop", text:"Log 60 study minutes", earned:state.studySessions.reduce((s,x)=>s+Number(x.minutes||0),0) >= 60 },
+        { icon:"⚔️", title:"Boss Battle", text:"Complete one project or exam", earned:state.assignments.some(x=>x.status === "Completed" && ["Project","Exam","Presentation"].includes(x.type)) },
+        { icon:"🎮", title:"Five-Hit Combo", text:"Complete five assignments", earned:state.assignments.filter(x=>x.status === "Completed").length >= 5 },
+        { icon:"🗺️", title:"Map Maker", text:"Configure every class this term", earned:semester.courses.every(id => prefFor(id).selectedName || prefFor(id).url) },
+        { icon:"🌸", title:"Full Bloom", text:"Complete a semester", earned:semester.courses.every(id => prefFor(id).status === "Completed") },
+        { icon:"🧠", title:"Memory Main", text:"Master five learning outcomes", earned:masteredOutcomeCount() >= 5 },
+        { icon:"🚀", title:"Career Motion", text:"Send five applications", earned:state.applications.filter(x=>x.status !== "Wishlist").length >= 5 }
+      ];
+      document.getElementById("badgeGrid").innerHTML = badges.map(badge => `<div class="badge ${badge.earned ? "earned" : ""}"><span class="badge-icon">${badge.icon}</span><div><strong>${esc(badge.title)}</strong><small>${esc(badge.text)}</small></div></div>`).join("");
+      document.getElementById("dashboardMilestones").innerHTML = milestoneCards(3);
+      document.getElementById("topLevel").textContent = `Level ${info.level}`;
+    }
+
+    function emptyState(icon, title, copy) { return `<div class="empty-state"><span class="big-emoji">${icon}</span><strong>${esc(title)}</strong><br><small>${esc(copy)}</small></div>`; }
+
+    function renderCurriculum() {
+      document.getElementById("semesterTabs").innerHTML = semesters.map(semester => `<button class="semester-tab ${semester.id === displayedSemester ? "active" : ""}" data-semester="${semester.id}" role="tab" aria-selected="${semester.id === displayedSemester}">Semester ${semester.id}</button>`).join("");
+      const semester = semesterById(displayedSemester);
+      const progress = semesterProgress(semester.id);
+      document.getElementById("setCurrentSemester").textContent = semester.id === state.profile.currentSemester ? "✓ Current semester" : "Make this my current semester";
+      document.getElementById("setCurrentSemester").disabled = semester.id === state.profile.currentSemester;
+      document.getElementById("semesterContent").innerHTML = `
+        <div class="semester-banner" style="--semester-a:${semester.colors[0]}; --semester-b:${semester.colors[1]}">
+          <div><p class="eyebrow">Semester ${semester.id} · ${progress}% complete</p><h3>${esc(semester.title)}</h3><p>${esc(semester.description)}</p></div><div class="semester-number">0${semester.id}</div>
+        </div>
+        <div class="curriculum-grid">${semester.courses.map(id => curriculumCourseCard(courseById(id))).join("")}</div>`;
+    }
+
+    function curriculumCourseCard(course) {
+      const pref = prefFor(course.id); const grade = courseGrade(course.id); const progress = courseProgress(course.id);
+      const statusClass = pref.status.toLowerCase().replaceAll(" ", "-");
+      return `<article class="card curriculum-card" data-icon="${course.icon}">
+        <div class="course-topline"><span class="course-code">${course.id} · TAKE AFTER: ${esc(course.prereq)}</span><span class="course-status ${statusClass}">${esc(pref.status)}</span></div>
+        <h4>${course.icon} ${esc(course.title)}</h4><p>${esc(course.focus)}</p>
+        <ul class="outcome-list">${course.outcomes.map(outcome => `<li>${esc(outcome)}</li>`).join("")}</ul>
+        <div class="course-configured">🔗 ${pref.selectedName ? `${esc(pref.selectedName)}${pref.provider ? ` · ${esc(pref.provider)}` : ""}` : "Course/resource not chosen yet"}</div>
+        <div class="tiny-progress"><span style="width:${progress}%"></span></div><div class="tiny-progress-copy">${progress}% complete${grade === null ? "" : ` · ${grade.toFixed(1)}% (${letterGrade(grade)})`}</div>
+        <div class="button-row" style="margin-top:13px;"><button class="btn btn-small btn-primary" data-course-open="${course.id}">Configure class</button><button class="btn btn-small btn-secondary" data-course-note="${course.id}">Open notes</button></div>
+      </article>`;
+    }
+
+    function openCourse(courseId) {
+      const course = courseById(courseId); if (!course) return;
+      const pref = prefFor(courseId);
+      document.getElementById("courseModalTitle").textContent = `${course.id} · ${course.title}`;
+      document.getElementById("courseModalOverview").innerHTML = `<strong>${course.icon} Curriculum class</strong><p>${esc(course.focus)}</p><small><strong>Sequence:</strong> ${esc(course.prereq)}</small>`;
+      document.getElementById("courseIdField").value = courseId;
+      document.getElementById("selectedCourseName").value = pref.selectedName || "";
+      document.getElementById("courseProvider").value = pref.provider || "";
+      document.getElementById("courseInstructor").value = pref.instructor || "";
+      document.getElementById("courseUrl").value = pref.url || "";
+      document.getElementById("courseStart").value = pref.start || "";
+      document.getElementById("courseEnd").value = pref.end || "";
+      document.getElementById("courseStatus").value = pref.status || "Not started";
+      document.getElementById("courseTarget").value = pref.targetGrade ?? 85;
+      document.getElementById("courseGoal").value = pref.goal || "";
+      document.getElementById("courseOpenLink").disabled = !safeUrl(pref.url);
+      openModal("courseModal");
+    }
+
+    function saveCourse() {
+      const id = document.getElementById("courseIdField").value;
+      if (!courseById(id)) return;
+      state.coursePrefs[id] = {
+        selectedName: document.getElementById("selectedCourseName").value.trim(),
+        provider: document.getElementById("courseProvider").value.trim(),
+        instructor: document.getElementById("courseInstructor").value.trim(),
+        url: safeUrl(document.getElementById("courseUrl").value.trim()),
+        start: document.getElementById("courseStart").value,
+        end: document.getElementById("courseEnd").value,
+        status: document.getElementById("courseStatus").value,
+        targetGrade: Number(document.getElementById("courseTarget").value || 85),
+        goal: document.getElementById("courseGoal").value.trim()
+      };
+      saveState("Class saved"); closeModal("courseModal"); renderAll(); toast("Class details saved ✨");
+    }
+
+    function populateSharedCourseSelects() {
+      ["noteCourse", "timerCourse", "recallCourse", "assignmentCourse", "sessionCourse", "planCourse", "assessmentCourse", "masteryCourse", "questionCourse", "feedbackCourse", "readingCourse", "speakingCourse"].forEach(id => {
+        const element = document.getElementById(id); if (!element) return;
+        const selected = element.value;
+        const optional = ["planCourse", "feedbackCourse", "readingCourse", "speakingCourse"].includes(id);
+        element.innerHTML = `${optional ? '<option value="">No class / general</option>' : ""}${courseOptions(selected)}`;
+        if (selected) element.value = selected;
+      });
+      const filter = document.getElementById("noteCourseFilter");
+      if (filter) { const selected = filter.value || "all"; filter.innerHTML = courseOptions(selected, true); filter.value = selected; }
+    }
+
+    function createNote(courseId = semesterById(state.profile.currentSemester).courses[0]) {
+      const note = { id:uid("note"), title:"New study note", courseId, content:"", tags:[], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() };
+      state.notes.unshift(note); state.activeNoteId = note.id; saveState("New note created");
+      showView("notes"); setTimeout(() => { document.getElementById("noteTitle").select(); }, 30);
+    }
+
+    function currentNote() { return state.notes.find(note => note.id === state.activeNoteId); }
+
+    function renderNotes() {
+      populateSharedCourseSelects();
+      if (!state.activeNoteId && state.notes.length) state.activeNoteId = state.notes[0].id;
+      if (state.activeNoteId && !state.notes.some(note => note.id === state.activeNoteId)) state.activeNoteId = state.notes[0]?.id || null;
+      renderNoteList();
+      const note = currentNote();
+      const inputs = ["noteTitle", "noteCourse", "noteEditor", "deleteNote", "printNote", "noteToolbar"];
+      inputs.forEach(id => { const element = document.getElementById(id); if (element) element.style.pointerEvents = note ? "" : "none"; });
+      if (!note) {
+        document.getElementById("noteTitle").value = "";
+        document.getElementById("noteEditor").innerHTML = "";
+        document.getElementById("noteSaveStatus").textContent = "Create a note to begin.";
+        return;
+      }
+      document.getElementById("noteTitle").value = note.title || "";
+      document.getElementById("noteCourse").value = note.courseId;
+      document.getElementById("noteEditor").innerHTML = sanitizeNoteHTML(note.content || "");
+      document.getElementById("noteSaveStatus").textContent = `Last updated ${new Date(note.updatedAt).toLocaleString()}`;
+    }
+
+    function renderNoteList() {
+      const query = document.getElementById("noteSearch").value.trim().toLowerCase();
+      const courseFilter = document.getElementById("noteCourseFilter").value || "all";
+      const notes = [...state.notes].filter(note => {
+        const plain = stripHTML(note.content || "").toLowerCase();
+        return (courseFilter === "all" || note.courseId === courseFilter) && (!query || `${note.title} ${plain}`.toLowerCase().includes(query));
+      }).sort((a,b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""));
+      document.getElementById("noteList").innerHTML = notes.length ? notes.map(note => {
+        const course = courseById(note.courseId);
+        return `<button class="note-list-item ${note.id === state.activeNoteId ? "active" : ""}" data-note-select="${note.id}"><strong><span class="note-course-dot" style="--dot:${course?.color || "#b8a5ff"}"></span>${esc(note.title || "Untitled")}</strong><small>${esc(course?.id || "Unfiled")} · ${new Date(note.updatedAt).toLocaleDateString()}</small></button>`;
+      }).join("") : emptyState("🔍", "No notes found", "Try another search or create a new note.");
+    }
+
+    function stripHTML(html) { const div = document.createElement("div"); div.innerHTML = html; return div.textContent || ""; }
+
+    function sanitizeNoteHTML(html) {
+      const template = document.createElement("template");
+      template.innerHTML = String(html || "");
+      const allowed = new Set(["P","DIV","BR","STRONG","B","EM","I","U","S","UL","OL","LI","H2","H3","BLOCKQUOTE","SPAN","MARK","FONT"]);
+      const walk = node => {
+        [...node.children].forEach(child => {
+          if (!allowed.has(child.tagName)) {
+            walk(child);
+            child.replaceWith(...child.childNodes);
+            return;
+          }
+          [...child.attributes].forEach(attr => {
+            if (attr.name === "class") {
+              const okay = /^(bullet-(boba|music|spark|game)|alpha|roman)$/.test(attr.value);
+              if (!okay) child.removeAttribute(attr.name);
+            } else if (child.tagName === "FONT" && attr.name === "color") {
+              if (!/^(#[0-9a-f]{3,8}|rgb\([\d\s,.]+\))$/i.test(attr.value)) child.removeAttribute(attr.name);
+            } else if (attr.name === "style") {
+              const safe = attr.value.split(";").map(x=>x.trim()).filter(rule => /^(color|background-color|text-align):\s*(#[0-9a-f]{3,8}|rgb\([\d\s,.]+\)|left|center|right)$/i.test(rule)).join(";");
+              safe ? child.setAttribute("style", safe) : child.removeAttribute("style");
+            } else child.removeAttribute(attr.name);
+          });
+          walk(child);
+        });
+      };
+      walk(template.content);
+      return template.innerHTML;
+    }
+
+    function queueNoteSave() {
+      clearTimeout(noteSaveTimer);
+      document.getElementById("noteSaveStatus").textContent = "Saving…";
+      noteSaveTimer = setTimeout(saveActiveNote, 500);
+    }
+
+    function saveActiveNote() {
+      const note = currentNote(); if (!note) return;
+      note.title = document.getElementById("noteTitle").value.trim() || "Untitled note";
+      note.courseId = document.getElementById("noteCourse").value;
+      note.content = sanitizeNoteHTML(document.getElementById("noteEditor").innerHTML);
+      note.updatedAt = new Date().toISOString();
+      saveState("Note saved"); renderNoteList();
+    }
+
+    function selectNote(id) { saveActiveNote(); state.activeNoteId = id; saveState(); renderNotes(); }
+
+    function deleteActiveNote() {
+      const note = currentNote(); if (!note) return;
+      if (!confirm(`Delete “${note.title || "Untitled note"}”? This cannot be undone unless it exists in an exported backup.`)) return;
+      state.notes = state.notes.filter(item => item.id !== note.id);
+      state.activeNoteId = state.notes[0]?.id || null;
+      saveState("Note deleted"); renderNotes(); renderDashboard(); toast("Note deleted");
+    }
+
+    function rememberSelection() {
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+      const range = selection.getRangeAt(0);
+      if (document.getElementById("noteEditor").contains(range.commonAncestorContainer)) savedRange = range.cloneRange();
+    }
+
+    function restoreSelection() {
+      if (!savedRange) { document.getElementById("noteEditor").focus(); return; }
+      const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(savedRange); document.getElementById("noteEditor").focus();
+    }
+
+    function runCommand(command, value = null) {
+      restoreSelection(); document.execCommand(command, false, value); rememberSelection(); queueNoteSave();
+    }
+
+    function applyBullet(style, ordered = false) {
+      restoreSelection();
+      document.execCommand(ordered ? "insertOrderedList" : "insertUnorderedList", false, null);
+      const selection = window.getSelection();
+      let node = selection.anchorNode?.nodeType === 3 ? selection.anchorNode.parentElement : selection.anchorNode;
+      const list = node?.closest(ordered ? "ol" : "ul");
+      if (list) {
+        list.classList.remove("bullet-boba","bullet-music","bullet-spark","bullet-game","alpha","roman");
+        if (!ordered && style !== "disc") list.classList.add(`bullet-${style}`);
+        if (ordered && style !== "decimal") list.classList.add(style);
+      }
+      queueNoteSave();
+    }
+
+    function insertStudyTemplate() {
+      const html = `<h2>Lesson / Topic</h2><p><strong>Big idea:</strong> </p><h3>In my own words</h3><p><br></p><h3>Important details</h3><ul class="bullet-spark"><li><br></li><li><br></li><li><br></li></ul><h3>Example or real-life connection</h3><p><br></p><h3>What I still need to understand</h3><ul class="bullet-boba"><li><br></li></ul><blockquote><strong>Recall check:</strong> Close the notes and explain the idea without looking.</blockquote>`;
+      restoreSelection(); document.execCommand("insertHTML", false, html); queueNoteSave();
+    }
+
+    function openAssignmentModal(id = null, courseId = null) {
+      const item = id ? state.assignments.find(assignment => assignment.id === id) : null;
+      document.getElementById("assignmentModalTitle").textContent = item ? "Edit assignment" : "Add assignment";
+      document.getElementById("assignmentId").value = item?.id || "";
+      document.getElementById("assignmentTitle").value = item?.title || "";
+      document.getElementById("assignmentCourse").innerHTML = courseOptions(item?.courseId || courseId || semesterById(state.profile.currentSemester).courses[0]);
+      document.getElementById("assignmentType").value = item?.type || "Practice";
+      document.getElementById("assignmentDue").value = item?.due || "";
+      document.getElementById("assignmentStatus").value = item?.status || "Not started";
+      document.getElementById("pointsPossible").value = item?.possible ?? "";
+      document.getElementById("pointsEarned").value = item?.earned ?? "";
+      document.getElementById("assignmentDetails").value = item?.details || "";
+      document.getElementById("deleteAssignment").hidden = !item;
+      openModal("assignmentModal");
+    }
+
+    function saveAssignment() {
+      const title = document.getElementById("assignmentTitle").value.trim();
+      if (!title) { toast("Please name the assignment.", "error"); return; }
+      const id = document.getElementById("assignmentId").value;
+      const data = {
+        id: id || uid("assignment"), title,
+        courseId: document.getElementById("assignmentCourse").value,
+        type: document.getElementById("assignmentType").value,
+        due: document.getElementById("assignmentDue").value,
+        status: document.getElementById("assignmentStatus").value,
+        possible: document.getElementById("pointsPossible").value === "" ? "" : Number(document.getElementById("pointsPossible").value),
+        earned: document.getElementById("pointsEarned").value === "" ? "" : Number(document.getElementById("pointsEarned").value),
+        details: document.getElementById("assignmentDetails").value.trim(),
+        updatedAt: new Date().toISOString()
+      };
+      const index = state.assignments.findIndex(item => item.id === id);
+      if (index >= 0) state.assignments[index] = { ...state.assignments[index], ...data }; else state.assignments.push({ ...data, createdAt:new Date().toISOString() });
+      saveState("Assignment saved"); closeModal("assignmentModal"); renderAll(); toast("Assignment saved 🏆");
+    }
+
+    function deleteAssignment() {
+      const id = document.getElementById("assignmentId").value;
+      const item = state.assignments.find(x => x.id === id); if (!item) return;
+      if (!confirm(`Delete “${item.title}”?`)) return;
+      state.assignments = state.assignments.filter(x => x.id !== id); saveState("Assignment deleted"); closeModal("assignmentModal"); renderAll(); toast("Assignment deleted");
+    }
+
+    function renderGrades() {
+      const semesterId = Number(document.getElementById("assignmentSemesterFilter").value || state.profile.currentSemester);
+      const semester = semesterById(semesterId) || semesterById(state.profile.currentSemester);
+      const semesterSelect = document.getElementById("assignmentSemesterFilter");
+      semesterSelect.innerHTML = semesters.map(s => `<option value="${s.id}" ${s.id === semester.id ? "selected" : ""}>Semester ${s.id}: ${esc(s.title)}</option>`).join("");
+      const courseSelect = document.getElementById("assignmentCourseFilter");
+      const previousCourse = courseSelect.value || "all";
+      courseSelect.innerHTML = `<option value="all">All semester classes</option>${semester.courses.map(id => `<option value="${id}">${id} · ${esc(courseById(id).title)}</option>`).join("")}`;
+      if (["all", ...semester.courses].includes(previousCourse)) courseSelect.value = previousCourse;
+
+      const grade = aggregateGrade(semester.courses);
+      const completed = state.assignments.filter(item => semester.courses.includes(item.courseId) && item.status === "Completed").length;
+      const total = state.assignments.filter(item => semester.courses.includes(item.courseId)).length;
+      const due = state.assignments.filter(item => semester.courses.includes(item.courseId) && item.status !== "Completed" && item.due).length;
+      document.getElementById("gradeSummary").innerHTML = [
+        ["Semester grade", grade === null ? "—" : `${grade.toFixed(1)}%`, grade === null ? "Add scores to calculate" : `${letterGrade(grade)} average`],
+        ["Completed", `${completed}/${total}`, "Assignments finished"],
+        ["Open deadlines", due, "Dated and unfinished"],
+        ["Semester progress", `${semesterProgress(semester.id)}%`, `Semester ${semester.id}`]
+      ].map(([label,value,detail]) => `<div class="card grade-card"><small>${esc(label)}</small><strong>${esc(value)}</strong><small>${esc(detail)}</small></div>`).join("");
+
+      const courseFilter = courseSelect.value || "all";
+      const statusFilter = document.getElementById("assignmentStatusFilter").value || "all";
+      const query = document.getElementById("assignmentSearch").value.trim().toLowerCase();
+      const items = state.assignments.filter(item => semester.courses.includes(item.courseId))
+        .filter(item => courseFilter === "all" || item.courseId === courseFilter)
+        .filter(item => statusFilter === "all" || item.status === statusFilter)
+        .filter(item => !query || `${item.title} ${item.details || ""}`.toLowerCase().includes(query))
+        .sort((a,b) => (a.due || "9999").localeCompare(b.due || "9999"));
+
+      document.getElementById("assignmentTable").innerHTML = items.length ? items.map(item => {
+        const course = courseById(item.courseId);
+        const score = item.earned !== "" && item.possible !== "" && Number(item.possible) > 0 ? Number(item.earned) / Number(item.possible) * 100 : null;
+        const overdue = item.status !== "Completed" && item.due && item.due < localDateString();
+        return `<tr><td><strong>${esc(item.title)}</strong>${item.details ? `<br><small>${esc(item.details.slice(0,80))}${item.details.length > 80 ? "…" : ""}</small>` : ""}</td><td>${esc(course?.id || "—")}</td><td>${esc(item.type)}</td><td>${formatDate(item.due, "—")}</td><td><span class="status-chip ${overdue ? "overdue" : item.status.toLowerCase().replaceAll(" ","-")}">${overdue ? "Overdue" : esc(item.status)}</span></td><td>${score === null ? "—" : `${esc(item.earned)}/${esc(item.possible)}`}</td><td>${score === null ? "—" : `<span class="grade-letter">${letterGrade(score)}</span> ${score.toFixed(1)}%`}</td><td><button class="btn btn-small btn-secondary" data-assignment-edit="${item.id}">Edit</button></td></tr>`;
+      }).join("") : `<tr><td colspan="8">${emptyState("📚", "No assignments here yet", "Add your first assignment and make the learning real.")}</td></tr>`;
+    }
+
+    function renderStudy() {
+      populateSharedCourseSelects();
+      const minutes = weeklyMinutes();
+      const goal = Math.max(1, Number(state.profile.weeklyHours || 8) * 60);
+      const pct = Math.min(100, Math.round(minutes / goal * 100));
+      document.getElementById("weeklyStudyCopy").textContent = `${(minutes/60).toFixed(minutes % 60 ? 1 : 0)} of ${state.profile.weeklyHours || 8} planned hours`;
+      document.getElementById("weeklyStudyPercent").textContent = `${pct}%`;
+      document.getElementById("weeklyStudyBar").style.width = `${pct}%`;
+      const sessions = [...state.studySessions].sort((a,b) => `${b.date}${b.createdAt||""}`.localeCompare(`${a.date}${a.createdAt||""}`)).slice(0,12);
+      document.getElementById("studyLog").innerHTML = sessions.length ? sessions.map(session => {
+        const course = courseById(session.courseId);
+        return `<div class="list-item"><div class="list-item-icon">${course?.icon || "🎧"}</div><div><strong>${esc(session.topic || course?.title || "Study session")}</strong><small>${formatDate(session.date)} · ${esc(session.minutes)} minutes${session.reflection ? ` · ${esc(session.reflection.slice(0,70))}${session.reflection.length > 70 ? "…" : ""}` : ""}</small></div><button class="btn btn-small btn-danger" data-session-delete="${session.id}" title="Delete session">×</button></div>`;
+      }).join("") : emptyState("🎧", "No sessions logged", "Start the timer or log the studying you already completed.");
+    }
+
+    function updateTimerDisplay() {
+      const min = Math.floor(timer.remaining / 60).toString().padStart(2,"0");
+      const sec = (timer.remaining % 60).toString().padStart(2,"0");
+      document.getElementById("timerDisplay").textContent = `${min}:${sec}`;
+      document.title = timer.running ? `${min}:${sec} · Brain Bloom` : "Brain Bloom Academy | Tanay's Study Portal";
+    }
+
+    function toggleTimer() {
+      if (timer.running) {
+        clearInterval(timer.interval); timer.running = false; document.getElementById("timerStart").textContent = "▶ Resume"; document.getElementById("timerMessage").textContent = "Paused. Breathe, then return when you are ready."; return;
+      }
+      timer.running = true; document.getElementById("timerStart").textContent = "Ⅱ Pause"; document.getElementById("timerMessage").textContent = "Focus round in progress. One thing at a time.";
+      timer.interval = setInterval(() => {
+        timer.remaining--; updateTimerDisplay();
+        if (timer.remaining <= 0) {
+          clearInterval(timer.interval); timer.running = false;
+          document.getElementById("timerStart").textContent = "▶ Start again";
+          document.getElementById("timerMessage").textContent = "Round complete! Log what you worked on and take your win.";
+          if (timer.minutes > 5) {
+            state.studySessions.push({ id:uid("session"), date:localDateString(), minutes:timer.minutes, courseId:document.getElementById("timerCourse").value, topic:"Completed focus timer", reflection:"", createdAt:new Date().toISOString() });
+            saveState("Focus session logged"); renderAll(); toast(`${timer.minutes}-minute focus round complete! 🎉`);
+          } else toast("Break complete—welcome back 🌸");
+        }
+      }, 1000);
+    }
+
+    function resetTimer(minutes = timer.minutes) {
+      clearInterval(timer.interval); timer = { totalSeconds:minutes*60, remaining:minutes*60, minutes, running:false, interval:null };
+      document.getElementById("timerStart").textContent = "▶ Start"; document.getElementById("timerMessage").textContent = minutes <= 5 ? "A short reset for your brain." : "Pick a class, silence the chaos, and do one focused round."; updateTimerDisplay();
+    }
+
+    function openSessionModal() {
+      document.getElementById("sessionDate").value = localDateString();
+      document.getElementById("sessionMinutes").value = 25;
+      document.getElementById("sessionCourse").innerHTML = courseOptions(semesterById(state.profile.currentSemester).courses[0]);
+      document.getElementById("sessionTopic").value = ""; document.getElementById("sessionReflection").value = "";
+      openModal("sessionModal");
+    }
+
+    function saveSession() {
+      const minutes = Number(document.getElementById("sessionMinutes").value);
+      if (!minutes || minutes < 1) { toast("Enter at least one study minute.", "error"); return; }
+      state.studySessions.push({ id:uid("session"), date:document.getElementById("sessionDate").value || localDateString(), minutes, courseId:document.getElementById("sessionCourse").value, topic:document.getElementById("sessionTopic").value.trim(), reflection:document.getElementById("sessionReflection").value.trim(), createdAt:new Date().toISOString() });
+      saveState("Study session logged"); closeModal("sessionModal"); renderAll(); toast("Study session logged 🎧");
+    }
+
+    function spinRecall() {
+      const course = courseById(document.getElementById("recallCourse").value); if (!course) return;
+      const skill = course.outcomes[Math.floor(Math.random() * course.outcomes.length)];
+      const prompts = [
+        `Without looking at your notes, explain “${skill}” as if you were teaching a friend.`,
+        `Give one correct example and one incorrect example related to: ${skill}`,
+        `What is the main idea behind “${skill}”? Why does it matter?`,
+        `Imagine someone disagrees with your understanding of “${skill}.” What evidence or reasoning would you use?`,
+        `Connect “${skill}” to something from your job, UX work, music, gaming, or everyday life.`,
+        `Write or say three questions someone could ask to test whether you truly understand: ${skill}`
+      ];
+      document.getElementById("recallPrompt").textContent = prompts[Math.floor(Math.random() * prompts.length)];
+    }
+
+    function inputValue(id) { return document.getElementById(id)?.value ?? ""; }
+    function setInput(id, value) { const element = document.getElementById(id); if (element) element.value = value ?? ""; }
+    function upsertRecord(collection, data) {
+      const index = state[collection].findIndex(item => item.id === data.id);
+      if (index >= 0) state[collection][index] = { ...state[collection][index], ...data, updatedAt:new Date().toISOString() };
+      else state[collection].push({ ...data, createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() });
+    }
+    function recordButtons(kind, id) {
+      return `<div class="record-actions"><button class="btn btn-small btn-secondary" data-record-edit="${kind}:${id}">Edit</button><button class="btn btn-small btn-danger" data-record-delete="${kind}:${id}">Delete</button></div>`;
+    }
+    function resetRecordForm(formId, hiddenId, detailsId) {
+      document.getElementById(formId)?.reset();
+      setInput(hiddenId, "");
+      if (detailsId) document.getElementById(detailsId).open = false;
+    }
+    function openEditor(detailsId) {
+      const details = document.getElementById(detailsId);
+      details.open = true;
+      details.scrollIntoView({ behavior:"smooth", block:"center" });
+    }
+    function addDaysString(dateString, days) {
+      const date = dateString ? new Date(`${dateString}T12:00:00`) : new Date();
+      date.setDate(date.getDate() + days);
+      return localDateString(date);
+    }
+    function clamp(value, min, max) { return Math.min(max, Math.max(min, Number(value) || 0)); }
+    function confidenceDots(value) { const amount=clamp(value,1,5); return `${"●".repeat(amount)}${"○".repeat(5-amount)}`; }
+    function startOfWeek(value = new Date()) {
+      const date = new Date(value);
+      const day = (date.getDay() + 6) % 7;
+      date.setHours(12,0,0,0);
+      date.setDate(date.getDate() - day);
+      return date;
+    }
+
+    function startOfCurrentWeek() { return startOfWeek(new Date()); }
+
+    function selectedWeekBounds() {
+      const monday = startOfWeek(plannerWeekCursor);
+      const sunday = new Date(monday); sunday.setDate(monday.getDate() + 6);
+      return { monday, sunday, start:localDateString(monday), end:localDateString(sunday) };
+    }
+
+    function weekRangeLabel(start, end) {
+      const left = new Date(`${start}T12:00:00`);
+      const right = new Date(`${end}T12:00:00`);
+      const sameYear = left.getFullYear() === right.getFullYear();
+      const leftText = left.toLocaleDateString(undefined,{month:"short",day:"numeric",...(sameYear?{}:{year:"numeric"})});
+      const rightText = right.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});
+      return `${leftText} – ${rightText}`;
+    }
+
+    function renderPlanner() {
+      populateSharedCourseSelects();
+      const { start, end } = selectedWeekBounds();
+      const sortPlans = items => [...items].sort((a,b)=>`${a.date||""}${a.time||""}${a.title||""}`.localeCompare(`${b.date||""}${b.time||""}${b.title||""}`));
+      const weekItems = sortPlans(state.planner.filter(item => item.date >= start && item.date <= end));
+      const today = localDateString();
+      const displayItems = plannerScope === "all" ? sortPlans(state.planner) : plannerScope === "upcoming" ? sortPlans(state.planner.filter(item=>item.date >= today)) : weekItems;
+      const planned = weekItems.reduce((sum,item)=>sum+Number(item.minutes||0),0);
+      const completed = weekItems.filter(item=>item.status === "Completed").reduce((sum,item)=>sum+Number(item.minutes||0),0);
+      const school = weekItems.filter(item=>item.category === "School").reduce((sum,item)=>sum+Number(item.minutes||0),0);
+      document.getElementById("plannerSummary").innerHTML = [
+        ["Selected week", weekRangeLabel(start,end), "Monday through Sunday"],
+        ["Planned", `${Math.round(planned/6)/10}h`, `${weekItems.length} task${weekItems.length===1?"":"s"}`],
+        ["Completed", `${Math.round(completed/6)/10}h`, planned ? `${Math.round(completed/planned*100)}% of planned time` : "Nothing planned yet"],
+        ["School time", `${Math.round(school/6)/10}h`, "Dedicated learning blocks"]
+      ].map(([label,value,copy])=>`<div class="metric"><span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(copy)}</small></div>`).join("");
+      const label = plannerScope === "all" ? `All tasks · ${displayItems.length}` : plannerScope === "upcoming" ? `All upcoming tasks · ${displayItems.length}` : `${weekRangeLabel(start,end)} · ${displayItems.length} task${displayItems.length===1?"":"s"}`;
+      document.getElementById("plannerWeekLabel").textContent = label;
+      document.getElementById("plannerScope").value = plannerScope;
+      document.getElementById("plannerList").innerHTML = displayItems.length ? displayItems.map(item => {
+        const date = new Date(`${item.date}T12:00:00`);
+        const course = courseById(item.courseId);
+        const synced = item.googleEventId ? '<span class="tag">📅 Synced</span>' : "";
+        return `<article class="plan-item ${item.status === "Completed" ? "done" : ""}" data-plan-open="${esc(item.id)}" tabindex="0" role="button" aria-label="Edit ${esc(item.title)}"><div class="plan-date"><small>${date.toLocaleDateString(undefined,{weekday:"short"})}</small>${date.getDate()}</div><div><span class="tag">${esc(item.category)}</span>${course ? `<span class="tag mint">${esc(course.id)}</span>` : ""}${synced}<h4>${esc(item.title)}</h4><small>${item.time ? esc(item.time) + " · " : ""}${esc(item.minutes)} min · ${esc(item.status)}</small></div><div class="record-actions"><button class="btn btn-small ${item.status === "Completed" ? "btn-mint" : "btn-secondary"}" data-plan-toggle="${esc(item.id)}" aria-label="${item.status === "Completed" ? "Mark planned" : "Mark done"}">${item.status === "Completed" ? "↩ Undo" : "✓ Done"}</button><button class="btn btn-small btn-secondary" data-plan-edit="${esc(item.id)}">Edit</button></div></article>`;
+      }).join("") : emptyState("🗓️", plannerScope === "week" ? "This week is open" : "No tasks here yet", "Add a few realistic blocks—leave room to be a human.");
+      renderCalendar();
+      renderGoogleCalendarStatus();
+    }
+
+    function openPlanModal(id = null, date = null) {
+      populateSharedCourseSelects();
+      document.getElementById("planForm").reset();
+      setInput("planId", ""); setInput("planDate", date || localDateString(plannerWeekCursor)); setInput("planMinutes", 45); setInput("planStatus", "Planned");
+      const item = id ? state.planner.find(task=>task.id===id) : null;
+      if (item) {
+        setInput("planId",item.id); setInput("planDate",item.date); setInput("planTime",item.time); setInput("planTitle",item.title); setInput("planCategory",item.category); setInput("planCourse",item.courseId); setInput("planMinutes",item.minutes); setInput("planStatus",item.status);
+      }
+      document.getElementById("planModalTitle").textContent = item ? "Edit task" : "Add task";
+      document.getElementById("deletePlan").hidden = !item;
+      document.getElementById("completePlan").hidden = !item;
+      document.getElementById("completePlan").textContent = item?.status === "Completed" ? "↩ Mark planned" : "✓ Task done";
+      document.getElementById("planSyncGoogle").checked = Boolean(item?.syncGoogle || item?.googleEventId);
+      document.getElementById("planSyncBadge").textContent = item?.googleEventId ? "✓ linked" : googleAccessToken ? "ready" : "connect first";
+      openModal("planModal");
+    }
+
+    async function savePlan(event) {
+      event.preventDefault();
+      const title = inputValue("planTitle").trim(); if (!title) return toast("Name the task first.", "error");
+      const id = inputValue("planId") || uid("plan");
+      const syncGoogle = document.getElementById("planSyncGoogle").checked;
+      upsertRecord("planner", { id, date:inputValue("planDate"), time:inputValue("planTime"), title, category:inputValue("planCategory"), courseId:inputValue("planCourse"), minutes:Number(inputValue("planMinutes")||45), status:inputValue("planStatus"), syncGoogle });
+      const item = state.planner.find(task=>task.id===id);
+      saveState("Task saved");
+      if (syncGoogle && googleAccessToken) {
+        try { await syncPlannerTask(item); }
+        catch (error) { toast(error.message || "Task saved here, but Google sync failed.", "error"); }
+      } else if (syncGoogle) toast("Task saved here. Connect Google Calendar to sync it.");
+      closeModal("planModal"); renderAll(); toast("Task saved 🗓️");
+    }
+
+    async function togglePlanCompleted(id, closeAfter = false) {
+      const item = state.planner.find(task=>task.id===id); if (!item) return;
+      item.status = item.status === "Completed" ? "Planned" : "Completed";
+      saveState("Task updated");
+      if (item.syncGoogle && item.googleEventId && googleAccessToken) {
+        try { await syncPlannerTask(item); } catch (error) { toast("Done here; Google update needs another try.", "error"); }
+      }
+      if (closeAfter) closeModal("planModal");
+      renderAll();
+      toast(item.status === "Completed" ? "Task complete—nice work ✅" : "Task moved back to planned");
+    }
+
+    async function deletePlannerTask(id) {
+      const item = state.planner.find(task=>task.id===id); if (!item) return;
+      const note = item.googleEventId && !googleAccessToken ? " The Google copy cannot be removed until you reconnect." : item.googleEventId ? " Its synced Google event will also be removed." : "";
+      if (!confirm(`Delete “${item.title}”?${note}`)) return;
+      if (item.googleEventId && googleAccessToken) {
+        try { await googleCalendarRequest(`/calendars/primary/events/${encodeURIComponent(item.googleEventId)}`, {method:"DELETE"}); }
+        catch (error) { if (error.status !== 404) return toast("I could not delete the Google copy, so the local task was kept.", "error"); }
+      }
+      state.planner = state.planner.filter(task=>task.id!==id); saveState("Task deleted"); closeModal("planModal"); renderAll(); toast("Task deleted");
+    }
+
+    function googleEventDate(event) {
+      if (event.start?.date) return event.start.date;
+      if (event.start?.dateTime) return localDateString(new Date(event.start.dateTime));
+      return "";
+    }
+
+    function calendarEvents() {
+      const events = [];
+      state.planner.forEach(x=>x.date && events.push({date:x.date,time:x.time,title:x.title,type:"plan",kind:"planner",id:x.id,status:x.status,synced:Boolean(x.googleEventId)}));
+      state.assignments.forEach(x=>x.due && events.push({date:x.due,title:`Due: ${x.title}`,type:"assignment",kind:"assignments",id:x.id}));
+      state.assessments.forEach(x=>x.date && events.push({date:x.date,title:`${x.type}: ${x.courseId}`,type:"assignment",kind:"assessments",id:x.id}));
+      state.capstones.forEach(x=>x.due && events.push({date:x.due,title:`Capstone: ${x.title}`,type:"capstone",kind:"capstones",id:x.id}));
+      state.applications.forEach(x=>x.followUp && events.push({date:x.followUp,title:`Follow up: ${x.company}`,type:"career",kind:"applications",id:x.id}));
+      Object.entries(state.coursePrefs).forEach(([id,pref])=>{ if(pref.start) events.push({date:pref.start,title:`Start ${id}`,type:"plan",kind:"course",id}); if(pref.end) events.push({date:pref.end,title:`Target ${id}`,type:"assignment",kind:"course",id}); });
+      googleCalendarEvents.filter(event=>!event.extendedProperties?.private?.brainBloomTaskId && event.status!=="cancelled").forEach(event=>{
+        const date=googleEventDate(event); if(date) events.push({date,title:event.summary||"Google Calendar event",type:"google",kind:"google",id:event.id,htmlLink:event.htmlLink,time:event.start?.dateTime?new Date(event.start.dateTime).toLocaleTimeString([],{hour:"numeric",minute:"2-digit"}):""});
+      });
+      return events.sort((a,b)=>`${a.date}${a.time||""}${a.title}`.localeCompare(`${b.date}${b.time||""}${b.title}`));
+    }
+
+    function renderCalendar() {
+      const year = calendarCursor.getFullYear(), month = calendarCursor.getMonth();
+      let start, count;
+      if (calendarViewMode === "week") {
+        start = startOfWeek(calendarCursor); count = 7;
+        const end = new Date(start); end.setDate(start.getDate()+6);
+        document.getElementById("calendarTitle").textContent = weekRangeLabel(localDateString(start),localDateString(end));
+      } else {
+        const first = new Date(year,month,1);
+        start = startOfWeek(first); count = 42;
+        document.getElementById("calendarTitle").textContent = calendarCursor.toLocaleDateString(undefined,{month:"long",year:"numeric"});
+      }
+      document.querySelectorAll("[data-calendar-view]").forEach(button=>button.classList.toggle("active",button.dataset.calendarView===calendarViewMode));
+      const events = calendarEvents();
+      const cells = [];
+      for (let i=0;i<count;i++) {
+        const date = new Date(start); date.setDate(start.getDate()+i);
+        const key = localDateString(date);
+        const dayEvents = events.filter(event=>event.date===key);
+        const eventMarkup = dayEvents.map(event=>`<button class="calendar-event ${esc(event.type)} ${event.status === "Completed" ? "done" : ""}" data-calendar-event="${esc(event.kind)}:${esc(event.id)}" title="${esc(event.title)}">${event.time?`<strong>${esc(event.time)}</strong> · `:""}${esc(event.title)}${event.synced?' <span aria-label="Synced to Google">📅</span>':""}</button>`).join("");
+        const muted = calendarViewMode === "month" && date.getMonth()!==month ? "muted" : "";
+        cells.push(`<div class="calendar-day ${muted} ${key===localDateString() ? "today" : ""}"><button class="calendar-number" data-calendar-day="${key}" aria-label="Add task on ${esc(formatDate(key))}">${date.getDate()}</button>${eventMarkup || (calendarViewMode === "week" ? '<span class="calendar-empty-day">No tasks yet</span>' : "")}</div>`);
+      }
+      const grid = document.getElementById("calendarGrid");
+      grid.classList.toggle("week-view",calendarViewMode==="week");
+      grid.innerHTML = cells.join("");
+    }
+
+    function openCalendarEvent(kind, id) {
+      if (kind === "planner") return openPlanModal(id);
+      if (kind === "assignments") return openAssignmentModal(id);
+      if (kind === "google") { const item=googleCalendarEvents.find(event=>event.id===id); if(item?.htmlLink) window.open(item.htmlLink,"_blank","noopener"); return; }
+      if (kind === "course") return openCourse(id);
+      const views = {assessments:"mastery",capstones:"portfolio",applications:"career"};
+      if (views[kind]) showView(views[kind]);
+      setTimeout(()=>editRecord(kind,id),30);
+    }
+
+    function renderGoogleCalendarStatus() {
+      const panel=document.getElementById("googleCalendarPanel"); if(!panel)return;
+      const connected=Boolean(googleAccessToken);
+      panel.classList.toggle("connected",connected);
+      const configured=Boolean(state.calendarSettings.googleClientId);
+      document.getElementById("googleCalendarStatus").textContent=connected?`Connected · ${googleCalendarEvents.length} Google event${googleCalendarEvents.length===1?"":"s"} loaded`:configured?"Ready to connect · Google access lasts for this browser session":"Not connected · export works without setup";
+      document.getElementById("googleConnect").textContent=connected?"Reconnect":"Connect";
+      document.getElementById("googleRefresh").hidden=!connected;
+      document.getElementById("googleDisconnect").hidden=!connected;
+      document.getElementById("googleSyncWeek").disabled=!connected;
+      if(document.activeElement!==document.getElementById("googleClientId")) document.getElementById("googleClientId").value=state.calendarSettings.googleClientId||"";
+    }
+
+    function saveGoogleClientId() {
+      const value=inputValue("googleClientId").trim();
+      if(value && !value.endsWith(".apps.googleusercontent.com")) return toast("That does not look like a Google OAuth web Client ID.","error");
+      state.calendarSettings.googleClientId=value; saveState("Calendar setup saved"); googleTokenClient=null; renderGoogleCalendarStatus(); toast(value?"Google Client ID saved. You can connect now.":"Google Client ID removed.");
+    }
+
+    function ensureGoogleIdentity() {
+      if(window.google?.accounts?.oauth2) return Promise.resolve();
+      return new Promise((resolve,reject)=>{
+        const existing=document.querySelector('script[data-google-identity]');
+        if(existing){existing.addEventListener("load",resolve,{once:true});existing.addEventListener("error",()=>reject(new Error("Google sign-in could not load.")),{once:true});return;}
+        const script=document.createElement("script"); script.src="https://accounts.google.com/gsi/client"; script.async=true; script.defer=true; script.dataset.googleIdentity="true"; script.onload=resolve; script.onerror=()=>reject(new Error("Google sign-in could not load.")); document.head.appendChild(script);
+      });
+    }
+
+    async function connectGoogleCalendar() {
+      const clientId=state.calendarSettings.googleClientId;
+      if(!clientId){document.getElementById("googleSetupDetails").open=true;document.getElementById("googleClientId").focus();return toast("Add your Google OAuth Client ID first.","error");}
+      try {
+        await ensureGoogleIdentity();
+        if(!googleTokenClient) googleTokenClient=google.accounts.oauth2.initTokenClient({client_id:clientId,scope:"https://www.googleapis.com/auth/calendar.events",callback:async response=>{
+          if(response.error) return toast(`Google connection failed: ${response.error}`,"error");
+          googleAccessToken=response.access_token; renderGoogleCalendarStatus(); toast("Google Calendar connected 📅");
+          try{await refreshGoogleCalendarEvents();}catch(error){toast(error.message,"error");}
+        }});
+        googleTokenClient.requestAccessToken({prompt:googleAccessToken?"":"consent"});
+      } catch(error) { toast(error.message||"Google sign-in could not start.","error"); }
+    }
+
+    function disconnectGoogleCalendar() {
+      if(googleAccessToken && window.google?.accounts?.oauth2) google.accounts.oauth2.revoke(googleAccessToken,()=>{});
+      googleAccessToken=null; googleCalendarEvents=[]; renderPlanner(); toast("Google Calendar disconnected from this browser session.");
+    }
+
+    async function googleCalendarRequest(path, options={}) {
+      if(!googleAccessToken) throw new Error("Connect Google Calendar first.");
+      const response=await fetch(`https://www.googleapis.com/calendar/v3${path}`,{method:options.method||"GET",headers:{Authorization:`Bearer ${googleAccessToken}`,...(options.body?{"Content-Type":"application/json"}:{})},body:options.body?JSON.stringify(options.body):undefined});
+      if(response.status===204) return null;
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok){const error=new Error(data.error?.message||`Google Calendar returned ${response.status}.`);error.status=response.status;if(response.status===401){googleAccessToken=null;renderGoogleCalendarStatus();}throw error;}
+      return data;
+    }
+
+    function googleEventBody(task) {
+      const course=courseById(task.courseId);
+      const body={summary:task.status==="Completed"?`✓ ${task.title}`:task.title,description:["Brain Bloom Academy task",`Life area: ${task.category}`,course?`Class: ${course.id} · ${course.title}`:"",`Status: ${task.status}`].filter(Boolean).join("\n"),extendedProperties:{private:{brainBloomTaskId:task.id}}};
+      if(task.time){const start=new Date(`${task.date}T${task.time}:00`);const end=new Date(start.getTime()+Number(task.minutes||45)*60000);body.start={dateTime:start.toISOString()};body.end={dateTime:end.toISOString()};}
+      else{body.start={date:task.date};body.end={date:addDaysString(task.date,1)};}
+      return body;
+    }
+
+    async function syncPlannerTask(task) {
+      if(!task) return;
+      let result;
+      if(task.googleEventId){
+        try{result=await googleCalendarRequest(`/calendars/primary/events/${encodeURIComponent(task.googleEventId)}`,{method:"PATCH",body:googleEventBody(task)});}
+        catch(error){if(error.status!==404)throw error;task.googleEventId="";}
+      }
+      if(!task.googleEventId) result=await googleCalendarRequest("/calendars/primary/events",{method:"POST",body:googleEventBody(task)});
+      if(result){task.googleEventId=result.id;task.googleEventLink=result.htmlLink||"";task.googleSyncedAt=new Date().toISOString();task.syncGoogle=true;saveState("Synced with Google");}
+      return result;
+    }
+
+    async function syncSelectedWeek() {
+      if(!googleAccessToken)return connectGoogleCalendar();
+      const {start,end}=selectedWeekBounds();const tasks=state.planner.filter(task=>task.date>=start&&task.date<=end);
+      if(!tasks.length)return toast("There are no planner tasks in this week to sync.");
+      const button=document.getElementById("googleSyncWeek");button.disabled=true;button.textContent="Syncing…";
+      let synced=0;
+      try{for(const task of tasks){await syncPlannerTask(task);synced++;}await refreshGoogleCalendarEvents();toast(`${synced} task${synced===1?"":"s"} synced with Google Calendar 📅`);}
+      catch(error){toast(error.message||"Google sync stopped before it finished.","error");}
+      finally{button.textContent="Sync week";renderPlanner();}
+    }
+
+    async function refreshGoogleCalendarEvents() {
+      if(!googleAccessToken)return;
+      const rangeStart=calendarViewMode==="month"?new Date(calendarCursor.getFullYear(),calendarCursor.getMonth(),1):startOfWeek(calendarCursor);
+      rangeStart.setDate(rangeStart.getDate()-7);
+      const rangeEnd=new Date(rangeStart);rangeEnd.setDate(rangeEnd.getDate()+(calendarViewMode==="month"?56:21));
+      const query=new URLSearchParams({timeMin:rangeStart.toISOString(),timeMax:rangeEnd.toISOString(),singleEvents:"true",orderBy:"startTime",maxResults:"250"});
+      const data=await googleCalendarRequest(`/calendars/primary/events?${query}`);
+      googleCalendarEvents=Array.isArray(data.items)?data.items:[];renderPlanner();
+    }
+
+    function icsEscape(value){return String(value||"").replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;");}
+    function icsUtc(date){return date.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z");}
+    function exportSelectedWeek() {
+      const {start,end}=selectedWeekBounds();const tasks=state.planner.filter(task=>task.date>=start&&task.date<=end);
+      if(!tasks.length)return toast("There are no planner tasks in this week to export.");
+      const events=tasks.map(task=>{const lines=["BEGIN:VEVENT",`UID:${icsEscape(task.id)}@brainbloom`,`DTSTAMP:${icsUtc(new Date())}`,`SUMMARY:${icsEscape(task.title)}`,`DESCRIPTION:${icsEscape(`${task.category} · ${task.status}`)}`];if(task.time){const begins=new Date(`${task.date}T${task.time}:00`);const ends=new Date(begins.getTime()+Number(task.minutes||45)*60000);lines.push(`DTSTART:${icsUtc(begins)}`,`DTEND:${icsUtc(ends)}`);}else{lines.push(`DTSTART;VALUE=DATE:${task.date.replace(/-/g,"")}`,`DTEND;VALUE=DATE:${addDaysString(task.date,1).replace(/-/g,"")}`);}lines.push("END:VEVENT");return lines.join("\r\n");}).join("\r\n");
+      const content=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Brain Bloom Academy//Planner//EN\r\nCALSCALE:GREGORIAN\r\n${events}\r\nEND:VCALENDAR\r\n`;
+      const url=URL.createObjectURL(new Blob([content],{type:"text/calendar;charset=utf-8"}));const link=document.createElement("a");link.href=url;link.download=`brain-bloom-${start}-to-${end}.ics`;link.click();setTimeout(()=>URL.revokeObjectURL(url),500);toast("Calendar file exported 📅");
+    }
+
+    function renderMastery() {
+      populateSharedCourseSelects();
+      if (!inputValue("assessmentDate")) setInput("assessmentDate", localDateString());
+      if (!inputValue("questionNextReview")) setInput("questionNextReview", localDateString());
+      renderAssessments(); renderMasteryChecklist(); renderQuestions(); renderQuiz();
+    }
+
+    function renderAssessments() {
+      const baselines = state.assessments.filter(x=>x.type === "Baseline");
+      const finals = state.assessments.filter(x=>x.type === "Final");
+      const improvements = curriculum.map(course=>{
+        const base = [...baselines].filter(x=>x.courseId===course.id).sort((a,b)=>a.date.localeCompare(b.date))[0];
+        const final = [...finals].filter(x=>x.courseId===course.id).sort((a,b)=>b.date.localeCompare(a.date))[0];
+        return base && final ? Number(final.score)-Number(base.score) : null;
+      }).filter(x=>x!==null);
+      const avg = improvements.length ? improvements.reduce((a,b)=>a+b,0)/improvements.length : null;
+      document.getElementById("assessmentSummary").innerHTML = [
+        ["Baselines", baselines.length, "Starting points recorded"], ["Finals", finals.length, "End points recorded"],
+        ["Comparable pairs", improvements.length, "Baseline + final"], ["Average growth", avg===null ? "—" : `${avg>=0?"+":""}${avg.toFixed(1)} pts`, "Across comparable classes"]
+      ].map(([label,value,copy])=>`<div class="metric"><span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(copy)}</small></div>`).join("");
+      const items = [...state.assessments].sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+      document.getElementById("assessmentList").innerHTML = items.length ? items.map(item=>{
+        const course=courseById(item.courseId);
+        return `<article class="record-card"><div class="record-top"><div><span class="tag ${item.type === "Final" ? "mint" : item.type === "Baseline" ? "pink" : ""}">${esc(item.type)}</span><h4>${course?.icon||"🧪"} ${esc(course?.title||item.courseId)}</h4></div><strong>${esc(item.score)}%</strong></div><small>${formatDate(item.date)}</small>${item.notes?`<p>${esc(item.notes)}</p>`:""}${recordButtons("assessments",item.id)}</article>`;
+      }).join("") : emptyState("📏","No assessments yet","Record a baseline before starting a class, then compare it with your final result.");
+    }
+
+    function saveAssessment(event) {
+      event.preventDefault();
+      const id=inputValue("assessmentId")||uid("assessment");
+      upsertRecord("assessments",{id,courseId:inputValue("assessmentCourse"),type:inputValue("assessmentType"),date:inputValue("assessmentDate"),score:clamp(inputValue("assessmentScore"),0,100),notes:inputValue("assessmentNotes").trim()});
+      saveState("Assessment saved"); resetRecordForm("assessmentForm","assessmentId","assessmentDetails"); setInput("assessmentDate",localDateString()); renderAll(); toast("Assessment saved 📏");
+    }
+
+    function masteryEntry(courseId,index) {
+      return { practice:false, explain:false, delayed:false, ...(state.mastery?.[courseId]?.[index] || {}) };
+    }
+    function masteredOutcomeCount() {
+      return curriculum.reduce((sum,course)=>sum+course.outcomes.filter((_,index)=>{const item=masteryEntry(course.id,index); return item.practice&&item.explain&&item.delayed;}).length,0);
+    }
+    function masteryPercent(courseId=null) {
+      const courses = courseId ? [courseById(courseId)].filter(Boolean) : curriculum;
+      const total = courses.reduce((sum,course)=>sum+course.outcomes.length*3,0);
+      const done = courses.reduce((sum,course)=>sum+course.outcomes.reduce((subtotal,_,index)=>{const item=masteryEntry(course.id,index); return subtotal+Number(item.practice)+Number(item.explain)+Number(item.delayed);},0),0);
+      return total ? Math.round(done/total*100) : 0;
+    }
+    function renderMasteryChecklist() {
+      const select=document.getElementById("masteryCourse");
+      const selected=select.value || semesterById(state.profile.currentSemester).courses[0];
+      if (select.value !== selected) select.value=selected;
+      const course=courseById(select.value)||curriculum[0];
+      document.getElementById("masterySummary").textContent=`${masteryPercent(course.id)}% class · ${masteredOutcomeCount()} mastered total`;
+      document.getElementById("masteryOutcomes").innerHTML=course.outcomes.map((outcome,index)=>{
+        const item=masteryEntry(course.id,index), mastered=item.practice&&item.explain&&item.delayed;
+        return `<article class="outcome-card ${mastered?"mastered":""}"><h4>${mastered?"✅":"🌱"} ${esc(outcome)}</h4><div class="mastery-checks"><label><input type="checkbox" data-mastery-course="${course.id}" data-mastery-index="${index}" data-mastery-key="practice" ${item.practice?"checked":""}> Practiced it</label><label><input type="checkbox" data-mastery-course="${course.id}" data-mastery-index="${index}" data-mastery-key="explain" ${item.explain?"checked":""}> Explained without notes</label><label><input type="checkbox" data-mastery-course="${course.id}" data-mastery-index="${index}" data-mastery-key="delayed" ${item.delayed?"checked":""}> Recalled after 7+ days</label></div></article>`;
+      }).join("");
+    }
+
+    function renderQuestions() {
+      const items=[...state.questions].sort((a,b)=>(a.nextReview||"9999").localeCompare(b.nextReview||"9999"));
+      document.getElementById("questionList").innerHTML=items.length?items.map(item=>`<article class="record-card"><span class="tag">${esc(item.courseId)}</span><span class="tag ${item.nextReview && item.nextReview<=localDateString()?"pink":""}">${item.nextReview?`Review ${formatDate(item.nextReview)}`:"No review date"}</span><h4>${esc(item.prompt)}</h4><p>${esc(item.answer.slice(0,150))}${item.answer.length>150?"…":""}</p><small class="confidence-dots">${confidenceDots(item.confidence)}</small>${recordButtons("questions",item.id)}</article>`).join(""):emptyState("❓","No practice questions","Turn lesson ideas into questions you can retrieve later.");
+    }
+    function saveQuestion(event) {
+      event.preventDefault(); const id=inputValue("questionId")||uid("question");
+      upsertRecord("questions",{id,courseId:inputValue("questionCourse"),prompt:inputValue("questionPrompt").trim(),answer:inputValue("questionAnswer").trim(),confidence:Number(inputValue("questionConfidence")||1),nextReview:inputValue("questionNextReview"),lastReviewed:""});
+      saveState("Question saved"); resetRecordForm("questionForm","questionId","questionDetails"); setInput("questionNextReview",localDateString()); activeQuizQuestionId=id; quizAnswerVisible=false; renderAll(); toast("Practice question saved ❓");
+    }
+    function pickQuizQuestion() {
+      if (!state.questions.length) { activeQuizQuestionId=null; return; }
+      const due=state.questions.filter(x=>!x.nextReview||x.nextReview<=localDateString());
+      const pool=due.length?due:state.questions;
+      const choices=pool.filter(x=>x.id!==activeQuizQuestionId);
+      const selected=(choices.length?choices:pool)[Math.floor(Math.random()*(choices.length?choices:pool).length)];
+      activeQuizQuestionId=selected?.id||null; quizAnswerVisible=false; renderQuiz();
+    }
+    function renderQuiz() {
+      const stage=document.getElementById("quizStage"); if(!stage) return;
+      if(!state.questions.length){stage.innerHTML=emptyState("🎲","Question bank is empty","Add a question, then quiz yourself here.");return;}
+      if(!activeQuizQuestionId||!state.questions.some(x=>x.id===activeQuizQuestionId)) activeQuizQuestionId=state.questions[0].id;
+      const item=state.questions.find(x=>x.id===activeQuizQuestionId),course=courseById(item.courseId);
+      stage.innerHTML=`<span class="tag">${esc(course?.id||item.courseId)}</span><h4>${esc(item.prompt)}</h4>${quizAnswerVisible?`<div class="quiz-answer"><strong>Answer:</strong><br>${esc(item.answer)}</div><div class="button-row" style="margin-top:12px;"><button class="btn btn-small btn-secondary" data-quiz-grade="again">Study again</button><button class="btn btn-small btn-mint" data-quiz-grade="knew">I knew it</button></div>`:`<button class="btn btn-primary" data-quiz-reveal style="margin-top:12px;">Reveal answer</button>`}`;
+    }
+    function gradeQuiz(result) {
+      const item=state.questions.find(x=>x.id===activeQuizQuestionId); if(!item) return;
+      item.lastReviewed=localDateString();
+      if(result==="knew"){item.confidence=Math.min(5,Number(item.confidence||1)+1);item.nextReview=addDaysString(localDateString(),Math.max(3,Number(item.confidence)*2));}
+      else {item.confidence=Math.max(1,Number(item.confidence||1)-1);item.nextReview=addDaysString(localDateString(),1);}
+      saveState("Question reviewed"); pickQuizQuestion(); renderQuestions(); toast(result==="knew"?"Nice retrieval! Review scheduled ✨":"No shame—this one comes back tomorrow 🌱");
+    }
+
+    const capstoneIdeas = {
+      1:"Build a personal learning handbook: explain your study system, revise one written page, solve practical math examples, and present your UX career plan.",
+      2:"Read and summarize a complex article, explain its key idea aloud, visualize one numeric claim, and connect it to a UX problem.",
+      3:"Research a disputed claim, evaluate sources, map the argument, and write a structured evidence-based essay.",
+      4:"Record a polished presentation and a surprise Q&A response, then analyze the psychology of your delivery and revision.",
+      5:"Plan a small UX research study, analyze the results, create an honest visualization, and present recommendations.",
+      6:"Create a systems explainer connecting history, government, economics, science, and one real business or design decision.",
+      7:"Create and analyze an original story, song, or experience, then present its cultural context and accessibility choices.",
+      8:"Lead a full capstone from problem definition through process map, project plan, recommendation, portfolio case study, and presentation."
+    };
+
+    function renderPortfolio() {
+      populateSharedCourseSelects();
+      ["capstoneSemester","reflectionSemester"].forEach(id=>{const el=document.getElementById(id),selected=el.value||String(state.profile.currentSemester);el.innerHTML=semesters.map(s=>`<option value="${s.id}">Semester ${s.id}: ${esc(s.title)}</option>`).join("");el.value=selected;});
+      if(!inputValue("speakingDate")) setInput("speakingDate",localDateString());
+      if(!inputValue("reflectionDate")) setInput("reflectionDate",localDateString());
+      if(!inputValue("feedbackDate")) setInput("feedbackDate",localDateString());
+      renderCapstones(); renderFeedback(); renderReading(); renderSpeaking(); renderReflections();
+    }
+
+    function renderCapstones(){
+      const items=[...state.capstones].sort((a,b)=>Number(a.semester)-Number(b.semester));
+      document.getElementById("capstoneList").innerHTML=items.length?items.map(item=>`<article class="record-card"><div class="record-top"><div><span class="tag gold">Semester ${esc(item.semester)}</span><span class="tag ${item.status==="Completed"?"mint":""}">${esc(item.status)}</span><h4>🌟 ${esc(item.title)}</h4></div><strong>${esc(item.progress)}%</strong></div><div class="progress-track"><span style="width:${clamp(item.progress,0,100)}%"></span></div>${item.goal?`<p>${esc(item.goal)}</p>`:""}<small>${item.due?`Target ${formatDate(item.due)}`:"No target date"}</small>${safeUrl(item.evidence)?`<div><a href="${safeUrl(item.evidence)}" target="_blank" rel="noopener">Open evidence ↗</a></div>`:""}${recordButtons("capstones",item.id)}</article>`).join(""):`<div class="privacy-box" style="grid-column:1/-1;"><strong>Semester ${state.profile.currentSemester} idea:</strong><br>${esc(capstoneIdeas[state.profile.currentSemester])}</div>`;
+    }
+    function saveCapstone(event){event.preventDefault();const id=inputValue("capstoneId")||uid("capstone"),status=inputValue("capstoneStatus"),progress=status==="Completed"?100:clamp(inputValue("capstoneProgress"),0,100);upsertRecord("capstones",{id,semester:Number(inputValue("capstoneSemester")),status,title:inputValue("capstoneTitle").trim(),due:inputValue("capstoneDue"),progress,goal:inputValue("capstoneGoal").trim(),evidence:safeUrl(inputValue("capstoneEvidence"))});saveState("Capstone saved");resetRecordForm("capstoneForm","capstoneId","capstoneDetails");setInput("capstoneSemester",state.profile.currentSemester);renderAll();toast(status==="Completed"?"Capstone complete! That is a BIG win 🌟":"Capstone saved 🌟");}
+
+    function renderFeedback(){const items=[...state.feedback].sort((a,b)=>(b.date||"").localeCompare(a.date||""));document.getElementById("feedbackList").innerHTML=items.length?items.map(item=>`<article class="record-card"><span class="tag">${esc(item.courseId||"General")}</span><span class="tag ${item.status==="Revised"?"mint":""}">${esc(item.status)}</span><h4>💬 ${esc(item.project)}</h4><small>${formatDate(item.date)}${item.reviewer?` · ${esc(item.reviewer)}`:""}</small><p><strong>Feedback:</strong> ${esc(item.received)}</p>${item.changes?`<p><strong>Revision:</strong> ${esc(item.changes)}</p>`:""}${safeUrl(item.link)?`<a href="${safeUrl(item.link)}" target="_blank" rel="noopener">Open revision ↗</a>`:""}${recordButtons("feedback",item.id)}</article>`).join(""):emptyState("💬","No feedback saved","Feedback becomes useful when you can see what changed afterward.");}
+    function saveFeedback(event){event.preventDefault();const id=inputValue("feedbackId")||uid("feedback");upsertRecord("feedback",{id,courseId:inputValue("feedbackCourse"),date:inputValue("feedbackDate"),project:inputValue("feedbackProject").trim(),reviewer:inputValue("feedbackReviewer").trim(),received:inputValue("feedbackReceived").trim(),changes:inputValue("feedbackChanges").trim(),status:inputValue("feedbackStatus"),link:safeUrl(inputValue("feedbackLink"))});saveState("Feedback saved");resetRecordForm("feedbackForm","feedbackId","feedbackDetails");setInput("feedbackDate",localDateString());renderAll();toast("Feedback and revision saved 💬");}
+
+    function renderReading(){const items=[...state.reading].sort((a,b)=>(b.updatedAt||"").localeCompare(a.updatedAt||""));document.getElementById("readingList").innerHTML=items.length?items.map(item=>`<article class="record-card"><span class="tag">${esc(item.type)}</span><span class="tag ${item.status==="Finished"?"mint":""}">${esc(item.status)}</span><h4>📚 ${esc(item.title)}</h4><small>${esc(item.author||"No author/source")}${item.courseId?` · ${esc(item.courseId)}`:""}</small><div class="progress-track"><span style="width:${clamp(item.progress,0,100)}%"></span></div>${item.takeaway?`<p>${esc(item.takeaway)}</p>`:""}${safeUrl(item.url)?`<a href="${safeUrl(item.url)}" target="_blank" rel="noopener">Open reading ↗</a>`:""}${recordButtons("reading",item.id)}</article>`).join(""):emptyState("📚","Your reading shelf is empty","Add the first thing you want to understand—not just finish.");}
+    function saveReading(event){event.preventDefault();const id=inputValue("readingId")||uid("reading"),status=inputValue("readingStatus"),progress=status==="Finished"?100:clamp(inputValue("readingProgress"),0,100);upsertRecord("reading",{id,title:inputValue("readingTitle").trim(),author:inputValue("readingAuthor").trim(),type:inputValue("readingType"),courseId:inputValue("readingCourse"),status,progress,url:safeUrl(inputValue("readingUrl")),takeaway:inputValue("readingTakeaway").trim()});saveState("Reading saved");resetRecordForm("readingForm","readingId","readingDetails");renderAll();toast("Reading shelf updated 📚");}
+
+    function renderSpeaking(){const items=[...state.speaking].sort((a,b)=>(b.date||"").localeCompare(a.date||""));document.getElementById("speakingList").innerHTML=items.length?items.map(item=>`<article class="record-card"><span class="tag pink">${esc(item.format)}</span><h4>🎤 ${esc(item.topic)}</h4><small>${formatDate(item.date)} · ${esc(item.minutes)} min${item.courseId?` · ${esc(item.courseId)}`:""}</small><p class="confidence-dots" title="Confidence ${esc(item.confidence)} of 5">${confidenceDots(item.confidence)}</p>${item.reflection?`<p>${esc(item.reflection)}</p>`:""}${safeUrl(item.recording)?`<a href="${safeUrl(item.recording)}" target="_blank" rel="noopener">Open recording ↗</a>`:""}${recordButtons("speaking",item.id)}</article>`).join(""):emptyState("🎤","No speaking practice yet","Five minutes explaining one idea absolutely counts.");}
+    function saveSpeaking(event){event.preventDefault();const id=inputValue("speakingId")||uid("speaking");upsertRecord("speaking",{id,date:inputValue("speakingDate"),courseId:inputValue("speakingCourse"),topic:inputValue("speakingTopic").trim(),format:inputValue("speakingFormat"),minutes:Number(inputValue("speakingMinutes")||5),confidence:clamp(inputValue("speakingConfidence"),1,5),recording:safeUrl(inputValue("speakingRecording")),reflection:inputValue("speakingReflection").trim()});saveState("Speaking practice saved");resetRecordForm("speakingForm","speakingId","speakingDetails");setInput("speakingDate",localDateString());renderAll();toast("Speaking practice logged 🎤");}
+
+    function renderReflections(){const items=[...state.reflections].sort((a,b)=>(b.date||"").localeCompare(a.date||""));document.getElementById("reflectionList").innerHTML=items.length?items.map(item=>`<article class="record-card"><div class="record-top"><div><span class="tag">Semester ${esc(item.semester)}</span><h4>${esc(item.mood)} · Week of ${formatDate(item.date)}</h4></div></div><p><strong>Wins:</strong> ${esc(item.wins)}</p>${item.learned?`<p><strong>Clearer now:</strong> ${esc(item.learned)}</p>`:""}${item.challenge?`<p><strong>Still working on:</strong> ${esc(item.challenge)}</p>`:""}${item.next?`<p><strong>Next adjustment:</strong> ${esc(item.next)}</p>`:""}${recordButtons("reflections",item.id)}</article>`).join(""):emptyState("🌱","No weekly reflections","Your brain deserves a debrief, not just another task list.");}
+    function saveReflection(event){event.preventDefault();const id=inputValue("reflectionId")||uid("reflection");upsertRecord("reflections",{id,date:inputValue("reflectionDate"),semester:Number(inputValue("reflectionSemester")),mood:inputValue("reflectionMood"),wins:inputValue("reflectionWins").trim(),learned:inputValue("reflectionLearned").trim(),challenge:inputValue("reflectionChallenge").trim(),next:inputValue("reflectionNext").trim()});saveState("Reflection saved");resetRecordForm("reflectionForm","reflectionId","reflectionDetails");setInput("reflectionDate",localDateString());setInput("reflectionSemester",state.profile.currentSemester);renderAll();toast("Weekly reflection saved 🌱");}
+
+    function milestoneDefinitions(){
+      const comparison=curriculum.some(course=>{const base=state.assessments.find(x=>x.courseId===course.id&&x.type==="Baseline"),final=state.assessments.find(x=>x.courseId===course.id&&x.type==="Final");return base&&final&&Number(final.score)>Number(base.score);});
+      return [
+        {key:"first-note",icon:"🧋",title:"First Sip",text:"Create a study note",earned:state.notes.length>=1},
+        {key:"study-hour",icon:"🎧",title:"Focus Mix",text:"Log 60 study minutes",earned:state.studySessions.reduce((s,x)=>s+Number(x.minutes||0),0)>=60},
+        {key:"five-mastered",icon:"🧠",title:"Memory Main",text:"Master five outcomes",earned:masteredOutcomeCount()>=5},
+        {key:"score-growth",icon:"📈",title:"Level Up",text:"Improve from baseline to final",earned:comparison},
+        {key:"capstone",icon:"🌟",title:"Boss Project",text:"Complete a semester capstone",earned:state.capstones.some(x=>x.status==="Completed")},
+        {key:"five-apps",icon:"🚀",title:"Launch Sequence",text:"Send five applications",earned:state.applications.filter(x=>x.status!=="Wishlist").length>=5},
+        {key:"book-finished",icon:"📚",title:"Page Turner",text:"Finish a reading",earned:state.reading.some(x=>x.status==="Finished")},
+        {key:"voice-reps",icon:"🎤",title:"Mic Check",text:"Log five speaking practices",earned:state.speaking.length>=5},
+        {key:"reflection-month",icon:"🌸",title:"Bloom Cycle",text:"Write four reflections",earned:state.reflections.length>=4}
+      ];
+    }
+    function milestoneCards(limit=null){const items=milestoneDefinitions().sort((a,b)=>Number(b.earned)-Number(a.earned));return (limit?items.slice(0,limit):items).map(item=>`<div class="milestone ${item.earned?"earned":""}"><span>${item.icon}</span><strong>${esc(item.title)}</strong><small>${esc(item.text)}</small></div>`).join("");}
+    function launchConfetti(){const colors=["#ffabc7","#b8a5ff","#ffe69a","#aee8d2","#a9d9ff"];for(let i=0;i<42;i++){const piece=document.createElement("i");piece.className="confetti-piece";piece.style.left=`${Math.random()*100}vw`;piece.style.background=colors[i%colors.length];piece.style.setProperty("--drift",`${Math.random()*240-120}px`);piece.style.animationDelay=`${Math.random()*.5}s`;document.body.appendChild(piece);setTimeout(()=>piece.remove(),3400);}}
+    function celebrate(message){launchConfetti();toast(message);}
+
+    function renderCareer(){
+      if(!inputValue("applicationDate")) setInput("applicationDate",localDateString());
+      const applied=state.applications.filter(x=>x.status!=="Wishlist").length,interviews=state.applications.filter(x=>x.status==="Interview").length,offers=state.applications.filter(x=>x.status==="Offer").length,followups=state.applications.filter(x=>x.followUp&&x.followUp<=addDaysString(localDateString(),7)&&x.status!=="Closed").length;
+      document.getElementById("careerSummary").innerHTML=[["Applications",applied,"Submitted"],["Interviews",interviews,"In progress"],["Offers",offers,"Big bloom energy"],["Follow-ups",followups,"Due within 7 days"]].map(([label,value,copy])=>`<div class="metric"><span>${esc(label)}</span><strong>${esc(value)}</strong><small>${esc(copy)}</small></div>`).join("");
+      const stages=["Wishlist","Applied","Interview","Offer","Closed"];
+      document.getElementById("careerBoard").innerHTML=stages.map(stage=>`<section class="career-column"><h4>${stage==="Wishlist"?"💭":stage==="Applied"?"📨":stage==="Interview"?"🎤":stage==="Offer"?"🎉":"📁"} ${stage}</h4>${state.applications.filter(x=>x.status===stage).sort((a,b)=>(b.appliedDate||"").localeCompare(a.appliedDate||"")).map(item=>`<article class="career-card"><strong>${esc(item.role)}</strong><small>${esc(item.company)}</small>${item.followUp?`<small>Follow up: ${formatDate(item.followUp)}</small>`:""}<div class="record-actions"><button class="btn btn-small btn-secondary" data-record-edit="applications:${item.id}">Edit</button><button class="btn btn-small btn-danger" data-record-delete="applications:${item.id}">×</button></div></article>`).join("")||`<small>Nothing here yet.</small>`}</section>`).join("");
+      document.getElementById("milestoneShelf").innerHTML=milestoneCards();
+      document.getElementById("rewardList").innerHTML=state.rewards.length?state.rewards.map(item=>`<div class="list-item"><div class="list-item-icon">${item.claimed?"🎉":"🎁"}</div><div><strong>${esc(item.milestone)}</strong><small>${esc(item.treat)}${item.claimed?" · Claimed!":""}</small></div><div class="record-actions">${item.claimed?"":`<button class="btn btn-small btn-mint" data-reward-claim="${item.id}">Celebrate</button>`}<button class="btn btn-small btn-danger" data-record-delete="rewards:${item.id}">×</button></div></div>`).join(""):emptyState("🎁","Reward jar is empty","Pick a small celebration for a milestone that matters to you.");
+    }
+    function saveApplication(event){event.preventDefault();const id=inputValue("applicationId")||uid("application"),status=inputValue("applicationStatus");upsertRecord("applications",{id,company:inputValue("applicationCompany").trim(),role:inputValue("applicationRole").trim(),url:safeUrl(inputValue("applicationUrl")),appliedDate:inputValue("applicationDate"),status,followUp:inputValue("applicationFollowUp"),contact:inputValue("applicationContact").trim(),notes:inputValue("applicationNotes").trim()});saveState("Application saved");resetRecordForm("applicationForm","applicationId","applicationDetails");setInput("applicationDate",localDateString());renderAll();if(status==="Offer")celebrate("AN OFFER! Cue the victory music 🎉");else toast("Career tracker updated 🚀");}
+    function saveReward(event){event.preventDefault();const id=inputValue("rewardId")||uid("reward");upsertRecord("rewards",{id,milestone:inputValue("rewardMilestone").trim(),treat:inputValue("rewardTreat").trim(),claimed:false});saveState("Reward saved");resetRecordForm("rewardForm","rewardId",null);renderCareer();toast("Reward added to the jar 🎁");}
+
+    function deleteRecord(kind,id){
+      if(kind==="planner"){deletePlannerTask(id);return;}
+      const labels={planner:"plan block",assessments:"assessment",questions:"question",feedback:"feedback record",capstones:"capstone",reading:"reading item",speaking:"speaking log",reflections:"reflection",applications:"application",rewards:"reward"};
+      if(!state[kind]||!confirm(`Delete this ${labels[kind]||"record"}?`))return;
+      state[kind]=state[kind].filter(item=>item.id!==id);saveState("Record deleted");renderAll();toast("Record deleted");
+    }
+
+    function editRecord(kind,id){
+      if(kind==="planner"){openPlanModal(id);return;}
+      const item=state[kind]?.find(x=>x.id===id);if(!item)return;
+      const maps={
+        assessments:{details:"assessmentDetails",fields:{assessmentId:"id",assessmentCourse:"courseId",assessmentType:"type",assessmentDate:"date",assessmentScore:"score",assessmentNotes:"notes"}},
+        questions:{details:"questionDetails",fields:{questionId:"id",questionCourse:"courseId",questionPrompt:"prompt",questionAnswer:"answer",questionConfidence:"confidence",questionNextReview:"nextReview"}},
+        capstones:{details:"capstoneDetails",fields:{capstoneId:"id",capstoneSemester:"semester",capstoneStatus:"status",capstoneTitle:"title",capstoneDue:"due",capstoneProgress:"progress",capstoneGoal:"goal",capstoneEvidence:"evidence"}},
+        feedback:{details:"feedbackDetails",fields:{feedbackId:"id",feedbackCourse:"courseId",feedbackDate:"date",feedbackProject:"project",feedbackReviewer:"reviewer",feedbackReceived:"received",feedbackChanges:"changes",feedbackStatus:"status",feedbackLink:"link"}},
+        reading:{details:"readingDetails",fields:{readingId:"id",readingTitle:"title",readingAuthor:"author",readingType:"type",readingCourse:"courseId",readingStatus:"status",readingProgress:"progress",readingUrl:"url",readingTakeaway:"takeaway"}},
+        speaking:{details:"speakingDetails",fields:{speakingId:"id",speakingDate:"date",speakingCourse:"courseId",speakingTopic:"topic",speakingFormat:"format",speakingMinutes:"minutes",speakingConfidence:"confidence",speakingRecording:"recording",speakingReflection:"reflection"}},
+        reflections:{details:"reflectionDetails",fields:{reflectionId:"id",reflectionDate:"date",reflectionSemester:"semester",reflectionMood:"mood",reflectionWins:"wins",reflectionLearned:"learned",reflectionChallenge:"challenge",reflectionNext:"next"}},
+        applications:{details:"applicationDetails",fields:{applicationId:"id",applicationCompany:"company",applicationRole:"role",applicationUrl:"url",applicationDate:"appliedDate",applicationStatus:"status",applicationFollowUp:"followUp",applicationContact:"contact",applicationNotes:"notes"}}
+      };
+      const map=maps[kind];if(!map)return;Object.entries(map.fields).forEach(([field,key])=>setInput(field,item[key]));openEditor(map.details);
+    }
+
+    function renderSettings() {
+      document.getElementById("studentName").value = state.profile.name || "";
+      document.getElementById("currentSemesterSetting").innerHTML = semesters.map(s => `<option value="${s.id}" ${s.id === Number(state.profile.currentSemester) ? "selected" : ""}>Semester ${s.id}: ${esc(s.title)}</option>`).join("");
+      document.getElementById("termStart").value = state.profile.termStart || "";
+      document.getElementById("weeklyHours").value = state.profile.weeklyHours || 8;
+      document.getElementById("learningGoal").value = state.profile.learningGoal || "";
+    }
+
+    function saveProfile(event) {
+      event.preventDefault();
+      state.profile = { ...state.profile, name:document.getElementById("studentName").value.trim() || "Student", currentSemester:Number(document.getElementById("currentSemesterSetting").value), termStart:document.getElementById("termStart").value, weeklyHours:Number(document.getElementById("weeklyHours").value || 8), learningGoal:document.getElementById("learningGoal").value.trim() };
+      displayedSemester = state.profile.currentSemester; saveState("Profile saved"); renderAll(); toast("Profile updated 🌸");
+    }
+
+    function exportData() {
+      saveActiveNote();
+      const blob = new Blob([JSON.stringify({ exportedAt:new Date().toISOString(), app:"Brain Bloom Academy", ...state }, null, 2)], { type:"application/json" });
+      const url = URL.createObjectURL(blob); const link = document.createElement("a");
+      link.href = url; link.download = `brain-bloom-backup-${localDateString()}.json`; document.body.appendChild(link); link.click(); link.remove(); URL.revokeObjectURL(url); toast("Backup exported ⬇");
+    }
+
+    function importData(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          if (!data.profile || !Array.isArray(data.notes) || !Array.isArray(data.assignments)) throw new Error("Invalid backup");
+          if (!confirm("Replace the current academy data with this backup? Export your current data first if you need it.")) return;
+          const fresh = defaultState();
+          state = {
+            ...fresh, ...data, profile:{...fresh.profile,...data.profile}, calendarSettings:{...fresh.calendarSettings,...data.calendarSettings}, coursePrefs:data.coursePrefs||{},
+            notes:data.notes||[], assignments:data.assignments||[], studySessions:data.studySessions||[], planner:data.planner||[], assessments:data.assessments||[],
+            mastery:data.mastery||{}, questions:data.questions||[], feedback:data.feedback||[], capstones:data.capstones||[], reading:data.reading||[],
+            speaking:data.speaking||[], reflections:data.reflections||[], applications:data.applications||[], rewards:data.rewards||[], celebrated:data.celebrated||[]
+          };
+          state.notes = state.notes.map(note => ({...note, content:sanitizeNoteHTML(note.content||"")}));
+          displayedSemester = Number(state.profile.currentSemester || 1); saveState("Backup imported"); renderAll(); showView("dashboard"); toast("Backup imported successfully ✨");
+        } catch { toast("That file is not a valid Brain Bloom backup.", "error"); }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetData() {
+      const answer = prompt("This permanently clears the academy data in this browser. Type RESET to continue.");
+      if (answer !== "RESET") { toast("Reset cancelled"); return; }
+      state = defaultState(); displayedSemester = 1; plannerWeekCursor=startOfCurrentWeek();calendarCursor=new Date(plannerWeekCursor);calendarViewMode="week";plannerScope="week";googleAccessToken=null;googleTokenClient=null;googleCalendarEvents=[];saveState("Academy reset"); renderAll(); showView("dashboard"); toast("Academy reset. Fresh notebook, fresh start.");
+    }
+
+    function bindEvents() {
+      document.addEventListener("click", event => {
+        const nav = event.target.closest("[data-view]"); if (nav) { showView(nav.dataset.view); return; }
+        const jump = event.target.closest("[data-view-jump]"); if (jump) { showView(jump.dataset.viewJump); return; }
+        const close = event.target.closest("[data-close]"); if (close) { closeModal(close.dataset.close); return; }
+        const courseOpen = event.target.closest("[data-course-open]"); if (courseOpen) { openCourse(courseOpen.dataset.courseOpen); return; }
+        const courseNote = event.target.closest("[data-course-note]"); if (courseNote) { const existing = state.notes.find(n=>n.courseId===courseNote.dataset.courseNote); existing ? (state.activeNoteId=existing.id, showView("notes")) : createNote(courseNote.dataset.courseNote); return; }
+        const noteSelect = event.target.closest("[data-note-select]"); if (noteSelect) { selectNote(noteSelect.dataset.noteSelect); return; }
+        const noteOpen = event.target.closest("[data-note-open]"); if (noteOpen) { state.activeNoteId = noteOpen.dataset.noteOpen; showView("notes"); return; }
+        const editAssignment = event.target.closest("[data-assignment-edit]"); if (editAssignment) { openAssignmentModal(editAssignment.dataset.assignmentEdit); return; }
+        const deleteSessionButton = event.target.closest("[data-session-delete]"); if (deleteSessionButton) { if(confirm("Delete this study session?")) { state.studySessions = state.studySessions.filter(s=>s.id!==deleteSessionButton.dataset.sessionDelete); saveState("Session deleted"); renderAll(); } return; }
+        const planEdit = event.target.closest("[data-plan-edit]"); if (planEdit) { openPlanModal(planEdit.dataset.planEdit); return; }
+        const planToggle = event.target.closest("[data-plan-toggle]"); if (planToggle) { togglePlanCompleted(planToggle.dataset.planToggle); return; }
+        const calendarEvent = event.target.closest("[data-calendar-event]"); if (calendarEvent) { const separator=calendarEvent.dataset.calendarEvent.indexOf(":");openCalendarEvent(calendarEvent.dataset.calendarEvent.slice(0,separator),calendarEvent.dataset.calendarEvent.slice(separator+1));return; }
+        const calendarDay = event.target.closest("[data-calendar-day]"); if (calendarDay) { plannerWeekCursor=startOfWeek(new Date(`${calendarDay.dataset.calendarDay}T12:00:00`));openPlanModal(null,calendarDay.dataset.calendarDay);return; }
+        const calendarView = event.target.closest("[data-calendar-view]"); if (calendarView) { calendarViewMode=calendarView.dataset.calendarView; if(calendarViewMode==="week")calendarCursor=new Date(plannerWeekCursor);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));return; }
+        const planCard = event.target.closest("[data-plan-open]"); if (planCard) { openPlanModal(planCard.dataset.planOpen); return; }
+        const recordEdit = event.target.closest("[data-record-edit]"); if (recordEdit) { const [kind,id]=recordEdit.dataset.recordEdit.split(":"); editRecord(kind,id); return; }
+        const recordDelete = event.target.closest("[data-record-delete]"); if (recordDelete) { const [kind,id]=recordDelete.dataset.recordDelete.split(":"); deleteRecord(kind,id); return; }
+        const quizReveal = event.target.closest("[data-quiz-reveal]"); if (quizReveal) { quizAnswerVisible=true; renderQuiz(); return; }
+        const quizGrade = event.target.closest("[data-quiz-grade]"); if (quizGrade) { gradeQuiz(quizGrade.dataset.quizGrade); return; }
+        const rewardClaim = event.target.closest("[data-reward-claim]"); if (rewardClaim) { const item=state.rewards.find(x=>x.id===rewardClaim.dataset.rewardClaim);if(item){item.claimed=true;saveState("Reward claimed");renderCareer();celebrate(`You earned it: ${item.treat} 🎉`);} return; }
+        const semesterTab = event.target.closest("[data-semester]"); if (semesterTab) { displayedSemester = Number(semesterTab.dataset.semester); renderCurriculum(); return; }
+        const quick = event.target.closest("[data-quick]"); if (quick?.dataset.quick === "note") createNote();
+        if (quick?.dataset.quick === "assignment") openAssignmentModal();
+      });
+
+      document.querySelectorAll(".modal-backdrop").forEach(backdrop => backdrop.addEventListener("mousedown", event => { if (event.target === backdrop) closeModal(backdrop.id); }));
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") document.querySelectorAll(".modal-backdrop:not([hidden])").forEach(modal => closeModal(modal.id));
+        const planCard=event.target.closest?.("[data-plan-open]");if(planCard&&(event.key==="Enter"||event.key===" ")){event.preventDefault();openPlanModal(planCard.dataset.planOpen);}
+      });
+      document.getElementById("mobileMenu").addEventListener("click", () => document.body.classList.toggle("menu-open"));
+
+      document.getElementById("setCurrentSemester").addEventListener("click", () => { state.profile.currentSemester = displayedSemester; saveState("Current semester changed"); renderAll(); toast(`Semester ${displayedSemester} is now current.`); });
+      document.getElementById("saveCourse").addEventListener("click", saveCourse);
+      document.getElementById("courseOpenLink").addEventListener("click", () => { const url=safeUrl(document.getElementById("courseUrl").value); if(url) window.open(url,"_blank","noopener"); });
+      document.getElementById("courseAddNote").addEventListener("click", () => { const id=document.getElementById("courseIdField").value; closeModal("courseModal"); createNote(id); });
+      document.getElementById("courseAddAssignment").addEventListener("click", () => { const id=document.getElementById("courseIdField").value; closeModal("courseModal"); openAssignmentModal(null,id); });
+
+      document.getElementById("newNoteTop").addEventListener("click", () => createNote());
+      document.getElementById("newNoteSide").addEventListener("click", () => createNote());
+      document.getElementById("noteSearch").addEventListener("input", renderNoteList);
+      document.getElementById("noteCourseFilter").addEventListener("change", renderNoteList);
+      document.getElementById("noteTitle").addEventListener("input", queueNoteSave);
+      document.getElementById("noteCourse").addEventListener("change", queueNoteSave);
+      document.getElementById("noteEditor").addEventListener("input", queueNoteSave);
+      document.getElementById("noteEditor").addEventListener("keyup", rememberSelection);
+      document.getElementById("noteEditor").addEventListener("mouseup", rememberSelection);
+      document.addEventListener("selectionchange", rememberSelection);
+      document.getElementById("deleteNote").addEventListener("click", deleteActiveNote);
+      document.getElementById("printNote").addEventListener("click", () => { document.body.classList.add("print-note"); window.print(); setTimeout(()=>document.body.classList.remove("print-note"),200); });
+      document.querySelectorAll("#noteToolbar [data-cmd]").forEach(button => button.addEventListener("mousedown", event => { event.preventDefault(); runCommand(button.dataset.cmd); }));
+      document.getElementById("formatBlock").addEventListener("change", event => runCommand("formatBlock", event.target.value));
+      document.getElementById("bulletStyle").addEventListener("change", event => applyBullet(event.target.value,false));
+      document.getElementById("numberStyle").addEventListener("change", event => applyBullet(event.target.value,true));
+      document.getElementById("textColor").addEventListener("input", event => runCommand("foreColor",event.target.value));
+      document.getElementById("highlightColor").addEventListener("input", event => runCommand("hiliteColor",event.target.value));
+      document.querySelectorAll("[data-highlight]").forEach(button => button.addEventListener("mousedown", event => { event.preventDefault(); runCommand("hiliteColor",button.dataset.highlight); }));
+      document.getElementById("insertTemplate").addEventListener("mousedown", event => { event.preventDefault(); insertStudyTemplate(); });
+      document.getElementById("stickerInsert").addEventListener("change", event => { if(event.target.value) runCommand("insertText", `${event.target.value} `); event.target.value=""; });
+
+      document.getElementById("addAssignmentTop").addEventListener("click", () => openAssignmentModal());
+      document.getElementById("saveAssignment").addEventListener("click", saveAssignment);
+      document.getElementById("deleteAssignment").addEventListener("click", deleteAssignment);
+      ["assignmentSemesterFilter","assignmentCourseFilter","assignmentStatusFilter"].forEach(id => document.getElementById(id).addEventListener("change", renderGrades));
+      document.getElementById("assignmentSearch").addEventListener("input", renderGrades);
+
+      document.querySelectorAll(".mode-chip").forEach(button => button.addEventListener("click", () => { document.querySelectorAll(".mode-chip").forEach(x=>x.classList.remove("active")); button.classList.add("active"); resetTimer(Number(button.dataset.minutes)); }));
+      document.getElementById("timerStart").addEventListener("click", toggleTimer);
+      document.getElementById("timerReset").addEventListener("click", () => resetTimer(timer.minutes));
+      document.getElementById("spinRecall").addEventListener("click", spinRecall);
+      document.getElementById("logSessionTop").addEventListener("click", openSessionModal);
+      document.getElementById("saveSession").addEventListener("click", saveSession);
+
+      document.getElementById("planForm").addEventListener("submit", savePlan);
+      document.getElementById("addPlanTop").addEventListener("click",()=>openPlanModal(null,localDateString()));
+      document.getElementById("completePlan").addEventListener("click",()=>{const id=inputValue("planId");if(id)togglePlanCompleted(id,true);});
+      document.getElementById("deletePlan").addEventListener("click",()=>{const id=inputValue("planId");if(id)deletePlannerTask(id);});
+      document.getElementById("plannerWeekPrev").addEventListener("click",()=>{plannerWeekCursor.setDate(plannerWeekCursor.getDate()-7);if(calendarViewMode==="week")calendarCursor=new Date(plannerWeekCursor);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("plannerWeekNext").addEventListener("click",()=>{plannerWeekCursor.setDate(plannerWeekCursor.getDate()+7);if(calendarViewMode==="week")calendarCursor=new Date(plannerWeekCursor);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("plannerToday").addEventListener("click",()=>{plannerWeekCursor=startOfCurrentWeek();if(calendarViewMode==="week")calendarCursor=new Date(plannerWeekCursor);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("plannerScope").addEventListener("change",event=>{plannerScope=event.target.value;renderPlanner();});
+      document.getElementById("calendarPrev").addEventListener("click",()=>{if(calendarViewMode==="week"){calendarCursor.setDate(calendarCursor.getDate()-7);plannerWeekCursor=startOfWeek(calendarCursor);}else calendarCursor.setMonth(calendarCursor.getMonth()-1);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("calendarNext").addEventListener("click",()=>{if(calendarViewMode==="week"){calendarCursor.setDate(calendarCursor.getDate()+7);plannerWeekCursor=startOfWeek(calendarCursor);}else calendarCursor.setMonth(calendarCursor.getMonth()+1);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("calendarToday").addEventListener("click",()=>{plannerWeekCursor=startOfCurrentWeek();calendarCursor=new Date();if(calendarViewMode==="month")calendarCursor.setDate(1);renderPlanner();if(googleAccessToken)refreshGoogleCalendarEvents().catch(error=>toast(error.message,"error"));});
+      document.getElementById("googleSaveClientId").addEventListener("click",saveGoogleClientId);
+      document.getElementById("googleConnect").addEventListener("click",connectGoogleCalendar);
+      document.getElementById("googleDisconnect").addEventListener("click",disconnectGoogleCalendar);
+      document.getElementById("googleRefresh").addEventListener("click",()=>refreshGoogleCalendarEvents().then(()=>toast("Google Calendar refreshed.")).catch(error=>toast(error.message,"error")));
+      document.getElementById("googleSyncWeek").addEventListener("click",syncSelectedWeek);
+      document.getElementById("googleExportWeek").addEventListener("click",exportSelectedWeek);
+
+      document.getElementById("assessmentForm").addEventListener("submit",saveAssessment);
+      document.getElementById("clearAssessmentForm").addEventListener("click",()=>{resetRecordForm("assessmentForm","assessmentId","assessmentDetails");setInput("assessmentDate",localDateString());});
+      document.getElementById("masteryCourse").addEventListener("change",renderMasteryChecklist);
+      document.getElementById("masteryOutcomes").addEventListener("change",event=>{const box=event.target.closest("[data-mastery-key]");if(!box)return;const course=box.dataset.masteryCourse,index=box.dataset.masteryIndex,key=box.dataset.masteryKey;state.mastery[course]=state.mastery[course]||{};state.mastery[course][index]={...masteryEntry(course,index),[key]:box.checked,updatedAt:new Date().toISOString()};saveState("Mastery updated");renderMasteryChecklist();renderDashboard();});
+      document.getElementById("questionForm").addEventListener("submit",saveQuestion);
+      document.getElementById("clearQuestionForm").addEventListener("click",()=>{resetRecordForm("questionForm","questionId","questionDetails");setInput("questionNextReview",localDateString());});
+      document.getElementById("newQuizQuestion").addEventListener("click",pickQuizQuestion);
+
+      document.getElementById("capstoneForm").addEventListener("submit",saveCapstone);
+      document.getElementById("clearCapstoneForm").addEventListener("click",()=>resetRecordForm("capstoneForm","capstoneId","capstoneDetails"));
+      document.getElementById("feedbackForm").addEventListener("submit",saveFeedback);
+      document.getElementById("clearFeedbackForm").addEventListener("click",()=>{resetRecordForm("feedbackForm","feedbackId","feedbackDetails");setInput("feedbackDate",localDateString());});
+      document.getElementById("readingForm").addEventListener("submit",saveReading);
+      document.getElementById("clearReadingForm").addEventListener("click",()=>resetRecordForm("readingForm","readingId","readingDetails"));
+      document.getElementById("speakingForm").addEventListener("submit",saveSpeaking);
+      document.getElementById("clearSpeakingForm").addEventListener("click",()=>{resetRecordForm("speakingForm","speakingId","speakingDetails");setInput("speakingDate",localDateString());});
+      document.getElementById("reflectionForm").addEventListener("submit",saveReflection);
+      document.getElementById("clearReflectionForm").addEventListener("click",()=>{resetRecordForm("reflectionForm","reflectionId","reflectionDetails");setInput("reflectionDate",localDateString());});
+
+      document.getElementById("applicationForm").addEventListener("submit",saveApplication);
+      document.getElementById("clearApplicationForm").addEventListener("click",()=>{resetRecordForm("applicationForm","applicationId","applicationDetails");setInput("applicationDate",localDateString());});
+      document.getElementById("rewardForm").addEventListener("submit",saveReward);
+
+      document.getElementById("profileForm").addEventListener("submit", saveProfile);
+      document.getElementById("exportData").addEventListener("click", exportData);
+      document.getElementById("importData").addEventListener("change", event => { importData(event.target.files[0]); event.target.value=""; });
+      document.getElementById("resetData").addEventListener("click", resetData);
+      window.addEventListener("beforeunload", saveActiveNote);
+    }
+
+    bindEvents();
+    renderAll();
+    updateTimerDisplay();
+    const initialView = location.hash.replace("#", "");
+    if (viewMeta[initialView]) showView(initialView);
+  })();
+  </script>
+</body>
+</html>
